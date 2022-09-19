@@ -1,6 +1,9 @@
 // The purpose of this module is to bring your Sequelize instance (`db`) together
 // with your models, for which you'll find some blank files in this directory:
 
+
+//Alec wuz here
+
 const db = require('./database')
 const User = require('./User')
 
