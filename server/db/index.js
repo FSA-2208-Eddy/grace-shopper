@@ -31,10 +31,16 @@ const syncAndSeed = async () => {
 };
 
 User.hasMany(Order);
-Tag.hasMany(Event);
-LineItem.hasOne(Event);
-Order.belongsTo(User);
+Order.belongsTo(User)
+
 Order.hasMany(LineItem);
+LineItem.belongsTo(Order);
+
+LineItem.hasOne(Event)
+Event.belongsToMany(LineItem)
+
+Tag.belongsToMany(Event, {through: 'EventTag'})
+Event.belongsToMany(Tag, {through: 'EventTag'})
 
 
 module.exports = {
