@@ -20,8 +20,45 @@ const User = db.define('user', {
   password: {
     type: Sequelize.STRING,
   },
-  githubId: {
-    type: Sequelize.INTEGER
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: Sequelize.STRING,
+    isEmail: true,
+    unique: true,
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  }
+})
+
+const Event = db.define('event', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  type: {
+    type: Sequelize.STRING,
+  },
+  tickets: {
+    type: Sequelize.INTEGER,
+  },
+  startTime: {
+    type: Sequelize.DATE,
+  },
+  endTime: {
+    type: Sequelize.DATE,
+  },
+  location: {
+    type: Sequelize.STRING,
+    allowNull: false,
   }
 })
 
