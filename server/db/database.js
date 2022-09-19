@@ -4,3 +4,5 @@ const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/
 module.exports = db;
 
 //do not touch!!!
+
+// Hello thomas was here
