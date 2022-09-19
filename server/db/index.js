@@ -3,6 +3,10 @@
 
 const db = require('./database')
 const User = require('./User')
+const Order = require('./Order')
+const Tag = require('./Tag')
+const LineItem = require('./LineItem')
+const Event = require('./Event')
 
 
 const syncAndSeed = async () => {
@@ -11,8 +15,12 @@ const syncAndSeed = async () => {
 
     //use this area to seed your database
     await User.create({
-      username: "Thomas",
-      password: "hello",
+      username: 'Thomas',
+      password: 'testpassword',
+      firstName: 'Thomas',
+      lastName: 'Bak',
+      email: 'thomas@gmail.com',
+      isAdmin: true
     })
 
     console.log(`Seeding successful!`);
@@ -22,11 +30,20 @@ const syncAndSeed = async () => {
     }
 };
 
+User.hasMany(Order);
+Tag.hasMany(Event);
+LineItem.hasOne(Event);
+Order.belongsTo(User);
+Order.hasMany(LineItem);
 
 
 module.exports = {
     // Include your models in this exports object as well!
     db,
     syncAndSeed,
-    User
+    User,
+    Order,
+    Tag,
+    LineItem,
+    Event
 }

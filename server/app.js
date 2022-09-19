@@ -27,11 +27,11 @@ app.use((req, res, next) => {
     error.status = 404;
     next(error);
 });
-  
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
-  
+
 module.exports = app;
 
