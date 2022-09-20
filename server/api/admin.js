@@ -45,7 +45,7 @@ router.put('/delete-event', requireToken, async(req,res,next) => {
     try {
         const event = await User.findByPk(req.body.eventId)
         await event.destroy()
-        res.sendStatus(201)
+        res.sendStatus(204)
     } catch(ex) {
         next(ex)
     }
@@ -56,7 +56,7 @@ router.put('/delete-user', requireToken, async(req,res,next) => {
     try {
         const user = await User.findByPk(req.body.userId)
         await user.destroy()
-        res.sendStatus(201)
+        res.sendStatus(204)
     } catch(ex) {
         next(ex)
     }
