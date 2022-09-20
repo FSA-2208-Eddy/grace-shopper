@@ -1,15 +1,15 @@
-import {createStore, applyMiddleware, combineReducers} from "redux";
-import thunk from "redux-thunk";
+import { configureStore } from '@reduxjs/toolkit'
+import reduxLogger from 'redux-logger';
+import { userSlice, eventSlice } from '../components'
 
 
-const reducers = combineReducers({
-    // place your separate reducers here, for example:
-    // students: studentReducer,
-})
+const store = configureStore({
+    reducer: {
+        users: userSlice,
+        events: eventSlice,
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(reduxLogger)
+  });
 
-function configureStore() {
-    // return createStore(########, applyMiddleware(thunk));
-    return createStore(reducers, applyMiddleware(thunk))
-}
-
-export default configureStore;
+export default store;
