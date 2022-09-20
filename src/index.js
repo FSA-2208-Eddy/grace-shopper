@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from "./App";
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import configureStore from './store';
-
-const store = configureStore()
+import store from './store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
