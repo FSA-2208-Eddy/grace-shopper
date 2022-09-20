@@ -8,13 +8,14 @@ const Tag = require("./Tag");
 const LineItem = require("./LineItem");
 const Event = require("./Event");
 const axios = require('axios')
+const API_KEY = 'rybaSZbAsGTyVHpT4MjpWMbbiJIQpYGD'
 
 const syncAndSeed = async () => {
   try {
     await db.sync({ force: true });
 
-    const { data } = await axios.get('https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&locale=*')
-
+    const { data } = await axios.get(`https://app.ticketmaster.com/discovery/v2/events?apikey=rybaSZbAsGTyVHpT4MjpWMbbiJIQpYGD&locale=*&size=200`)
+console.log(data._embedded.events)
     const makeSeatChart = () => {
       let seats = [];
       const alphabet = "ABCDEFGHIJ";
