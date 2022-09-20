@@ -23,6 +23,10 @@ const syncAndSeed = async () => {
       isAdmin: true
     })
 
+    await Order.create({
+      userId: 1
+    })
+
     console.log(`Seeding successful!`);
 
     } catch(err) {
@@ -37,7 +41,7 @@ Order.hasMany(LineItem);
 LineItem.belongsTo(Order);
 
 LineItem.hasOne(Event)
-Event.belongsToMany(LineItem)
+Event.belongsToMany(LineItem, {through: 'EventLine'})
 
 Tag.belongsToMany(Event, {through: 'EventTag'})
 Event.belongsToMany(Tag, {through: 'EventTag'})
