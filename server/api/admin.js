@@ -52,9 +52,9 @@ router.put('/delete-event', requireToken, async(req,res,next) => {
 })
 
 // delete a user (takes a userId in req.body)
-router.put('/delete-user', requireToken, async(req,res,next) => {
+router.put('/delete-user/:id', requireToken, async(req,res,next) => {
     try {
-        const user = await User.findByPk(req.body.userId)
+        const user = await User.findByPk(req.params.id)
         await user.destroy()
         res.sendStatus(204)
     } catch(ex) {

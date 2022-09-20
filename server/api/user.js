@@ -16,9 +16,9 @@ const requireToken = async (req, res, next) => {
   };
 
 // get the user's information, and their orders
-router.get("/", requireToken, async (req, res, next) => {
+router.get("/:id", requireToken, async (req, res, next) => {
   try {
-    const userAndOrder = await User.findByPk(req.user.id, {
+    const userAndOrder = await User.findByPk(req.params.id, {
         include: Order
     })
     res.send(userAndOrder);
@@ -28,9 +28,9 @@ router.get("/", requireToken, async (req, res, next) => {
 });
 
 // update user's information (takes new details in req.body)
-router.put('/', requireToken, async(req,res,next) => {
+router.put('/:id', requireToken, async(req,res,next) => {
     try {
-        const user = await User.findByPk(req.user.id)
+        const user = await User.findByPk(req.params.id)
         user.set(req.body)
         await user.save()
         res.send(user)
