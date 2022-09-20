@@ -15,6 +15,36 @@ const requireToken = async (req, res, next) => {
     }
   };
 
+// add items to current order
+// expects a req.body to include: eventId, qty, seat
+router.put('/cart', requireToken, async(req,res,next) => {
+    try {
+        const event = await Event.findByPk(req.body.eventId)
+        const newLineItem = await LineItem.create({
+            qty: req.body.qty,
+            seat: req.body.seat
+        })
+        newLineItem.set({
+            eventId: event.id
+        })
+        newLineItem.save()
+        const userAndOrder = await User.findByPk(req.user.id, {
+            include: Order
+        })
+        newLineItem.set({
+            orderId: userAndOrder.orders[userAndOrder.orders.length-1].id
+        })
+        await newLineItem.save()
+        let order = await Order.findByPk(userAndOrder.orders[userAndOrder.orders.length-1].id, {
+            include: LineItem
+        })
+        res.send(order)
+    } catch (ex) {
+        next(ex)
+    }
+})
+
+
 // get the user's information, and their orders
 router.get("/:id", requireToken, async (req, res, next) => {
   try {
@@ -39,31 +69,6 @@ router.put('/:id', requireToken, async(req,res,next) => {
     }
 })
 
-// add items to current order
-// expects a req.body to include: eventId, qty, seat
-router.put('/cart', requireToken, async(req,res,next) => {
-    try {
-        const event = await Event.findByPk(req.body.eventId)
-        const newLineItem = await LineItem.create({
-            qty: req.body.qty,
-            seat: req.body.seat
-        })
-        newLineItem.setEvent(event)
-        const userAndOrder = await User.findByPk(req.user.id, {
-            include: Order
-        })
-        newLineItem.set({
-            orderId: userAndOrder.orders[userAndOrder.orders.length-1].id
-        })
-        await newLineItem.save()
-        let order = await Order.findByPk(userAndOrder.orders[userAndOrder.orders.length-1].id, {
-            include: LineItem
-        })
-        res.send(order)
-    } catch (ex) {
-        next(ex)
-    }
-})
 
 
 
