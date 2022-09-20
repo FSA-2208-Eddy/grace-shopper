@@ -13,10 +13,11 @@ const syncAndSeed = async () => {
     await db.sync({ force: true });
 
     //use this area to seed your database
-    await Tag.create({
+    const outdoorTag = await Tag.create({
       name: "outdoor recreation",
     });
-    await Tag.create({
+
+    const musicTag = await Tag.create({
       name: "music",
     });
     await User.create({
@@ -28,7 +29,7 @@ const syncAndSeed = async () => {
       isAdmin: true,
     });
 
-    await Event.create({
+    const party = await Event.create({
       name: "Cathal's big birthday bash",
       type: "festival",
       tickets: 10000,
@@ -37,7 +38,7 @@ const syncAndSeed = async () => {
       location: "Ireland",
       description: "Come celebrate Cathal's big day!",
     });
-
+    outdoorTag.addEvent(party);
     await Event.create({
       name: "The Strokes",
       type: "concert",
