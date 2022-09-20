@@ -27,7 +27,7 @@ router.get("/", requireToken, async (req, res, next) => {
   }
 });
 
-//update user's information
+// update user's information (takes new details in req.body)
 router.put('/', requireToken, async(req,res,next) => {
     try {
         const user = await User.findByPk(req.user.id)
