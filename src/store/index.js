@@ -1,15 +1,13 @@
-import {createStore, applyMiddleware, combineReducers} from "redux";
-import thunk from "redux-thunk";
+import { configureStore } from '@reduxjs/toolkit'
+import reduxLogger from 'redux-logger';
 
 
-const reducers = combineReducers({
-    // place your separate reducers here, for example:
-    // students: studentReducer,
-})
+const store = configureStore({
+    reducer: {
 
-function configureStore() {
-    // return createStore(########, applyMiddleware(thunk));
-    return createStore(reducers, applyMiddleware(thunk))
-}
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(reduxLogger)
+  });
 
-export default configureStore;
+export default store;
