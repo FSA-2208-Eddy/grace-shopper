@@ -15,6 +15,35 @@ const requireToken = async (req, res, next) => {
     }
   };
 
+router.get('/cart', requireToken, async(req,res,next) => {
+    try {
+        const cart = await Order.findOne({
+            where: {
+                userId: req.user.id,
+                isCart: true
+            },
+            include: [
+                {model: LineItem, include: Event} 
+            ]
+        })
+        res.send(cart)
+    } catch (err) {
+        next(err)
+    }
+})
+
+//remove items from cart
+// expects a req.body to include: lineItemId
+router.put('/cart-remove', requireToken, async(req,res,next) => {
+    try {
+        const toDelete = await LineItem.findByPk(req.body.lineItemId)
+        toDelete.destroy()
+        res.sendStatus(204)
+    } catch(err) {
+        next(err)
+    }
+})
+
 // add items to current order
 // expects a req.body to include: eventId, qty, seat
 router.put('/cart', requireToken, async(req,res,next) => {
