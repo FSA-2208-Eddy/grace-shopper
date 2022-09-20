@@ -53,6 +53,11 @@ const syncAndSeed = async () => {
       userId: 1,
     });
 
+    await Event.create({
+      name: "Concert",
+      location: "Place"
+    })
+
     console.log(`Seeding successful!`);
   } catch (err) {
     console.log("problem seeding");
@@ -65,7 +70,7 @@ Order.belongsTo(User);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Order);
 
-LineItem.hasOne(Event);
+LineItem.belongsToMany(Event, { through: "EventLine"});
 Event.belongsToMany(LineItem, { through: "EventLine" });
 
 Tag.belongsToMany(Event, { through: "EventTag" });

@@ -4,7 +4,8 @@ const router = require("express").Router();
 
 // router.use('/students', require('./students'))
 
-router.use("/user", require("./user.js"));
+router.use('/admin', require('./admin.js'))
+router.use('/users', require('./user.js'))
 router.use("/events", require("./events.js"));
 router.use("/auth", require("./auth.js"));
 
