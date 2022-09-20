@@ -7,60 +7,41 @@ const Order = require("./Order");
 const Tag = require("./Tag");
 const LineItem = require("./LineItem");
 const Event = require("./Event");
+const axios = require('axios')
 
 const syncAndSeed = async () => {
   try {
     await db.sync({ force: true });
 
-    //use this area to seed your database
-    const outdoorTag = await Tag.create({
-      name: "outdoor recreation",
-    });
+    const { data } = await axios.get('https://app.ticketmaster.com/discovery/v2/events?apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0&locale=*')
 
-    const musicTag = await Tag.create({
-      name: "music",
-    });
-    await User.create({
-      username: "Thomas",
-      password: "testpassword",
-      firstName: "Thomas",
-      lastName: "Bak",
-      email: "thomas@gmail.com",
-      isAdmin: true,
-    });
+    const makeSeatChart = () => {
+      let seats = [];
+      const alphabet = "ABCDEFGHIJ";
+      for (let i = 0; i < alphabet.length; i++) {
+        let current = alphabet[i];
+        for (let j = 1; j <= 10; j++) {
+          seats.push(`${current}${j}`);
+        }
+      }
+      return seats;
+    };
 
-    const party = await Event.create({
-      name: "Cathal's big birthday bash",
-      type: "festival",
-      tickets: 10000,
-      startTime: new Date(),
-      endTime: new Date(),
-      location: "Ireland",
-      description: "Come celebrate Cathal's big day!",
-    });
-    outdoorTag.addEvent(party);
-    await Event.create({
-      name: "The Strokes",
-      type: "concert",
-      tickets: 5000,
-      startTime: new Date(),
-      endTime: new Date(),
-      location: "Los Angeles",
-      description: "Come listen to Julian bless us with his gift",
-    });
-
-    await Order.create({
-      userId: 1,
-    });
-
-    await Event.create({
-      name: "Concert",
-      location: "Place"
-    })
-
-    console.log(`Seeding successful!`);
-  } catch (err) {
-    console.log("problem seeding");
+    for (let i = 0; i < data._embedded.events.length; i++) {
+      const current = data._embedded.events[i];
+      await Event.create({
+        name: current.name,
+        type: current.type,
+        img: current.images[0].url,
+        location: current._embedded.venues[0].name,
+        startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
+        endTime: current.dates.start.dateTime,
+      })
+    }
+    console.log('Seeding Successful')
+  }
+  catch(err) {
+    console.log(err)
   }
 };
 
