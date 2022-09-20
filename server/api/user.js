@@ -24,23 +24,54 @@ router.put('/cart', requireToken, async(req,res,next) => {
             qty: req.body.qty,
             seat: req.body.seat
         })
-        newLineItem.set({
-            eventId: event.id
-        })
-        newLineItem.save()
+        newLineItem.addEvent(event)
         const userAndOrder = await User.findByPk(req.user.id, {
             include: Order
         })
+        const cart = await Order.findOne({
+            where: {
+                userId: userAndOrder.id,
+                isCart: true
+            }
+        })
         newLineItem.set({
-            orderId: userAndOrder.orders[userAndOrder.orders.length-1].id
+            orderId: cart.id
         })
         await newLineItem.save()
-        let order = await Order.findByPk(userAndOrder.orders[userAndOrder.orders.length-1].id, {
+        let order = await Order.findByPk(cart.id, {
             include: LineItem
         })
         res.send(order)
     } catch (ex) {
         next(ex)
+    }
+})
+
+// checkout
+router.put('/checkout', requireToken, async(req,res,next)=> {
+    try {
+        const userAndOrder = await User.findByPk(req.user.id, {
+            include: Order
+        })
+        const cart = await Order.findOne({
+            where: {
+                userId: userAndOrder.id,
+                isCart: true
+            }
+        })
+        cart.set({
+            isCart: false
+        })
+        cart.save()
+        const newOrder = await Order.create({
+            userId: userAndOrder.id
+        })
+        const newUserAndOrder = await User.findByPk(req.user.id, {
+            include: Order
+        })
+        res.send(newUserAndOrder)
+    } catch(ex) {
+
     }
 })
 

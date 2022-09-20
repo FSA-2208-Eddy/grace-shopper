@@ -70,7 +70,7 @@ Order.belongsTo(User);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Order);
 
-LineItem.hasOne(Event);
+LineItem.belongsToMany(Event, { through: "EventLine"});
 Event.belongsToMany(LineItem, { through: "EventLine" });
 
 Tag.belongsToMany(Event, { through: "EventTag" });
