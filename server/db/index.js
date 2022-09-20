@@ -27,6 +27,11 @@ const syncAndSeed = async () => {
       userId: 1
     })
 
+    await Event.create({
+      name: "Concert",
+      location: "Place"
+    })
+
     console.log(`Seeding successful!`);
 
     } catch(err) {
