@@ -10,42 +10,6 @@ const Event = require("./Event");
 const axios = require('axios')
 const API_KEY = 'rybaSZbAsGTyVHpT4MjpWMbbiJIQpYGD'
 
-const syncAndSeed = async () => {
-  try {
-    await db.sync({ force: true });
-
-    const { data } = await axios.get(`https://app.ticketmaster.com/discovery/v2/events?apikey=rybaSZbAsGTyVHpT4MjpWMbbiJIQpYGD&locale=*&size=200`)
-console.log(data._embedded.events)
-    const makeSeatChart = () => {
-      let seats = [];
-      const alphabet = "ABCDEFGHIJ";
-      for (let i = 0; i < alphabet.length; i++) {
-        let current = alphabet[i];
-        for (let j = 1; j <= 10; j++) {
-          seats.push(`${current}${j}`);
-        }
-      }
-      return seats;
-    };
-
-    for (let i = 0; i < data._embedded.events.length; i++) {
-      const current = data._embedded.events[i];
-      await Event.create({
-        name: current.name,
-        type: current.type,
-        img: current.images[0].url,
-        location: current._embedded.venues[0].name,
-        startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
-        endTime: current.dates.start.dateTime,
-      })
-    }
-    console.log('Seeding Successful')
-  }
-  catch(err) {
-    console.log(err)
-  }
-};
-
 User.hasMany(Order);
 Order.belongsTo(User);
 
@@ -61,7 +25,6 @@ Event.belongsToMany(Tag, { through: "EventTag" });
 module.exports = {
   // Include your models in this exports object as well!
   db,
-  syncAndSeed,
   User,
   Order,
   Tag,
