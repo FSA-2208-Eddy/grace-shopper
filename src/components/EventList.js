@@ -14,7 +14,7 @@ const EventList = () => {
                     <select>
                         <option class="events-option" value="Sports">Sports</option>
                         <option class="events-option" value="Music">Music</option>
-                        <option class="events-option" value="Arts&Theatre">Arts & Theatre</option>
+                        <option class="events-option" value="ArtsAndTheatre">Arts and Theatre</option>
                     </select>
                 </div>
             </div>
