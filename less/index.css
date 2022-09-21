@@ -1,0 +1,90 @@
+p {
+  margin: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.profile-menu-container {
+  display: flex;
+  flex-direction: column;
+}
+.profile-recommended-events-block {
+  display: flex;
+  justify-content: space-evenly;
+}
+.profile-account-information-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #dedede;
+  width: 230px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.18);
+}
+.profile-account-information-container button {
+  width: max-content;
+  padding: 1px;
+}
+.profile-account-information-container .profile-picture-container {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin: 5px;
+}
+.profile-account-information-container .profile-picture-container img {
+  width: 100%;
+}
+.profile-account-information-container .profile-email-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.profile-account-information-container .profile-email-container * {
+  margin: 3px;
+}
+.profile-account-information-container .profile-address-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.profile-account-information-container .profile-address-container * {
+  margin: 3px;
+}
+.profile-settings-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.18);
+  border: 1px solid #c8c8c8;
+  justify-content: space-evenly;
+}
+.profile-settings-container div {
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.profile-settings-container #profile-setting-1 {
+  border-top: none;
+}
+.profile-settings-container #profile-setting-2 {
+  border: none;
+}

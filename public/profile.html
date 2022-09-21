@@ -5,8 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../less/index.css" />
   </head>
   <body>
-    <p>hello world!</p>
+    <div class="profile-main-container">
+      <div class="profile-header"><h1>Profile Overview</h1></div>
+      <div class="profile-menu-container">
+        <div class="profile-account-information-container">
+          <div class="profile-picture-container">
+            <img
+              class="profile-picture"
+              src="https://www.pngkey.com/png/detail/810-8105695_person-icon-grey-person-icon-grey-png.png"
+              alt="profile picture"
+            />
+          </div>
+          <button>Edit Profile</button>
+          <div class="profile-email-container">
+            <h3>Email</h3>
+            <div>example.email@gmail.com</div>
+            <button>Edit Email</button>
+          </div>
+          <div class="profile-address-container">
+            <h3>Address</h3>
+            <div>
+              <div>2000 Fake Blvd</div>
+              <div>Chicago, Il 12345</div>
+            </div>
+            <button>Edit Address</button>
+          </div>
+        </div>
+        <div class="profile-settings-container">
+          <div id="profile-setting-1">My Tickets</div>
+          <div id="profile-setting-2">My Purchases</div>
+          <div id="profile-setting-3">Manage Payment</div>
+        </div>
+      </div>
+      <div class="profile-cart-container">
+        <h2>Your Cart</h2>
+        <div class="profile-cart-item-container">
+          <div class="placeholder-cart-item">Event1</div>
+          <div class="placeholder-cart-item">Event1</div>
+          <div class="placeholder-cart-item">Event1</div>
+        </div>
+      </div>
+      <div class="profile-recommended-events-container">
+        <div class="profile-recommended-events-header">
+          <h2>Suggested For You</h2>
+        </div>
+        <div class="profile-recommended-events-block">
+          <div class="placeholder-event">Event1</div>
+          <div class="placeholder-event">Event2</div>
+          <div class="placeholder-event">Event3</div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
