@@ -126,10 +126,6 @@
   color: #ff8e3c;
 }
 * {
-  margin: 0;
-  font-family: 'Readex Pro', sans-serif;
-}
-* {
   font-family: 'Readex Pro', sans-serif;
 }
 #events-main-container {
@@ -207,4 +203,8 @@ select {
 .events-active {
   background-color: #ff8e3c;
   color: white;
+}
+* {
+  margin: 0;
+  font-family: 'Readex Pro', sans-serif;
 }
