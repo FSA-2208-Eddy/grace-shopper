@@ -1,0 +1,135 @@
+@import 'variables';
+
+#single-event-row-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 15vh;
+    
+    .single-event-date {
+        width: 10vw;
+        height: 10vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: @button-color;
+        border-radius: 1rem;
+        justify-content: center;
+        color: white;
+
+        h2 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+
+    .single-event-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: @secondary-color
+    }
+}
+
+#single-event-row-2 {
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    gap: 5vw;
+    margin-bottom: 10vh;
+    margin-top: 5vh;
+
+    img {
+        height: auto;
+        width: auto;
+        border: 1px solid rgb(199, 199, 199);
+    }
+
+    .single-event-details {
+        width: 40vw;
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+        padding: 12px;
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 1000;
+
+            .single-event-bold {
+                font-size: 1.5rem;
+            }
+        }
+
+        p {
+            color: grey;
+            font-size: 1.5rem;
+        }
+
+        .product-quantity {
+            display: flex;
+            width: 13vw;
+            justify-content: space-between;
+            align-items: center;
+
+            .single-event-input {
+                width: 5vh;
+                height: 5vh;
+                text-align: center;
+                border: 1px black solid;
+                border-radius: 0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .quantity-selectors-container {
+                .quantity-selectors {
+                    button{
+                        width: 5vh;
+                        height: 5vh;
+                        border: none;
+                        background-color: @button-color;
+                        color: white;
+                        cursor: pointer;
+                    }
+
+                    button:active {
+                        background-color: #e96f19;
+                    }
+                }
+            }
+        }
+
+        #single-event-seat-box {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            p {
+                font-size: 1rem;
+                color: @secondary-color;
+            }
+            select{
+                cursor: pointer;
+            }
+        }
+
+        #single-event-button {
+            border: none;
+            background-color: @button-color;
+            color: white;
+            width: 15vh;
+            height: 5vh;
+            cursor: pointer;
+        }
+
+        #single-event-button:active {
+            background-color: #e96f19;
+        }
+    }
+}
