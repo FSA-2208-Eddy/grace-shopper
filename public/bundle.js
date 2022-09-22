@@ -4349,7 +4349,7 @@ var EventList = function EventList() {
     id: "events-sort-filter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "events-sort"
-  }, " SORT BY:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     "class": "events-option",
     value: "date"
   }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -4357,7 +4357,7 @@ var EventList = function EventList() {
     value: "abc"
   }, "Alphabetical"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "events-filter"
-  }, " FILTER BY:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, " FILTER BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     "class": "events-option",
     value: "Sports"
   }, "Sports"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
