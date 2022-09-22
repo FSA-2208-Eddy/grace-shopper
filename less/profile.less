@@ -1,0 +1,316 @@
+@boxshadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+@border:1px solid rgb(222, 222, 222);
+@clickable-color: rgb(43, 136, 157);
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Readex Pro", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+.profile-header {
+  margin: 20px;
+  margin-bottom: 0px;
+  h1 {
+    font-size: 40px;
+    font-weight: 500;
+  }
+}
+.profile-main-container {
+  padding: 20px;
+  display: flex;
+}
+.profile-menu-container {
+  display: flex;
+  flex-direction: column;
+}
+.profile-account-information-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: @border;
+  width: 230px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: @boxshadow;
+  h3 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  a {
+    text-decoration: none;
+    color: @clickable-color;
+  }
+  .profile-name-container {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+  }
+  .profile-picture-container {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 5px;
+    img {
+      width: 100%;
+    }
+  }
+  .profile-email-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: @border;
+    border-bottom: @border;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    * {
+      margin: 3px;
+    }
+  }
+  .profile-address-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    * {
+      margin: 3px;
+    }
+  }
+}
+.profile-settings-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: @boxshadow;
+  border: @border;
+  justify-content: space-evenly;
+  color: @clickable-color;
+
+  div {
+    border-top: @border;
+    border-bottom: @border;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  div:hover {
+    cursor: pointer;
+    background-color: rgb(233, 233, 233);
+  }
+  #profile-setting-1 {
+    border-top: none;
+  }
+  #profile-setting-2 {
+    border: none;
+  }
+  #profile-setting-3 {
+    border-bottom: none;
+  }
+}
+.profile-cart-events-container {
+  display: flex;
+  flex-direction: column;
+  border: 10px;
+  margin-left: 80px;
+  margin-top: 30px;
+  div {
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+  .profile-recommended-events-container {
+    .profile-recommended-events-header {
+      h2 {
+        font-size: 30px;
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+    }
+    .profile-recommended-events-block {
+      display: flex;
+      flex-wrap: wrap;
+
+      .profile-event-item {
+        box-shadow: @boxshadow;
+        width: 300px;
+        height: 150px;
+        border: @border;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+        img {
+          width: 100%;
+          transition-duration: 0.5s;
+          transition-timing-function: ease-in-out;
+        }
+        .profile-event-item-title {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          background-color: rgba(35, 35, 35, 0.3);
+          color: rgba(255, 255, 255, 0.8);
+          z-index: 1;
+          align-self: flex-end;
+          justify-content: flex-start;
+          width: 300px;
+          min-height: 30px;
+          margin: 0px;
+          div {
+            margin-left: 3px;
+          }
+        }
+      }
+      .profile-event-item:hover {
+        img {
+          transform: scale(1.05);
+        }
+        .profile-event-item-title {
+          transition-duration: 0.5s;
+          transition-timing-function: ease-in-out;
+          background-color: rgba(35, 35, 35, 0.6);
+          color: white;
+        }
+      }
+    }
+  }
+
+  .profile-cart-header {
+    display: flex;
+    justify-content: space-between;
+    h2 {
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+  }
+  .profile-cart-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: @border;
+    .profile-cart-item {
+      box-shadow: @boxshadow;
+      height: 350px;
+      width: 200px;
+      border: @border;
+      margin: 10px;
+      padding: 5px;
+      .profile-cart-item-picture-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        img {
+          height: 100%;
+        }
+      }
+      .profile-cart-item-delete {
+        color: @clickable-color;
+        cursor: pointer;
+        max-width: content;
+        font-size: 14px;
+      }
+      span {
+        font-weight: 400;
+        font-size: 14px;
+      }
+      .profile-cart-item-title {
+        font-weight: 400;
+        border-bottom: 0px;
+      }
+      .profile-cart-item-address {
+        font-style: italic;
+        font-size: 13px;
+        border-top: 0px;
+      }
+      .profile-cart-item-price {
+        font-weight: 500;
+      }
+      .profile-cart-item-seat {
+        font-size: 14px;
+      }
+      .profile-cart-item-available {
+        font-size: 14px;
+      }
+    }
+  }
+}
+.profile-cart-checkout {
+  color: @clickable-color;
+  font-size: 20px;
+  font-weight: 400;
+  padding-top: 6px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  * {
+    font-size: 14px;
+  }
+  .profile-cart-item-container {
+    flex-direction: column;
+  }
+  .profile-header {
+    text-align: center;
+    font-size: 15px;
+  }
+  .profile-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-account-information-container {
+    width: 350px;
+  }
+  .profile-settings-container {
+    width: 350px;
+  }
+  .profile-cart-events-container {
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  .profile-cart-header {
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .profile-cart-item-container {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    width: 375px;
+  }
+  .profile-recommended-events-container {
+    align-items: center;
+    h2 {
+      text-align: center;
+    }
+  }
+  .profile-recommended-events-block {
+    flex-direction: column;
+    align-items: center;
+  }
+}

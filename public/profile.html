@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../less/index.css" />
+  </head>
+  <body>
+    <div class="profile-header"><h1>Profile Overview</h1></div>
+    <div class="profile-main-container">
+      <!-- start of profile settings component -->
+      <div class="profile-menu-container">
+        <div class="profile-account-information-container">
+          <div class="profile-name-container">Jane Doe</div>
+          <div class="profile-picture-container">
+            <img
+              class="profile-picture"
+              src="https://www.pngkey.com/png/detail/810-8105695_person-icon-grey-person-icon-grey-png.png"
+              alt="profile picture"
+            />
+          </div>
+          <a href="google.com">Edit Profile</a>
+          <div class="profile-email-container">
+            <h3>Email</h3>
+            <div>example.email@gmail.com</div>
+            <a href="google.com">Edit Email</a>
+          </div>
+          <div class="profile-address-container">
+            <h3>Address</h3>
+
+            <div>2000 Fake Blvd</div>
+            <div>Chicago, Il 12345</div>
+
+            <a href="google.com">Edit Address</a>
+          </div>
+        </div>
+        <div class="profile-settings-container">
+          <div id="profile-setting-1">My Tickets</div>
+          <div id="profile-setting-2">My Purchases</div>
+          <div id="profile-setting-3">Manage Payment</div>
+        </div>
+      </div>
+      <!-- end of profile settings component -->
+
+      <div class="profile-cart-events-container">
+        <!-- start of recommended events component, which will map through suggested events from db/api/redux store and create event cards -->
+
+        <div class="profile-recommended-events-container">
+          <div class="profile-recommended-events-header">
+            <h2>Our Picks For You:</h2>
+          </div>
+          <div class="profile-recommended-events-block">
+            <div class="profile-event-item">
+              <div class="profile-event-item-title">
+                <div>The Biggest Fight of the Century</div>
+              </div>
+              <img
+                src="http://musicfeeds.com.au/assets/uploads/Ben-and-Liam_fight-night-e1559785017827.jpg"
+              />
+            </div>
+            <div class="profile-event-item">
+              <img
+                src="https://urbanmatter.com/chicago/wp-content/uploads/2018/07/BristolRoversWayneHile.jpg"
+              />
+              <div class="profile-event-item-title">
+                <div>Bristol Renaissance Faire</div>
+              </div>
+            </div>
+            <div class="profile-event-item">
+              <img
+                src="https://media.npr.org/assets/img/2014/01/28/120196117-8cad7b866486eb420c58e24af826c2238af8a477-s1100-c50.jpg"
+              />
+              <div class="profile-event-item-title">
+                <div>Pete Seeger Concert</div>
+              </div>
+            </div>
+            <!-- <div class="profile-event-item"></div>
+            <div class="profile-event-item"></div>
+            <div class="profile-event-item"></div> -->
+          </div>
+        </div>
+        <!-- end of recommended events component -->
+
+        <!-- start of cart component, which will loop through users cart and create cart item for each event -->
+        <div class="profile-cart-container">
+          <div class="profile-cart-header">
+            <h2>Your Cart</h2>
+            <div class="profile-cart-checkout">Checkout (3 Items)</div>
+          </div>
+          <div class="profile-cart-item-container">
+            <div class="profile-cart-item">
+              <div class="profile-cart-item-picture-container">
+                <img
+                  src="https://media.istockphoto.com/photos/cheering-crowd-of-unrecognized-people-at-a-rock-music-concert-concert-picture-id1189205501?k=20&m=1189205501&s=612x612&w=0&h=fexl_Cmu6AdLatIasGg_XYTkLSeWHCtvhMw1nK5_uDc="
+                />
+              </div>
+              <div class="profile-cart-item-title">Generic Concert</div>
+              <div class="profile-cart-item-address">Chicago, IL</div>
+              <div class="profile-cart-item-price">$29.95</div>
+              <div class="profile-cart-item-seat">Seat: <span>D9</span></div>
+              <div class="profile-cart-item-available">60 Seats Available</div>
+              <div class="profile-cart-item-delete">Delete</div>
+            </div>
+            <div class="profile-cart-item">
+              <div class="profile-cart-item-picture-container">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbraSe2Z1jmuTdU0lj8i8nAFqiaz7BBzPMxg&usqp=CAU"
+                />
+              </div>
+              <div class="profile-cart-item-title">
+                Cathal's Big Birthday Extravaganza-Palooza
+              </div>
+              <div class="profile-cart-item-address">Dublin, Ireland</div>
+              <div class="profile-cart-item-price">$399.99</div>
+              <div class="profile-cart-item-seat">Seat: <span>F3</span></div>
+              <div class="profile-cart-item-available">3 Seats Available</div>
+              <div class="profile-cart-item-delete">Delete</div>
+            </div>
+            <div class="profile-cart-item">
+              <div class="profile-cart-item-picture-container">
+                <img
+                  src="https://s.yimg.com/cv/apiv2/default/nfl/20190724/500x500/2019_NYG_wbg.png"
+                />
+              </div>
+              <div class="profile-cart-item-title">The Big Game</div>
+              <div class="profile-cart-item-address">New York, NY</div>
+              <div class="profile-cart-item-price">$150.00</div>
+              <div class="profile-cart-item-seat">Seat: <span>A10</span></div>
+              <div class="profile-cart-item-available">10 Seats Available</div>
+              <div class="profile-cart-item-delete">Delete</div>
+            </div>
+          </div>
+        </div>
+        <!-- end of cart component -->
+      </div>
+    </div>
+  </body>
+</html>
