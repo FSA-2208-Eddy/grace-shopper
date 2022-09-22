@@ -1,7 +1,7 @@
 import React from "react";
 import {Link, Routes, Route} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import { Navbar, EventList, LoginPage, Footer } from './components'
+import { Navbar, EventList, LoginPage, Footer, SingleEvent } from './components'
 
 
 function App(){
@@ -9,7 +9,7 @@ function App(){
     return(
         <>
         <Navbar/>
-        <EventList/>
+        <SingleEvent/>
         <Footer/>
         </>
 
