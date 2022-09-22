@@ -1,14 +1,14 @@
 import React from "react";
 import {Link, Routes, Route} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import { Navbar, EventList } from './components'
+import { Navbar, EventList, LoginPage } from './components'
 
 
 function App(){
 
     return(
         <>
-        <Navbar />
+        <LoginPage />
         <div>
             Hello World!
         </div>
