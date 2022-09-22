@@ -13,35 +13,36 @@
 
     .login-form-container{
       display: flex;
+      color: @highlight-color;
       flex-direction: column;
       align-items: center;
       pointer-events: all;
       border: 4px solid white;
       padding: 40px 50px 50px 50px;
-      background: rgba(99, 83, 83, 0.25);
+      background: @secondary-color;
       box-shadow: 0 8px 32px 0 #000000;
       backdrop-filter: blur( 5px );
       -webkit-backdrop-filter: blur( 5px );
       border-radius: 10px;
       border: 1px solid rgba( 255, 255, 255, 0.18 );
 
-    //   #login-failed {
-    //     background-color: lightpink;
-    //     color: firebrick;
-    //     font-weight: bold;
-    //     padding: 0.5rem;
-    //     font-size: 25px;
-    //     margin-bottom: 0.75rem;
-    //     border-radius: 5px;
-    //   }
+      #login-failed {
+        background-color: lightpink;
+        color: firebrick;
+        font-weight: bold;
+        padding: 0.5rem;
+        font-size: 25px;
+        margin-bottom: 0.75rem;
+        border-radius: 5px;
+      }
 
-    //   .offscreen {
-    //     position: absolute;
-    //     left: -9999px;
-    // }
+      .offscreen {
+        position: absolute;
+        left: -9999px;
+    }
 
       p {
-        color: @headline-color;
+        color: @highlight-color;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 40px;
         padding-bottom: 40px;
