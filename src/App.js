@@ -9,10 +9,9 @@ function App(){
     return(
         <>
         <Navbar/>
-        <EventList/>
-        <Footer/>
+        <LoginPage />
+        <Footer />
         </>
-
     )
 }
 

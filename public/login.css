@@ -68,3 +68,61 @@
   text-align: center;
   border-radius: 7px;
 }
+.login-create-new-user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+}
+.login-create-new-user-container h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.login-create-new-user-container .login-create-new-user-form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #151a21;
+  border-radius: 7px;
+  background-color: #151a21;
+}
+.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container {
+  display: flex;
+  justify-content: center;
+}
+.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container a {
+  color: white;
+  margin-bottom: 20px;
+}
+.login-create-new-user-container .login-create-new-user-form #new-user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #151a21;
+  color: white;
+  width: 300px;
+  margin: 20px 50px 0 50px;
+}
+.login-create-new-user-container .login-create-new-user-form #new-user-form #togglePassword {
+  float: right;
+  margin-top: -36px;
+  margin-right: -120px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  color: #151a21;
+}
+.login-create-new-user-container .login-create-new-user-form #new-user-form input {
+  margin: 0 0 15px 0;
+  outline: none;
+  height: 30px;
+  width: 100%;
+}
+.login-create-new-user-container .login-create-new-user-form #new-user-form button {
+  background-color: #ff8e3c;
+  color: #0d0d0d;
+  border-radius: 5px;
+  margin: 20px 0 0 0;
+  width: 80px;
+  height: 30px;
+}
