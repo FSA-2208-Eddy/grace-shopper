@@ -4,13 +4,13 @@ const EventList = () => {
     return (
         <div id="events-main-container">
             <div id="events-sort-filter">
-                <div id="events-sort"> SORT BY:
+                <div id="events-sort"> SORT BY:&nbsp;&nbsp;
                 <select>
                     <option class="events-option" value="date">Date</option>
                     <option class="events-option" value="abc">Alphabetical</option>
                 </select>
                 </div>
-                <div id="events-filter"> FILTER BY:
+                <div id="events-filter"> FILTER BY:&nbsp;&nbsp;
                     <select>
                         <option class="events-option" value="Sports">Sports</option>
                         <option class="events-option" value="Music">Music</option>
