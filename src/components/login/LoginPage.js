@@ -74,7 +74,7 @@ function LoginPage() {
                 <input type='text' ref={userRef} name='username' autoComplete="off" placeholder="UserName" onChange={(e) => setUserName(e.target.value)} value={userName} required></input>
                 <input type='password' name='password' placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} required></input>
             <button>Login</button>
-            <a>New to TICKIT? Sign up here</a>
+            <a onClick={() => setShowSignUp(true)}>New to TICKIT? Sign up here</a>
             </form>
             </div>
         </div>
@@ -95,7 +95,7 @@ function LoginPage() {
                     <button>Submit</button>
                 </form>
                 <div className='login-have-an-account-container'>
-                    <a>Already have an account? Sign in here</a>
+                    <a onClick={() => setShowSignUp(false)}>Already have an account? Sign in here</a>
                 </div>
             </div>
         </div>
