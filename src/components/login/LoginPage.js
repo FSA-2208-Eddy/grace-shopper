@@ -13,6 +13,7 @@ function LoginPage() {
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [email, setEmail] = React.useState('');
+  const [newUserName, setNewUserName] = React.useState('');
   const [newPassword, setNewPassword] = React.useState('');
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
@@ -50,12 +51,22 @@ function LoginPage() {
     }
   }
 
-  const handleCreateUser = (e) => {
+  const handleCreateUser = async(e) => {
     e.preventDefault();
+    let newUserObj = {
+        username: newUserName,
+        password: newPassword,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+    }
     try{
+        const newUser = await axios.post('/api/auth/signup', newUserObj)
+
         setFirstName('')
         setLastName('')
         setEmail('')
+        setNewUserName('')
         setNewPassword('')
     }
     catch(err) {
@@ -80,11 +91,13 @@ function LoginPage() {
         </div>
         :
         <div className='login-create-new-user-container'>
-            <h1>Sign up</h1>
             <div className='login-create-new-user-form'>
+            <p>Sign up</p>
                 <form id='new-user-form' onSubmit={handleCreateUser}>
+                    <label htmlFor='username'>Username</label>
+                    <input type='text' ref={userRef} name='username' onChange={(e) => setNewUserName(e.target.value)} value={newUserName} required></input>
                     <label htmlFor='first-name'>First Name</label>
-                    <input type='text' ref={userRef} name='first-name' onChange={(e) => setFirstName(e.target.value)} value={firstName} required></input>
+                    <input type='text' name='first-name' onChange={(e) => setFirstName(e.target.value)} value={firstName} required></input>
                     <label htmlFor='last-name'>Last Name</label>
                     <input type='text' name='last-name' onChange={(e) => setLastName(e.target.value)} value={lastName} required></input>
                     <label htmlFor='password'>Password</label>
