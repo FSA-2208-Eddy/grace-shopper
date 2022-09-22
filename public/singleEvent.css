@@ -40,6 +40,7 @@
 #single-event-row-2 img {
   height: auto;
   width: auto;
+  border: 1px solid #c7c7c7;
 }
 #single-event-row-2 .single-event-details {
   width: 40vw;
