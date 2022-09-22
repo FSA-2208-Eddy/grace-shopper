@@ -6,7 +6,7 @@
   z-index: 10;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   pointer-events: none;
 }
 .login-main-container .login-form-container {
@@ -23,6 +23,7 @@
   -webkit-backdrop-filter: blur(5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  margin-top: 100px;
 }
 .login-main-container .login-form-container #login-failed {
   background-color: lightpink;
@@ -70,10 +71,12 @@
 }
 .login-create-new-user-container {
   display: flex;
+  position: relative;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 65vh;
+  height: 100vh;
+  margin-top: 100px;
 }
 .login-create-new-user-container h1 {
   font-size: 40px;
@@ -85,6 +88,7 @@
   border: 2px solid #151a21;
   border-radius: 7px;
   background-color: #151a21;
+  box-shadow: 0 8px 32px 0 #000000;
 }
 .login-create-new-user-container .login-create-new-user-form .login-have-an-account-container {
   display: flex;
@@ -787,4 +791,8 @@ select {
   margin: 0;
   font-family: "Readex Pro", sans-serif;
   box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
 }
