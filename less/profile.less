@@ -2,24 +2,24 @@
 @border:1px solid rgb(222, 222, 222);
 @clickable-color: rgb(43, 136, 157);
 
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Readex Pro", sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   font-family: "Readex Pro", sans-serif;
+//   font-weight: 300;
+//   font-size: 14px;
+// }
 .profile-header {
-  margin: 20px;
-  margin-bottom: 0px;
   h1 {
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 500;
+    margin-bottom: 10px;
   }
 }
 .profile-main-container {
   padding: 20px;
   display: flex;
+  justify-content: center;
 }
 .profile-menu-container {
   display: flex;
@@ -192,7 +192,6 @@
 
   .profile-cart-header {
     display: flex;
-    justify-content: space-between;
     h2 {
       font-size: 30px;
       font-weight: 300;
@@ -200,22 +199,25 @@
     }
   }
   .profile-cart-item-container {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     border: @border;
     .profile-cart-item {
       box-shadow: @boxshadow;
+      display: flex;
+      flex-direction: column;
       height: 350px;
       width: 200px;
       border: @border;
       margin: 10px;
       padding: 5px;
       .profile-cart-item-picture-container {
+        align-self: center;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 200px;
-        height: 200px;
+        width: 185px;
+        height: 185px;
         overflow: hidden;
         background-repeat: no-repeat;
         background-position: center;
@@ -241,7 +243,7 @@
       .profile-cart-item-address {
         font-style: italic;
         font-size: 13px;
-        border-top: 0px;
+        border-top: -5px;
       }
       .profile-cart-item-price {
         font-weight: 500;
@@ -263,8 +265,48 @@
   margin-left: 15px;
   cursor: pointer;
 }
+.profile-upcoming-tickets-container {
+  display: flex;
+  flex-direction: column;
+}
+.profile-upcoming-tickets-header {
+  display: flex;
+  justify-content: space-between;
+  h2 {
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+}
+.profile-upcoming-tickets-item-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.profile-upcoming-tickets-item {
+  margin: 10px;
+  width: 450px;
+  height: 300px;
+  overflow: hidden;
+}
+.profile-upcoming-tickets-item-image-container {
+  width: 500px;
+  height: 281px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: @border;
+  box-shadow: @boxshadow;
+  cursor: pointer;
+  img {
+    width: 100%;
+  }
+}
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   * {
     font-size: 14px;
   }
@@ -272,8 +314,11 @@
     flex-direction: column;
   }
   .profile-header {
-    text-align: center;
     font-size: 15px;
+    position: absolute;
+    right: 150px;
+    width: 100%;
+    align-self: flex-start;
   }
   .profile-main-container {
     display: flex;
@@ -312,5 +357,14 @@
   .profile-recommended-events-block {
     flex-direction: column;
     align-items: center;
+  }
+  .profile-header {
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    position: static;
   }
 }
