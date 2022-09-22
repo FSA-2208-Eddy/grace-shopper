@@ -671,6 +671,118 @@ select {
 .footer-group-2 .footer-copy {
   width: 10%;
 }
+#single-event-row-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 15vh;
+}
+#single-event-row-1 .single-event-date {
+  width: 10vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ff8e3c;
+  border-radius: 1rem;
+  justify-content: center;
+  color: white;
+}
+#single-event-row-1 .single-event-date h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#single-event-row-1 .single-event-date p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#single-event-row-1 .single-event-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #151a21;
+}
+#single-event-row-2 {
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  gap: 5vw;
+  margin-bottom: 10vh;
+  margin-top: 5vh;
+}
+#single-event-row-2 img {
+  height: auto;
+  width: auto;
+  border: 1px solid #c7c7c7;
+}
+#single-event-row-2 .single-event-details {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 12px;
+}
+#single-event-row-2 .single-event-details h1 {
+  font-size: 2rem;
+  font-weight: 1000;
+}
+#single-event-row-2 .single-event-details h1 .single-event-bold {
+  font-size: 1.5rem;
+}
+#single-event-row-2 .single-event-details p {
+  color: grey;
+  font-size: 1.5rem;
+}
+#single-event-row-2 .single-event-details .product-quantity {
+  display: flex;
+  width: 13vw;
+  justify-content: space-between;
+  align-items: center;
+}
+#single-event-row-2 .single-event-details .product-quantity .single-event-input {
+  width: 5vh;
+  height: 5vh;
+  text-align: center;
+  border: 1px black solid;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button {
+  width: 5vh;
+  height: 5vh;
+  border: none;
+  background-color: #ff8e3c;
+  color: white;
+  cursor: pointer;
+}
+#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button:active {
+  background-color: #e96f19;
+}
+#single-event-row-2 .single-event-details #single-event-seat-box {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+#single-event-row-2 .single-event-details #single-event-seat-box p {
+  font-size: 1rem;
+  color: #151a21;
+}
+#single-event-row-2 .single-event-details #single-event-seat-box select {
+  cursor: pointer;
+}
+#single-event-row-2 .single-event-details #single-event-button {
+  border: none;
+  background-color: #ff8e3c;
+  color: white;
+  width: 15vh;
+  height: 5vh;
+  cursor: pointer;
+}
+#single-event-row-2 .single-event-details #single-event-button:active {
+  background-color: #e96f19;
+}
 * {
   margin: 0;
   font-family: "Readex Pro", sans-serif;
