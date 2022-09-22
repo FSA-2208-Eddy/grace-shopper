@@ -10,6 +10,9 @@
   flex: 1;
   margin: 0 0 0 10px;
 }
+#navbar #navbar-logo img {
+  width: 100px;
+}
 #navbar #navbar-logo a {
   text-decoration: none;
 }
@@ -52,19 +55,18 @@
 }
 #navbar .navbar-links {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex: 2;
 }
 #navbar .navbar-links a {
   display: inline-block;
   position: relative;
-  margin: 0 50px 0 50px;
   text-decoration: none;
   text-align: center;
   border-radius: 7px;
   color: white;
-  padding: 10px;
+  padding: 5px;
 }
 #navbar .navbar-links a:hover {
   color: #ff8e3c;
