@@ -45,11 +45,11 @@ const SingleEvent = () => {
               <div className="single-event-input">{qty}</div>
               <div class="quantity-selectors-container">
                 <div class="quantity-selectors">
-                  <button type="button" onClick={increase}>
-                    <span>&#43;</span>
-                  </button>
                   <button type="button" onClick={decrease}>
                     <span>&#8722;</span>
+                  </button>
+                  <button type="button" onClick={increase}>
+                    <span>&#43;</span>
                   </button>
                 </div>
               </div>
