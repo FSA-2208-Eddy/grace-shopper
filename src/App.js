@@ -12,7 +12,6 @@ function App(){
         <SingleEvent/>
         <Footer/>
         </>
-
     )
 }
 
