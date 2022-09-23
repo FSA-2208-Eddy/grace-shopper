@@ -8,7 +8,7 @@
   z-index: 10;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   pointer-events: none;
 
   .login-form-container{
@@ -25,6 +25,7 @@
     -webkit-backdrop-filter: blur( 5px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    margin-top: 100px;
 
     #login-failed {
       background-color: lightpink;
@@ -67,6 +68,7 @@
           font-family: Arial, Helvetica, sans-serif;
           margin-top: 10px;
           text-decoration: none;
+          cursor: pointer;
       }
 
       input {
@@ -80,23 +82,30 @@
 }
 
 .login-create-new-user-container {
+  background-color: @background-color;
   display: flex;
+  position:relative;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 65vh;
+  height: 100vh;
+  margin-top: 100px;
 
-  h1 {
-    font-size: 40px;
-    margin-bottom: 10px;
-  }
 
   .login-create-new-user-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     border: 2px solid @secondary-color;
     border-radius: 7px;
     background-color: @secondary-color;
+    box-shadow: 0 8px 32px 0 #000000;
+
+    p {
+      color: @highlight-color;
+      font-size: 40px;
+      margin: 30px 0 0 0;
+    }
 
 
     .login-have-an-account-container {
@@ -104,8 +113,9 @@
       justify-content: center;
 
       a {
-        color: white;
+        color: @highlight-color;
         margin-bottom: 20px;
+        cursor: pointer;
       }
     }
 
@@ -143,6 +153,10 @@
         margin: 20px 0 0 0;
         width: 80px;
         height: 30px;
+      }
+
+      label {
+        font-size: 18px;
       }
     }
   }

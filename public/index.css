@@ -1,12 +1,12 @@
 .login-main-container {
-  background-color: #eff0f3;
+  background-color: white;
   position: relative;
   width: 100vw;
   height: 100vh;
   z-index: 10;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   pointer-events: none;
 }
 .login-main-container .login-form-container {
@@ -23,6 +23,7 @@
   -webkit-backdrop-filter: blur(5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  margin-top: 100px;
 }
 .login-main-container .login-form-container #login-failed {
   background-color: lightpink;
@@ -61,6 +62,7 @@
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 10px;
   text-decoration: none;
+  cursor: pointer;
 }
 .login-main-container .login-form-container #login-form input {
   margin: 20px;
@@ -69,30 +71,37 @@
   border-radius: 7px;
 }
 .login-create-new-user-container {
+  background-color: white;
   display: flex;
+  position: relative;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 65vh;
-}
-.login-create-new-user-container h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
+  height: 100vh;
+  margin-top: 100px;
 }
 .login-create-new-user-container .login-create-new-user-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   border: 2px solid #151a21;
   border-radius: 7px;
   background-color: #151a21;
+  box-shadow: 0 8px 32px 0 #000000;
+}
+.login-create-new-user-container .login-create-new-user-form p {
+  color: #ff8e3c;
+  font-size: 40px;
+  margin: 30px 0 0 0;
 }
 .login-create-new-user-container .login-create-new-user-form .login-have-an-account-container {
   display: flex;
   justify-content: center;
 }
 .login-create-new-user-container .login-create-new-user-form .login-have-an-account-container a {
-  color: white;
+  color: #ff8e3c;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 .login-create-new-user-container .login-create-new-user-form #new-user-form {
   display: flex;
@@ -125,6 +134,9 @@
   margin: 20px 0 0 0;
   width: 80px;
   height: 30px;
+}
+.login-create-new-user-container .login-create-new-user-form #new-user-form label {
+  font-size: 18px;
 }
 #navbar {
   display: flex;
@@ -206,9 +218,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #eff0f3;
+  background-color: white;
   margin: 0;
-  height: 100vh;
+  height: 140vh;
   padding-top: 20px;
 }
 #events-sort-filter {
@@ -235,7 +247,8 @@ select {
 }
 .events-listing {
   display: flex;
-  justify-content: space-between;
+  position: relative;
+  gap: 10%;
   width: 70%;
   padding: 12px;
   border-bottom: black 1px solid;
@@ -246,13 +259,31 @@ select {
 .events-listing p {
   font-weight: bold;
 }
-.event-button {
-  height: 50%;
+.events-listing img {
+  height: 50px;
+  width: 100px;
+}
+.events-listing a {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  background-color: #ff8e3c;
+  height: 75%;
   width: 10%;
+  border: 1px white solid;
+}
+.event-button {
+  height: 100%;
+  width: 100%;
   border: 1px white solid;
   background-color: #ff8e3c;
   color: white;
   transition: 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
 }
 .event-button:hover {
   background-color: #f47012;
@@ -277,6 +308,28 @@ select {
 .events-active {
   background-color: #ff8e3c;
   color: white;
+}
+.pagination {
+  display: flex;
+  gap: 10px;
+  margin-top: 5vh;
+}
+.pagination li {
+  list-style-type: none;
+  width: 30px;
+  height: 30px;
+  border: solid 1px black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination li a {
+  text-decoration: none;
+  color: #2a2a2a;
+}
+.event-date {
+  width: 15%;
 }
 .navbar-searchbar-container {
   display: flex;
@@ -924,4 +977,8 @@ select {
   margin: 0;
   font-family: "Readex Pro", sans-serif;
   box-sizing: border-box;
+}
+html,
+body {
+  background-color: white;
 }
