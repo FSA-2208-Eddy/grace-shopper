@@ -220,7 +220,7 @@
   align-items: center;
   background-color: #eff0f3;
   margin: 0;
-  height: 100vh;
+  height: 140vh;
   padding-top: 20px;
 }
 #events-sort-filter {
@@ -247,7 +247,8 @@ select {
 }
 .events-listing {
   display: flex;
-  justify-content: space-between;
+  position: relative;
+  gap: 10%;
   width: 70%;
   padding: 12px;
   border-bottom: black 1px solid;
@@ -258,13 +259,31 @@ select {
 .events-listing p {
   font-weight: bold;
 }
-.event-button {
-  height: 50%;
+.events-listing img {
+  height: 50px;
+  width: 100px;
+}
+.events-listing a {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  background-color: #ff8e3c;
+  height: 75%;
   width: 10%;
+  border: 1px white solid;
+}
+.event-button {
+  height: 100%;
+  width: 100%;
   border: 1px white solid;
   background-color: #ff8e3c;
   color: white;
   transition: 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
 }
 .event-button:hover {
   background-color: #f47012;
@@ -289,6 +308,28 @@ select {
 .events-active {
   background-color: #ff8e3c;
   color: white;
+}
+.pagination {
+  display: flex;
+  gap: 10px;
+  margin-top: 5vh;
+}
+.pagination li {
+  list-style-type: none;
+  width: 30px;
+  height: 30px;
+  border: solid 1px black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination li a {
+  text-decoration: none;
+  color: #2a2a2a;
+}
+.event-date {
+  width: 15%;
 }
 .navbar-searchbar-container {
   display: flex;
