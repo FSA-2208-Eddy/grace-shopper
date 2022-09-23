@@ -1,5 +1,11 @@
 @import 'variables';
 
+#upcoming-events{
+    display: flex;
+    flex-direction: column;
+    padding: 5%
+}
+
 #upcoming-events-container{
     display: flex;
     flex-direction: column;
@@ -8,8 +14,8 @@
 
 .single-upcoming-event{
     display: flex;
-    flex-shrink: 10%;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .event-picture{
@@ -20,7 +26,29 @@
    
 }
 
-.event-button{
+.main-page-event-button{
     display:flex;
     justify-self: center;
+}
+
+.upcoming-events-title{
+    display:flex;
+    text-align:center;
+    font-size:40px;
+}
+
+.featured-event-date{
+    text-align:center;
+    font-size:15px;
+}
+
+.featured-event-name{
+    text-align:center;
+    font-size:30px;
+}
+
+.event-button{
+    width:fit-content;
+    max-height:30px;
+    font-size: 20px;
 }

@@ -4,4 +4,4 @@ export { default as Navbar } from "./navbar/Navbar";
 export { default as EventList } from "./eventsList/EventList";
 export { default as LoginPage } from "./login/LoginPage";
 export { default as Footer } from './footer/Footer';
-export {default as SingleEvent} from './singleEvent/SingleEvent'
+export { default as SingleEvent} from './singleEvent/SingleEvent'

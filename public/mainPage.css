@@ -19,7 +19,7 @@
   width: 100%;
   overflow: hidden;
   height: 300px;
-  background-color: red;
+  background-color: #151a21;
   position: relative;
   transition: 0.25s;
 }

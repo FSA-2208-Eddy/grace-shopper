@@ -783,6 +783,11 @@ select {
 #single-event-row-2 .single-event-details #single-event-button:active {
   background-color: #e96f19;
 }
+#upcoming-events {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
 #upcoming-events-container {
   display: flex;
   flex-direction: column;
@@ -790,8 +795,8 @@ select {
 }
 .single-upcoming-event {
   display: flex;
-  flex-shrink: 10%;
   flex-direction: column;
+  justify-content: space-between;
 }
 .event-picture {
   height: auto;
@@ -799,9 +804,27 @@ select {
   max-height: 350px;
   max-width: 350px;
 }
-.event-button {
+.main-page-event-button {
   display: flex;
   justify-self: center;
+}
+.upcoming-events-title {
+  display: flex;
+  text-align: center;
+  font-size: 40px;
+}
+.featured-event-date {
+  text-align: center;
+  font-size: 15px;
+}
+.featured-event-name {
+  text-align: center;
+  font-size: 30px;
+}
+.event-button {
+  width: fit-content;
+  max-height: 30px;
+  font-size: 20px;
 }
 #events-near-me-container {
   display: flex;
@@ -819,9 +842,22 @@ select {
   max-height: 350px;
   max-width: 350px;
 }
-.event-button {
+.main-page-event-button {
   display: flex;
   justify-self: center;
+}
+.events-near-me-title {
+  font-size: 40px;
+}
+.single-event-date {
+  display: flex;
+  align-self: center;
+  font-size: 15px;
+}
+.single-event-title {
+  display: flex;
+  align-self: center;
+  font-size: 30px;
 }
 #main-page-featured-container {
   display: flex;
@@ -844,7 +880,7 @@ select {
   width: 100%;
   overflow: hidden;
   height: 300px;
-  background-color: red;
+  background-color: #151a21;
   position: relative;
   transition: 0.25s;
 }
