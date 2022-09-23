@@ -1,5 +1,5 @@
 .login-main-container {
-  background-color: #eff0f3;
+  background-color: white;
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -71,7 +71,7 @@
   border-radius: 7px;
 }
 .login-create-new-user-container {
-  background-color: #eff0f3;
+  background-color: white;
   display: flex;
   position: relative;
   flex-direction: column;

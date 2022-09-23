@@ -5,9 +5,9 @@ const bcrypt = require('bcrypt');
 const axios = require('axios');
 
 // if not in production environment, I want access to the JWT key
-// if (process.env.NODE_ENV !== "production") {
-//     require("../../secrets.js")
-// }
+if (process.env.NODE_ENV !== "production") {
+    require("../../secrets.js")
+}
 
 const SALT_ROUNDS = 5;
 
@@ -28,6 +28,15 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  city: {
+    type: Sequelize.STRING,
+  },
+  state: {
+    type: Sequelize.STRING,
+  },
+  country: {
+    type: Sequelize.STRING,
+  },
   email: {
     type: Sequelize.STRING,
     isEmail: true,
@@ -35,6 +44,7 @@ const User = db.define('user', {
   },
   img: {
     type: Sequelize.STRING,
+    defaultValue: 'https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,

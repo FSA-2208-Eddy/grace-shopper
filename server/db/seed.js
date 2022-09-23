@@ -54,10 +54,15 @@ const syncAndSeed = async () => {
         endTime: current.dates.start.dateTime,
       })
 
-      current.classifications[0].segment.name === 'Sports' && current.classifications[0].segment.name
-      ? newEvent.addTag(sports) : current.classifications[0].segment.name === 'Music' && current.classifications[0].segment.name
-      ? newEvent.addTag(music) : current.classifications[0].segment.name === 'Arts & Theatre' && current.classifications[0].segment.name
-      ? newEvent.addTag(artsAndTheatre) : newEvent.addTag(misc)
+      if (!current.classifications) {
+        newEvent.addTag(misc)
+      }
+      else {
+        current.classifications[0].segment.name === 'Sports' && current.classifications[0].segment.name
+        ? newEvent.addTag(sports) : current.classifications[0].segment.name === 'Music' && current.classifications[0].segment.name
+        ? newEvent.addTag(music) : current.classifications[0].segment.name === 'Arts & Theatre' && current.classifications[0].segment.name
+        ? newEvent.addTag(artsAndTheatre) : newEvent.addTag(misc)
+      }
 
     }
     console.log('Seeding Successful')
