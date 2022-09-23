@@ -263,9 +263,18 @@ select {
   height: 50px;
   width: 100px;
 }
-.event-button {
+.events-listing a {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  background-color: #ff8e3c;
   height: 75%;
   width: 10%;
+  border: 1px white solid;
+}
+.event-button {
+  height: 100%;
+  width: 100%;
   border: 1px white solid;
   background-color: #ff8e3c;
   color: white;

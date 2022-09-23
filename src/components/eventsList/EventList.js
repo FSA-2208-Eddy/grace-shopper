@@ -46,7 +46,7 @@ const EventList = () => {
                         <img src={event.img} alt="picture should go here"/>
                         <div className="event-date">{event.startTime}</div>
                         <p>{event.name}</p>
-                        <button className="event-button">See Details</button>
+                        <Link to={`/events/${event.id}`}><button className="event-button">See Details</button></Link>
                     </div>
                 )}
                 <Pagination postsPerPage={eventsPerPage} totalPosts={events.length} paginate={paginate} currentPage={currentPage}/>
