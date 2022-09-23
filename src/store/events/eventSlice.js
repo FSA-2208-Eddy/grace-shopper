@@ -2,7 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
-const initialState = {}
+const initialState = {
+    events: []
+}
 
 
 export const getEvents = createAsyncThunk('/allEvents', async () => {

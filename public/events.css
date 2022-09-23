@@ -34,7 +34,8 @@ select {
 }
 .events-listing {
   display: flex;
-  justify-content: space-between;
+  position: relative;
+  gap: 10%;
   width: 70%;
   padding: 12px;
   border-bottom: black 1px solid;
@@ -45,13 +46,22 @@ select {
 .events-listing p {
   font-weight: bold;
 }
+.events-listing img {
+  height: 50px;
+  width: 100px;
+}
 .event-button {
-  height: 50%;
+  height: 75%;
   width: 10%;
   border: 1px white solid;
   background-color: #ff8e3c;
   color: white;
   transition: 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
 }
 .event-button:hover {
   background-color: #f47012;
