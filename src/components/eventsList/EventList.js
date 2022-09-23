@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import Pagination from './Pagination'
 import { getEvents, getEventsByTag } from '../../store/events/eventSlice'
+import { useNavigate } from 'react-router-dom'
 
 const EventList = () => {
 
@@ -12,6 +13,7 @@ const EventList = () => {
 
     const events = useSelector(state => state.events.events)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     
 
     React.useEffect(()=>{
@@ -52,8 +54,25 @@ const EventList = () => {
     const indexOfLastPost = currentPage * eventsPerPage;
     const indexOfFirstPost = indexOfLastPost - eventsPerPage;
     const currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost)
+    const totalPages = Math.ceil(eventsSorted.length/eventsPerPage)
     
-    const paginate = pageNumber => setCurrentPage(pageNumber);
+    // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+    const nextPage = (event) => {
+        event.preventDefault()
+        if (currentPage !== totalPages) {
+            setCurrentPage(currentPage + 1)
+        }
+        window.scrollTo(0,0)
+    }
+    
+    const prevPage = (event) => {
+        event.preventDefault()
+        if (currentPage !== 1) {
+            setCurrentPage(currentPage - 1)
+        }
+        window.scrollTo(0,0)
+    }
 
     return (
         <div id="events-main-container">
@@ -87,7 +106,12 @@ const EventList = () => {
                     </div>
                     )
                     })}
-                <Pagination postsPerPage={eventsPerPage} totalPosts={eventsSorted.length} paginate={paginate} currentPage={currentPage}/>
+                {/* <Pagination postsPerPage={eventsPerPage} totalPosts={eventsSorted.length} paginate={paginate} currentPage={currentPage}/> */}
+                <div id="events-next-prev">
+                    <button onClick={prevPage} className="event-next-button">Prev</button>
+                    <p>{`${currentPage}/${totalPages}`}</p>
+                    <button onClick={nextPage} className="event-next-button">Next</button>
+                </div>
             </div>
         </div>
     )
