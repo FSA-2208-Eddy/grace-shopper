@@ -6,12 +6,22 @@ import { getEvents } from '../../store/events/eventSlice'
 
 const EventList = () => {
 
-    const events = useSelector(state => state.events)
+    const [currentPage, setCurrentPage] = React.useState(1)
+
+    const events = useSelector(state => state.events.events)
     const dispatch = useDispatch()
+    
 
     React.useEffect(()=>{
         dispatch(getEvents())
     },[])
+
+    const eventsPerPage = 10;
+    const indexOfLastPost = currentPage * eventsPerPage;
+    const indexOfFirstPost = indexOfLastPost - eventsPerPage;
+    const currentPosts = events.slice(indexOfFirstPost, indexOfLastPost)
+    
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <div id="events-main-container">
@@ -31,7 +41,7 @@ const EventList = () => {
                 </div>
             </div>
             <div id="events-list">
-                {events.events.map((event)=>
+                {currentPosts.map((event)=>
                     <div key={event.id} className="events-listing">
                         <img src={event.img} alt="picture should go here"/>
                         <div className="event-date">{event.startTime}</div>
@@ -39,12 +49,7 @@ const EventList = () => {
                         <button className="event-button">See Details</button>
                     </div>
                 )}
-                <div className="events-pagination">
-                    <div className="events-pag-number events-active">1</div>
-                    <div className="events-pag-number">2</div>
-                    <div className="events-pag-number">3</div>
-                    <div className="events-pag-number">4</div>
-                </div>
+                <Pagination postsPerPage={eventsPerPage} totalPosts={events.length} paginate={paginate} currentPage={currentPage}/>
             </div>
         </div>
     )
