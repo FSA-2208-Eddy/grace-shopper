@@ -2,11 +2,13 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import Pagination from './Pagination'
-import { getEvents } from '../../store/events/eventSlice'
+import { getEvents, getEventsByTag } from '../../store/events/eventSlice'
 
 const EventList = () => {
 
     const [currentPage, setCurrentPage] = React.useState(1)
+    const [filter, setFilter] = React.useState("0")
+    const [sort, setSort] = React.useState("none")
 
     const events = useSelector(state => state.events.events)
     const dispatch = useDispatch()
@@ -16,10 +18,40 @@ const EventList = () => {
         dispatch(getEvents())
     },[])
 
+    React.useEffect(()=>{
+        if (filter === "0") {
+            dispatch(getEvents())
+        } else {
+            dispatch(getEventsByTag(filter))
+        }
+    },[filter])
+
+    const filterHandler = (event) => {
+        event.preventDefault()
+        setFilter(event.target.value)
+    }
+
+    const sortHandler = (event) => {
+        event.preventDefault()
+        setSort(event.target.value)
+    }
+
+    const eventsSorted = [...events].sort(function(a,b) {
+        if (sort === "none") {
+            return
+        } else if (sort === "date") {
+            let aTime = a.startTime
+            let bTime = b.startTime
+            return aTime.localeCompare(bTime)
+        } else if (sort === "abc") {
+            return a.name.localeCompare(b.name)
+        }
+    })
+
     const eventsPerPage = 10;
     const indexOfLastPost = currentPage * eventsPerPage;
     const indexOfFirstPost = indexOfLastPost - eventsPerPage;
-    const currentPosts = events.slice(indexOfFirstPost, indexOfLastPost)
+    const currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost)
     
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -27,29 +59,35 @@ const EventList = () => {
         <div id="events-main-container">
             <div id="events-sort-filter">
                 <div id="events-sort"> SORT BY:&nbsp;&nbsp;
-                <select>
+                <select onChange={sortHandler}>
+                    <option className="events-option" value="none">None</option>
                     <option className="events-option" value="date">Date</option>
                     <option className="events-option" value="abc">Alphabetical</option>
                 </select>
                 </div>
                 <div id="events-filter"> FILTER BY:&nbsp;&nbsp;
-                    <select>
-                        <option className="events-option" value="Sports">Sports</option>
-                        <option className="events-option" value="Music">Music</option>
-                        <option className="events-option" value="ArtsAndTheatre">Arts and Theatre</option>
+                    <select onChange={filterHandler}>
+                        <option className="events-option" value="0">All</option>
+                        <option className="events-option" value="1">Sports</option>
+                        <option className="events-option" value="2">Music</option>
+                        <option className="events-option" value="3">Arts and Theatre</option>
+                        <option className="events-option" value="4">Misc</option>
                     </select>
                 </div>
             </div>
             <div id="events-list">
-                {currentPosts.map((event)=>
+                {currentPosts.map((event)=>{
+                    let date = new Date(event.startTime)
+                    return (
                     <div key={event.id} className="events-listing">
                         <img src={event.img} alt="picture should go here"/>
-                        <div className="event-date">{event.startTime}</div>
+                        <div className="event-date">{date.toDateString()}</div>
                         <p>{event.name}</p>
                         <Link to={`/events/${event.id}`}><button className="event-button">See Details</button></Link>
                     </div>
-                )}
-                <Pagination postsPerPage={eventsPerPage} totalPosts={events.length} paginate={paginate} currentPage={currentPage}/>
+                    )
+                    })}
+                <Pagination postsPerPage={eventsPerPage} totalPosts={eventsSorted.length} paginate={paginate} currentPage={currentPage}/>
             </div>
         </div>
     )

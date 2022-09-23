@@ -17,6 +17,16 @@ export const getEvents = createAsyncThunk('/allEvents', async () => {
     }
 })
 
+export const getEventsByTag = createAsyncThunk('/allEventsByTag', async (tagId) => {
+    try{
+        const { data } = await axios.get(`/api/events/tag/${tagId}`)
+        return data
+    }
+    catch(err) {
+        console.log(err)
+    }
+})
+
 export const getSingleEvent = createAsyncThunk('/singleEvent', async (id) => {
     try{
         const { data } = await axios.get(`/api/events/${id}`)
@@ -38,6 +48,9 @@ export const eventSlice = createSlice({
         },
         [getSingleEvent.fulfilled]: (state, action) => {
             return action.payload;
+        },
+        [getEventsByTag.fulfilled]: (state, action) => {
+            state.events = action.payload;
         },
     }
 })

@@ -328,6 +328,9 @@ select {
   text-decoration: none;
   color: #2a2a2a;
 }
+.event-date {
+  width: 15%;
+}
 .navbar-searchbar-container {
   display: flex;
   background-color: #151a21;
