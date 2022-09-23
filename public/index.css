@@ -434,6 +434,16 @@ select {
   font-weight: 300;
   margin-bottom: 10px;
 }
+.profile-cart-events-container .profile-purchase-header {
+  display: flex;
+  text-align: center;
+  margin-top: 5px;
+}
+.profile-cart-events-container .profile-purchase-header h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
 .profile-cart-events-container .profile-cart-item-container {
   display: inline-flex;
   flex-wrap: wrap;
@@ -563,9 +573,20 @@ select {
   color: white;
 }
 .profile-purchase-history-container {
-  display: inline-flex;
-  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+}
+.profile-button-container {
+  display: flex;
+}
+.profile-pagination-button {
+  padding: 5px;
+  margin: 8px;
+  color: #2b889d;
+  background-color: white;
   border: 1px solid #dedede;
+  border-radius: 5px;
+  cursor: pointer;
 }
 @media (max-width: 800px) {
   .profile-cart-events-container {
@@ -635,6 +656,10 @@ select {
     margin-bottom: 5px;
   }
   .profile-upcoming-tickets-container {
+    align-items: center;
+  }
+  .profile-upcoming-tickets-item-container {
+    flex-direction: column;
     align-items: center;
   }
   .profile-upcoming-tickets-item {

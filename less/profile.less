@@ -193,6 +193,16 @@
       margin-bottom: 10px;
     }
   }
+  .profile-purchase-header {
+    display: flex;
+    text-align: center;
+    margin-top: 5px;
+    h2 {
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+  }
 
   .profile-cart-item-container {
     display: inline-flex;
@@ -329,6 +339,18 @@
   display: flex;
   flex-direction: column;
 }
+.profile-button-container {
+  display: flex;
+}
+.profile-pagination-button {
+  padding: 5px;
+  margin: 8px;
+  color: @clickable-color;
+  background-color: white;
+  border: @border;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 @media (max-width: 800px) {
   .profile-cart-events-container {
@@ -399,6 +421,10 @@
     margin-bottom: 5px;
   }
   .profile-upcoming-tickets-container {
+    align-items: center;
+  }
+  .profile-upcoming-tickets-item-container {
+    flex-direction: column;
     align-items: center;
   }
   .profile-upcoming-tickets-item {

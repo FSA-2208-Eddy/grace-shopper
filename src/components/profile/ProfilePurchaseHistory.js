@@ -1,11 +1,12 @@
 import React from "react";
+import Pagination from "./Pagination";
 
 //reusing style from cart component, don't think we need to change look
 function ProfilePurchaseHistory() {
   return (
     <div className="profile-purchase-history-container">
       <div className="profile-cart-container">
-        <div className="profile-cart-header">
+        <div className="profile-purchase-header">
           <h2>Your Purchase History</h2>
         </div>
         <div className="profile-cart-item-container">
@@ -39,8 +40,11 @@ function ProfilePurchaseHistory() {
             </div>
             <div className="profile-cart-item-seat">Purchase Date: 6/08/22</div>
           </div>
+          <div className="profile-cart-item">placeholder</div>
+          <div className="profile-cart-item">placeholder</div>
         </div>
       </div>
+      <Pagination />
     </div>
   );
 }
