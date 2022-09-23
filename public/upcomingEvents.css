@@ -1,0 +1,20 @@
+#upcoming-events-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
+.single-upcoming-event {
+  display: flex;
+  flex-shrink: 10%;
+  flex-direction: column;
+}
+.event-picture {
+  height: auto;
+  width: auto;
+  max-height: 350px;
+  max-width: 350px;
+}
+.event-button {
+  display: flex;
+  justify-self: center;
+}
