@@ -4331,6 +4331,18 @@ function App() {
     path: "/events",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventList, null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/events/type/sports",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventTagListSports, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/events/type/music",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventTagListMusic, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/events/type/artsandtheatre",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventTagListArts, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/events/type/misc",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventTagListMisc, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
     path: "/events/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.SingleEvent, null)
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.Footer, null));
@@ -4579,6 +4591,670 @@ var Pagination = function Pagination(_ref) {
 
 /***/ }),
 
+/***/ "./src/components/eventsTagList/EventTagListArts.js":
+/*!**********************************************************!*\
+  !*** ./src/components/eventsTagList/EventTagListArts.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var EventTagListArts = function EventTagListArts() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("3"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEventsByTag)(filter));
+    }
+  }, []);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventTagListArts);
+
+/***/ }),
+
+/***/ "./src/components/eventsTagList/EventTagListMisc.js":
+/*!**********************************************************!*\
+  !*** ./src/components/eventsTagList/EventTagListMisc.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var EventTagListMisc = function EventTagListMisc() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("4"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEventsByTag)(filter));
+    }
+  }, []);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventTagListMisc);
+
+/***/ }),
+
+/***/ "./src/components/eventsTagList/EventTagListMusic.js":
+/*!***********************************************************!*\
+  !*** ./src/components/eventsTagList/EventTagListMusic.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var EventTagListMusic = function EventTagListMusic() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("2"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEventsByTag)(filter));
+    }
+  }, []);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventTagListMusic);
+
+/***/ }),
+
+/***/ "./src/components/eventsTagList/EventTagListSports.js":
+/*!************************************************************!*\
+  !*** ./src/components/eventsTagList/EventTagListSports.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var EventTagListSports = function EventTagListSports() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("1"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEventsByTag)(filter));
+    }
+  }, []);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventTagListSports);
+
+/***/ }),
+
 /***/ "./src/components/footer/Footer.js":
 /*!*****************************************!*\
   !*** ./src/components/footer/Footer.js ***!
@@ -4646,6 +5322,10 @@ var Footer = function Footer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "EventList": () => (/* reexport safe */ _eventsList_EventList__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   "EventTagListArts": () => (/* reexport safe */ _eventsTagList_EventTagListArts__WEBPACK_IMPORTED_MODULE_9__["default"]),
+/* harmony export */   "EventTagListMisc": () => (/* reexport safe */ _eventsTagList_EventTagListMisc__WEBPACK_IMPORTED_MODULE_11__["default"]),
+/* harmony export */   "EventTagListMusic": () => (/* reexport safe */ _eventsTagList_EventTagListMusic__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   "EventTagListSports": () => (/* reexport safe */ _eventsTagList_EventTagListSports__WEBPACK_IMPORTED_MODULE_8__["default"]),
 /* harmony export */   "Footer": () => (/* reexport safe */ _footer_Footer__WEBPACK_IMPORTED_MODULE_5__["default"]),
 /* harmony export */   "LoginPage": () => (/* reexport safe */ _login_LoginPage__WEBPACK_IMPORTED_MODULE_4__["default"]),
 /* harmony export */   "MainPage": () => (/* reexport safe */ _main_page_MainPage__WEBPACK_IMPORTED_MODULE_7__["default"]),
@@ -4662,6 +5342,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _footer_Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./footer/Footer */ "./src/components/footer/Footer.js");
 /* harmony import */ var _singleEvent_SingleEvent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./singleEvent/SingleEvent */ "./src/components/singleEvent/SingleEvent.js");
 /* harmony import */ var _main_page_MainPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main-page/MainPage */ "./src/components/main-page/MainPage.js");
+/* harmony import */ var _eventsTagList_EventTagListSports__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./eventsTagList/EventTagListSports */ "./src/components/eventsTagList/EventTagListSports.js");
+/* harmony import */ var _eventsTagList_EventTagListArts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./eventsTagList/EventTagListArts */ "./src/components/eventsTagList/EventTagListArts.js");
+/* harmony import */ var _eventsTagList_EventTagListMusic__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./eventsTagList/EventTagListMusic */ "./src/components/eventsTagList/EventTagListMusic.js");
+/* harmony import */ var _eventsTagList_EventTagListMisc__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./eventsTagList/EventTagListMisc */ "./src/components/eventsTagList/EventTagListMisc.js");
+
+
+
+
 
 
 
