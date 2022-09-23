@@ -28,10 +28,23 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  city: {
+    type: Sequelize.STRING,
+  },
+  state: {
+    type: Sequelize.STRING,
+  },
+  country: {
+    type: Sequelize.STRING,
+  },
   email: {
     type: Sequelize.STRING,
     isEmail: true,
     unique: true,
+  },
+  img: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,

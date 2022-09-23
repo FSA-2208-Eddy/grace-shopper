@@ -8,7 +8,7 @@ function Navbar() {
   const [searchBarInput, setSearchBarInput] = React.useState('');
 
   const logout = () => {
-    // window.localStorage.removeItem('token');
+    window.localStorage.removeItem('token');
     navigate('/')
 }
   return (
