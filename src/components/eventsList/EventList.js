@@ -12,7 +12,7 @@ const EventList = () => {
 
     const events = useSelector(state => state.events.events)
     const dispatch = useDispatch()
-    
+
 
     React.useEffect(()=>{
         dispatch(getEvents())
@@ -52,7 +52,7 @@ const EventList = () => {
     const indexOfLastPost = currentPage * eventsPerPage;
     const indexOfFirstPost = indexOfLastPost - eventsPerPage;
     const currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost)
-    
+
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
