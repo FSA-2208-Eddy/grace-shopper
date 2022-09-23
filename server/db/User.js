@@ -5,9 +5,9 @@ const bcrypt = require('bcrypt');
 const axios = require('axios');
 
 // if not in production environment, I want access to the JWT key
-// if (process.env.NODE_ENV !== "production") {
-//     require("../../secrets.js")
-// }
+if (process.env.NODE_ENV !== "production") {
+    require("../../secrets.js")
+}
 
 const SALT_ROUNDS = 5;
 
