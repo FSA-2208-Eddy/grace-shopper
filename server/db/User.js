@@ -33,6 +33,9 @@ const User = db.define('user', {
     isEmail: true,
     unique: true,
   },
+  img: {
+    type: Sequelize.STRING,
+  },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
