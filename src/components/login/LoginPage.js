@@ -43,6 +43,7 @@ function LoginPage() {
       setUserName('');
       setPassword('');
 
+      navigate('/')
     }
     catch(error) {
       console.log(error)
@@ -68,6 +69,8 @@ function LoginPage() {
         setEmail('')
         setNewUserName('')
         setNewPassword('')
+
+        navigate('/profile')
     }
     catch(err) {
         console.log(err)

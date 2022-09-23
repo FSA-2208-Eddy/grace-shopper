@@ -4768,22 +4768,23 @@ function LoginPage() {
               window.localStorage.setItem('token', token);
               setUserName('');
               setPassword('');
-              _context.next = 17;
+              navigate('/');
+              _context.next = 18;
               break;
 
-            case 12:
-              _context.prev = 12;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](2);
               console.log(_context.t0);
               setErrMsg('Unauthorized login');
               errRef.current.focus();
 
-            case 17:
+            case 18:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 12]]);
+      }, _callee, null, [[2, 13]]);
     }));
 
     return function handleSubmit(_x) {
@@ -4817,20 +4818,21 @@ function LoginPage() {
               setEmail('');
               setNewUserName('');
               setNewPassword('');
-              _context2.next = 16;
+              navigate('/profile');
+              _context2.next = 17;
               break;
 
-            case 13:
-              _context2.prev = 13;
+            case 14:
+              _context2.prev = 14;
               _context2.t0 = _context2["catch"](2);
               console.log(_context2.t0);
 
-            case 16:
+            case 17:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[2, 13]]);
+      }, _callee2, null, [[2, 14]]);
     }));
 
     return function handleCreateUser(_x2) {
