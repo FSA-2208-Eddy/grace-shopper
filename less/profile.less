@@ -351,7 +351,66 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
+.profile-edit-container-main {
+  display: flex;
+  justify-content: center;
+}
+.profile-edit-container {
+  display: flex;
+  flex-direction: column;
+  border: @border;
+  box-shadow: @boxshadow;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  h1 {
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: grey;
+  }
+}
+#profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  button {
+    background-color: @button-color;
+    color: @button-text-color;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    width: 110px;
+    height: 45px;
+    border: @border;
+    align-self: center;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.profile-edit-label {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+.profile-edit-input {
+  border-radius: 3px;
+  border: @border;
+  box-shadow: @boxshadow;
+  height: 30px;
+  padding-left: 5px;
+}
+::placeholder {
+  opacity: 0.7;
+}
 @media (max-width: 800px) {
   .profile-cart-events-container {
     margin-left: 30px;
