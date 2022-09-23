@@ -2,13 +2,6 @@
 @border:1px solid rgb(222, 222, 222);
 @clickable-color: rgb(43, 136, 157);
 
-// * {
-//   margin: 0;
-//   padding: 0;
-//   font-family: "Readex Pro", sans-serif;
-//   font-weight: 300;
-//   font-size: 14px;
-// }
 .profile-header {
   h1 {
     font-size: 35px;
@@ -192,12 +185,15 @@
 
   .profile-cart-header {
     display: flex;
+    text-align: center;
+    margin-top: 5px;
     h2 {
       font-size: 30px;
       font-weight: 300;
       margin-bottom: 10px;
     }
   }
+
   .profile-cart-item-container {
     display: inline-flex;
     flex-wrap: wrap;
@@ -303,15 +299,49 @@
   cursor: pointer;
   img {
     width: 100%;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
   }
 }
+.profile-upcoming-tickets-item-title {
+  display: inline-block;
+  padding: 5px;
+  position: absolute;
+  background-color: rgba(35, 35, 35, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 300px;
+  font-size: 20px;
+  margin-left: 1px;
+  z-index: 1;
+}
+.profile-upcoming-tickets-item:hover {
+  img {
+    transform: scale(1.05);
+  }
+  .profile-upcoming-tickets-item-title {
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    background-color: rgba(35, 35, 35, 0.6);
+    color: white;
+  }
+}
+.profile-purchase-history-container {
+  display: flex;
+  flex-direction: column;
+}
 
-@media (max-width: 650px) {
+@media (max-width: 800px) {
+  .profile-cart-events-container {
+    margin-left: 30px;
+  }
+}
+@media (max-width: 750px) {
   * {
     font-size: 14px;
   }
   .profile-cart-item-container {
     flex-direction: column;
+    display: inline-flex;
   }
   .profile-header {
     font-size: 15px;
@@ -336,10 +366,6 @@
     justify-content: center;
     margin: 0;
     padding: 0;
-  }
-  .profile-cart-header {
-    text-align: center;
-    margin-top: 5px;
   }
 
   .profile-cart-item-container {
@@ -366,5 +392,22 @@
       margin-bottom: 10px;
     }
     position: static;
+  }
+  .profile-cart-header {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .profile-upcoming-tickets-container {
+    align-items: center;
+  }
+  .profile-upcoming-tickets-item {
+    width: 360px;
+    height: 203px;
+  }
+
+  .profile-upcoming-tickets-item-image-container {
+    width: 360px;
+    height: 203px;
   }
 }
