@@ -14,7 +14,7 @@ const EventList = () => {
     const events = useSelector(state => state.events.events)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    
+
 
     React.useEffect(()=>{
         dispatch(getEvents())
@@ -55,7 +55,7 @@ const EventList = () => {
     const indexOfFirstPost = indexOfLastPost - eventsPerPage;
     const currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost)
     const totalPages = Math.ceil(eventsSorted.length/eventsPerPage)
-    
+
     // const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const nextPage = (event) => {
@@ -65,7 +65,7 @@ const EventList = () => {
         }
         window.scrollTo(0,0)
     }
-    
+
     const prevPage = (event) => {
         event.preventDefault()
         if (currentPage !== 1) {
