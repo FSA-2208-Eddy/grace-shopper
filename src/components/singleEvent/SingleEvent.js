@@ -30,7 +30,7 @@ const SingleEvent = () => {
 
 
   return (
-    <div id="single-event-root-container">{console.log(singleEvent)}
+    <div id="single-event-root-container">
       <div id="single-event-row-1">
         <div className="single-event-date">
           <h2>{singleEvent.startTime ? singleEvent.startTime.slice(0, 10) : 'TBA'}</h2>

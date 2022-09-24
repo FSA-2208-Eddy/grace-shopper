@@ -11,3 +11,5 @@ export { default as EventTagListSports } from './eventsTagList/EventTagListSport
 export { default as EventTagListArts } from './eventsTagList/EventTagListArts'
 export { default as EventTagListMusic } from './eventsTagList/EventTagListMusic'
 export { default as EventTagListMisc } from './eventsTagList/EventTagListMisc'
+
+export { getSingleEvent } from '../store/events/eventSlice'
