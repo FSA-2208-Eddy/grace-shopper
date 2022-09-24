@@ -1393,6 +1393,10 @@ select {
 .checkout-button:hover {
   background-color: #ee731a;
 }
+.checkout-cart-container a {
+  font-size: 1.5rem;
+  color: #ff8e3c;
+}
 * {
   margin: 0;
   font-family: "Readex Pro", sans-serif;

@@ -2,13 +2,16 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCart, removeItemFromCart, checkoutCart } from "../../store/cart/cartSlice";
 import axios from "axios";
+import CheckoutDone from "./CheckoutDone";
 
 const Checkout = () => {
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
+  const [checkedOut, setCheckedOut] = React.useState(false)
 
   React.useEffect(() => {
     dispatch(getCart());
+    setCheckedOut(false)
   }, []);
 
   function handleDelete(event) {
@@ -20,11 +23,13 @@ const Checkout = () => {
 
   async function handleCheckout() {
     dispatch(checkoutCart())
+    setCheckedOut(true)
   }
 
   return (
     <div className="checkout-cart-events-container">
       <div className="checkout-cart-container">
+        {checkedOut ? <CheckoutDone/> : <>
         <div className="checkout-cart-header">
           <h2>Review Your Order</h2>
         </div>
@@ -49,6 +54,7 @@ const Checkout = () => {
           <h2>Your Total: $500</h2>
         </div>
         <div onClick={handleCheckout} className="checkout-button">Checkout</div>
+        </>}
       </div>
     </div>
   );
