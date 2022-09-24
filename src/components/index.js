@@ -6,3 +6,4 @@ export { default as LoginPage } from "./login/LoginPage";
 export { default as Footer } from './footer/Footer';
 export { default as SingleEvent } from './singleEvent/SingleEvent'
 export { default as MainPage } from './main-page/MainPage'
+export { default as DropDownItems } from './navbar/DropDownItems'
