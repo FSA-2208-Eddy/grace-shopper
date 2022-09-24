@@ -1,12 +1,12 @@
 import React from "react";
-function ProfileMenu() {
+function ProfileMenu({ user }) {
   return (
     <div className="profile-menu-container">
       <div className="profile-header">
         <h1>Profile Overview</h1>
       </div>
       <div className="profile-account-information-container">
-        <div className="profile-name-container">Jane Doe</div>
+        <div className="profile-name-container">{`${user?.firstName}`}</div>
         <div className="profile-picture-container">
           <img
             className="profile-picture"
