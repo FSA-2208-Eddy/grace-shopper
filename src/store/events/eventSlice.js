@@ -47,7 +47,7 @@ export const eventSlice = createSlice({
             state.events = action.payload
         },
         [getSingleEvent.fulfilled]: (state, action) => {
-            state.events = [action.payload];
+            return action.payload;
         },
         [getEventsByTag.fulfilled]: (state, action) => {
             state.events = action.payload;
