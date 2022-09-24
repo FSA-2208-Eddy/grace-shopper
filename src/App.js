@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { Navbar, EventList, LoginPage, Footer, SingleEvent, MainPage, EventTagListSports, EventTagListArts, EventTagListMisc, EventTagListMusic, Checkout } from './components'
+import { Navbar, EventList, LoginPage, Footer, SingleEvent, MainPage, EventTagListSports, EventTagListArts, EventTagListMisc, EventTagListMusic, Checkout} from './components'
 
 
 function App(){
