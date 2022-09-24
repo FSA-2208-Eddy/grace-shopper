@@ -850,6 +850,7 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 .event-picture {
   height: auto;
@@ -874,8 +875,9 @@ select {
   text-align: center;
   font-size: 30px;
 }
-.event-button {
+.main-page-event-button {
   width: fit-content;
+  text-align: center;
   max-height: 30px;
   font-size: 20px;
 }
