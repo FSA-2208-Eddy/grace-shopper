@@ -4356,9 +4356,238 @@ function App() {
 /*!************************************************!*\
   !*** ./src/components/eventsList/EventList.js ***!
   \************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/cathal/Documents/projects/grace-shopper/src/components/eventsList/EventList.js: Unexpected token (16:3)\n\n\u001b[0m \u001b[90m 14 |\u001b[39m     \u001b[36mconst\u001b[39m events \u001b[33m=\u001b[39m useSelector(state \u001b[33m=>\u001b[39m state\u001b[33m.\u001b[39mevents\u001b[33m.\u001b[39mevents)\u001b[0m\n\u001b[0m \u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m dispatch \u001b[33m=\u001b[39m useDispatch()\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 17 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 18 |\u001b[39m \u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 19 |\u001b[39m     \u001b[36mconst\u001b[39m navigate \u001b[33m=\u001b[39m useNavigate()\u001b[0m\n    at instantiate (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:72:32)\n    at constructor (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:366:12)\n    at JSXParserMixin.raise (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:3453:19)\n    at JSXParserMixin.unexpected (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:3491:16)\n    at JSXParserMixin.jsxParseIdentifier (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:7918:12)\n    at JSXParserMixin.jsxParseNamespacedName (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:7928:23)\n    at JSXParserMixin.jsxParseElementName (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:7939:21)\n    at JSXParserMixin.jsxParseOpeningElementAt (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:8038:22)\n    at JSXParserMixin.jsxParseElementAt (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:8070:33)\n    at JSXParserMixin.jsxParseElement (/Users/cathal/Documents/projects/grace-shopper/node_modules/@babel/parser/lib/index.js:8155:17)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./src/components/eventsList/Pagination.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+var EventList = function EventList() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("0"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_3__.getEvents)());
+  }, []);
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_3__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_3__.getEventsByTag)(filter));
+    }
+  }, [filter]);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-filter"
+  }, " FILTER BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: filterHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "0"
+  }, "All"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "1"
+  }, "Sports"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "2"
+  }, "Music"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "3"
+  }, "Arts and Theatre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "4"
+  }, "Misc")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventList);
+
+/***/ }),
+
+/***/ "./src/components/eventsList/Pagination.js":
+/*!*************************************************!*\
+  !*** ./src/components/eventsList/Pagination.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Pagination = function Pagination(_ref) {
+  var postsPerPage = _ref.postsPerPage,
+      totalPosts = _ref.totalPosts,
+      paginate = _ref.paginate,
+      currentPage = _ref.currentPage;
+  var pageNumbers = [];
+
+  for (var i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+    className: "pagination"
+  }, pageNumbers.map(function (number) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+      key: number,
+      className: 'page-item ' + (currentPage === number ? "events-active" : "")
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+      onClick: function onClick() {
+        return paginate(number);
+      },
+      href: "#",
+      className: "page-link"
+    }, number));
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Pagination);
 
 /***/ }),
 

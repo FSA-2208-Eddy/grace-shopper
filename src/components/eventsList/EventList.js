@@ -13,12 +13,8 @@ const EventList = () => {
 
     const events = useSelector(state => state.events.events)
     const dispatch = useDispatch()
-<<<<<<< HEAD
-
-=======
     const navigate = useNavigate()
 
->>>>>>> 4b24c1f2c1c52ad2c09ae2c8e8373828f7adf4de
 
     React.useEffect(()=>{
         dispatch(getEvents())
