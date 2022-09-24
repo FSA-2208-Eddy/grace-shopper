@@ -1,5 +1,6 @@
 export { default as userSlice } from "../store/users/userSlice";
 export { default as eventSlice } from "../store/events/eventSlice";
+export { default as cartSlice } from '../store/cart/cartSlice';
 export { default as Navbar } from "./navbar/Navbar";
 export { default as EventList } from "./eventsList/EventList";
 export { default as LoginPage } from "./login/LoginPage";
@@ -11,5 +12,5 @@ export { default as EventTagListSports } from './eventsTagList/EventTagListSport
 export { default as EventTagListArts } from './eventsTagList/EventTagListArts'
 export { default as EventTagListMusic } from './eventsTagList/EventTagListMusic'
 export { default as EventTagListMisc } from './eventsTagList/EventTagListMisc'
-
-export { getSingleEvent } from '../store/events/eventSlice'
+export { default as Checkout } from './checkout/Checkout'
+export {getSingleEvent} from '../store/events/eventSlice'

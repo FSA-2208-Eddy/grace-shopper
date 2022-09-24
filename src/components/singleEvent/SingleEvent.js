@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { getSingleEvent } from "../";
 import { useParams } from 'react-router-dom'
 
@@ -11,11 +11,7 @@ const SingleEvent = () => {
     const { id } = useParams();
 
     React.useEffect(() => {
-      const singleEvent = async() => {
-        const { payload } = await dispatch(getSingleEvent(id))
-        setSingleEvent(payload)
-      }
-      singleEvent()
+      dispatch(getSingleEvent(id))
     }, [])
 
     const increase = () => {
@@ -33,7 +29,7 @@ const SingleEvent = () => {
     <div id="single-event-root-container">
       <div id="single-event-row-1">
         <div className="single-event-date">
-          <h2>{singleEvent.startTime ? singleEvent.startTime.slice(0, 10) : 'TBA'}</h2>
+          <h2>{singleEvent[0].startTime ? singleEvent.startTime.slice(0, 10) : 'TBA'}</h2>
         </div>
         <div className="single-event-title">{singleEvent?.name}</div>
       </div>
