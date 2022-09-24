@@ -16,6 +16,10 @@
       width: 100px;
     }
 
+    img:hover {
+      transform: rotate(360deg);
+    }
+
     a {
       text-decoration: none;
     }
@@ -30,6 +34,16 @@
     display: flex;
     justify-content: flex-end;
     flex: 1;
+
+    img {
+      transition: transform .7s ease-in-out;
+      cursor: pointer;
+    }
+
+    img:hover {
+      transform: rotate(360deg);
+    }
+
   }
 
   #logout {

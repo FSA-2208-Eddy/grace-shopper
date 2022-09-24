@@ -90,6 +90,7 @@
   align-items: center;
   justify-content: center;
   background-color: white;
+  color: black;
 }
 #single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors {
   display: flex;

@@ -153,6 +153,9 @@
 #navbar #navbar-logo img {
   width: 100px;
 }
+#navbar #navbar-logo img:hover {
+  transform: rotate(360deg);
+}
 #navbar #navbar-logo a {
   text-decoration: none;
 }
@@ -164,6 +167,13 @@
   display: flex;
   justify-content: flex-end;
   flex: 1;
+}
+#navbar .login-logout-container img {
+  transition: transform 0.7s ease-in-out;
+  cursor: pointer;
+}
+#navbar .login-logout-container img:hover {
+  transform: rotate(360deg);
 }
 #navbar #logout {
   display: inline-block;
@@ -843,6 +853,7 @@ select {
   align-items: center;
   justify-content: center;
   background-color: white;
+  color: black;
 }
 #single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors {
   display: flex;
@@ -1442,6 +1453,8 @@ select {
   border: 2px solid black;
   border-radius: 10px;
   box-shadow: 0 8px 32px 0 #000000;
+  opacity: 1;
+  animation: fade 0.3s linear;
 }
 .navbar-dropdown-container a {
   text-decoration: none;
@@ -1467,6 +1480,14 @@ select {
 }
 .navbar-dropdown-container li:nth-child(2):hover {
   background-color: #d6d6d6;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 * {
   margin: 0;

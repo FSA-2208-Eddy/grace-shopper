@@ -16,6 +16,9 @@
     border-radius: 10px;
     box-shadow: 0 8px 32px 0 #000000;
 
+    opacity: 1;
+    animation: fade 0.3s linear;
+
 
     a {
         text-decoration: none;
@@ -46,3 +49,8 @@
         background-color: rgb(214, 214, 214);
     }
 }
+
+@keyframes fade {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+  }
