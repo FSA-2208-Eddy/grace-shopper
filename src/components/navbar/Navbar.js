@@ -16,6 +16,7 @@ function Navbar() {
 
     const loginCheck = async() => {
       const token = window.localStorage.getItem('token');
+
         if (token){
           const { data } = await axios.get('/api/auth', {
             headers: {
@@ -48,7 +49,7 @@ function Navbar() {
         <div className='login-logout-container'>
             <img id='settings-icon' src={cog} alt='settings' onClick={() => setDropDown(!dropDown)}/>
         </div>
-          { dropDown ? <ul><DropDownItems loginStatus={loginStatus}/></ul> : <></>}
+          { dropDown ? <ul><DropDownItems loginStatus={loginStatus} setDropDown={setDropDown}/></ul> : <></>}
     </nav>
     <div className='navbar-searchbar-container'>
       <div className='searchbar-icon'></div>
