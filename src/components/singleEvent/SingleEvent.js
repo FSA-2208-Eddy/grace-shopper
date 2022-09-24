@@ -11,7 +11,11 @@ const SingleEvent = () => {
     const { id } = useParams();
 
     React.useEffect(() => {
-      dispatch(getSingleEvent(id))
+      const singleEvent = async() => {
+        const { payload } = await dispatch(getSingleEvent(id))
+        setSingleEvent(payload)
+      }
+      singleEvent()
     }, [])
 
     const increase = () => {
@@ -26,10 +30,10 @@ const SingleEvent = () => {
 
 
   return (
-    <div id="single-event-root-container">{console.log(singleEvent)}
+    <div id="single-event-root-container">
       <div id="single-event-row-1">
         <div className="single-event-date">
-          <h2>{singleEvent[0].startTime ? singleEvent.startTime.slice(0, 10) : 'TBA'}</h2>
+          <h2>{singleEvent.startTime ? singleEvent.startTime.slice(0, 10) : 'TBA'}</h2>
         </div>
         <div className="single-event-title">{singleEvent?.name}</div>
       </div>
