@@ -5,8 +5,7 @@ import { useParams } from 'react-router-dom'
 
 const SingleEvent = () => {
     const [qty, setQty] = React.useState(1)
-    // const [singleEvent, setSingleEvent] = React.useState({})
-    const singleEvent = useSelector(state => state.events)
+    const [singleEvent, setSingleEvent] = React.useState({})
 
     const dispatch = useDispatch();
     const { id } = useParams();
