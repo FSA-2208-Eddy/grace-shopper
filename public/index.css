@@ -156,6 +156,10 @@
 #navbar #navbar-logo a {
   text-decoration: none;
 }
+#navbar #settings-icon {
+  width: 40px;
+  margin-right: 20px;
+}
 #navbar .login-logout-container {
   display: flex;
   justify-content: flex-end;

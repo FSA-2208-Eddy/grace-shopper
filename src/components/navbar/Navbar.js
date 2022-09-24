@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../images/tickitLogo.png'
+import cog from '../images/cog3.png'
 
 function Navbar() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Navbar() {
             <Link to="/events/type/misc">Misc</Link>
         </div>
         <div className='login-logout-container'>
-            <Link to="/" id="logout" onClick={logout}>Logout</Link>
+            <img id='settings-icon' src={cog} alt='settings'/>
         </div>
     </nav>
     <div className='navbar-searchbar-container'>
