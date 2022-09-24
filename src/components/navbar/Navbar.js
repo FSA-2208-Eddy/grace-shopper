@@ -47,8 +47,8 @@ function Navbar() {
         </div>
         <div className='login-logout-container'>
             <img id='settings-icon' src={cog} alt='settings' onClick={() => setDropDown(!dropDown)}/>
-            { dropDown ? <ul><DropDownItems loginStatus={loginStatus}/></ul> : <></>}
         </div>
+          { dropDown ? <ul><DropDownItems loginStatus={loginStatus}/></ul> : <></>}
     </nav>
     <div className='navbar-searchbar-container'>
       <div className='searchbar-icon'></div>
