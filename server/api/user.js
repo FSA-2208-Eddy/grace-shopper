@@ -38,7 +38,16 @@ router.put('/cart-remove', requireToken, async(req,res,next) => {
     try {
         const toDelete = await LineItem.findByPk(req.body.lineItemId)
         toDelete.destroy()
-        res.sendStatus(204)
+        const cart = await Order.findOne({
+            where: {
+                userId: req.user.id,
+                isCart: true
+            },
+            include: [
+                {model: LineItem, include: Event} 
+            ]
+        })
+        res.send(cart)
     } catch(err) {
         next(err)
     }
@@ -95,10 +104,16 @@ router.put('/checkout', requireToken, async(req,res,next)=> {
         const newOrder = await Order.create({
             userId: userAndOrder.id
         })
-        const newUserAndOrder = await User.findByPk(req.user.id, {
-            include: Order
+        const newCart = await Order.findOne({
+            where: {
+                userId: req.user.id,
+                isCart: true
+            },
+            include: [
+                {model: LineItem, include: Event} 
+            ]
         })
-        res.send(newUserAndOrder)
+        res.send(newCart)
     } catch(ex) {
 
     }
