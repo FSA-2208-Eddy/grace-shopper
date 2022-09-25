@@ -1,22 +1,52 @@
 @import 'variables';
 
-#main-page-featured-container{
-    display:flex;
-    justify-content:space-evenly;
-    flex-direction:column;
-}
-#featured-events-container{
-    display:flex;
-    margin:5%;
-    justify-content:space-around;
+.main-page-featured-container{
+  display:flex;
+  flex-direction:column;
+  background-color: @secondary-color;
 }
 
-.event-button{
-    display:flex;
-    text-decoration-color: red;
+
+.featured-events-container{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-around;
+
+  //An attempt at a parallax background with image:
+  // background-image: url(../public/people-cheering.png);
+  // height: 100%;
+  // background-attachment: fixed;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
 }
 
-//imported from Luke's Carousel CSS
+.main-page-event-button{
+  background-color: @button-color;
+  color: @background-color;
+  display:flex;
+  justify-content:flex-end;
+  align-items:stretch;
+  border-radius:20px;
+  font-size:16px;
+  border-color:@button-color;
+  text-shadow: 2px 2px 4px black;
+}
+.main-page-event-button:hover{
+  border-style:solid;
+  border-color:#ffb783;
+  border-width: 4px;
+  transition: 0.2s;
+  border-radius:20px;
+  background-color:#ffb783;
+  text-shadow: 2px 2px 4px black;
+}
+.main-page-event-button-container{
+  display:flex;
+  justify-content: center;
+}
+
+//imported from Luke's Carousel CSS:
 
 *{
     margin: 0;
@@ -26,7 +56,7 @@
     width: 100%;
     overflow: hidden;
     height: 300px;
-    background-color: red;
+    background-color: @secondary-color;
     position: relative;
     transition: 0.25s;
   }
