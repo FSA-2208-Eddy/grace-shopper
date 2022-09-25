@@ -23,7 +23,7 @@ const syncAndSeed = async () => {
   try {
     await db.sync({ force: true });
 
-    const { data } = await axios.get(`https://app.ticketmaster.com/discovery/v2/events?apikey=${API_KEY}&locale=*&size=200&sort=random&city=chicago`)
+    const { data } = await axios.get(`https://app.ticketmaster.com/discovery/v2/events?apikey=rybaSZbAsGTyVHpT4MjpWMbbiJIQpYGD&keyword=new%20york&locale=*&includeTBA=no&includeTBD=no&includeTest=no&size=200`)
 
 
     const makeSeatChart = () => {
