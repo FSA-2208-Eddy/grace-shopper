@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 function ProfileMenu({ user }) {
   return (
     <div className="profile-menu-container">
@@ -6,27 +7,35 @@ function ProfileMenu({ user }) {
         <h1>Profile Overview</h1>
       </div>
       <div className="profile-account-information-container">
-        <div className="profile-name-container">{`${user?.firstName}`}</div>
+        <div className="profile-name-container">{`${user.firstName} ${user.lastName}`}</div>
         <div className="profile-picture-container">
           <img
             className="profile-picture"
-            src="https://www.pngkey.com/png/detail/810-8105695_person-icon-grey-person-icon-grey-png.png"
+            src={user.img}
             alt="profile picture"
           />
         </div>
-        <a href="google.com">Edit Profile</a>
+        <Link to="/profile/edit">Edit Profile</Link>
         <div className="profile-email-container">
           <h3>Email</h3>
-          <div>example.email@gmail.com</div>
-          <a href="google.com">Edit Email</a>
+          <div
+            className={user?.email?.length > 21 ? "profileLargeEmail" : null}
+          >
+            {user.email}
+          </div>
+          <Link to="/profile/edit">Edit Email</Link>
         </div>
         <div className="profile-address-container">
-          <h3>Address</h3>
+          <h3>Location</h3>
+          {user.city && user.state && user.country ? (
+            <>
+              <div>{`${user.city}, ${user.state}, ${user.country}`}</div>
+            </>
+          ) : (
+            <div>No location selected.</div>
+          )}
 
-          <div>2000 Fake Blvd</div>
-          <div>Chicago, IL 12345</div>
-
-          <a href="google.com">Edit Address</a>
+          <Link to="/profile/edit">Edit Address</Link>
         </div>
       </div>
       <div className="profile-settings-container">

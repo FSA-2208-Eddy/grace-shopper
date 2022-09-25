@@ -1,10 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 function ProfileCart() {
+  const linkStyle = { textDecoration: "none" };
   return (
     <div className="profile-cart-container">
       <div className="profile-cart-header">
         <h2>Your Cart</h2>
-        <div className="profile-cart-checkout">Checkout (3 Items)</div>
+        <Link style={linkStyle} to="/profile/checkout">
+          <div className="profile-cart-checkout">Checkout (3 Items)</div>
+        </Link>
       </div>
       <div className="profile-cart-item-container">
         <div className="profile-cart-item">

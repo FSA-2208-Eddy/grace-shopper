@@ -69,13 +69,13 @@ export const userSlice = createSlice({
       state.users = [...state.users, action.payload];
     },
     [updateUser.fulfilled]: (state, action) => {
-      let obj = state.users.find((user) => user.id === action.payload.id);
-
-      for (let key in action.payload) {
-        if (action.payload[key] && typeof action.payload[key] !== BOOLEAN) {
-          obj[key] = action.payload[key];
-        }
-      }
+      // let obj = state.users.find((user) => user.id === action.payload.id);
+      // for (let key in action.payload) {
+      //   if (action.payload[key] && typeof action.payload[key] !== BOOLEAN) {
+      //     obj[key] = action.payload[key];
+      //   }
+      // }
+      state.users = action.payload;
     },
     [deleteUser.fulfilled]: (state, action) => {
       state.users = [...state.users].filter(

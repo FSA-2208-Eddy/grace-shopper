@@ -10,7 +10,7 @@ import { getSingleUser } from "../../store/users/userSlice";
 function Profile() {
   console.log(window.localStorage);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.users);
   useEffect(() => {
     dispatch(getSingleUser());
   }, []);
