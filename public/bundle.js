@@ -4331,12 +4331,190 @@ function App() {
     path: "/events",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventList, null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/events/type/sports",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventTagListSports, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/events/type/music",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventTagListMusic, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/events/type/artsandtheatre",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventTagListArts, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/events/type/misc",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.EventTagListMisc, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
     path: "/events/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.SingleEvent, null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "/profile/checkout",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.Checkout, null)
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.Footer, null));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./src/components/checkout/Checkout.js":
+/*!*********************************************!*\
+  !*** ./src/components/checkout/Checkout.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/cart/cartSlice */ "./src/store/cart/cartSlice.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _CheckoutDone__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CheckoutDone */ "./src/components/checkout/CheckoutDone.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var Checkout = function Checkout() {
+  var cart = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.cart.cart;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      checkedOut = _React$useState2[0],
+      setCheckedOut = _React$useState2[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__.getCart)());
+    setCheckedOut(false);
+  }, []);
+
+  function handleDelete(event) {
+    event.preventDefault();
+    var lineItemId = event.target.getAttribute('value');
+    console.log(lineItemId);
+    dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__.removeItemFromCart)(lineItemId));
+  }
+
+  function handleCheckout() {
+    return _handleCheckout.apply(this, arguments);
+  }
+
+  function _handleCheckout() {
+    _handleCheckout = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__.checkoutCart)());
+              setCheckedOut(true);
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+    return _handleCheckout.apply(this, arguments);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-events-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-container"
+  }, checkedOut ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CheckoutDone__WEBPACK_IMPORTED_MODULE_4__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Review Your Order")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-item-container"
+  }, cart.lineitems.length > 0 ? cart.lineitems.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: item.id,
+      className: "checkout-cart-item"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "checkout-cart-item-picture-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: item.events[0].img
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "checkout-cart-item-title"
+    }, item.events[0].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "checkout-cart-item-address"
+    }, item.events[0].location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "checkout-cart-item-price"
+    }, "$29.95"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "checkout-cart-item-seat"
+    }, "Seat: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, item.seat)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "checkout-cart-item-available"
+    }, item.events[0].tickets, " Seats Available"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      onClick: handleDelete,
+      value: item.id,
+      key: item.id,
+      className: "checkout-cart-item-delete"
+    }, "Remove"));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Your Cart is Empty")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Total: $500")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    onClick: handleCheckout,
+    className: "checkout-button"
+  }, "Checkout"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Checkout);
+
+/***/ }),
+
+/***/ "./src/components/checkout/CheckoutDone.js":
+/*!*************************************************!*\
+  !*** ./src/components/checkout/CheckoutDone.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+
+
+var CheckoutDone = function CheckoutDone() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Thank you for your order! You can see your upcoming events on your profile page")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/profile"
+  }, "Back to Profile"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckoutDone);
 
 /***/ }),
 
@@ -4354,9 +4532,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./src/components/eventsList/Pagination.js");
 /* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -4376,6 +4555,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -4403,6 +4583,7 @@ var EventList = function EventList() {
     return state.events.events;
   });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
     dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_3__.getEvents)());
   }, []);
@@ -4440,9 +4621,26 @@ var EventList = function EventList() {
   var indexOfLastPost = currentPage * eventsPerPage;
   var indexOfFirstPost = indexOfLastPost - eventsPerPage;
   var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  var paginate = function paginate(pageNumber) {
-    return setCurrentPage(pageNumber);
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4493,17 +4691,20 @@ var EventList = function EventList() {
       alt: "picture should go here"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "event-date"
-    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
       to: "/events/".concat(event.id)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "event-button"
     }, "See Details")));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Pagination__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    postsPerPage: eventsPerPage,
-    totalPosts: eventsSorted.length,
-    paginate: paginate,
-    currentPage: currentPage
-  })));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventList);
@@ -4553,6 +4754,670 @@ var Pagination = function Pagination(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Pagination);
+
+/***/ }),
+
+/***/ "./src/components/eventsTagList/EventTagListArts.js":
+/*!**********************************************************!*\
+  !*** ./src/components/eventsTagList/EventTagListArts.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var EventTagListArts = function EventTagListArts() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("3"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEventsByTag)(filter));
+    }
+  }, []);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventTagListArts);
+
+/***/ }),
+
+/***/ "./src/components/eventsTagList/EventTagListMisc.js":
+/*!**********************************************************!*\
+  !*** ./src/components/eventsTagList/EventTagListMisc.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var EventTagListMisc = function EventTagListMisc() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("4"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEventsByTag)(filter));
+    }
+  }, []);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventTagListMisc);
+
+/***/ }),
+
+/***/ "./src/components/eventsTagList/EventTagListMusic.js":
+/*!***********************************************************!*\
+  !*** ./src/components/eventsTagList/EventTagListMusic.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var EventTagListMusic = function EventTagListMusic() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("2"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEventsByTag)(filter));
+    }
+  }, []);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventTagListMusic);
+
+/***/ }),
+
+/***/ "./src/components/eventsTagList/EventTagListSports.js":
+/*!************************************************************!*\
+  !*** ./src/components/eventsTagList/EventTagListSports.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var EventTagListSports = function EventTagListSports() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      currentPage = _React$useState2[0],
+      setCurrentPage = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("1"),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      filter = _React$useState4[0],
+      setFilter = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState("none"),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      sort = _React$useState6[0],
+      setSort = _React$useState6[1];
+
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.events.events;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (filter === "0") {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
+    } else {
+      dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEventsByTag)(filter));
+    }
+  }, []);
+
+  var filterHandler = function filterHandler(event) {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
+
+  var sortHandler = function sortHandler(event) {
+    event.preventDefault();
+    setSort(event.target.value);
+  };
+
+  var eventsSorted = _toConsumableArray(events).sort(function (a, b) {
+    if (sort === "none") {
+      return;
+    } else if (sort === "date") {
+      var aTime = a.startTime;
+      var bTime = b.startTime;
+      return aTime.localeCompare(bTime);
+    } else if (sort === "abc") {
+      return a.name.localeCompare(b.name);
+    }
+  });
+
+  var eventsPerPage = 10;
+  var indexOfLastPost = currentPage * eventsPerPage;
+  var indexOfFirstPost = indexOfLastPost - eventsPerPage;
+  var currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost);
+  var totalPages = Math.ceil(eventsSorted.length / eventsPerPage); // const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  var nextPage = function nextPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  var prevPage = function prevPage(event) {
+    event.preventDefault();
+
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+
+    window.scrollTo(0, 0);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-main-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort-filter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-sort"
+  }, " SORT BY:\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: sortHandler
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "none"
+  }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "date"
+  }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    className: "events-option",
+    value: "abc"
+  }, "Alphabetical")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-list"
+  }, currentPosts.map(function (event) {
+    var date = new Date(event.startTime);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      key: event.id,
+      className: "events-listing"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event.img,
+      alt: "picture should go here"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "event-date"
+    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      to: "/events/".concat(event.id)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "event-button"
+    }, "See Details")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "events-next-prev"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: prevPage,
+    className: "event-next-button"
+  }, "Prev"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "".concat(currentPage, "/").concat(totalPages)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: nextPage,
+    className: "event-next-button"
+  }, "Next"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventTagListSports);
 
 /***/ }),
 
@@ -4622,23 +5487,49 @@ var Footer = function Footer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "EventList": () => (/* reexport safe */ _eventsList_EventList__WEBPACK_IMPORTED_MODULE_3__["default"]),
-/* harmony export */   "Footer": () => (/* reexport safe */ _footer_Footer__WEBPACK_IMPORTED_MODULE_5__["default"]),
-/* harmony export */   "LoginPage": () => (/* reexport safe */ _login_LoginPage__WEBPACK_IMPORTED_MODULE_4__["default"]),
-/* harmony export */   "MainPage": () => (/* reexport safe */ _main_page_MainPage__WEBPACK_IMPORTED_MODULE_7__["default"]),
-/* harmony export */   "Navbar": () => (/* reexport safe */ _navbar_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"]),
-/* harmony export */   "SingleEvent": () => (/* reexport safe */ _singleEvent_SingleEvent__WEBPACK_IMPORTED_MODULE_6__["default"]),
+/* harmony export */   "Checkout": () => (/* reexport safe */ _checkout_Checkout__WEBPACK_IMPORTED_MODULE_15__["default"]),
+/* harmony export */   "DropDownItems": () => (/* reexport safe */ _navbar_DropDownItems__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   "EventList": () => (/* reexport safe */ _eventsList_EventList__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   "EventTagListArts": () => (/* reexport safe */ _eventsTagList_EventTagListArts__WEBPACK_IMPORTED_MODULE_12__["default"]),
+/* harmony export */   "EventTagListMisc": () => (/* reexport safe */ _eventsTagList_EventTagListMisc__WEBPACK_IMPORTED_MODULE_14__["default"]),
+/* harmony export */   "EventTagListMusic": () => (/* reexport safe */ _eventsTagList_EventTagListMusic__WEBPACK_IMPORTED_MODULE_13__["default"]),
+/* harmony export */   "EventTagListSports": () => (/* reexport safe */ _eventsTagList_EventTagListSports__WEBPACK_IMPORTED_MODULE_11__["default"]),
+/* harmony export */   "Footer": () => (/* reexport safe */ _footer_Footer__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   "LoginPage": () => (/* reexport safe */ _login_LoginPage__WEBPACK_IMPORTED_MODULE_6__["default"]),
+/* harmony export */   "MainPage": () => (/* reexport safe */ _main_page_MainPage__WEBPACK_IMPORTED_MODULE_9__["default"]),
+/* harmony export */   "Navbar": () => (/* reexport safe */ _navbar_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   "SingleEvent": () => (/* reexport safe */ _singleEvent_SingleEvent__WEBPACK_IMPORTED_MODULE_8__["default"]),
+/* harmony export */   "cartSlice": () => (/* reexport safe */ _store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__["default"]),
 /* harmony export */   "eventSlice": () => (/* reexport safe */ _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "getSingleEvent": () => (/* reexport safe */ _store_singleEvent_singleEventSlice__WEBPACK_IMPORTED_MODULE_3__.getSingleEvent),
+/* harmony export */   "singleEventSlice": () => (/* reexport safe */ _store_singleEvent_singleEventSlice__WEBPACK_IMPORTED_MODULE_3__["default"]),
 /* harmony export */   "userSlice": () => (/* reexport safe */ _store_users_userSlice__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _store_users_userSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/users/userSlice */ "./src/store/users/userSlice.js");
 /* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/events/eventSlice */ "./src/store/events/eventSlice.js");
-/* harmony import */ var _navbar_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar/Navbar */ "./src/components/navbar/Navbar.js");
-/* harmony import */ var _eventsList_EventList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./eventsList/EventList */ "./src/components/eventsList/EventList.js");
-/* harmony import */ var _login_LoginPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/LoginPage */ "./src/components/login/LoginPage.js");
-/* harmony import */ var _footer_Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./footer/Footer */ "./src/components/footer/Footer.js");
-/* harmony import */ var _singleEvent_SingleEvent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./singleEvent/SingleEvent */ "./src/components/singleEvent/SingleEvent.js");
-/* harmony import */ var _main_page_MainPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main-page/MainPage */ "./src/components/main-page/MainPage.js");
+/* harmony import */ var _store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/cart/cartSlice */ "./src/store/cart/cartSlice.js");
+/* harmony import */ var _store_singleEvent_singleEventSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/singleEvent/singleEventSlice */ "./src/store/singleEvent/singleEventSlice.js");
+/* harmony import */ var _navbar_Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./navbar/Navbar */ "./src/components/navbar/Navbar.js");
+/* harmony import */ var _eventsList_EventList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./eventsList/EventList */ "./src/components/eventsList/EventList.js");
+/* harmony import */ var _login_LoginPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./login/LoginPage */ "./src/components/login/LoginPage.js");
+/* harmony import */ var _footer_Footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./footer/Footer */ "./src/components/footer/Footer.js");
+/* harmony import */ var _singleEvent_SingleEvent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./singleEvent/SingleEvent */ "./src/components/singleEvent/SingleEvent.js");
+/* harmony import */ var _main_page_MainPage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main-page/MainPage */ "./src/components/main-page/MainPage.js");
+/* harmony import */ var _navbar_DropDownItems__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./navbar/DropDownItems */ "./src/components/navbar/DropDownItems.js");
+/* harmony import */ var _eventsTagList_EventTagListSports__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./eventsTagList/EventTagListSports */ "./src/components/eventsTagList/EventTagListSports.js");
+/* harmony import */ var _eventsTagList_EventTagListArts__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./eventsTagList/EventTagListArts */ "./src/components/eventsTagList/EventTagListArts.js");
+/* harmony import */ var _eventsTagList_EventTagListMusic__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./eventsTagList/EventTagListMusic */ "./src/components/eventsTagList/EventTagListMusic.js");
+/* harmony import */ var _eventsTagList_EventTagListMisc__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./eventsTagList/EventTagListMisc */ "./src/components/eventsTagList/EventTagListMisc.js");
+/* harmony import */ var _checkout_Checkout__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./checkout/Checkout */ "./src/components/checkout/Checkout.js");
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5085,52 +5976,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var _SingleEventNearMe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SingleEventNearMe */ "./src/components/main-page/SingleEventNearMe.js");
+
 
 
 
 function EventsNearMe() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "events-near-me"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "events-near-me-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "events-near-me-title"
-  }, "Events Near Me"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-near-me"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://m.media-amazon.com/images/I/41rOKnRvgJL._AC_.jpg",
-    alt: "event_picture"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-date"
-  }, "01/01/2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-title"
-  }, "Generic Football Game"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "main-page-event-button"
-  }, "See Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-near-me"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://baltimore.org/wp-content/uploads/2020/02/insiders-guide-to-camden-yards-game-shot2-500x500-c-default.jpg",
-    alt: "event_picture"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-date"
-  }, "01/01/2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-title"
-  }, "Generic Baseball Game"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "main-page-event-button"
-  }, "See Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-near-me"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://mesaartscenter.com/sysimg/main-image-shows-performing-live-chicago-symphony-orchestra-with-riccardo-muti-media-box-image-1-image.jpg",
-    alt: "event_picture"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-date"
-  }, "01/01/2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-event-title"
-  }, "Classical Night"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "main-page-event-button"
-  }, "See Details")))));
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "events-near-me-container"
+  }, "Events Near Me Title", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleEventNearMe__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleEventNearMe__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleEventNearMe__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventsNearMe);
@@ -5165,18 +6021,56 @@ function MainPage() {
   // img1.src = "https://a.cdn-hotels.com/gdcs/production134/d1054/893261d0-5a57-417a-b42d-9ce1c63dcb64.jpg?impolicy=fcrop&w=800&h=533&q=medium";
 
   var carouselItems = ["image1", "image2", "image3"];
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "main-page-featured-container"
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "main-page-featured-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "carousel-container"
+    className: "carousel-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Carousel__WEBPACK_IMPORTED_MODULE_1__["default"], {
     data: carouselItems
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "featured-events-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventsNearMe__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UpcomingEvents__WEBPACK_IMPORTED_MODULE_3__["default"], null)))));
+    className: "featured-events-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventsNearMe__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UpcomingEvents__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MainPage);
+
+/***/ }),
+
+/***/ "./src/components/main-page/SingleEventNearMe.js":
+/*!*******************************************************!*\
+  !*** ./src/components/main-page/SingleEventNearMe.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+
+
+
+function SingleEventNearMe() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "single-event-near-me"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "single-event-near-me-image",
+    src: "https://m.media-amazon.com/images/I/41rOKnRvgJL._AC_.jpg",
+    alt: "event_picture"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "single-event-near-me-date"
+  }, "01/01/2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "single-event-near-me-title"
+  }, "Generic Football Game"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "main-page-event-button"
+  }, "See Details"));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SingleEventNearMe);
 
 /***/ }),
 
@@ -5196,16 +6090,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function SingleUpcomingEvent() {
+function SingleUpcomingEvent(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "single-upcoming-event"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "single-upcoming-event-image",
     src: "https://www.apollotheparty.com.au/wp-content/uploads/2019/10/upd_MG_10309-500x500.jpg",
     alt: "event_picture"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "featured-event-date"
+    className: "single-upcoming-event-date"
   }, "01/01/2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "featured-event-name"
+    className: "single-upcoming-event-title"
   }, "Cathal's Big Birthday Bash"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "main-page-event-button"
   }, "See Details"));
@@ -5229,9 +6124,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
-/* harmony import */ var _SingleUpcomingEvent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SingleUpcomingEvent */ "./src/components/main-page/SingleUpcomingEvent.js");
+/* harmony import */ var _store_singleEvent_singleEventSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/singleEvent/singleEventSlice */ "./src/store/singleEvent/singleEventSlice.js");
+/* harmony import */ var _SingleUpcomingEvent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SingleUpcomingEvent */ "./src/components/main-page/SingleUpcomingEvent.js");
+
 
 
 
@@ -5245,19 +6142,19 @@ function UpcomingEvents() {
   var events = state.events.events[0]; // console.log('state: ', state)
   // console.log('events: ',events)
 
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
     dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getEvents)());
   }, []);
-  console.log('getSingleEvent: ', (0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getSingleEvent)(1));
+  var upcomingEventsArray = []; // const eventsSorted = [...events]
+  // console.log ('events sorted: ',eventsSorted)
 
   function chooseUpcomingEvents() {
-    var upcomingEventsArray = [];
     var eventId = 0;
 
     while (upcomingEventsArray.length < 3) {
-      var curEvent = (0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_2__.getSingleEvent)(eventId);
+      var curEvent = (0,_store_singleEvent_singleEventSlice__WEBPACK_IMPORTED_MODULE_3__.getSingleEvent)(eventId);
 
       if (curEvent) {
         console.log('current event data: ', curEvent);
@@ -5269,41 +6166,82 @@ function UpcomingEvents() {
     }
 
     return upcomingEventsArray;
-  } // console.log('choose upcoming events: ', )
+  }
 
-
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    chooseUpcomingEvents();
+    console.log(upcomingEventsArray);
+  }, [upcomingEventsArray]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    id: "upcoming-events"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "upcoming-events-container"
-  }, "Upcoming Events Title", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleUpcomingEvent__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    event: event
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-upcoming-event"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://baltimore.org/wp-content/uploads/2020/02/insiders-guide-to-camden-yards-game-shot2-500x500-c-default.jpg",
-    alt: "event_picture"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "featured-event-date"
-  }, "01/01/2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "featured-event-name"
-  }, "Generic Baseball Game"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "main-page-event-button"
-  }, "See Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "single-upcoming-event"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://mesaartscenter.com/sysimg/main-image-shows-performing-live-chicago-symphony-orchestra-with-riccardo-muti-media-box-image-1-image.jpg",
-    alt: "event_picture"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "featured-event-date"
-  }, "01/01/2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "featured-event-name"
-  }, "Classical Night"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "main-page-event-button"
-  }, "See Details")))));
+  }, "Upcoming Events Title", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleUpcomingEvent__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleUpcomingEvent__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleUpcomingEvent__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpcomingEvents);
+
+/***/ }),
+
+/***/ "./src/components/navbar/DropDownItems.js":
+/*!************************************************!*\
+  !*** ./src/components/navbar/DropDownItems.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+
+
+function DropDownItems(_ref) {
+  var loginStatus = _ref.loginStatus,
+      setDropDown = _ref.setDropDown;
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+
+  var logout = function logout() {
+    window.localStorage.removeItem('token');
+    navigate('/');
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "navbar-dropdown-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    className: "navbar-dropdown-item",
+    onClick: function onClick() {
+      return setDropDown(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/profile"
+  }, "\uD83D\uDC64 Profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    className: "navbar-dropdown-item",
+    onClick: function onClick() {
+      return setDropDown(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/profile/checkout"
+  }, "\uD83D\uDED2 Your Cart")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    className: "navbar-dropdown-item",
+    onClick: function onClick() {
+      return setDropDown(false);
+    }
+  }, loginStatus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: function onClick() {
+      return logout();
+    }
+  }, "Logout") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: function onClick() {
+      return navigate('/login');
+    }
+  }, "Login"))));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DropDownItems);
 
 /***/ }),
 
@@ -5320,9 +6258,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _images_tickitLogo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../images/tickitLogo.png */ "./src/components/images/tickitLogo.png");
+/* harmony import */ var _images_cog3_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/cog3.png */ "./src/components/images/cog3.png");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ */ "./src/components/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5339,22 +6289,82 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
 function Navbar() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(''),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       searchBarInput = _React$useState2[0],
       setSearchBarInput = _React$useState2[1];
 
-  var logout = function logout() {
-    window.localStorage.removeItem('token');
-    navigate('/');
-  };
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      dropDown = _React$useState4[0],
+      setDropDown = _React$useState4[1];
 
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      loginStatus = _React$useState6[0],
+      setLoginStatus = _React$useState6[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    var loginCheck = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var token, _yield$axios$get, data;
+
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                token = window.localStorage.getItem('token');
+
+                if (!token) {
+                  _context.next = 9;
+                  break;
+                }
+
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_4___default().get('/api/auth', {
+                  headers: {
+                    authorization: token
+                  }
+                });
+
+              case 4:
+                _yield$axios$get = _context.sent;
+                data = _yield$axios$get.data;
+
+                if (data) {
+                  setLoginStatus(true);
+                }
+
+                _context.next = 10;
+                break;
+
+              case 9:
+                setLoginStatus(false);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function loginCheck() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    loginCheck();
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     id: "navbar"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/",
     id: "navbar-logo"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -5362,23 +6372,29 @@ function Navbar() {
     alt: "logo"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "navbar-links"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/events"
-  }, "All Events"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "All Events"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/events/type/music"
-  }, "Music"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Music"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/events/type/sports"
-  }, "Sports"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Sports"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/events/type/artsandtheatre"
-  }, "Arts/Theatre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Arts/Theatre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/events/type/misc"
   }, "Misc")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "login-logout-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "/",
-    id: "logout",
-    onClick: logout
-  }, "Logout"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    id: "settings-icon",
+    src: _images_cog3_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "settings",
+    onClick: function onClick() {
+      return setDropDown(!dropDown);
+    }
+  })), dropDown ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(___WEBPACK_IMPORTED_MODULE_3__.DropDownItems, {
+    loginStatus: loginStatus,
+    setDropDown: setDropDown
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "navbar-searchbar-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "searchbar-icon"
@@ -5411,6 +6427,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ */ "./src/components/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5425,11 +6452,59 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
 var SingleEvent = function SingleEvent() {
+  var _singleEvent$startTim, _singleEvent$endTime;
+
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(1),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       qty = _React$useState2[0],
       setQty = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState({}),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      singleEvent = _React$useState4[0],
+      setSingleEvent = _React$useState4[1];
+
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)(),
+      id = _useParams.id;
+
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    var singleEvent = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var _yield$dispatch, payload;
+
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return dispatch((0,___WEBPACK_IMPORTED_MODULE_2__.getSingleEvent)(id));
+
+              case 2:
+                _yield$dispatch = _context.sent;
+                payload = _yield$dispatch.payload;
+                setSingleEvent(payload);
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function singleEvent() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    singleEvent();
+  }, []);
 
   var increase = function increase() {
     setQty(qty + 1);
@@ -5446,33 +6521,35 @@ var SingleEvent = function SingleEvent() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "single-event-row-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    "class": "single-event-date"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "SEP 22nd"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "2022")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    "class": "single-event-title"
-  }, "Generic Concert Wow so Cool!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "single-event-date"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, singleEvent.startTime ? singleEvent.startTime.slice(0, 10) : 'TBA')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "single-event-title"
+  }, singleEvent === null || singleEvent === void 0 ? void 0 : singleEvent.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "single-event-row-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "./generic-conert.jpeg"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    "class": "single-event-details"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    "class": "single-event-bold"
-  }, "Location:\xA0"), "Chase Center"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    "class": "single-event-bold"
-  }, "Tickets Remaining:\xA0"), "400"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    "class": "single-event-bold"
-  }, "Start Time:\xA0"), "7:00 PM, September 22nd, 2022"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    "class": "single-event-bold"
-  }, "End Time:\xA0"), "11:00 PM, September 22nd, 2022"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
-    "class": "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    "class": "product-quantity"
+    className: "single-event-image"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: singleEvent.img
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "single-event-details"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "single-event-bold"
+  }, "Location:\xA0"), singleEvent === null || singleEvent === void 0 ? void 0 : singleEvent.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "single-event-bold"
+  }, "Tickets Remaining:\xA0"), "400"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "single-event-bold"
+  }, "Start Time:\xA0"), (_singleEvent$startTim = singleEvent.startTime) === null || _singleEvent$startTim === void 0 ? void 0 : _singleEvent$startTim.split(' ').join(' @ ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "single-event-bold"
+  }, "End Time:\xA0"), (_singleEvent$endTime = singleEvent.endTime) === null || _singleEvent$endTime === void 0 ? void 0 : _singleEvent$endTime.split('T').join(' @ ').slice(0, -1)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "product-quantity"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Quantity\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "single-event-input"
   }, qty), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    "class": "quantity-selectors-container"
+    className: "quantity-selectors-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    "class": "quantity-selectors"
+    className: "quantity-selectors"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "button",
     onClick: decrease
@@ -5498,6 +6575,157 @@ var SingleEvent = function SingleEvent() {
 
 /***/ }),
 
+/***/ "./src/store/cart/cartSlice.js":
+/*!*************************************!*\
+  !*** ./src/store/cart/cartSlice.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cartSlice": () => (/* binding */ cartSlice),
+/* harmony export */   "checkoutCart": () => (/* binding */ checkoutCart),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "getCart": () => (/* binding */ getCart),
+/* harmony export */   "removeItemFromCart": () => (/* binding */ removeItemFromCart)
+/* harmony export */ });
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+var _extraReducers;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+(axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.common.authorization) = window.localStorage.getItem('token');
+var initialState = {
+  cart: {
+    lineitems: []
+  }
+};
+var getCart = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk)('/getCart', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+  var token, _yield$axios$get, data;
+
+  return _regeneratorRuntime().wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.prev = 0;
+          token = window.localStorage.getItem('token');
+          _context.next = 4;
+          return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/cart', {
+            headers: {
+              authorization: token
+            }
+          });
+
+        case 4:
+          _yield$axios$get = _context.sent;
+          data = _yield$axios$get.data;
+          return _context.abrupt("return", data);
+
+        case 9:
+          _context.prev = 9;
+          _context.t0 = _context["catch"](0);
+          console.log(_context.t0);
+
+        case 12:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, _callee, null, [[0, 9]]);
+})));
+var removeItemFromCart = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk)('/removeFromCart', /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(lineItemId) {
+    var _yield$axios$put, data;
+
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/users/cart-remove', {
+              lineItemId: lineItemId
+            });
+
+          case 3:
+            _yield$axios$put = _context2.sent;
+            data = _yield$axios$put.data;
+            return _context2.abrupt("return", data);
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](0);
+            console.log(_context2.t0);
+
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 8]]);
+  }));
+
+  return function (_x) {
+    return _ref2.apply(this, arguments);
+  };
+}());
+var checkoutCart = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk)('/checkoutCart', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+  var _yield$axios$put2, data;
+
+  return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.prev = 0;
+          _context3.next = 3;
+          return axios__WEBPACK_IMPORTED_MODULE_0___default().put('/api/users/checkout');
+
+        case 3:
+          _yield$axios$put2 = _context3.sent;
+          data = _yield$axios$put2.data;
+          return _context3.abrupt("return", data);
+
+        case 8:
+          _context3.prev = 8;
+          _context3.t0 = _context3["catch"](0);
+          console.log(_context3.t0);
+
+        case 11:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  }, _callee3, null, [[0, 8]]);
+})));
+var cartSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
+  name: 'cart',
+  initialState: initialState,
+  reducers: {},
+  extraReducers: (_extraReducers = {}, _defineProperty(_extraReducers, getCart.fulfilled, function (state, action) {
+    state.cart = action.payload;
+  }), _defineProperty(_extraReducers, removeItemFromCart.fulfilled, function (state, action) {
+    state.cart = action.payload;
+  }), _defineProperty(_extraReducers, checkoutCart.fulfilled, function (state, action) {
+    state.cart = action.payload;
+  }), _extraReducers)
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (cartSlice.reducer);
+
+/***/ }),
+
 /***/ "./src/store/events/eventSlice.js":
 /*!****************************************!*\
   !*** ./src/store/events/eventSlice.js ***!
@@ -5510,8 +6738,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   "eventSlice": () => (/* binding */ eventSlice),
 /* harmony export */   "getEvents": () => (/* binding */ getEvents),
-/* harmony export */   "getEventsByTag": () => (/* binding */ getEventsByTag),
-/* harmony export */   "getSingleEvent": () => (/* binding */ getSingleEvent)
+/* harmony export */   "getEventsByTag": () => (/* binding */ getEventsByTag)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -5595,48 +6822,12 @@ var getEventsByTag = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyn
     return _ref2.apply(this, arguments);
   };
 }());
-var getSingleEvent = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk)('/singleEvent', /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
-    var _yield$axios$get3, data;
-
-    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.prev = 0;
-            _context3.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/events/".concat(id));
-
-          case 3:
-            _yield$axios$get3 = _context3.sent;
-            data = _yield$axios$get3.data;
-            return _context3.abrupt("return", data);
-
-          case 8:
-            _context3.prev = 8;
-            _context3.t0 = _context3["catch"](0);
-            console.log(_context3.t0);
-
-          case 11:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3, null, [[0, 8]]);
-  }));
-
-  return function (_x2) {
-    return _ref3.apply(this, arguments);
-  };
-}());
 var eventSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
   name: 'events',
   initialState: initialState,
   reducers: {},
   extraReducers: (_extraReducers = {}, _defineProperty(_extraReducers, getEvents.fulfilled, function (state, action) {
     state.events = action.payload;
-  }), _defineProperty(_extraReducers, getSingleEvent.fulfilled, function (state, action) {
-    return action.payload;
   }), _defineProperty(_extraReducers, getEventsByTag.fulfilled, function (state, action) {
     state.events = action.payload;
   }), _extraReducers)
@@ -5666,13 +6857,92 @@ __webpack_require__.r(__webpack_exports__);
 var store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.configureStore)({
   reducer: {
     users: _components__WEBPACK_IMPORTED_MODULE_1__.userSlice,
-    events: _components__WEBPACK_IMPORTED_MODULE_1__.eventSlice
+    events: _components__WEBPACK_IMPORTED_MODULE_1__.eventSlice,
+    cart: _components__WEBPACK_IMPORTED_MODULE_1__.cartSlice,
+    singleEvent: _components__WEBPACK_IMPORTED_MODULE_1__.singleEventSlice
   },
   middleware: function middleware(getDefaultMiddleware) {
     return getDefaultMiddleware().concat((redux_logger__WEBPACK_IMPORTED_MODULE_0___default()));
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
+
+/***/ }),
+
+/***/ "./src/store/singleEvent/singleEventSlice.js":
+/*!***************************************************!*\
+  !*** ./src/store/singleEvent/singleEventSlice.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "getSingleEvent": () => (/* binding */ getSingleEvent),
+/* harmony export */   "singleEventSlice": () => (/* binding */ singleEventSlice)
+/* harmony export */ });
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var initialState = {
+  singleEvent: []
+};
+var getSingleEvent = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk)('/singleEvent', /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
+    var _yield$axios$get, data;
+
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/events/".concat(id));
+
+          case 3:
+            _yield$axios$get = _context.sent;
+            data = _yield$axios$get.data;
+            return _context.abrupt("return", data);
+
+          case 8:
+            _context.prev = 8;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[0, 8]]);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+}());
+var singleEventSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
+  name: 'singleEvent',
+  initialState: initialState,
+  reducers: {},
+  extraReducers: _defineProperty({}, getSingleEvent.fulfilled, function (state, action) {
+    state = action.payload;
+  })
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (singleEventSlice.reducer);
 
 /***/ }),
 
@@ -5943,7 +7213,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".login-main-container {\n  background-color: white;\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  z-index: 10;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  pointer-events: none;\n}\n.login-main-container .login-form-container {\n  display: flex;\n  color: #ff8e3c;\n  flex-direction: column;\n  align-items: center;\n  pointer-events: all;\n  border: 4px solid white;\n  padding: 40px 50px 50px 50px;\n  background: #151a21;\n  box-shadow: 0 8px 32px 0 #000000;\n  backdrop-filter: blur(5px);\n  -webkit-backdrop-filter: blur(5px);\n  border-radius: 10px;\n  border: 1px solid rgba(255, 255, 255, 0.18);\n  margin-top: 100px;\n}\n.login-main-container .login-form-container #login-failed {\n  background-color: lightpink;\n  color: firebrick;\n  font-weight: bold;\n  padding: 0.5rem;\n  font-size: 25px;\n  margin-bottom: 0.75rem;\n  border-radius: 5px;\n}\n.login-main-container .login-form-container .offscreen {\n  position: absolute;\n  left: -9999px;\n}\n.login-main-container .login-form-container p {\n  color: #ff8e3c;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 40px;\n  padding-bottom: 40px;\n}\n.login-main-container .login-form-container #login-form {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.login-main-container .login-form-container #login-form button {\n  background-color: #ff8e3c;\n  color: #0d0d0d;\n  font-size: 20px;\n  border-radius: 6px;\n  width: 90px;\n  height: 35px;\n  margin: 10px 0px 20px 0px;\n}\n.login-main-container .login-form-container #login-form a {\n  font-family: Arial, Helvetica, sans-serif;\n  margin-top: 10px;\n  text-decoration: none;\n  cursor: pointer;\n}\n.login-main-container .login-form-container #login-form input {\n  margin: 20px;\n  font-size: 20px;\n  text-align: center;\n  border-radius: 7px;\n}\n.login-create-new-user-container {\n  background-color: white;\n  display: flex;\n  position: relative;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100vh;\n  margin-top: 100px;\n}\n.login-create-new-user-container .login-create-new-user-form {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  border: 2px solid #151a21;\n  border-radius: 7px;\n  background-color: #151a21;\n  box-shadow: 0 8px 32px 0 #000000;\n}\n.login-create-new-user-container .login-create-new-user-form p {\n  color: #ff8e3c;\n  font-size: 40px;\n  margin: 30px 0 0 0;\n}\n.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container {\n  display: flex;\n  justify-content: center;\n}\n.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container a {\n  color: #ff8e3c;\n  margin-bottom: 20px;\n  cursor: pointer;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 20px;\n  background-color: #151a21;\n  color: white;\n  width: 300px;\n  margin: 20px 50px 0 50px;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form #togglePassword {\n  float: right;\n  margin-top: -36px;\n  margin-right: -120px;\n  margin-bottom: 15px;\n  cursor: pointer;\n  color: #151a21;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form input {\n  margin: 0 0 15px 0;\n  outline: none;\n  height: 30px;\n  width: 100%;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form button {\n  background-color: #ff8e3c;\n  color: #0d0d0d;\n  border-radius: 5px;\n  margin: 20px 0 0 0;\n  width: 80px;\n  height: 30px;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form label {\n  font-size: 18px;\n}\n#navbar {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: #151a21;\n  height: 80px;\n}\n#navbar #navbar-logo {\n  display: flex;\n  flex: 1;\n  margin: 0 0 0 10px;\n}\n#navbar #navbar-logo img {\n  width: 100px;\n}\n#navbar #navbar-logo a {\n  text-decoration: none;\n}\n#navbar .login-logout-container {\n  display: flex;\n  justify-content: flex-end;\n  flex: 1;\n}\n#navbar #logout {\n  display: inline-block;\n  position: relative;\n  margin: 0 20px 0 0;\n  text-align: center;\n  text-decoration: none;\n  color: white;\n  padding: 10px;\n}\n#navbar a::before,\n#navbar a::after {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #ff8e3c;\n  transform: scaleX(0);\n  transition: transform 0.25s;\n}\n#navbar a::before {\n  top: -3px;\n  transform-origin: left;\n}\n#navbar a::after {\n  bottom: -3px;\n  transform-origin: right;\n}\n#navbar a:hover::before,\n#navbar a:hover::after {\n  transform: scaleX(1);\n}\n#navbar .navbar-links {\n  display: flex;\n  justify-content: space-evenly;\n  align-items: center;\n  flex: 2;\n}\n#navbar .navbar-links a {\n  display: inline-block;\n  position: relative;\n  text-decoration: none;\n  text-align: center;\n  border-radius: 7px;\n  color: white;\n  padding: 5px;\n}\n#navbar .navbar-links a:hover {\n  color: #ff8e3c;\n}\n* {\n  font-family: 'Readex Pro', sans-serif;\n}\n#events-main-container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: white;\n  margin: 0;\n  height: 140vh;\n  padding-top: 20px;\n}\n#events-sort-filter {\n  display: flex;\n  width: 75%;\n  justify-content: space-around;\n  font-size: 1.5rem;\n  padding: 8px;\n  align-items: center;\n  color: #ff8e3c;\n}\nselect {\n  font-size: 1rem;\n  padding: 8px;\n  color: #2a2a2a;\n}\n#events-list {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  margin-top: 10px;\n}\n.events-listing {\n  display: flex;\n  position: relative;\n  gap: 10%;\n  width: 70%;\n  padding: 12px;\n  border-bottom: black 1px solid;\n  height: 10vh;\n  align-items: center;\n  font-size: 1.25rem;\n}\n.events-listing p {\n  font-weight: bold;\n}\n.events-listing img {\n  height: 50px;\n  width: 100px;\n}\n.events-listing a {\n  margin: 0;\n  position: absolute;\n  right: 0;\n  background-color: #ff8e3c;\n  height: 75%;\n  width: 10%;\n  border: 1px white solid;\n}\n.event-button {\n  height: 100%;\n  width: 100%;\n  border: 1px white solid;\n  background-color: #ff8e3c;\n  color: white;\n  transition: 0.25s ease;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  right: 0;\n}\n.event-button:hover {\n  background-color: #f47012;\n  cursor: pointer;\n}\n.events-pagination {\n  display: flex;\n  justify-content: space-around;\n  width: 20%;\n  margin-top: 20px;\n}\n.events-pag-number {\n  width: 20px;\n  height: 20px;\n  color: #2a2a2a;\n  text-align: center;\n  border: solid 1px black;\n  border-radius: 50%;\n  padding: 3px;\n  cursor: pointer;\n}\n.events-active {\n  background-color: #ff8e3c;\n  color: white;\n}\n.pagination {\n  display: flex;\n  gap: 10px;\n  margin-top: 5vh;\n}\n.pagination li {\n  list-style-type: none;\n  width: 30px;\n  height: 30px;\n  border: solid 1px black;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.pagination li a {\n  text-decoration: none;\n  color: #2a2a2a;\n}\n.event-date {\n  width: 15%;\n}\n.navbar-searchbar-container {\n  display: flex;\n  background-color: #151a21;\n  padding: 10px 25% 15px 25%;\n}\n.navbar-searchbar-container input {\n  width: 100%;\n  height: 40px;\n  text-indent: 5px;\n  border: none;\n  padding: 5px 0 5px 0;\n}\n.navbar-searchbar-container input:focus {\n  /* removes the input focus blue box */\n  outline: none;\n}\n.navbar-searchbar-container button {\n  border: 0;\n  border-radius: 0 10px 10px 0;\n  cursor: pointer;\n  background-color: #ff8e3c;\n  color: #0d0d0d;\n  width: 90px;\n  font-size: 15px;\n}\n.navbar-searchbar-container button:hover {\n  background-color: #d98600;\n}\n.navbar-searchbar-container .searchbar-icon {\n  background: white url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat center;\n  width: 30px;\n  border-radius: 10px 0 0 10px;\n}\n* {\n  margin: 0;\n  padding: 0;\n  font-family: \"Readex Pro\", sans-serif;\n  font-weight: 300;\n  font-size: 14px;\n}\n.profile-header {\n  margin: 20px;\n  margin-bottom: 0px;\n}\n.profile-header h1 {\n  font-size: 40px;\n  font-weight: 500;\n}\n.profile-main-container {\n  padding: 20px;\n  display: flex;\n}\n.profile-menu-container {\n  display: flex;\n  flex-direction: column;\n}\n.profile-account-information-container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  border: 1px solid #dedede;\n  width: 230px;\n  overflow: hidden;\n  border-radius: 5px;\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\n}\n.profile-account-information-container h3 {\n  font-size: 18px;\n  font-weight: 400;\n}\n.profile-account-information-container a {\n  text-decoration: none;\n  color: #2b889d;\n}\n.profile-account-information-container .profile-name-container {\n  font-size: 24px;\n  font-weight: 400;\n  text-align: center;\n}\n.profile-account-information-container .profile-picture-container {\n  display: inline-block;\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  overflow: hidden;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover;\n  margin: 5px;\n}\n.profile-account-information-container .profile-picture-container img {\n  width: 100%;\n}\n.profile-account-information-container .profile-email-container {\n  padding: 10px;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  border-top: 1px solid #dedede;\n  border-bottom: 1px solid #dedede;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n.profile-account-information-container .profile-email-container * {\n  margin: 3px;\n}\n.profile-account-information-container .profile-address-container {\n  padding: 10px;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n.profile-account-information-container .profile-address-container * {\n  margin: 3px;\n}\n.profile-settings-container {\n  margin-top: 10px;\n  display: flex;\n  flex-direction: column;\n  width: 230px;\n  overflow: hidden;\n  border-radius: 5px;\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\n  border: 1px solid #dedede;\n  justify-content: space-evenly;\n  color: #2b889d;\n}\n.profile-settings-container div {\n  border-top: 1px solid #dedede;\n  border-bottom: 1px solid #dedede;\n  height: 50px;\n  display: flex;\n  align-items: center;\n  padding: 10px;\n}\n.profile-settings-container div:hover {\n  cursor: pointer;\n  background-color: #e9e9e9;\n}\n.profile-settings-container #profile-setting-1 {\n  border-top: none;\n}\n.profile-settings-container #profile-setting-2 {\n  border: none;\n}\n.profile-settings-container #profile-setting-3 {\n  border-bottom: none;\n}\n.profile-cart-events-container {\n  display: flex;\n  flex-direction: column;\n  border: 10px;\n  margin-left: 80px;\n  margin-top: 30px;\n}\n.profile-cart-events-container div {\n  margin-top: 2px;\n  margin-bottom: 2px;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-header h2 {\n  font-size: 30px;\n  font-weight: 300;\n  margin-bottom: 10px;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block {\n  display: flex;\n  flex-wrap: wrap;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item {\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\n  width: 300px;\n  height: 150px;\n  border: 1px solid #dedede;\n  margin: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover;\n  cursor: pointer;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item img {\n  width: 100%;\n  transition-duration: 0.5s;\n  transition-timing-function: ease-in-out;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title {\n  display: flex;\n  align-items: center;\n  position: absolute;\n  background-color: rgba(35, 35, 35, 0.3);\n  color: rgba(255, 255, 255, 0.8);\n  z-index: 1;\n  align-self: flex-end;\n  justify-content: flex-start;\n  width: 300px;\n  min-height: 30px;\n  margin: 0px;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title div {\n  margin-left: 3px;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover img {\n  transform: scale(1.05);\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover .profile-event-item-title {\n  transition-duration: 0.5s;\n  transition-timing-function: ease-in-out;\n  background-color: rgba(35, 35, 35, 0.6);\n  color: white;\n}\n.profile-cart-events-container .profile-cart-header {\n  display: flex;\n  justify-content: space-between;\n}\n.profile-cart-events-container .profile-cart-header h2 {\n  font-size: 30px;\n  font-weight: 300;\n  margin-bottom: 10px;\n}\n.profile-cart-events-container .profile-cart-item-container {\n  display: flex;\n  flex-wrap: wrap;\n  border: 1px solid #dedede;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item {\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\n  height: 350px;\n  width: 200px;\n  border: 1px solid #dedede;\n  margin: 10px;\n  padding: 5px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 200px;\n  height: 200px;\n  overflow: hidden;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container img {\n  height: 100%;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-delete {\n  color: #2b889d;\n  cursor: pointer;\n  max-width: content;\n  font-size: 14px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item span {\n  font-weight: 400;\n  font-size: 14px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-title {\n  font-weight: 400;\n  border-bottom: 0px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-address {\n  font-style: italic;\n  font-size: 13px;\n  border-top: 0px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-price {\n  font-weight: 500;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-seat {\n  font-size: 14px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-available {\n  font-size: 14px;\n}\n.profile-cart-checkout {\n  color: #2b889d;\n  font-size: 20px;\n  font-weight: 400;\n  padding-top: 6px;\n  margin-left: 15px;\n  cursor: pointer;\n}\n@media (max-width: 600px) {\n  * {\n    font-size: 14px;\n  }\n  .profile-cart-item-container {\n    flex-direction: column;\n  }\n  .profile-header {\n    text-align: center;\n    font-size: 15px;\n  }\n  .profile-main-container {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n  }\n  .profile-account-information-container {\n    width: 350px;\n  }\n  .profile-settings-container {\n    width: 350px;\n  }\n  .profile-cart-events-container {\n    align-items: center;\n    justify-content: center;\n    margin: 0;\n    padding: 0;\n  }\n  .profile-cart-header {\n    text-align: center;\n    margin-top: 5px;\n  }\n  .profile-cart-item-container {\n    display: flex;\n    align-items: center;\n    margin: 0;\n    width: 375px;\n  }\n  .profile-recommended-events-container {\n    align-items: center;\n  }\n  .profile-recommended-events-container h2 {\n    text-align: center;\n  }\n  .profile-recommended-events-block {\n    flex-direction: column;\n    align-items: center;\n  }\n}\n#footer-root-container {\n  height: auto;\n  width: 100%;\n  margin: 0;\n  background-color: #151a21;\n  padding-left: 10%;\n  padding-right: 10%;\n  padding-top: 1%;\n  padding-bottom: 1%;\n}\n.footer-group-1 {\n  display: flex;\n  height: auto;\n  width: auto;\n  justify-content: space-between;\n  color: white;\n  padding: 2.5%;\n  padding-bottom: 4%;\n  border-bottom: #ff8e3c solid 1px;\n}\n.footer-column {\n  height: 100%;\n  width: 15%;\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.footer-column h2 {\n  font-size: 1.25rem;\n}\n.footer-column a {\n  text-decoration: none;\n  transition: 0.25s ease;\n  color: white;\n}\n.footer-column a:hover {\n  color: #ff8e3c;\n}\n.footer-group-2 {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  height: auto;\n  width: 100%;\n  margin-top: 2%;\n  margin-bottom: 2%;\n  padding-left: 2.5%;\n  padding-right: 7.5%;\n}\n.footer-group-2 img {\n  height: 10%;\n  width: 10%;\n}\n.footer-group-2 p {\n  color: white;\n}\n.footer-group-2 .footer-copy {\n  width: 10%;\n}\n#single-event-row-1 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 20px;\n  height: 15vh;\n}\n#single-event-row-1 .single-event-date {\n  width: 10vw;\n  height: 10vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #ff8e3c;\n  border-radius: 1rem;\n  justify-content: center;\n  color: white;\n}\n#single-event-row-1 .single-event-date h2 {\n  font-size: 2rem;\n  font-weight: bold;\n}\n#single-event-row-1 .single-event-date p {\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n#single-event-row-1 .single-event-title {\n  font-size: 2.5rem;\n  font-weight: bold;\n  color: #151a21;\n}\n#single-event-row-2 {\n  display: flex;\n  height: 50vh;\n  justify-content: center;\n  gap: 5vw;\n  margin-bottom: 10vh;\n  margin-top: 5vh;\n}\n#single-event-row-2 img {\n  height: auto;\n  width: auto;\n  border: 1px solid #c7c7c7;\n}\n#single-event-row-2 .single-event-details {\n  width: 40vw;\n  display: flex;\n  flex-direction: column;\n  gap: 2vh;\n  padding: 12px;\n}\n#single-event-row-2 .single-event-details h1 {\n  font-size: 2rem;\n  font-weight: 1000;\n}\n#single-event-row-2 .single-event-details h1 .single-event-bold {\n  font-size: 1.5rem;\n}\n#single-event-row-2 .single-event-details p {\n  color: grey;\n  font-size: 1.5rem;\n}\n#single-event-row-2 .single-event-details .product-quantity {\n  display: flex;\n  width: 13vw;\n  justify-content: space-between;\n  align-items: center;\n}\n#single-event-row-2 .single-event-details .product-quantity .single-event-input {\n  width: 5vh;\n  height: 5vh;\n  text-align: center;\n  border: 1px black solid;\n  border-radius: 0.5rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button {\n  width: 5vh;\n  height: 5vh;\n  border: none;\n  background-color: #ff8e3c;\n  color: white;\n  cursor: pointer;\n}\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button:active {\n  background-color: #e96f19;\n}\n#single-event-row-2 .single-event-details #single-event-seat-box {\n  display: flex;\n  gap: 20px;\n  align-items: center;\n}\n#single-event-row-2 .single-event-details #single-event-seat-box p {\n  font-size: 1rem;\n  color: #151a21;\n}\n#single-event-row-2 .single-event-details #single-event-seat-box select {\n  cursor: pointer;\n}\n#single-event-row-2 .single-event-details #single-event-button {\n  border: none;\n  background-color: #ff8e3c;\n  color: white;\n  width: 15vh;\n  height: 5vh;\n  cursor: pointer;\n}\n#single-event-row-2 .single-event-details #single-event-button:active {\n  background-color: #e96f19;\n}\n#upcoming-events {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n#upcoming-events-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n.single-upcoming-event {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n.event-picture {\n  height: auto;\n  width: auto;\n  max-height: 350px;\n  max-width: 350px;\n}\n.main-page-event-button {\n  display: flex;\n  justify-self: center;\n}\n.upcoming-events-title {\n  display: flex;\n  text-align: center;\n  font-size: 40px;\n}\n.featured-event-date {\n  text-align: center;\n  font-size: 15px;\n}\n.featured-event-name {\n  text-align: center;\n  font-size: 30px;\n}\n.main-page-event-button {\n  width: fit-content;\n  text-align: center;\n  max-height: 30px;\n  font-size: 20px;\n}\n#events-near-me-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n.single-event-near-me {\n  display: flex;\n  flex-shrink: 10%;\n  flex-direction: column;\n}\n.event-picture {\n  height: auto;\n  width: auto;\n  max-height: 350px;\n  max-width: 350px;\n}\n.main-page-event-button {\n  display: flex;\n  justify-self: center;\n}\n.events-near-me-title {\n  font-size: 40px;\n}\n.single-event-date {\n  display: flex;\n  align-self: center;\n  font-size: 15px;\n}\n.single-event-title {\n  display: flex;\n  align-self: center;\n  font-size: 30px;\n}\n#main-page-featured-container {\n  display: flex;\n  justify-content: space-evenly;\n  flex-direction: column;\n}\n#featured-events-container {\n  display: flex;\n  margin: 5%;\n  justify-content: space-around;\n}\n.event-button {\n  display: flex;\n  text-decoration-color: red;\n}\n* {\n  margin: 0;\n}\n.carousel {\n  width: 100%;\n  overflow: hidden;\n  height: 300px;\n  background-color: #151a21;\n  position: relative;\n  transition: 0.25s;\n}\n.arrows {\n  z-index: 99;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.arrow {\n  height: 80px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-width: 100px;\n  background-color: #ff8e3c;\n  color: white;\n}\n.carouselWrapper {\n  height: 100%;\n  position: absolute;\n  top: 0;\n  right: 0;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  transition: 0.25s;\n}\n.carousel-item {\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #151a21;\n  color: white;\n}\n* {\n  margin: 0;\n  font-family: \"Readex Pro\", sans-serif;\n  box-sizing: border-box;\n}\nhtml,\nbody {\n  background-color: white;\n}\n", "",{"version":3,"sources":["webpack://./public/index.css"],"names":[],"mappings":"AAAA;EACE,uBAAuB;EACvB,kBAAkB;EAClB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,uBAAuB;EACvB,oBAAoB;AACtB;AACA;EACE,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,mBAAmB;EACnB,mBAAmB;EACnB,uBAAuB;EACvB,4BAA4B;EAC5B,mBAAmB;EACnB,gCAAgC;EAChC,0BAA0B;EAC1B,kCAAkC;EAClC,mBAAmB;EACnB,2CAA2C;EAC3C,iBAAiB;AACnB;AACA;EACE,2BAA2B;EAC3B,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;EACf,eAAe;EACf,sBAAsB;EACtB,kBAAkB;AACpB;AACA;EACE,kBAAkB;EAClB,aAAa;AACf;AACA;EACE,cAAc;EACd,yCAAyC;EACzC,eAAe;EACf,oBAAoB;AACtB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;AACrB;AACA;EACE,yBAAyB;EACzB,cAAc;EACd,eAAe;EACf,kBAAkB;EAClB,WAAW;EACX,YAAY;EACZ,yBAAyB;AAC3B;AACA;EACE,yCAAyC;EACzC,gBAAgB;EAChB,qBAAqB;EACrB,eAAe;AACjB;AACA;EACE,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,kBAAkB;AACpB;AACA;EACE,uBAAuB;EACvB,aAAa;EACb,kBAAkB;EAClB,sBAAsB;EACtB,2BAA2B;EAC3B,mBAAmB;EACnB,aAAa;EACb,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;EACzB,kBAAkB;EAClB,yBAAyB;EACzB,gCAAgC;AAClC;AACA;EACE,cAAc;EACd,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,aAAa;EACb,uBAAuB;AACzB;AACA;EACE,cAAc;EACd,mBAAmB;EACnB,eAAe;AACjB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,wBAAwB;AAC1B;AACA;EACE,YAAY;EACZ,iBAAiB;EACjB,oBAAoB;EACpB,mBAAmB;EACnB,eAAe;EACf,cAAc;AAChB;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,YAAY;EACZ,WAAW;AACb;AACA;EACE,yBAAyB;EACzB,cAAc;EACd,kBAAkB;EAClB,kBAAkB;EAClB,WAAW;EACX,YAAY;AACd;AACA;EACE,eAAe;AACjB;AACA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;AACd;AACA;EACE,aAAa;EACb,OAAO;EACP,kBAAkB;AACpB;AACA;EACE,YAAY;AACd;AACA;EACE,qBAAqB;AACvB;AACA;EACE,aAAa;EACb,yBAAyB;EACzB,OAAO;AACT;AACA;EACE,qBAAqB;EACrB,kBAAkB;EAClB,kBAAkB;EAClB,kBAAkB;EAClB,qBAAqB;EACrB,YAAY;EACZ,aAAa;AACf;AACA;;EAEE,WAAW;EACX,kBAAkB;EAClB,OAAO;EACP,WAAW;EACX,WAAW;EACX,yBAAyB;EACzB,oBAAoB;EACpB,2BAA2B;AAC7B;AACA;EACE,SAAS;EACT,sBAAsB;AACxB;AACA;EACE,YAAY;EACZ,uBAAuB;AACzB;AACA;;EAEE,oBAAoB;AACtB;AACA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB;EACnB,OAAO;AACT;AACA;EACE,qBAAqB;EACrB,kBAAkB;EAClB,qBAAqB;EACrB,kBAAkB;EAClB,kBAAkB;EAClB,YAAY;EACZ,YAAY;AACd;AACA;EACE,cAAc;AAChB;AACA;EACE,qCAAqC;AACvC;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;EACvB,SAAS;EACT,aAAa;EACb,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,UAAU;EACV,6BAA6B;EAC7B,iBAAiB;EACjB,YAAY;EACZ,mBAAmB;EACnB,cAAc;AAChB;AACA;EACE,eAAe;EACf,YAAY;EACZ,cAAc;AAChB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,SAAS;EACT,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,QAAQ;EACR,UAAU;EACV,aAAa;EACb,8BAA8B;EAC9B,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;AACpB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,YAAY;EACZ,YAAY;AACd;AACA;EACE,SAAS;EACT,kBAAkB;EAClB,QAAQ;EACR,yBAAyB;EACzB,WAAW;EACX,UAAU;EACV,uBAAuB;AACzB;AACA;EACE,YAAY;EACZ,WAAW;EACX,uBAAuB;EACvB,yBAAyB;EACzB,YAAY;EACZ,sBAAsB;EACtB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,QAAQ;AACV;AACA;EACE,yBAAyB;EACzB,eAAe;AACjB;AACA;EACE,aAAa;EACb,6BAA6B;EAC7B,UAAU;EACV,gBAAgB;AAClB;AACA;EACE,WAAW;EACX,YAAY;EACZ,cAAc;EACd,kBAAkB;EAClB,uBAAuB;EACvB,kBAAkB;EAClB,YAAY;EACZ,eAAe;AACjB;AACA;EACE,yBAAyB;EACzB,YAAY;AACd;AACA;EACE,aAAa;EACb,SAAS;EACT,eAAe;AACjB;AACA;EACE,qBAAqB;EACrB,WAAW;EACX,YAAY;EACZ,uBAAuB;EACvB,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;AACA;EACE,qBAAqB;EACrB,cAAc;AAChB;AACA;EACE,UAAU;AACZ;AACA;EACE,aAAa;EACb,yBAAyB;EACzB,0BAA0B;AAC5B;AACA;EACE,WAAW;EACX,YAAY;EACZ,gBAAgB;EAChB,YAAY;EACZ,oBAAoB;AACtB;AACA;EACE,qCAAqC;EACrC,aAAa;AACf;AACA;EACE,SAAS;EACT,4BAA4B;EAC5B,eAAe;EACf,yBAAyB;EACzB,cAAc;EACd,WAAW;EACX,eAAe;AACjB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,0EAAsY;EACtY,WAAW;EACX,4BAA4B;AAC9B;AACA;EACE,SAAS;EACT,UAAU;EACV,qCAAqC;EACrC,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,YAAY;EACZ,kBAAkB;AACpB;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,aAAa;EACb,aAAa;AACf;AACA;EACE,aAAa;EACb,sBAAsB;AACxB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,yCAAyC;AAC3C;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,qBAAqB;EACrB,cAAc;AAChB;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,kBAAkB;AACpB;AACA;EACE,qBAAqB;EACrB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,WAAW;AACb;AACA;EACE,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,WAAW;EACX,6BAA6B;EAC7B,gCAAgC;EAChC,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,WAAW;AACb;AACA;EACE,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,WAAW;AACb;AACA;EACE,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,yCAAyC;EACzC,yBAAyB;EACzB,6BAA6B;EAC7B,cAAc;AAChB;AACA;EACE,6BAA6B;EAC7B,gCAAgC;EAChC,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,aAAa;AACf;AACA;EACE,eAAe;EACf,yBAAyB;AAC3B;AACA;EACE,gBAAgB;AAClB;AACA;EACE,YAAY;AACd;AACA;EACE,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;AAClB;AACA;EACE,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,eAAe;AACjB;AACA;EACE,yCAAyC;EACzC,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;EACtB,eAAe;AACjB;AACA;EACE,WAAW;EACX,yBAAyB;EACzB,uCAAuC;AACzC;AACA;EACE,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uCAAuC;EACvC,+BAA+B;EAC/B,UAAU;EACV,oBAAoB;EACpB,2BAA2B;EAC3B,YAAY;EACZ,gBAAgB;EAChB,WAAW;AACb;AACA;EACE,gBAAgB;AAClB;AACA;EACE,sBAAsB;AACxB;AACA;EACE,yBAAyB;EACzB,uCAAuC;EACvC,uCAAuC;EACvC,YAAY;AACd;AACA;EACE,aAAa;EACb,8BAA8B;AAChC;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,eAAe;EACf,yBAAyB;AAC3B;AACA;EACE,yCAAyC;EACzC,aAAa;EACb,YAAY;EACZ,yBAAyB;EACzB,YAAY;EACZ,YAAY;AACd;AACA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;AACxB;AACA;EACE,YAAY;AACd;AACA;EACE,cAAc;EACd,eAAe;EACf,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,gBAAgB;EAChB,kBAAkB;AACpB;AACA;EACE,kBAAkB;EAClB,eAAe;EACf,eAAe;AACjB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,eAAe;AACjB;AACA;EACE,eAAe;AACjB;AACA;EACE,cAAc;EACd,eAAe;EACf,gBAAgB;EAChB,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;AACjB;AACA;EACE;IACE,eAAe;EACjB;EACA;IACE,sBAAsB;EACxB;EACA;IACE,kBAAkB;IAClB,eAAe;EACjB;EACA;IACE,aAAa;IACb,sBAAsB;IACtB,mBAAmB;EACrB;EACA;IACE,YAAY;EACd;EACA;IACE,YAAY;EACd;EACA;IACE,mBAAmB;IACnB,uBAAuB;IACvB,SAAS;IACT,UAAU;EACZ;EACA;IACE,kBAAkB;IAClB,eAAe;EACjB;EACA;IACE,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,YAAY;EACd;EACA;IACE,mBAAmB;EACrB;EACA;IACE,kBAAkB;EACpB;EACA;IACE,sBAAsB;IACtB,mBAAmB;EACrB;AACF;AACA;EACE,YAAY;EACZ,WAAW;EACX,SAAS;EACT,yBAAyB;EACzB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,aAAa;EACb,YAAY;EACZ,WAAW;EACX,8BAA8B;EAC9B,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,gCAAgC;AAClC;AACA;EACE,YAAY;EACZ,UAAU;EACV,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;AACA;EACE,kBAAkB;AACpB;AACA;EACE,qBAAqB;EACrB,sBAAsB;EACtB,YAAY;AACd;AACA;EACE,cAAc;AAChB;AACA;EACE,aAAa;EACb,8BAA8B;EAC9B,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,cAAc;EACd,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;AACrB;AACA;EACE,WAAW;EACX,UAAU;AACZ;AACA;EACE,YAAY;AACd;AACA;EACE,UAAU;AACZ;AACA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,SAAS;EACT,YAAY;AACd;AACA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;EACzB,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;AACd;AACA;EACE,eAAe;EACf,iBAAiB;AACnB;AACA;EACE,iBAAiB;EACjB,iBAAiB;AACnB;AACA;EACE,iBAAiB;EACjB,iBAAiB;EACjB,cAAc;AAChB;AACA;EACE,aAAa;EACb,YAAY;EACZ,uBAAuB;EACvB,QAAQ;EACR,mBAAmB;EACnB,eAAe;AACjB;AACA;EACE,YAAY;EACZ,WAAW;EACX,yBAAyB;AAC3B;AACA;EACE,WAAW;EACX,aAAa;EACb,sBAAsB;EACtB,QAAQ;EACR,aAAa;AACf;AACA;EACE,eAAe;EACf,iBAAiB;AACnB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,WAAW;EACX,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,WAAW;EACX,8BAA8B;EAC9B,mBAAmB;AACrB;AACA;EACE,UAAU;EACV,WAAW;EACX,kBAAkB;EAClB,uBAAuB;EACvB,qBAAqB;EACrB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;AACA;EACE,UAAU;EACV,WAAW;EACX,YAAY;EACZ,yBAAyB;EACzB,YAAY;EACZ,eAAe;AACjB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,aAAa;EACb,SAAS;EACT,mBAAmB;AACrB;AACA;EACE,eAAe;EACf,cAAc;AAChB;AACA;EACE,eAAe;AACjB;AACA;EACE,YAAY;EACZ,yBAAyB;EACzB,YAAY;EACZ,WAAW;EACX,WAAW;EACX,eAAe;AACjB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,8BAA8B;EAC9B,mBAAmB;AACrB;AACA;EACE,YAAY;EACZ,WAAW;EACX,iBAAiB;EACjB,gBAAgB;AAClB;AACA;EACE,aAAa;EACb,oBAAoB;AACtB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,kBAAkB;EAClB,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,aAAa;EACb,gBAAgB;EAChB,sBAAsB;AACxB;AACA;EACE,YAAY;EACZ,WAAW;EACX,iBAAiB;EACjB,gBAAgB;AAClB;AACA;EACE,aAAa;EACb,oBAAoB;AACtB;AACA;EACE,eAAe;AACjB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,aAAa;EACb,6BAA6B;EAC7B,sBAAsB;AACxB;AACA;EACE,aAAa;EACb,UAAU;EACV,6BAA6B;AAC/B;AACA;EACE,aAAa;EACb,0BAA0B;AAC5B;AACA;EACE,SAAS;AACX;AACA;EACE,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,yBAAyB;EACzB,kBAAkB;EAClB,iBAAiB;AACnB;AACA;EACE,WAAW;EACX,kBAAkB;EAClB,YAAY;EACZ,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,mBAAmB;AACrB;AACA;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,yBAAyB;EACzB,YAAY;AACd;AACA;EACE,YAAY;EACZ,kBAAkB;EAClB,MAAM;EACN,QAAQ;EACR,aAAa;EACb,mBAAmB;EACnB,6BAA6B;EAC7B,iBAAiB;AACnB;AACA;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;AACd;AACA;EACE,SAAS;EACT,qCAAqC;EACrC,sBAAsB;AACxB;AACA;;EAEE,uBAAuB;AACzB","sourcesContent":[".login-main-container {\n  background-color: white;\n  position: relative;\n  width: 100vw;\n  height: 100vh;\n  z-index: 10;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  pointer-events: none;\n}\n.login-main-container .login-form-container {\n  display: flex;\n  color: #ff8e3c;\n  flex-direction: column;\n  align-items: center;\n  pointer-events: all;\n  border: 4px solid white;\n  padding: 40px 50px 50px 50px;\n  background: #151a21;\n  box-shadow: 0 8px 32px 0 #000000;\n  backdrop-filter: blur(5px);\n  -webkit-backdrop-filter: blur(5px);\n  border-radius: 10px;\n  border: 1px solid rgba(255, 255, 255, 0.18);\n  margin-top: 100px;\n}\n.login-main-container .login-form-container #login-failed {\n  background-color: lightpink;\n  color: firebrick;\n  font-weight: bold;\n  padding: 0.5rem;\n  font-size: 25px;\n  margin-bottom: 0.75rem;\n  border-radius: 5px;\n}\n.login-main-container .login-form-container .offscreen {\n  position: absolute;\n  left: -9999px;\n}\n.login-main-container .login-form-container p {\n  color: #ff8e3c;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 40px;\n  padding-bottom: 40px;\n}\n.login-main-container .login-form-container #login-form {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.login-main-container .login-form-container #login-form button {\n  background-color: #ff8e3c;\n  color: #0d0d0d;\n  font-size: 20px;\n  border-radius: 6px;\n  width: 90px;\n  height: 35px;\n  margin: 10px 0px 20px 0px;\n}\n.login-main-container .login-form-container #login-form a {\n  font-family: Arial, Helvetica, sans-serif;\n  margin-top: 10px;\n  text-decoration: none;\n  cursor: pointer;\n}\n.login-main-container .login-form-container #login-form input {\n  margin: 20px;\n  font-size: 20px;\n  text-align: center;\n  border-radius: 7px;\n}\n.login-create-new-user-container {\n  background-color: white;\n  display: flex;\n  position: relative;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100vh;\n  margin-top: 100px;\n}\n.login-create-new-user-container .login-create-new-user-form {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  border: 2px solid #151a21;\n  border-radius: 7px;\n  background-color: #151a21;\n  box-shadow: 0 8px 32px 0 #000000;\n}\n.login-create-new-user-container .login-create-new-user-form p {\n  color: #ff8e3c;\n  font-size: 40px;\n  margin: 30px 0 0 0;\n}\n.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container {\n  display: flex;\n  justify-content: center;\n}\n.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container a {\n  color: #ff8e3c;\n  margin-bottom: 20px;\n  cursor: pointer;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 20px;\n  background-color: #151a21;\n  color: white;\n  width: 300px;\n  margin: 20px 50px 0 50px;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form #togglePassword {\n  float: right;\n  margin-top: -36px;\n  margin-right: -120px;\n  margin-bottom: 15px;\n  cursor: pointer;\n  color: #151a21;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form input {\n  margin: 0 0 15px 0;\n  outline: none;\n  height: 30px;\n  width: 100%;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form button {\n  background-color: #ff8e3c;\n  color: #0d0d0d;\n  border-radius: 5px;\n  margin: 20px 0 0 0;\n  width: 80px;\n  height: 30px;\n}\n.login-create-new-user-container .login-create-new-user-form #new-user-form label {\n  font-size: 18px;\n}\n#navbar {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: #151a21;\n  height: 80px;\n}\n#navbar #navbar-logo {\n  display: flex;\n  flex: 1;\n  margin: 0 0 0 10px;\n}\n#navbar #navbar-logo img {\n  width: 100px;\n}\n#navbar #navbar-logo a {\n  text-decoration: none;\n}\n#navbar .login-logout-container {\n  display: flex;\n  justify-content: flex-end;\n  flex: 1;\n}\n#navbar #logout {\n  display: inline-block;\n  position: relative;\n  margin: 0 20px 0 0;\n  text-align: center;\n  text-decoration: none;\n  color: white;\n  padding: 10px;\n}\n#navbar a::before,\n#navbar a::after {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #ff8e3c;\n  transform: scaleX(0);\n  transition: transform 0.25s;\n}\n#navbar a::before {\n  top: -3px;\n  transform-origin: left;\n}\n#navbar a::after {\n  bottom: -3px;\n  transform-origin: right;\n}\n#navbar a:hover::before,\n#navbar a:hover::after {\n  transform: scaleX(1);\n}\n#navbar .navbar-links {\n  display: flex;\n  justify-content: space-evenly;\n  align-items: center;\n  flex: 2;\n}\n#navbar .navbar-links a {\n  display: inline-block;\n  position: relative;\n  text-decoration: none;\n  text-align: center;\n  border-radius: 7px;\n  color: white;\n  padding: 5px;\n}\n#navbar .navbar-links a:hover {\n  color: #ff8e3c;\n}\n* {\n  font-family: 'Readex Pro', sans-serif;\n}\n#events-main-container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: white;\n  margin: 0;\n  height: 140vh;\n  padding-top: 20px;\n}\n#events-sort-filter {\n  display: flex;\n  width: 75%;\n  justify-content: space-around;\n  font-size: 1.5rem;\n  padding: 8px;\n  align-items: center;\n  color: #ff8e3c;\n}\nselect {\n  font-size: 1rem;\n  padding: 8px;\n  color: #2a2a2a;\n}\n#events-list {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  margin-top: 10px;\n}\n.events-listing {\n  display: flex;\n  position: relative;\n  gap: 10%;\n  width: 70%;\n  padding: 12px;\n  border-bottom: black 1px solid;\n  height: 10vh;\n  align-items: center;\n  font-size: 1.25rem;\n}\n.events-listing p {\n  font-weight: bold;\n}\n.events-listing img {\n  height: 50px;\n  width: 100px;\n}\n.events-listing a {\n  margin: 0;\n  position: absolute;\n  right: 0;\n  background-color: #ff8e3c;\n  height: 75%;\n  width: 10%;\n  border: 1px white solid;\n}\n.event-button {\n  height: 100%;\n  width: 100%;\n  border: 1px white solid;\n  background-color: #ff8e3c;\n  color: white;\n  transition: 0.25s ease;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  right: 0;\n}\n.event-button:hover {\n  background-color: #f47012;\n  cursor: pointer;\n}\n.events-pagination {\n  display: flex;\n  justify-content: space-around;\n  width: 20%;\n  margin-top: 20px;\n}\n.events-pag-number {\n  width: 20px;\n  height: 20px;\n  color: #2a2a2a;\n  text-align: center;\n  border: solid 1px black;\n  border-radius: 50%;\n  padding: 3px;\n  cursor: pointer;\n}\n.events-active {\n  background-color: #ff8e3c;\n  color: white;\n}\n.pagination {\n  display: flex;\n  gap: 10px;\n  margin-top: 5vh;\n}\n.pagination li {\n  list-style-type: none;\n  width: 30px;\n  height: 30px;\n  border: solid 1px black;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.pagination li a {\n  text-decoration: none;\n  color: #2a2a2a;\n}\n.event-date {\n  width: 15%;\n}\n.navbar-searchbar-container {\n  display: flex;\n  background-color: #151a21;\n  padding: 10px 25% 15px 25%;\n}\n.navbar-searchbar-container input {\n  width: 100%;\n  height: 40px;\n  text-indent: 5px;\n  border: none;\n  padding: 5px 0 5px 0;\n}\n.navbar-searchbar-container input:focus {\n  /* removes the input focus blue box */\n  outline: none;\n}\n.navbar-searchbar-container button {\n  border: 0;\n  border-radius: 0 10px 10px 0;\n  cursor: pointer;\n  background-color: #ff8e3c;\n  color: #0d0d0d;\n  width: 90px;\n  font-size: 15px;\n}\n.navbar-searchbar-container button:hover {\n  background-color: #d98600;\n}\n.navbar-searchbar-container .searchbar-icon {\n  background: white url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E\") no-repeat center;\n  width: 30px;\n  border-radius: 10px 0 0 10px;\n}\n* {\n  margin: 0;\n  padding: 0;\n  font-family: \"Readex Pro\", sans-serif;\n  font-weight: 300;\n  font-size: 14px;\n}\n.profile-header {\n  margin: 20px;\n  margin-bottom: 0px;\n}\n.profile-header h1 {\n  font-size: 40px;\n  font-weight: 500;\n}\n.profile-main-container {\n  padding: 20px;\n  display: flex;\n}\n.profile-menu-container {\n  display: flex;\n  flex-direction: column;\n}\n.profile-account-information-container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  border: 1px solid #dedede;\n  width: 230px;\n  overflow: hidden;\n  border-radius: 5px;\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\n}\n.profile-account-information-container h3 {\n  font-size: 18px;\n  font-weight: 400;\n}\n.profile-account-information-container a {\n  text-decoration: none;\n  color: #2b889d;\n}\n.profile-account-information-container .profile-name-container {\n  font-size: 24px;\n  font-weight: 400;\n  text-align: center;\n}\n.profile-account-information-container .profile-picture-container {\n  display: inline-block;\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  overflow: hidden;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover;\n  margin: 5px;\n}\n.profile-account-information-container .profile-picture-container img {\n  width: 100%;\n}\n.profile-account-information-container .profile-email-container {\n  padding: 10px;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  border-top: 1px solid #dedede;\n  border-bottom: 1px solid #dedede;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n.profile-account-information-container .profile-email-container * {\n  margin: 3px;\n}\n.profile-account-information-container .profile-address-container {\n  padding: 10px;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n.profile-account-information-container .profile-address-container * {\n  margin: 3px;\n}\n.profile-settings-container {\n  margin-top: 10px;\n  display: flex;\n  flex-direction: column;\n  width: 230px;\n  overflow: hidden;\n  border-radius: 5px;\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\n  border: 1px solid #dedede;\n  justify-content: space-evenly;\n  color: #2b889d;\n}\n.profile-settings-container div {\n  border-top: 1px solid #dedede;\n  border-bottom: 1px solid #dedede;\n  height: 50px;\n  display: flex;\n  align-items: center;\n  padding: 10px;\n}\n.profile-settings-container div:hover {\n  cursor: pointer;\n  background-color: #e9e9e9;\n}\n.profile-settings-container #profile-setting-1 {\n  border-top: none;\n}\n.profile-settings-container #profile-setting-2 {\n  border: none;\n}\n.profile-settings-container #profile-setting-3 {\n  border-bottom: none;\n}\n.profile-cart-events-container {\n  display: flex;\n  flex-direction: column;\n  border: 10px;\n  margin-left: 80px;\n  margin-top: 30px;\n}\n.profile-cart-events-container div {\n  margin-top: 2px;\n  margin-bottom: 2px;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-header h2 {\n  font-size: 30px;\n  font-weight: 300;\n  margin-bottom: 10px;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block {\n  display: flex;\n  flex-wrap: wrap;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item {\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\n  width: 300px;\n  height: 150px;\n  border: 1px solid #dedede;\n  margin: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover;\n  cursor: pointer;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item img {\n  width: 100%;\n  transition-duration: 0.5s;\n  transition-timing-function: ease-in-out;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title {\n  display: flex;\n  align-items: center;\n  position: absolute;\n  background-color: rgba(35, 35, 35, 0.3);\n  color: rgba(255, 255, 255, 0.8);\n  z-index: 1;\n  align-self: flex-end;\n  justify-content: flex-start;\n  width: 300px;\n  min-height: 30px;\n  margin: 0px;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title div {\n  margin-left: 3px;\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover img {\n  transform: scale(1.05);\n}\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover .profile-event-item-title {\n  transition-duration: 0.5s;\n  transition-timing-function: ease-in-out;\n  background-color: rgba(35, 35, 35, 0.6);\n  color: white;\n}\n.profile-cart-events-container .profile-cart-header {\n  display: flex;\n  justify-content: space-between;\n}\n.profile-cart-events-container .profile-cart-header h2 {\n  font-size: 30px;\n  font-weight: 300;\n  margin-bottom: 10px;\n}\n.profile-cart-events-container .profile-cart-item-container {\n  display: flex;\n  flex-wrap: wrap;\n  border: 1px solid #dedede;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item {\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\n  height: 350px;\n  width: 200px;\n  border: 1px solid #dedede;\n  margin: 10px;\n  padding: 5px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 200px;\n  height: 200px;\n  overflow: hidden;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container img {\n  height: 100%;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-delete {\n  color: #2b889d;\n  cursor: pointer;\n  max-width: content;\n  font-size: 14px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item span {\n  font-weight: 400;\n  font-size: 14px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-title {\n  font-weight: 400;\n  border-bottom: 0px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-address {\n  font-style: italic;\n  font-size: 13px;\n  border-top: 0px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-price {\n  font-weight: 500;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-seat {\n  font-size: 14px;\n}\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-available {\n  font-size: 14px;\n}\n.profile-cart-checkout {\n  color: #2b889d;\n  font-size: 20px;\n  font-weight: 400;\n  padding-top: 6px;\n  margin-left: 15px;\n  cursor: pointer;\n}\n@media (max-width: 600px) {\n  * {\n    font-size: 14px;\n  }\n  .profile-cart-item-container {\n    flex-direction: column;\n  }\n  .profile-header {\n    text-align: center;\n    font-size: 15px;\n  }\n  .profile-main-container {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n  }\n  .profile-account-information-container {\n    width: 350px;\n  }\n  .profile-settings-container {\n    width: 350px;\n  }\n  .profile-cart-events-container {\n    align-items: center;\n    justify-content: center;\n    margin: 0;\n    padding: 0;\n  }\n  .profile-cart-header {\n    text-align: center;\n    margin-top: 5px;\n  }\n  .profile-cart-item-container {\n    display: flex;\n    align-items: center;\n    margin: 0;\n    width: 375px;\n  }\n  .profile-recommended-events-container {\n    align-items: center;\n  }\n  .profile-recommended-events-container h2 {\n    text-align: center;\n  }\n  .profile-recommended-events-block {\n    flex-direction: column;\n    align-items: center;\n  }\n}\n#footer-root-container {\n  height: auto;\n  width: 100%;\n  margin: 0;\n  background-color: #151a21;\n  padding-left: 10%;\n  padding-right: 10%;\n  padding-top: 1%;\n  padding-bottom: 1%;\n}\n.footer-group-1 {\n  display: flex;\n  height: auto;\n  width: auto;\n  justify-content: space-between;\n  color: white;\n  padding: 2.5%;\n  padding-bottom: 4%;\n  border-bottom: #ff8e3c solid 1px;\n}\n.footer-column {\n  height: 100%;\n  width: 15%;\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.footer-column h2 {\n  font-size: 1.25rem;\n}\n.footer-column a {\n  text-decoration: none;\n  transition: 0.25s ease;\n  color: white;\n}\n.footer-column a:hover {\n  color: #ff8e3c;\n}\n.footer-group-2 {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  height: auto;\n  width: 100%;\n  margin-top: 2%;\n  margin-bottom: 2%;\n  padding-left: 2.5%;\n  padding-right: 7.5%;\n}\n.footer-group-2 img {\n  height: 10%;\n  width: 10%;\n}\n.footer-group-2 p {\n  color: white;\n}\n.footer-group-2 .footer-copy {\n  width: 10%;\n}\n#single-event-row-1 {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 20px;\n  height: 15vh;\n}\n#single-event-row-1 .single-event-date {\n  width: 10vw;\n  height: 10vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #ff8e3c;\n  border-radius: 1rem;\n  justify-content: center;\n  color: white;\n}\n#single-event-row-1 .single-event-date h2 {\n  font-size: 2rem;\n  font-weight: bold;\n}\n#single-event-row-1 .single-event-date p {\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n#single-event-row-1 .single-event-title {\n  font-size: 2.5rem;\n  font-weight: bold;\n  color: #151a21;\n}\n#single-event-row-2 {\n  display: flex;\n  height: 50vh;\n  justify-content: center;\n  gap: 5vw;\n  margin-bottom: 10vh;\n  margin-top: 5vh;\n}\n#single-event-row-2 img {\n  height: auto;\n  width: auto;\n  border: 1px solid #c7c7c7;\n}\n#single-event-row-2 .single-event-details {\n  width: 40vw;\n  display: flex;\n  flex-direction: column;\n  gap: 2vh;\n  padding: 12px;\n}\n#single-event-row-2 .single-event-details h1 {\n  font-size: 2rem;\n  font-weight: 1000;\n}\n#single-event-row-2 .single-event-details h1 .single-event-bold {\n  font-size: 1.5rem;\n}\n#single-event-row-2 .single-event-details p {\n  color: grey;\n  font-size: 1.5rem;\n}\n#single-event-row-2 .single-event-details .product-quantity {\n  display: flex;\n  width: 13vw;\n  justify-content: space-between;\n  align-items: center;\n}\n#single-event-row-2 .single-event-details .product-quantity .single-event-input {\n  width: 5vh;\n  height: 5vh;\n  text-align: center;\n  border: 1px black solid;\n  border-radius: 0.5rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button {\n  width: 5vh;\n  height: 5vh;\n  border: none;\n  background-color: #ff8e3c;\n  color: white;\n  cursor: pointer;\n}\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button:active {\n  background-color: #e96f19;\n}\n#single-event-row-2 .single-event-details #single-event-seat-box {\n  display: flex;\n  gap: 20px;\n  align-items: center;\n}\n#single-event-row-2 .single-event-details #single-event-seat-box p {\n  font-size: 1rem;\n  color: #151a21;\n}\n#single-event-row-2 .single-event-details #single-event-seat-box select {\n  cursor: pointer;\n}\n#single-event-row-2 .single-event-details #single-event-button {\n  border: none;\n  background-color: #ff8e3c;\n  color: white;\n  width: 15vh;\n  height: 5vh;\n  cursor: pointer;\n}\n#single-event-row-2 .single-event-details #single-event-button:active {\n  background-color: #e96f19;\n}\n#upcoming-events {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n#upcoming-events-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n.single-upcoming-event {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n.event-picture {\n  height: auto;\n  width: auto;\n  max-height: 350px;\n  max-width: 350px;\n}\n.main-page-event-button {\n  display: flex;\n  justify-self: center;\n}\n.upcoming-events-title {\n  display: flex;\n  text-align: center;\n  font-size: 40px;\n}\n.featured-event-date {\n  text-align: center;\n  font-size: 15px;\n}\n.featured-event-name {\n  text-align: center;\n  font-size: 30px;\n}\n.main-page-event-button {\n  width: fit-content;\n  text-align: center;\n  max-height: 30px;\n  font-size: 20px;\n}\n#events-near-me-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5%;\n}\n.single-event-near-me {\n  display: flex;\n  flex-shrink: 10%;\n  flex-direction: column;\n}\n.event-picture {\n  height: auto;\n  width: auto;\n  max-height: 350px;\n  max-width: 350px;\n}\n.main-page-event-button {\n  display: flex;\n  justify-self: center;\n}\n.events-near-me-title {\n  font-size: 40px;\n}\n.single-event-date {\n  display: flex;\n  align-self: center;\n  font-size: 15px;\n}\n.single-event-title {\n  display: flex;\n  align-self: center;\n  font-size: 30px;\n}\n#main-page-featured-container {\n  display: flex;\n  justify-content: space-evenly;\n  flex-direction: column;\n}\n#featured-events-container {\n  display: flex;\n  margin: 5%;\n  justify-content: space-around;\n}\n.event-button {\n  display: flex;\n  text-decoration-color: red;\n}\n* {\n  margin: 0;\n}\n.carousel {\n  width: 100%;\n  overflow: hidden;\n  height: 300px;\n  background-color: #151a21;\n  position: relative;\n  transition: 0.25s;\n}\n.arrows {\n  z-index: 99;\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.arrow {\n  height: 80px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-width: 100px;\n  background-color: #ff8e3c;\n  color: white;\n}\n.carouselWrapper {\n  height: 100%;\n  position: absolute;\n  top: 0;\n  right: 0;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  transition: 0.25s;\n}\n.carousel-item {\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: #151a21;\n  color: white;\n}\n* {\n  margin: 0;\n  font-family: \"Readex Pro\", sans-serif;\n  box-sizing: border-box;\n}\nhtml,\nbody {\n  background-color: white;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".login-main-container {\r\n  background-color: white;\r\n  position: relative;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  z-index: 10;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: flex-start;\r\n  pointer-events: none;\r\n}\r\n.login-main-container .login-form-container {\r\n  display: flex;\r\n  color: #ff8e3c;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  pointer-events: all;\r\n  border: 4px solid white;\r\n  padding: 40px 50px 50px 50px;\r\n  background: #151a21;\r\n  box-shadow: 0 8px 32px 0 #000000;\r\n  backdrop-filter: blur(5px);\r\n  -webkit-backdrop-filter: blur(5px);\r\n  border-radius: 10px;\r\n  border: 1px solid rgba(255, 255, 255, 0.18);\r\n  margin-top: 100px;\r\n}\r\n.login-main-container .login-form-container #login-failed {\r\n  background-color: lightpink;\r\n  color: firebrick;\r\n  font-weight: bold;\r\n  padding: 0.5rem;\r\n  font-size: 25px;\r\n  margin-bottom: 0.75rem;\r\n  border-radius: 5px;\r\n}\r\n.login-main-container .login-form-container .offscreen {\r\n  position: absolute;\r\n  left: -9999px;\r\n}\r\n.login-main-container .login-form-container p {\r\n  color: #ff8e3c;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n  font-size: 40px;\r\n  padding-bottom: 40px;\r\n}\r\n.login-main-container .login-form-container #login-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n.login-main-container .login-form-container #login-form button {\r\n  background-color: #ff8e3c;\r\n  color: #0d0d0d;\r\n  font-size: 20px;\r\n  border-radius: 6px;\r\n  width: 90px;\r\n  height: 35px;\r\n  margin: 10px 0px 20px 0px;\r\n}\r\n.login-main-container .login-form-container #login-form a {\r\n  font-family: Arial, Helvetica, sans-serif;\r\n  margin-top: 10px;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n.login-main-container .login-form-container #login-form input {\r\n  margin: 20px;\r\n  font-size: 20px;\r\n  text-align: center;\r\n  border-radius: 7px;\r\n}\r\n.login-create-new-user-container {\r\n  background-color: white;\r\n  display: flex;\r\n  position: relative;\r\n  flex-direction: column;\r\n  justify-content: flex-start;\r\n  align-items: center;\r\n  height: 100vh;\r\n  margin-top: 100px;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  border: 2px solid #151a21;\r\n  border-radius: 7px;\r\n  background-color: #151a21;\r\n  box-shadow: 0 8px 32px 0 #000000;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form p {\r\n  color: #ff8e3c;\r\n  font-size: 40px;\r\n  margin: 30px 0 0 0;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container {\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container a {\r\n  color: #ff8e3c;\r\n  margin-bottom: 20px;\r\n  cursor: pointer;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  padding: 20px;\r\n  background-color: #151a21;\r\n  color: white;\r\n  width: 300px;\r\n  margin: 20px 50px 0 50px;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form #togglePassword {\r\n  float: right;\r\n  margin-top: -36px;\r\n  margin-right: -120px;\r\n  margin-bottom: 15px;\r\n  cursor: pointer;\r\n  color: #151a21;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form input {\r\n  margin: 0 0 15px 0;\r\n  outline: none;\r\n  height: 30px;\r\n  width: 100%;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form button {\r\n  background-color: #ff8e3c;\r\n  color: #0d0d0d;\r\n  border-radius: 5px;\r\n  margin: 20px 0 0 0;\r\n  width: 80px;\r\n  height: 30px;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form label {\r\n  font-size: 18px;\r\n}\r\n#navbar {\r\n  display: flex;\r\n  justify-content: space-around;\r\n  align-items: center;\r\n  background-color: #151a21;\r\n  height: 80px;\r\n}\r\n#navbar #navbar-logo {\r\n  display: flex;\r\n  flex: 1;\r\n  margin: 0 0 0 10px;\r\n}\r\n#navbar #navbar-logo img {\r\n  width: 100px;\r\n}\r\n#navbar #navbar-logo img:hover {\r\n  transform: rotate(360deg);\r\n}\r\n#navbar #navbar-logo a {\r\n  text-decoration: none;\r\n}\r\n#navbar #settings-icon {\r\n  width: 40px;\r\n  margin-right: 20px;\r\n}\r\n#navbar .login-logout-container {\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  flex: 1;\r\n}\r\n#navbar .login-logout-container img {\r\n  transition: transform 0.7s ease-in-out;\r\n  cursor: pointer;\r\n}\r\n#navbar .login-logout-container img:hover {\r\n  transform: rotate(360deg);\r\n}\r\n#navbar #logout {\r\n  display: inline-block;\r\n  position: relative;\r\n  margin: 0 20px 0 0;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  color: white;\r\n  padding: 10px;\r\n}\r\n#navbar a::before,\r\n#navbar a::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: #ff8e3c;\r\n  transform: scaleX(0);\r\n  transition: transform 0.25s;\r\n}\r\n#navbar a::before {\r\n  top: -3px;\r\n  transform-origin: left;\r\n}\r\n#navbar a::after {\r\n  bottom: -3px;\r\n  transform-origin: right;\r\n}\r\n#navbar a:hover::before,\r\n#navbar a:hover::after {\r\n  transform: scaleX(1);\r\n}\r\n#navbar .navbar-links {\r\n  display: flex;\r\n  justify-content: space-evenly;\r\n  align-items: center;\r\n  flex: 2;\r\n}\r\n#navbar .navbar-links a {\r\n  display: inline-block;\r\n  position: relative;\r\n  text-decoration: none;\r\n  text-align: center;\r\n  border-radius: 7px;\r\n  color: white;\r\n  padding: 5px;\r\n}\r\n#navbar .navbar-links a:hover {\r\n  color: #ff8e3c;\r\n}\r\n* {\r\n  font-family: 'Readex Pro', sans-serif;\r\n}\r\n#events-main-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  background-color: white;\r\n  margin: 0;\r\n  height: 140vh;\r\n  padding-top: 20px;\r\n}\r\n#events-sort-filter {\r\n  display: flex;\r\n  width: 75%;\r\n  justify-content: space-around;\r\n  font-size: 1.5rem;\r\n  padding: 8px;\r\n  align-items: center;\r\n  color: #ff8e3c;\r\n}\r\nselect {\r\n  font-size: 1rem;\r\n  padding: 8px;\r\n  color: #2a2a2a;\r\n}\r\n#events-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 10px;\r\n  width: 100%;\r\n  margin-top: 10px;\r\n}\r\n.events-listing {\r\n  display: flex;\r\n  position: relative;\r\n  gap: 10%;\r\n  width: 70%;\r\n  padding: 12px;\r\n  border-bottom: black 1px solid;\r\n  height: 10vh;\r\n  align-items: center;\r\n  font-size: 1.25rem;\r\n}\r\n.events-listing p {\r\n  font-weight: bold;\r\n}\r\n.events-listing img {\r\n  height: 50px;\r\n  width: 100px;\r\n}\r\n.events-listing a {\r\n  margin: 0;\r\n  position: absolute;\r\n  right: 0;\r\n  background-color: #ff8e3c;\r\n  height: 75%;\r\n  width: 10%;\r\n  border: 1px white solid;\r\n}\r\n.event-button {\r\n  height: 100%;\r\n  width: 100%;\r\n  border: 1px white solid;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n  transition: 0.25s ease;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: absolute;\r\n  right: 0;\r\n}\r\n.event-button:hover {\r\n  background-color: #f47012;\r\n  cursor: pointer;\r\n}\r\n.events-pagination {\r\n  display: flex;\r\n  justify-content: space-around;\r\n  width: 20%;\r\n  margin-top: 20px;\r\n}\r\n.events-pag-number {\r\n  width: 20px;\r\n  height: 20px;\r\n  color: #2a2a2a;\r\n  text-align: center;\r\n  border: solid 1px black;\r\n  border-radius: 50%;\r\n  padding: 3px;\r\n  cursor: pointer;\r\n}\r\n.events-active {\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n}\r\n.pagination {\r\n  display: flex;\r\n  gap: 10px;\r\n  margin-top: 5vh;\r\n}\r\n.pagination li {\r\n  list-style-type: none;\r\n  width: 30px;\r\n  height: 30px;\r\n  border: solid 1px black;\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.pagination li a {\r\n  text-decoration: none;\r\n  color: #2a2a2a;\r\n}\r\n.event-date {\r\n  width: 15%;\r\n}\r\n#events-next-prev {\r\n  display: flex;\r\n  gap: 5vw;\r\n  align-items: center;\r\n  width: 30vw;\r\n  justify-content: center;\r\n  margin-top: 5vh;\r\n}\r\n.event-next-button {\r\n  height: 5vh;\r\n  width: 5vw;\r\n  border: 1px white solid;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n  transition: 0.25s ease;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.event-next-button:hover {\r\n  background-color: #f47012;\r\n  cursor: pointer;\r\n}\r\n.navbar-searchbar-container {\r\n  display: flex;\r\n  background-color: #151a21;\r\n  padding: 10px 25% 15px 25%;\r\n}\r\n.navbar-searchbar-container input {\r\n  width: 100%;\r\n  height: 40px;\r\n  text-indent: 5px;\r\n  border: none;\r\n  padding: 5px 0 5px 0;\r\n}\r\n.navbar-searchbar-container input:focus {\r\n  /* removes the input focus blue box */\r\n  outline: none;\r\n}\r\n.navbar-searchbar-container button {\r\n  border: 0;\r\n  border-radius: 0 10px 10px 0;\r\n  cursor: pointer;\r\n  background-color: #ff8e3c;\r\n  color: #0d0d0d;\r\n  width: 90px;\r\n  font-size: 15px;\r\n}\r\n.navbar-searchbar-container button:hover {\r\n  background-color: #d98600;\r\n}\r\n.navbar-searchbar-container .searchbar-icon {\r\n  background: white url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat center;\r\n  width: 30px;\r\n  border-radius: 10px 0 0 10px;\r\n}\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-family: \"Readex Pro\", sans-serif;\r\n  font-weight: 300;\r\n  font-size: 14px;\r\n}\r\n.profile-header {\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n}\r\n.profile-header h1 {\r\n  font-size: 40px;\r\n  font-weight: 500;\r\n}\r\n.profile-main-container {\r\n  padding: 20px;\r\n  display: flex;\r\n}\r\n.profile-menu-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.profile-account-information-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  border: 1px solid #dedede;\r\n  width: 230px;\r\n  overflow: hidden;\r\n  border-radius: 5px;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n}\r\n.profile-account-information-container h3 {\r\n  font-size: 18px;\r\n  font-weight: 400;\r\n}\r\n.profile-account-information-container a {\r\n  text-decoration: none;\r\n  color: #2b889d;\r\n}\r\n.profile-account-information-container .profile-name-container {\r\n  font-size: 24px;\r\n  font-weight: 400;\r\n  text-align: center;\r\n}\r\n.profile-account-information-container .profile-picture-container {\r\n  display: inline-block;\r\n  width: 150px;\r\n  height: 150px;\r\n  border-radius: 50%;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  margin: 5px;\r\n}\r\n.profile-account-information-container .profile-picture-container img {\r\n  width: 100%;\r\n}\r\n.profile-account-information-container .profile-email-container {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n  border-top: 1px solid #dedede;\r\n  border-bottom: 1px solid #dedede;\r\n  margin-top: 5px;\r\n  margin-bottom: 5px;\r\n}\r\n.profile-account-information-container .profile-email-container * {\r\n  margin: 3px;\r\n}\r\n.profile-account-information-container .profile-address-container {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n}\r\n.profile-account-information-container .profile-address-container * {\r\n  margin: 3px;\r\n}\r\n.profile-settings-container {\r\n  margin-top: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 230px;\r\n  overflow: hidden;\r\n  border-radius: 5px;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  border: 1px solid #dedede;\r\n  justify-content: space-evenly;\r\n  color: #2b889d;\r\n}\r\n.profile-settings-container div {\r\n  border-top: 1px solid #dedede;\r\n  border-bottom: 1px solid #dedede;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n}\r\n.profile-settings-container div:hover {\r\n  cursor: pointer;\r\n  background-color: #e9e9e9;\r\n}\r\n.profile-settings-container #profile-setting-1 {\r\n  border-top: none;\r\n}\r\n.profile-settings-container #profile-setting-2 {\r\n  border: none;\r\n}\r\n.profile-settings-container #profile-setting-3 {\r\n  border-bottom: none;\r\n}\r\n.profile-cart-events-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  border: 10px;\r\n  margin-left: 80px;\r\n  margin-top: 30px;\r\n}\r\n.profile-cart-events-container div {\r\n  margin-top: 2px;\r\n  margin-bottom: 2px;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item {\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  width: 300px;\r\n  height: 150px;\r\n  border: 1px solid #dedede;\r\n  margin: 10px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  cursor: pointer;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item img {\r\n  width: 100%;\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title {\r\n  display: flex;\r\n  align-items: center;\r\n  position: absolute;\r\n  background-color: rgba(35, 35, 35, 0.3);\r\n  color: rgba(255, 255, 255, 0.8);\r\n  z-index: 1;\r\n  align-self: flex-end;\r\n  justify-content: flex-start;\r\n  width: 300px;\r\n  min-height: 30px;\r\n  margin: 0px;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title div {\r\n  margin-left: 3px;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover img {\r\n  transform: scale(1.05);\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover .profile-event-item-title {\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n  background-color: rgba(35, 35, 35, 0.6);\r\n  color: white;\r\n}\r\n.profile-cart-events-container .profile-cart-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n.profile-cart-events-container .profile-cart-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  border: 1px solid #dedede;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item {\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  height: 350px;\r\n  width: 200px;\r\n  border: 1px solid #dedede;\r\n  margin: 10px;\r\n  padding: 5px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  width: 200px;\r\n  height: 200px;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container img {\r\n  height: 100%;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-delete {\r\n  color: #2b889d;\r\n  cursor: pointer;\r\n  max-width: content;\r\n  font-size: 14px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item span {\r\n  font-weight: 400;\r\n  font-size: 14px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-title {\r\n  font-weight: 400;\r\n  border-bottom: 0px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-address {\r\n  font-style: italic;\r\n  font-size: 13px;\r\n  border-top: 0px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-price {\r\n  font-weight: 500;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-seat {\r\n  font-size: 14px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-available {\r\n  font-size: 14px;\r\n}\r\n.profile-cart-checkout {\r\n  color: #2b889d;\r\n  font-size: 20px;\r\n  font-weight: 400;\r\n  padding-top: 6px;\r\n  margin-left: 15px;\r\n  cursor: pointer;\r\n}\r\n@media (max-width: 600px) {\r\n  * {\r\n    font-size: 14px;\r\n  }\r\n  .profile-cart-item-container {\r\n    flex-direction: column;\r\n  }\r\n  .profile-header {\r\n    text-align: center;\r\n    font-size: 15px;\r\n  }\r\n  .profile-main-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n  .profile-account-information-container {\r\n    width: 350px;\r\n  }\r\n  .profile-settings-container {\r\n    width: 350px;\r\n  }\r\n  .profile-cart-events-container {\r\n    align-items: center;\r\n    justify-content: center;\r\n    margin: 0;\r\n    padding: 0;\r\n  }\r\n  .profile-cart-header {\r\n    text-align: center;\r\n    margin-top: 5px;\r\n  }\r\n  .profile-cart-item-container {\r\n    display: flex;\r\n    align-items: center;\r\n    margin: 0;\r\n    width: 375px;\r\n  }\r\n  .profile-recommended-events-container {\r\n    align-items: center;\r\n  }\r\n  .profile-recommended-events-container h2 {\r\n    text-align: center;\r\n  }\r\n  .profile-recommended-events-block {\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n}\r\n#footer-root-container {\r\n  height: auto;\r\n  width: 100%;\r\n  margin: 0;\r\n  background-color: #151a21;\r\n  padding-left: 10%;\r\n  padding-right: 10%;\r\n  padding-top: 1%;\r\n  padding-bottom: 1%;\r\n}\r\n.footer-group-1 {\r\n  display: flex;\r\n  height: auto;\r\n  width: auto;\r\n  justify-content: space-between;\r\n  color: white;\r\n  padding: 2.5%;\r\n  padding-bottom: 4%;\r\n  border-bottom: #ff8e3c solid 1px;\r\n}\r\n.footer-column {\r\n  height: 100%;\r\n  width: 15%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 20px;\r\n}\r\n.footer-column h2 {\r\n  font-size: 1.25rem;\r\n}\r\n.footer-column a {\r\n  text-decoration: none;\r\n  transition: 0.25s ease;\r\n  color: white;\r\n}\r\n.footer-column a:hover {\r\n  color: #ff8e3c;\r\n}\r\n.footer-group-2 {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: auto;\r\n  width: 100%;\r\n  margin-top: 2%;\r\n  margin-bottom: 2%;\r\n  padding-left: 2.5%;\r\n  padding-right: 7.5%;\r\n}\r\n.footer-group-2 img {\r\n  height: 10%;\r\n  width: 10%;\r\n}\r\n.footer-group-2 p {\r\n  color: white;\r\n}\r\n.footer-group-2 .footer-copy {\r\n  width: 10%;\r\n}\r\n#single-event-row-1 {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  gap: 20px;\r\n  height: 15vh;\r\n}\r\n#single-event-row-1 .single-event-date {\r\n  width: 10vw;\r\n  height: 10vh;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  background-color: #ff8e3c;\r\n  border-radius: 1rem;\r\n  justify-content: center;\r\n  color: white;\r\n}\r\n#single-event-row-1 .single-event-date h2 {\r\n  font-size: 1.5rem;\r\n  font-weight: bold;\r\n}\r\n#single-event-row-1 .single-event-date p {\r\n  font-size: 1.5rem;\r\n  font-weight: bold;\r\n}\r\n#single-event-row-1 .single-event-title {\r\n  font-size: 2.5rem;\r\n  font-weight: bold;\r\n  color: #151a21;\r\n}\r\n#single-event-row-2 {\r\n  display: flex;\r\n  height: 50vh;\r\n  justify-content: center;\r\n  gap: 5vw;\r\n  margin-bottom: 10vh;\r\n  margin-top: 1vh;\r\n  background-color: #151a21;\r\n  border-top: 2px solid #ff8e3c;\r\n  border-bottom: 2px solid #ff8e3c;\r\n}\r\n#single-event-row-2 .single-event-image {\r\n  display: flex;\r\n  align-items: center;\r\n  width: 500px;\r\n}\r\n#single-event-row-2 .single-event-image img {\r\n  display: block;\r\n  width: 100%;\r\n  height: auto;\r\n  border: 2px solid white;\r\n}\r\n#single-event-row-2 .single-event-details {\r\n  width: 50vw;\r\n  display: flex;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  gap: 2vh;\r\n  padding: 12px 12px 12px 25px;\r\n  color: white;\r\n}\r\n#single-event-row-2 .single-event-details h1 {\r\n  font-size: 2rem;\r\n  font-weight: 1000;\r\n}\r\n#single-event-row-2 .single-event-details h1 .single-event-bold {\r\n  font-size: 1.5rem;\r\n}\r\n#single-event-row-2 .single-event-details p {\r\n  color: white;\r\n  font-size: 1.5rem;\r\n}\r\n#single-event-row-2 .single-event-details span {\r\n  font-size: 15px;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity {\r\n  display: flex;\r\n  width: 13vw;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity .single-event-input {\r\n  height: 5vh;\r\n  padding: 10px 20px 10px 20px;\r\n  text-align: center;\r\n  border: 1px black solid;\r\n  border-radius: 0.5rem;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  background-color: white;\r\n  color: black;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors {\r\n  display: flex;\r\n  margin-left: 10px;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  width: 5vh;\r\n  height: 5vh;\r\n  border: none;\r\n  margin: 5px;\r\n  border-radius: 10px;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button:active {\r\n  background-color: #e96f19;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-seat-box {\r\n  display: flex;\r\n  gap: 20px;\r\n  align-items: center;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-seat-box p {\r\n  font-size: 1rem;\r\n  color: #151a21;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-seat-box select {\r\n  cursor: pointer;\r\n  border-radius: 10px;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-button {\r\n  border: none;\r\n  border-radius: 10px;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n  width: 15vh;\r\n  height: 5vh;\r\n  cursor: pointer;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-button:active {\r\n  background-color: #e96f19;\r\n}\r\n#upcoming-events {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 5%;\r\n}\r\n#upcoming-events-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 5%;\r\n}\r\n.single-upcoming-event {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n.event-picture {\r\n  height: auto;\r\n  width: auto;\r\n  max-height: 350px;\r\n  max-width: 350px;\r\n}\r\n.main-page-event-button {\r\n  display: flex;\r\n  justify-self: center;\r\n}\r\n.upcoming-events-title {\r\n  display: flex;\r\n  text-align: center;\r\n  font-size: 40px;\r\n}\r\n.featured-event-date {\r\n  text-align: center;\r\n  font-size: 15px;\r\n}\r\n.featured-event-name {\r\n  text-align: center;\r\n  font-size: 30px;\r\n}\r\n.main-page-event-button {\r\n  width: fit-content;\r\n  text-align: center;\r\n  max-height: 30px;\r\n  font-size: 20px;\r\n}\r\n#events-near-me-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 5%;\r\n}\r\n.single-event-near-me {\r\n  display: flex;\r\n  flex-shrink: 10%;\r\n  flex-direction: column;\r\n}\r\n.event-picture {\r\n  height: auto;\r\n  width: auto;\r\n  max-height: 350px;\r\n  max-width: 350px;\r\n}\r\n.main-page-event-button {\r\n  display: flex;\r\n  justify-self: center;\r\n}\r\n.events-near-me-title {\r\n  font-size: 40px;\r\n}\r\n.single-event-date {\r\n  display: flex;\r\n  align-self: center;\r\n  font-size: 15px;\r\n}\r\n.single-event-title {\r\n  display: flex;\r\n  align-self: center;\r\n  font-size: 30px;\r\n}\r\n#main-page-featured-container {\r\n  display: flex;\r\n  justify-content: space-evenly;\r\n  flex-direction: column;\r\n}\r\n#featured-events-container {\r\n  display: flex;\r\n  margin: 5%;\r\n  justify-content: space-around;\r\n}\r\n.event-button {\r\n  display: flex;\r\n  text-decoration-color: red;\r\n}\r\n* {\r\n  margin: 0;\r\n}\r\n.carousel {\r\n  width: 100%;\r\n  overflow: hidden;\r\n  height: 300px;\r\n  background-color: #151a21;\r\n  position: relative;\r\n  transition: 0.25s;\r\n}\r\n.arrows {\r\n  z-index: 99;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n.arrow {\r\n  height: 80px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-width: 100px;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n}\r\n.carouselWrapper {\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n  transition: 0.25s;\r\n}\r\n.carousel-item {\r\n  height: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: #151a21;\r\n  color: white;\r\n}\r\n.checkout-header h1 {\r\n  font-size: 35px;\r\n  font-weight: 500;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-main-container {\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n.checkout-menu-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.checkout-account-information-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  border: 1px solid #dedede;\r\n  width: 230px;\r\n  overflow: hidden;\r\n  border-radius: 5px;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n}\r\n.checkout-account-information-container h3 {\r\n  font-size: 18px;\r\n  font-weight: 400;\r\n}\r\n.checkout-account-information-container a {\r\n  text-decoration: none;\r\n  color: #2b889d;\r\n}\r\n.checkout-account-information-container .checkout-name-container {\r\n  font-size: 24px;\r\n  font-weight: 400;\r\n  text-align: center;\r\n}\r\n.checkout-account-information-container .checkout-picture-container {\r\n  display: inline-block;\r\n  width: 150px;\r\n  height: 150px;\r\n  border-radius: 50%;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  margin: 5px;\r\n}\r\n.checkout-account-information-container .checkout-picture-container img {\r\n  width: 100%;\r\n}\r\n.checkout-account-information-container .checkout-email-container {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n  border-top: 1px solid #dedede;\r\n  border-bottom: 1px solid #dedede;\r\n  margin-top: 5px;\r\n  margin-bottom: 5px;\r\n}\r\n.checkout-account-information-container .checkout-email-container * {\r\n  margin: 3px;\r\n}\r\n.checkout-account-information-container .checkout-address-container {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n}\r\n.checkout-account-information-container .checkout-address-container * {\r\n  margin: 3px;\r\n}\r\n.checkout-settings-container {\r\n  margin-top: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 230px;\r\n  overflow: hidden;\r\n  border-radius: 5px;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  border: 1px solid #dedede;\r\n  justify-content: space-evenly;\r\n  color: #2b889d;\r\n}\r\n.checkout-settings-container div {\r\n  border-top: 1px solid #dedede;\r\n  border-bottom: 1px solid #dedede;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n}\r\n.checkout-settings-container div:hover {\r\n  cursor: pointer;\r\n  background-color: #e9e9e9;\r\n}\r\n.checkout-settings-container #checkout-setting-1 {\r\n  border-top: none;\r\n}\r\n.checkout-settings-container #checkout-setting-2 {\r\n  border: none;\r\n}\r\n.checkout-settings-container #checkout-setting-3 {\r\n  border-bottom: none;\r\n}\r\n.checkout-cart-events-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  border: 10px;\r\n  margin-left: 80px;\r\n  margin-top: 30px;\r\n  height: 100vh;\r\n}\r\n.checkout-cart-events-container div {\r\n  margin-top: 2px;\r\n  margin-bottom: 2px;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item {\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  width: 300px;\r\n  height: 150px;\r\n  border: 1px solid #dedede;\r\n  margin: 10px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  cursor: pointer;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item img {\r\n  width: 100%;\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item .checkout-event-item-title {\r\n  display: flex;\r\n  align-items: center;\r\n  position: absolute;\r\n  background-color: rgba(35, 35, 35, 0.3);\r\n  color: rgba(255, 255, 255, 0.8);\r\n  z-index: 1;\r\n  align-self: flex-end;\r\n  justify-content: flex-start;\r\n  width: 300px;\r\n  min-height: 30px;\r\n  margin: 0px;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item .checkout-event-item-title div {\r\n  margin-left: 3px;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item:hover img {\r\n  transform: scale(1.05);\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item:hover .checkout-event-item-title {\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n  background-color: rgba(35, 35, 35, 0.6);\r\n  color: white;\r\n}\r\n.checkout-cart-events-container .checkout-cart-header {\r\n  display: flex;\r\n  text-align: center;\r\n  margin-top: 5px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-cart-events-container .checkout-purchase-header {\r\n  display: flex;\r\n  text-align: center;\r\n  margin-top: 5px;\r\n}\r\n.checkout-cart-events-container .checkout-purchase-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container {\r\n  display: inline-flex;\r\n  flex-wrap: wrap;\r\n  border: 1px solid #dedede;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item {\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  display: flex;\r\n  flex-direction: column;\r\n  height: 350px;\r\n  width: 200px;\r\n  border: 1px solid #dedede;\r\n  margin: 10px;\r\n  padding: 5px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-picture-container {\r\n  align-self: center;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  width: 185px;\r\n  height: 185px;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-picture-container img {\r\n  height: 100%;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-delete {\r\n  color: #2b889d;\r\n  cursor: pointer;\r\n  max-width: content;\r\n  font-size: 14px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item span {\r\n  font-weight: 400;\r\n  font-size: 14px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-title {\r\n  font-weight: 400;\r\n  border-bottom: 0px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-address {\r\n  font-style: italic;\r\n  font-size: 13px;\r\n  border-top: -5px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-price {\r\n  font-weight: 500;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-seat {\r\n  font-size: 14px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-available {\r\n  font-size: 14px;\r\n}\r\n.checkout-cart-checkout {\r\n  color: #2b889d;\r\n  font-size: 20px;\r\n  font-weight: 400;\r\n  padding-top: 6px;\r\n  margin-left: 15px;\r\n  cursor: pointer;\r\n}\r\n.checkout-upcoming-tickets-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.checkout-upcoming-tickets-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n.checkout-upcoming-tickets-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-upcoming-tickets-item-container {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n.checkout-upcoming-tickets-item {\r\n  margin: 10px;\r\n  width: 450px;\r\n  height: 300px;\r\n  overflow: hidden;\r\n}\r\n.checkout-upcoming-tickets-item-image-container {\r\n  width: 500px;\r\n  height: 281px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  border: 1px solid #dedede;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  cursor: pointer;\r\n}\r\n.checkout-upcoming-tickets-item-image-container img {\r\n  width: 100%;\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n}\r\n.checkout-upcoming-tickets-item-title {\r\n  display: inline-block;\r\n  padding: 5px;\r\n  position: absolute;\r\n  background-color: rgba(35, 35, 35, 0.3);\r\n  color: rgba(255, 255, 255, 0.8);\r\n  max-width: 300px;\r\n  font-size: 20px;\r\n  margin-left: 1px;\r\n  z-index: 1;\r\n}\r\n.checkout-upcoming-tickets-item:hover img {\r\n  transform: scale(1.05);\r\n}\r\n.checkout-upcoming-tickets-item:hover .checkout-upcoming-tickets-item-title {\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n  background-color: rgba(35, 35, 35, 0.6);\r\n  color: white;\r\n}\r\n.checkout-purchase-history-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.checkout-button-container {\r\n  display: flex;\r\n}\r\n.checkout-pagination-button {\r\n  padding: 5px;\r\n  margin: 8px;\r\n  color: #2b889d;\r\n  background-color: white;\r\n  border: 1px solid #dedede;\r\n  border-radius: 5px;\r\n  cursor: pointer;\r\n}\r\n@media (max-width: 800px) {\r\n  .checkout-cart-events-container {\r\n    margin-left: 30px;\r\n  }\r\n}\r\n@media (max-width: 750px) {\r\n  * {\r\n    font-size: 14px;\r\n  }\r\n  .checkout-cart-item-container {\r\n    flex-direction: column;\r\n    display: inline-flex;\r\n  }\r\n  .checkout-header {\r\n    font-size: 15px;\r\n    position: absolute;\r\n    right: 150px;\r\n    width: 100%;\r\n    align-self: flex-start;\r\n  }\r\n  .checkout-main-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n  .checkout-account-information-container {\r\n    width: 350px;\r\n  }\r\n  .checkout-settings-container {\r\n    width: 350px;\r\n  }\r\n  .checkout-cart-events-container {\r\n    align-items: center;\r\n    justify-content: center;\r\n    margin: 0;\r\n    padding: 0;\r\n  }\r\n  .checkout-cart-item-container {\r\n    display: flex;\r\n    align-items: center;\r\n    margin: 0;\r\n    width: 375px;\r\n  }\r\n  .checkout-recommended-events-container {\r\n    align-items: center;\r\n  }\r\n  .checkout-recommended-events-container h2 {\r\n    text-align: center;\r\n  }\r\n  .checkout-recommended-events-block {\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n  .checkout-header {\r\n    position: static;\r\n  }\r\n  .checkout-header h1 {\r\n    text-align: center;\r\n    font-size: 30px;\r\n    font-weight: 500;\r\n    margin-bottom: 10px;\r\n  }\r\n  .checkout-cart-header {\r\n    flex-direction: column;\r\n    align-items: center;\r\n    margin-bottom: 5px;\r\n  }\r\n  .checkout-upcoming-tickets-container {\r\n    align-items: center;\r\n  }\r\n  .checkout-upcoming-tickets-item-container {\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n  .checkout-upcoming-tickets-item {\r\n    width: 360px;\r\n    height: 203px;\r\n  }\r\n  .checkout-upcoming-tickets-item-image-container {\r\n    width: 360px;\r\n    height: 203px;\r\n  }\r\n}\r\n.checkout-button {\r\n  width: 10vw;\r\n  height: 10vh;\r\n  background-color: #ff8e3c;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-size: 1.5rem;\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n.checkout-button:hover {\r\n  background-color: #ee731a;\r\n}\r\n.checkout-cart-container a {\r\n  font-size: 1.5rem;\r\n  color: #ff8e3c;\r\n}\r\n.navbar-dropdown-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  border: 2px solid white;\r\n  position: relative;\r\n  top: 60px;\r\n  right: 20px;\r\n  z-index: 20;\r\n  position: absolute;\r\n  background-color: white;\r\n  border: 2px solid black;\r\n  border-radius: 10px;\r\n  box-shadow: 0 8px 32px 0 #000000;\r\n  opacity: 1;\r\n  animation: fade 0.3s linear;\r\n}\r\n.navbar-dropdown-container a {\r\n  text-decoration: none;\r\n  color: black;\r\n  padding: 5px 10px 5px 10px;\r\n}\r\n.navbar-dropdown-container li {\r\n  text-decoration: none;\r\n  list-style: none;\r\n  margin: 10px 0 0 0;\r\n  padding: 5px 10px 5px 10px;\r\n  width: 100%;\r\n}\r\n.navbar-dropdown-container li button {\r\n  background-color: #ff8e3c;\r\n  color: #0d0d0d;\r\n  margin-bottom: 10px;\r\n  border-radius: 10px;\r\n  width: 100px;\r\n}\r\n.navbar-dropdown-container li:nth-child(1):hover {\r\n  background-color: #d6d6d6;\r\n}\r\n.navbar-dropdown-container li:nth-child(2):hover {\r\n  background-color: #d6d6d6;\r\n}\r\n@keyframes fade {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n* {\r\n  margin: 0;\r\n  font-family: \"Readex Pro\", sans-serif;\r\n  box-sizing: border-box;\r\n}\r\nhtml,\r\nbody {\r\n  background-color: white;\r\n}\r\n", "",{"version":3,"sources":["webpack://./public/index.css"],"names":[],"mappings":"AAAA;EACE,uBAAuB;EACvB,kBAAkB;EAClB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,uBAAuB;EACvB,oBAAoB;AACtB;AACA;EACE,aAAa;EACb,cAAc;EACd,sBAAsB;EACtB,mBAAmB;EACnB,mBAAmB;EACnB,uBAAuB;EACvB,4BAA4B;EAC5B,mBAAmB;EACnB,gCAAgC;EAChC,0BAA0B;EAC1B,kCAAkC;EAClC,mBAAmB;EACnB,2CAA2C;EAC3C,iBAAiB;AACnB;AACA;EACE,2BAA2B;EAC3B,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;EACf,eAAe;EACf,sBAAsB;EACtB,kBAAkB;AACpB;AACA;EACE,kBAAkB;EAClB,aAAa;AACf;AACA;EACE,cAAc;EACd,yCAAyC;EACzC,eAAe;EACf,oBAAoB;AACtB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;AACrB;AACA;EACE,yBAAyB;EACzB,cAAc;EACd,eAAe;EACf,kBAAkB;EAClB,WAAW;EACX,YAAY;EACZ,yBAAyB;AAC3B;AACA;EACE,yCAAyC;EACzC,gBAAgB;EAChB,qBAAqB;EACrB,eAAe;AACjB;AACA;EACE,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,kBAAkB;AACpB;AACA;EACE,uBAAuB;EACvB,aAAa;EACb,kBAAkB;EAClB,sBAAsB;EACtB,2BAA2B;EAC3B,mBAAmB;EACnB,aAAa;EACb,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;EACzB,kBAAkB;EAClB,yBAAyB;EACzB,gCAAgC;AAClC;AACA;EACE,cAAc;EACd,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,aAAa;EACb,uBAAuB;AACzB;AACA;EACE,cAAc;EACd,mBAAmB;EACnB,eAAe;AACjB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,YAAY;EACZ,wBAAwB;AAC1B;AACA;EACE,YAAY;EACZ,iBAAiB;EACjB,oBAAoB;EACpB,mBAAmB;EACnB,eAAe;EACf,cAAc;AAChB;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,YAAY;EACZ,WAAW;AACb;AACA;EACE,yBAAyB;EACzB,cAAc;EACd,kBAAkB;EAClB,kBAAkB;EAClB,WAAW;EACX,YAAY;AACd;AACA;EACE,eAAe;AACjB;AACA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;AACd;AACA;EACE,aAAa;EACb,OAAO;EACP,kBAAkB;AACpB;AACA;EACE,YAAY;AACd;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,qBAAqB;AACvB;AACA;EACE,WAAW;EACX,kBAAkB;AACpB;AACA;EACE,aAAa;EACb,yBAAyB;EACzB,OAAO;AACT;AACA;EACE,sCAAsC;EACtC,eAAe;AACjB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,qBAAqB;EACrB,kBAAkB;EAClB,kBAAkB;EAClB,kBAAkB;EAClB,qBAAqB;EACrB,YAAY;EACZ,aAAa;AACf;AACA;;EAEE,WAAW;EACX,kBAAkB;EAClB,OAAO;EACP,WAAW;EACX,WAAW;EACX,yBAAyB;EACzB,oBAAoB;EACpB,2BAA2B;AAC7B;AACA;EACE,SAAS;EACT,sBAAsB;AACxB;AACA;EACE,YAAY;EACZ,uBAAuB;AACzB;AACA;;EAEE,oBAAoB;AACtB;AACA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB;EACnB,OAAO;AACT;AACA;EACE,qBAAqB;EACrB,kBAAkB;EAClB,qBAAqB;EACrB,kBAAkB;EAClB,kBAAkB;EAClB,YAAY;EACZ,YAAY;AACd;AACA;EACE,cAAc;AAChB;AACA;EACE,qCAAqC;AACvC;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;EACvB,SAAS;EACT,aAAa;EACb,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,UAAU;EACV,6BAA6B;EAC7B,iBAAiB;EACjB,YAAY;EACZ,mBAAmB;EACnB,cAAc;AAChB;AACA;EACE,eAAe;EACf,YAAY;EACZ,cAAc;AAChB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,SAAS;EACT,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,QAAQ;EACR,UAAU;EACV,aAAa;EACb,8BAA8B;EAC9B,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;AACpB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,YAAY;EACZ,YAAY;AACd;AACA;EACE,SAAS;EACT,kBAAkB;EAClB,QAAQ;EACR,yBAAyB;EACzB,WAAW;EACX,UAAU;EACV,uBAAuB;AACzB;AACA;EACE,YAAY;EACZ,WAAW;EACX,uBAAuB;EACvB,yBAAyB;EACzB,YAAY;EACZ,sBAAsB;EACtB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;EAClB,QAAQ;AACV;AACA;EACE,yBAAyB;EACzB,eAAe;AACjB;AACA;EACE,aAAa;EACb,6BAA6B;EAC7B,UAAU;EACV,gBAAgB;AAClB;AACA;EACE,WAAW;EACX,YAAY;EACZ,cAAc;EACd,kBAAkB;EAClB,uBAAuB;EACvB,kBAAkB;EAClB,YAAY;EACZ,eAAe;AACjB;AACA;EACE,yBAAyB;EACzB,YAAY;AACd;AACA;EACE,aAAa;EACb,SAAS;EACT,eAAe;AACjB;AACA;EACE,qBAAqB;EACrB,WAAW;EACX,YAAY;EACZ,uBAAuB;EACvB,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;AACA;EACE,qBAAqB;EACrB,cAAc;AAChB;AACA;EACE,UAAU;AACZ;AACA;EACE,aAAa;EACb,QAAQ;EACR,mBAAmB;EACnB,WAAW;EACX,uBAAuB;EACvB,eAAe;AACjB;AACA;EACE,WAAW;EACX,UAAU;EACV,uBAAuB;EACvB,yBAAyB;EACzB,YAAY;EACZ,sBAAsB;EACtB,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;AACA;EACE,yBAAyB;EACzB,eAAe;AACjB;AACA;EACE,aAAa;EACb,yBAAyB;EACzB,0BAA0B;AAC5B;AACA;EACE,WAAW;EACX,YAAY;EACZ,gBAAgB;EAChB,YAAY;EACZ,oBAAoB;AACtB;AACA;EACE,qCAAqC;EACrC,aAAa;AACf;AACA;EACE,SAAS;EACT,4BAA4B;EAC5B,eAAe;EACf,yBAAyB;EACzB,cAAc;EACd,WAAW;EACX,eAAe;AACjB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,0EAAsY;EACtY,WAAW;EACX,4BAA4B;AAC9B;AACA;EACE,SAAS;EACT,UAAU;EACV,qCAAqC;EACrC,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,YAAY;EACZ,kBAAkB;AACpB;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,aAAa;EACb,aAAa;AACf;AACA;EACE,aAAa;EACb,sBAAsB;AACxB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,yCAAyC;AAC3C;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,qBAAqB;EACrB,cAAc;AAChB;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,kBAAkB;AACpB;AACA;EACE,qBAAqB;EACrB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,WAAW;AACb;AACA;EACE,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,WAAW;EACX,6BAA6B;EAC7B,gCAAgC;EAChC,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,WAAW;AACb;AACA;EACE,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,WAAW;AACb;AACA;EACE,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,yCAAyC;EACzC,yBAAyB;EACzB,6BAA6B;EAC7B,cAAc;AAChB;AACA;EACE,6BAA6B;EAC7B,gCAAgC;EAChC,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,aAAa;AACf;AACA;EACE,eAAe;EACf,yBAAyB;AAC3B;AACA;EACE,gBAAgB;AAClB;AACA;EACE,YAAY;AACd;AACA;EACE,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;AAClB;AACA;EACE,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,eAAe;AACjB;AACA;EACE,yCAAyC;EACzC,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;EACtB,eAAe;AACjB;AACA;EACE,WAAW;EACX,yBAAyB;EACzB,uCAAuC;AACzC;AACA;EACE,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uCAAuC;EACvC,+BAA+B;EAC/B,UAAU;EACV,oBAAoB;EACpB,2BAA2B;EAC3B,YAAY;EACZ,gBAAgB;EAChB,WAAW;AACb;AACA;EACE,gBAAgB;AAClB;AACA;EACE,sBAAsB;AACxB;AACA;EACE,yBAAyB;EACzB,uCAAuC;EACvC,uCAAuC;EACvC,YAAY;AACd;AACA;EACE,aAAa;EACb,8BAA8B;AAChC;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,eAAe;EACf,yBAAyB;AAC3B;AACA;EACE,yCAAyC;EACzC,aAAa;EACb,YAAY;EACZ,yBAAyB;EACzB,YAAY;EACZ,YAAY;AACd;AACA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;AACxB;AACA;EACE,YAAY;AACd;AACA;EACE,cAAc;EACd,eAAe;EACf,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,gBAAgB;EAChB,kBAAkB;AACpB;AACA;EACE,kBAAkB;EAClB,eAAe;EACf,eAAe;AACjB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,eAAe;AACjB;AACA;EACE,eAAe;AACjB;AACA;EACE,cAAc;EACd,eAAe;EACf,gBAAgB;EAChB,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;AACjB;AACA;EACE;IACE,eAAe;EACjB;EACA;IACE,sBAAsB;EACxB;EACA;IACE,kBAAkB;IAClB,eAAe;EACjB;EACA;IACE,aAAa;IACb,sBAAsB;IACtB,mBAAmB;EACrB;EACA;IACE,YAAY;EACd;EACA;IACE,YAAY;EACd;EACA;IACE,mBAAmB;IACnB,uBAAuB;IACvB,SAAS;IACT,UAAU;EACZ;EACA;IACE,kBAAkB;IAClB,eAAe;EACjB;EACA;IACE,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,YAAY;EACd;EACA;IACE,mBAAmB;EACrB;EACA;IACE,kBAAkB;EACpB;EACA;IACE,sBAAsB;IACtB,mBAAmB;EACrB;AACF;AACA;EACE,YAAY;EACZ,WAAW;EACX,SAAS;EACT,yBAAyB;EACzB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,aAAa;EACb,YAAY;EACZ,WAAW;EACX,8BAA8B;EAC9B,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,gCAAgC;AAClC;AACA;EACE,YAAY;EACZ,UAAU;EACV,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;AACA;EACE,kBAAkB;AACpB;AACA;EACE,qBAAqB;EACrB,sBAAsB;EACtB,YAAY;AACd;AACA;EACE,cAAc;AAChB;AACA;EACE,aAAa;EACb,8BAA8B;EAC9B,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,cAAc;EACd,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;AACrB;AACA;EACE,WAAW;EACX,UAAU;AACZ;AACA;EACE,YAAY;AACd;AACA;EACE,UAAU;AACZ;AACA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,SAAS;EACT,YAAY;AACd;AACA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;EACzB,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;AACd;AACA;EACE,iBAAiB;EACjB,iBAAiB;AACnB;AACA;EACE,iBAAiB;EACjB,iBAAiB;AACnB;AACA;EACE,iBAAiB;EACjB,iBAAiB;EACjB,cAAc;AAChB;AACA;EACE,aAAa;EACb,YAAY;EACZ,uBAAuB;EACvB,QAAQ;EACR,mBAAmB;EACnB,eAAe;EACf,yBAAyB;EACzB,6BAA6B;EAC7B,gCAAgC;AAClC;AACA;EACE,aAAa;EACb,mBAAmB;EACnB,YAAY;AACd;AACA;EACE,cAAc;EACd,WAAW;EACX,YAAY;EACZ,uBAAuB;AACzB;AACA;EACE,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,sBAAsB;EACtB,QAAQ;EACR,4BAA4B;EAC5B,YAAY;AACd;AACA;EACE,eAAe;EACf,iBAAiB;AACnB;AACA;EACE,iBAAiB;AACnB;AACA;EACE,YAAY;EACZ,iBAAiB;AACnB;AACA;EACE,eAAe;AACjB;AACA;EACE,aAAa;EACb,WAAW;EACX,8BAA8B;EAC9B,mBAAmB;AACrB;AACA;EACE,WAAW;EACX,4BAA4B;EAC5B,kBAAkB;EAClB,uBAAuB;EACvB,qBAAqB;EACrB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,uBAAuB;EACvB,YAAY;AACd;AACA;EACE,aAAa;EACb,iBAAiB;AACnB;AACA;EACE,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,UAAU;EACV,WAAW;EACX,YAAY;EACZ,WAAW;EACX,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;EACZ,eAAe;AACjB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,aAAa;EACb,SAAS;EACT,mBAAmB;AACrB;AACA;EACE,eAAe;EACf,cAAc;AAChB;AACA;EACE,eAAe;EACf,mBAAmB;AACrB;AACA;EACE,YAAY;EACZ,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;EACZ,WAAW;EACX,WAAW;EACX,eAAe;AACjB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,8BAA8B;EAC9B,mBAAmB;AACrB;AACA;EACE,YAAY;EACZ,WAAW;EACX,iBAAiB;EACjB,gBAAgB;AAClB;AACA;EACE,aAAa;EACb,oBAAoB;AACtB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,kBAAkB;EAClB,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,aAAa;EACb,gBAAgB;EAChB,sBAAsB;AACxB;AACA;EACE,YAAY;EACZ,WAAW;EACX,iBAAiB;EACjB,gBAAgB;AAClB;AACA;EACE,aAAa;EACb,oBAAoB;AACtB;AACA;EACE,eAAe;AACjB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,aAAa;EACb,6BAA6B;EAC7B,sBAAsB;AACxB;AACA;EACE,aAAa;EACb,UAAU;EACV,6BAA6B;AAC/B;AACA;EACE,aAAa;EACb,0BAA0B;AAC5B;AACA;EACE,SAAS;AACX;AACA;EACE,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,yBAAyB;EACzB,kBAAkB;EAClB,iBAAiB;AACnB;AACA;EACE,WAAW;EACX,kBAAkB;EAClB,YAAY;EACZ,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,mBAAmB;AACrB;AACA;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,yBAAyB;EACzB,YAAY;AACd;AACA;EACE,YAAY;EACZ,kBAAkB;EAClB,MAAM;EACN,QAAQ;EACR,aAAa;EACb,mBAAmB;EACnB,6BAA6B;EAC7B,iBAAiB;AACnB;AACA;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;AACd;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,aAAa;EACb,uBAAuB;AACzB;AACA;EACE,aAAa;EACb,sBAAsB;AACxB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;EACzB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,yCAAyC;AAC3C;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,qBAAqB;EACrB,cAAc;AAChB;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,kBAAkB;AACpB;AACA;EACE,qBAAqB;EACrB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,WAAW;AACb;AACA;EACE,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,WAAW;EACX,6BAA6B;EAC7B,gCAAgC;EAChC,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,WAAW;AACb;AACA;EACE,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,WAAW;AACb;AACA;EACE,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,yCAAyC;EACzC,yBAAyB;EACzB,6BAA6B;EAC7B,cAAc;AAChB;AACA;EACE,6BAA6B;EAC7B,gCAAgC;EAChC,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,aAAa;AACf;AACA;EACE,eAAe;EACf,yBAAyB;AAC3B;AACA;EACE,gBAAgB;AAClB;AACA;EACE,YAAY;AACd;AACA;EACE,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,iBAAiB;EACjB,gBAAgB;EAChB,aAAa;AACf;AACA;EACE,eAAe;EACf,kBAAkB;AACpB;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,eAAe;AACjB;AACA;EACE,yCAAyC;EACzC,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;EACtB,eAAe;AACjB;AACA;EACE,WAAW;EACX,yBAAyB;EACzB,uCAAuC;AACzC;AACA;EACE,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uCAAuC;EACvC,+BAA+B;EAC/B,UAAU;EACV,oBAAoB;EACpB,2BAA2B;EAC3B,YAAY;EACZ,gBAAgB;EAChB,WAAW;AACb;AACA;EACE,gBAAgB;AAClB;AACA;EACE,sBAAsB;AACxB;AACA;EACE,yBAAyB;EACzB,uCAAuC;EACvC,uCAAuC;EACvC,YAAY;AACd;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,oBAAoB;EACpB,eAAe;EACf,yBAAyB;AAC3B;AACA;EACE,yCAAyC;EACzC,aAAa;EACb,sBAAsB;EACtB,aAAa;EACb,YAAY;EACZ,yBAAyB;EACzB,YAAY;EACZ,YAAY;AACd;AACA;EACE,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;AACxB;AACA;EACE,YAAY;AACd;AACA;EACE,cAAc;EACd,eAAe;EACf,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,gBAAgB;EAChB,kBAAkB;AACpB;AACA;EACE,kBAAkB;EAClB,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,gBAAgB;AAClB;AACA;EACE,eAAe;AACjB;AACA;EACE,eAAe;AACjB;AACA;EACE,cAAc;EACd,eAAe;EACf,gBAAgB;EAChB,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;AACjB;AACA;EACE,aAAa;EACb,sBAAsB;AACxB;AACA;EACE,aAAa;EACb,8BAA8B;AAChC;AACA;EACE,eAAe;EACf,gBAAgB;EAChB,mBAAmB;AACrB;AACA;EACE,aAAa;EACb,eAAe;AACjB;AACA;EACE,YAAY;EACZ,YAAY;EACZ,aAAa;EACb,gBAAgB;AAClB;AACA;EACE,YAAY;EACZ,aAAa;EACb,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,gBAAgB;EAChB,4BAA4B;EAC5B,2BAA2B;EAC3B,sBAAsB;EACtB,yBAAyB;EACzB,yCAAyC;EACzC,eAAe;AACjB;AACA;EACE,WAAW;EACX,yBAAyB;EACzB,uCAAuC;AACzC;AACA;EACE,qBAAqB;EACrB,YAAY;EACZ,kBAAkB;EAClB,uCAAuC;EACvC,+BAA+B;EAC/B,gBAAgB;EAChB,eAAe;EACf,gBAAgB;EAChB,UAAU;AACZ;AACA;EACE,sBAAsB;AACxB;AACA;EACE,yBAAyB;EACzB,uCAAuC;EACvC,uCAAuC;EACvC,YAAY;AACd;AACA;EACE,aAAa;EACb,sBAAsB;AACxB;AACA;EACE,aAAa;AACf;AACA;EACE,YAAY;EACZ,WAAW;EACX,cAAc;EACd,uBAAuB;EACvB,yBAAyB;EACzB,kBAAkB;EAClB,eAAe;AACjB;AACA;EACE;IACE,iBAAiB;EACnB;AACF;AACA;EACE;IACE,eAAe;EACjB;EACA;IACE,sBAAsB;IACtB,oBAAoB;EACtB;EACA;IACE,eAAe;IACf,kBAAkB;IAClB,YAAY;IACZ,WAAW;IACX,sBAAsB;EACxB;EACA;IACE,aAAa;IACb,sBAAsB;IACtB,mBAAmB;EACrB;EACA;IACE,YAAY;EACd;EACA;IACE,YAAY;EACd;EACA;IACE,mBAAmB;IACnB,uBAAuB;IACvB,SAAS;IACT,UAAU;EACZ;EACA;IACE,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,YAAY;EACd;EACA;IACE,mBAAmB;EACrB;EACA;IACE,kBAAkB;EACpB;EACA;IACE,sBAAsB;IACtB,mBAAmB;EACrB;EACA;IACE,gBAAgB;EAClB;EACA;IACE,kBAAkB;IAClB,eAAe;IACf,gBAAgB;IAChB,mBAAmB;EACrB;EACA;IACE,sBAAsB;IACtB,mBAAmB;IACnB,kBAAkB;EACpB;EACA;IACE,mBAAmB;EACrB;EACA;IACE,sBAAsB;IACtB,mBAAmB;EACrB;EACA;IACE,YAAY;IACZ,aAAa;EACf;EACA;IACE,YAAY;IACZ,aAAa;EACf;AACF;AACA;EACE,WAAW;EACX,YAAY;EACZ,yBAAyB;EACzB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,iBAAiB;EACjB,YAAY;EACZ,eAAe;AACjB;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,iBAAiB;EACjB,cAAc;AAChB;AACA;EACE,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,mBAAmB;EACnB,uBAAuB;EACvB,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,WAAW;EACX,kBAAkB;EAClB,uBAAuB;EACvB,uBAAuB;EACvB,mBAAmB;EACnB,gCAAgC;EAChC,UAAU;EACV,2BAA2B;AAC7B;AACA;EACE,qBAAqB;EACrB,YAAY;EACZ,0BAA0B;AAC5B;AACA;EACE,qBAAqB;EACrB,gBAAgB;EAChB,kBAAkB;EAClB,0BAA0B;EAC1B,WAAW;AACb;AACA;EACE,yBAAyB;EACzB,cAAc;EACd,mBAAmB;EACnB,mBAAmB;EACnB,YAAY;AACd;AACA;EACE,yBAAyB;AAC3B;AACA;EACE,yBAAyB;AAC3B;AACA;EACE;IACE,UAAU;EACZ;EACA;IACE,UAAU;EACZ;AACF;AACA;EACE,SAAS;EACT,qCAAqC;EACrC,sBAAsB;AACxB;AACA;;EAEE,uBAAuB;AACzB","sourcesContent":[".login-main-container {\r\n  background-color: white;\r\n  position: relative;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  z-index: 10;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: flex-start;\r\n  pointer-events: none;\r\n}\r\n.login-main-container .login-form-container {\r\n  display: flex;\r\n  color: #ff8e3c;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  pointer-events: all;\r\n  border: 4px solid white;\r\n  padding: 40px 50px 50px 50px;\r\n  background: #151a21;\r\n  box-shadow: 0 8px 32px 0 #000000;\r\n  backdrop-filter: blur(5px);\r\n  -webkit-backdrop-filter: blur(5px);\r\n  border-radius: 10px;\r\n  border: 1px solid rgba(255, 255, 255, 0.18);\r\n  margin-top: 100px;\r\n}\r\n.login-main-container .login-form-container #login-failed {\r\n  background-color: lightpink;\r\n  color: firebrick;\r\n  font-weight: bold;\r\n  padding: 0.5rem;\r\n  font-size: 25px;\r\n  margin-bottom: 0.75rem;\r\n  border-radius: 5px;\r\n}\r\n.login-main-container .login-form-container .offscreen {\r\n  position: absolute;\r\n  left: -9999px;\r\n}\r\n.login-main-container .login-form-container p {\r\n  color: #ff8e3c;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n  font-size: 40px;\r\n  padding-bottom: 40px;\r\n}\r\n.login-main-container .login-form-container #login-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n.login-main-container .login-form-container #login-form button {\r\n  background-color: #ff8e3c;\r\n  color: #0d0d0d;\r\n  font-size: 20px;\r\n  border-radius: 6px;\r\n  width: 90px;\r\n  height: 35px;\r\n  margin: 10px 0px 20px 0px;\r\n}\r\n.login-main-container .login-form-container #login-form a {\r\n  font-family: Arial, Helvetica, sans-serif;\r\n  margin-top: 10px;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n.login-main-container .login-form-container #login-form input {\r\n  margin: 20px;\r\n  font-size: 20px;\r\n  text-align: center;\r\n  border-radius: 7px;\r\n}\r\n.login-create-new-user-container {\r\n  background-color: white;\r\n  display: flex;\r\n  position: relative;\r\n  flex-direction: column;\r\n  justify-content: flex-start;\r\n  align-items: center;\r\n  height: 100vh;\r\n  margin-top: 100px;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  border: 2px solid #151a21;\r\n  border-radius: 7px;\r\n  background-color: #151a21;\r\n  box-shadow: 0 8px 32px 0 #000000;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form p {\r\n  color: #ff8e3c;\r\n  font-size: 40px;\r\n  margin: 30px 0 0 0;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container {\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form .login-have-an-account-container a {\r\n  color: #ff8e3c;\r\n  margin-bottom: 20px;\r\n  cursor: pointer;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  padding: 20px;\r\n  background-color: #151a21;\r\n  color: white;\r\n  width: 300px;\r\n  margin: 20px 50px 0 50px;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form #togglePassword {\r\n  float: right;\r\n  margin-top: -36px;\r\n  margin-right: -120px;\r\n  margin-bottom: 15px;\r\n  cursor: pointer;\r\n  color: #151a21;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form input {\r\n  margin: 0 0 15px 0;\r\n  outline: none;\r\n  height: 30px;\r\n  width: 100%;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form button {\r\n  background-color: #ff8e3c;\r\n  color: #0d0d0d;\r\n  border-radius: 5px;\r\n  margin: 20px 0 0 0;\r\n  width: 80px;\r\n  height: 30px;\r\n}\r\n.login-create-new-user-container .login-create-new-user-form #new-user-form label {\r\n  font-size: 18px;\r\n}\r\n#navbar {\r\n  display: flex;\r\n  justify-content: space-around;\r\n  align-items: center;\r\n  background-color: #151a21;\r\n  height: 80px;\r\n}\r\n#navbar #navbar-logo {\r\n  display: flex;\r\n  flex: 1;\r\n  margin: 0 0 0 10px;\r\n}\r\n#navbar #navbar-logo img {\r\n  width: 100px;\r\n}\r\n#navbar #navbar-logo img:hover {\r\n  transform: rotate(360deg);\r\n}\r\n#navbar #navbar-logo a {\r\n  text-decoration: none;\r\n}\r\n#navbar #settings-icon {\r\n  width: 40px;\r\n  margin-right: 20px;\r\n}\r\n#navbar .login-logout-container {\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  flex: 1;\r\n}\r\n#navbar .login-logout-container img {\r\n  transition: transform 0.7s ease-in-out;\r\n  cursor: pointer;\r\n}\r\n#navbar .login-logout-container img:hover {\r\n  transform: rotate(360deg);\r\n}\r\n#navbar #logout {\r\n  display: inline-block;\r\n  position: relative;\r\n  margin: 0 20px 0 0;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  color: white;\r\n  padding: 10px;\r\n}\r\n#navbar a::before,\r\n#navbar a::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 2px;\r\n  background-color: #ff8e3c;\r\n  transform: scaleX(0);\r\n  transition: transform 0.25s;\r\n}\r\n#navbar a::before {\r\n  top: -3px;\r\n  transform-origin: left;\r\n}\r\n#navbar a::after {\r\n  bottom: -3px;\r\n  transform-origin: right;\r\n}\r\n#navbar a:hover::before,\r\n#navbar a:hover::after {\r\n  transform: scaleX(1);\r\n}\r\n#navbar .navbar-links {\r\n  display: flex;\r\n  justify-content: space-evenly;\r\n  align-items: center;\r\n  flex: 2;\r\n}\r\n#navbar .navbar-links a {\r\n  display: inline-block;\r\n  position: relative;\r\n  text-decoration: none;\r\n  text-align: center;\r\n  border-radius: 7px;\r\n  color: white;\r\n  padding: 5px;\r\n}\r\n#navbar .navbar-links a:hover {\r\n  color: #ff8e3c;\r\n}\r\n* {\r\n  font-family: 'Readex Pro', sans-serif;\r\n}\r\n#events-main-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  background-color: white;\r\n  margin: 0;\r\n  height: 140vh;\r\n  padding-top: 20px;\r\n}\r\n#events-sort-filter {\r\n  display: flex;\r\n  width: 75%;\r\n  justify-content: space-around;\r\n  font-size: 1.5rem;\r\n  padding: 8px;\r\n  align-items: center;\r\n  color: #ff8e3c;\r\n}\r\nselect {\r\n  font-size: 1rem;\r\n  padding: 8px;\r\n  color: #2a2a2a;\r\n}\r\n#events-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 10px;\r\n  width: 100%;\r\n  margin-top: 10px;\r\n}\r\n.events-listing {\r\n  display: flex;\r\n  position: relative;\r\n  gap: 10%;\r\n  width: 70%;\r\n  padding: 12px;\r\n  border-bottom: black 1px solid;\r\n  height: 10vh;\r\n  align-items: center;\r\n  font-size: 1.25rem;\r\n}\r\n.events-listing p {\r\n  font-weight: bold;\r\n}\r\n.events-listing img {\r\n  height: 50px;\r\n  width: 100px;\r\n}\r\n.events-listing a {\r\n  margin: 0;\r\n  position: absolute;\r\n  right: 0;\r\n  background-color: #ff8e3c;\r\n  height: 75%;\r\n  width: 10%;\r\n  border: 1px white solid;\r\n}\r\n.event-button {\r\n  height: 100%;\r\n  width: 100%;\r\n  border: 1px white solid;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n  transition: 0.25s ease;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: absolute;\r\n  right: 0;\r\n}\r\n.event-button:hover {\r\n  background-color: #f47012;\r\n  cursor: pointer;\r\n}\r\n.events-pagination {\r\n  display: flex;\r\n  justify-content: space-around;\r\n  width: 20%;\r\n  margin-top: 20px;\r\n}\r\n.events-pag-number {\r\n  width: 20px;\r\n  height: 20px;\r\n  color: #2a2a2a;\r\n  text-align: center;\r\n  border: solid 1px black;\r\n  border-radius: 50%;\r\n  padding: 3px;\r\n  cursor: pointer;\r\n}\r\n.events-active {\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n}\r\n.pagination {\r\n  display: flex;\r\n  gap: 10px;\r\n  margin-top: 5vh;\r\n}\r\n.pagination li {\r\n  list-style-type: none;\r\n  width: 30px;\r\n  height: 30px;\r\n  border: solid 1px black;\r\n  border-radius: 50%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.pagination li a {\r\n  text-decoration: none;\r\n  color: #2a2a2a;\r\n}\r\n.event-date {\r\n  width: 15%;\r\n}\r\n#events-next-prev {\r\n  display: flex;\r\n  gap: 5vw;\r\n  align-items: center;\r\n  width: 30vw;\r\n  justify-content: center;\r\n  margin-top: 5vh;\r\n}\r\n.event-next-button {\r\n  height: 5vh;\r\n  width: 5vw;\r\n  border: 1px white solid;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n  transition: 0.25s ease;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n.event-next-button:hover {\r\n  background-color: #f47012;\r\n  cursor: pointer;\r\n}\r\n.navbar-searchbar-container {\r\n  display: flex;\r\n  background-color: #151a21;\r\n  padding: 10px 25% 15px 25%;\r\n}\r\n.navbar-searchbar-container input {\r\n  width: 100%;\r\n  height: 40px;\r\n  text-indent: 5px;\r\n  border: none;\r\n  padding: 5px 0 5px 0;\r\n}\r\n.navbar-searchbar-container input:focus {\r\n  /* removes the input focus blue box */\r\n  outline: none;\r\n}\r\n.navbar-searchbar-container button {\r\n  border: 0;\r\n  border-radius: 0 10px 10px 0;\r\n  cursor: pointer;\r\n  background-color: #ff8e3c;\r\n  color: #0d0d0d;\r\n  width: 90px;\r\n  font-size: 15px;\r\n}\r\n.navbar-searchbar-container button:hover {\r\n  background-color: #d98600;\r\n}\r\n.navbar-searchbar-container .searchbar-icon {\r\n  background: white url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E\") no-repeat center;\r\n  width: 30px;\r\n  border-radius: 10px 0 0 10px;\r\n}\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  font-family: \"Readex Pro\", sans-serif;\r\n  font-weight: 300;\r\n  font-size: 14px;\r\n}\r\n.profile-header {\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n}\r\n.profile-header h1 {\r\n  font-size: 40px;\r\n  font-weight: 500;\r\n}\r\n.profile-main-container {\r\n  padding: 20px;\r\n  display: flex;\r\n}\r\n.profile-menu-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.profile-account-information-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  border: 1px solid #dedede;\r\n  width: 230px;\r\n  overflow: hidden;\r\n  border-radius: 5px;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n}\r\n.profile-account-information-container h3 {\r\n  font-size: 18px;\r\n  font-weight: 400;\r\n}\r\n.profile-account-information-container a {\r\n  text-decoration: none;\r\n  color: #2b889d;\r\n}\r\n.profile-account-information-container .profile-name-container {\r\n  font-size: 24px;\r\n  font-weight: 400;\r\n  text-align: center;\r\n}\r\n.profile-account-information-container .profile-picture-container {\r\n  display: inline-block;\r\n  width: 150px;\r\n  height: 150px;\r\n  border-radius: 50%;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  margin: 5px;\r\n}\r\n.profile-account-information-container .profile-picture-container img {\r\n  width: 100%;\r\n}\r\n.profile-account-information-container .profile-email-container {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n  border-top: 1px solid #dedede;\r\n  border-bottom: 1px solid #dedede;\r\n  margin-top: 5px;\r\n  margin-bottom: 5px;\r\n}\r\n.profile-account-information-container .profile-email-container * {\r\n  margin: 3px;\r\n}\r\n.profile-account-information-container .profile-address-container {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n}\r\n.profile-account-information-container .profile-address-container * {\r\n  margin: 3px;\r\n}\r\n.profile-settings-container {\r\n  margin-top: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 230px;\r\n  overflow: hidden;\r\n  border-radius: 5px;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  border: 1px solid #dedede;\r\n  justify-content: space-evenly;\r\n  color: #2b889d;\r\n}\r\n.profile-settings-container div {\r\n  border-top: 1px solid #dedede;\r\n  border-bottom: 1px solid #dedede;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n}\r\n.profile-settings-container div:hover {\r\n  cursor: pointer;\r\n  background-color: #e9e9e9;\r\n}\r\n.profile-settings-container #profile-setting-1 {\r\n  border-top: none;\r\n}\r\n.profile-settings-container #profile-setting-2 {\r\n  border: none;\r\n}\r\n.profile-settings-container #profile-setting-3 {\r\n  border-bottom: none;\r\n}\r\n.profile-cart-events-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  border: 10px;\r\n  margin-left: 80px;\r\n  margin-top: 30px;\r\n}\r\n.profile-cart-events-container div {\r\n  margin-top: 2px;\r\n  margin-bottom: 2px;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item {\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  width: 300px;\r\n  height: 150px;\r\n  border: 1px solid #dedede;\r\n  margin: 10px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  cursor: pointer;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item img {\r\n  width: 100%;\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title {\r\n  display: flex;\r\n  align-items: center;\r\n  position: absolute;\r\n  background-color: rgba(35, 35, 35, 0.3);\r\n  color: rgba(255, 255, 255, 0.8);\r\n  z-index: 1;\r\n  align-self: flex-end;\r\n  justify-content: flex-start;\r\n  width: 300px;\r\n  min-height: 30px;\r\n  margin: 0px;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title div {\r\n  margin-left: 3px;\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover img {\r\n  transform: scale(1.05);\r\n}\r\n.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover .profile-event-item-title {\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n  background-color: rgba(35, 35, 35, 0.6);\r\n  color: white;\r\n}\r\n.profile-cart-events-container .profile-cart-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n.profile-cart-events-container .profile-cart-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  border: 1px solid #dedede;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item {\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  height: 350px;\r\n  width: 200px;\r\n  border: 1px solid #dedede;\r\n  margin: 10px;\r\n  padding: 5px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  width: 200px;\r\n  height: 200px;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container img {\r\n  height: 100%;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-delete {\r\n  color: #2b889d;\r\n  cursor: pointer;\r\n  max-width: content;\r\n  font-size: 14px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item span {\r\n  font-weight: 400;\r\n  font-size: 14px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-title {\r\n  font-weight: 400;\r\n  border-bottom: 0px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-address {\r\n  font-style: italic;\r\n  font-size: 13px;\r\n  border-top: 0px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-price {\r\n  font-weight: 500;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-seat {\r\n  font-size: 14px;\r\n}\r\n.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-available {\r\n  font-size: 14px;\r\n}\r\n.profile-cart-checkout {\r\n  color: #2b889d;\r\n  font-size: 20px;\r\n  font-weight: 400;\r\n  padding-top: 6px;\r\n  margin-left: 15px;\r\n  cursor: pointer;\r\n}\r\n@media (max-width: 600px) {\r\n  * {\r\n    font-size: 14px;\r\n  }\r\n  .profile-cart-item-container {\r\n    flex-direction: column;\r\n  }\r\n  .profile-header {\r\n    text-align: center;\r\n    font-size: 15px;\r\n  }\r\n  .profile-main-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n  .profile-account-information-container {\r\n    width: 350px;\r\n  }\r\n  .profile-settings-container {\r\n    width: 350px;\r\n  }\r\n  .profile-cart-events-container {\r\n    align-items: center;\r\n    justify-content: center;\r\n    margin: 0;\r\n    padding: 0;\r\n  }\r\n  .profile-cart-header {\r\n    text-align: center;\r\n    margin-top: 5px;\r\n  }\r\n  .profile-cart-item-container {\r\n    display: flex;\r\n    align-items: center;\r\n    margin: 0;\r\n    width: 375px;\r\n  }\r\n  .profile-recommended-events-container {\r\n    align-items: center;\r\n  }\r\n  .profile-recommended-events-container h2 {\r\n    text-align: center;\r\n  }\r\n  .profile-recommended-events-block {\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n}\r\n#footer-root-container {\r\n  height: auto;\r\n  width: 100%;\r\n  margin: 0;\r\n  background-color: #151a21;\r\n  padding-left: 10%;\r\n  padding-right: 10%;\r\n  padding-top: 1%;\r\n  padding-bottom: 1%;\r\n}\r\n.footer-group-1 {\r\n  display: flex;\r\n  height: auto;\r\n  width: auto;\r\n  justify-content: space-between;\r\n  color: white;\r\n  padding: 2.5%;\r\n  padding-bottom: 4%;\r\n  border-bottom: #ff8e3c solid 1px;\r\n}\r\n.footer-column {\r\n  height: 100%;\r\n  width: 15%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 20px;\r\n}\r\n.footer-column h2 {\r\n  font-size: 1.25rem;\r\n}\r\n.footer-column a {\r\n  text-decoration: none;\r\n  transition: 0.25s ease;\r\n  color: white;\r\n}\r\n.footer-column a:hover {\r\n  color: #ff8e3c;\r\n}\r\n.footer-group-2 {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: auto;\r\n  width: 100%;\r\n  margin-top: 2%;\r\n  margin-bottom: 2%;\r\n  padding-left: 2.5%;\r\n  padding-right: 7.5%;\r\n}\r\n.footer-group-2 img {\r\n  height: 10%;\r\n  width: 10%;\r\n}\r\n.footer-group-2 p {\r\n  color: white;\r\n}\r\n.footer-group-2 .footer-copy {\r\n  width: 10%;\r\n}\r\n#single-event-row-1 {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  gap: 20px;\r\n  height: 15vh;\r\n}\r\n#single-event-row-1 .single-event-date {\r\n  width: 10vw;\r\n  height: 10vh;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  background-color: #ff8e3c;\r\n  border-radius: 1rem;\r\n  justify-content: center;\r\n  color: white;\r\n}\r\n#single-event-row-1 .single-event-date h2 {\r\n  font-size: 1.5rem;\r\n  font-weight: bold;\r\n}\r\n#single-event-row-1 .single-event-date p {\r\n  font-size: 1.5rem;\r\n  font-weight: bold;\r\n}\r\n#single-event-row-1 .single-event-title {\r\n  font-size: 2.5rem;\r\n  font-weight: bold;\r\n  color: #151a21;\r\n}\r\n#single-event-row-2 {\r\n  display: flex;\r\n  height: 50vh;\r\n  justify-content: center;\r\n  gap: 5vw;\r\n  margin-bottom: 10vh;\r\n  margin-top: 1vh;\r\n  background-color: #151a21;\r\n  border-top: 2px solid #ff8e3c;\r\n  border-bottom: 2px solid #ff8e3c;\r\n}\r\n#single-event-row-2 .single-event-image {\r\n  display: flex;\r\n  align-items: center;\r\n  width: 500px;\r\n}\r\n#single-event-row-2 .single-event-image img {\r\n  display: block;\r\n  width: 100%;\r\n  height: auto;\r\n  border: 2px solid white;\r\n}\r\n#single-event-row-2 .single-event-details {\r\n  width: 50vw;\r\n  display: flex;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  gap: 2vh;\r\n  padding: 12px 12px 12px 25px;\r\n  color: white;\r\n}\r\n#single-event-row-2 .single-event-details h1 {\r\n  font-size: 2rem;\r\n  font-weight: 1000;\r\n}\r\n#single-event-row-2 .single-event-details h1 .single-event-bold {\r\n  font-size: 1.5rem;\r\n}\r\n#single-event-row-2 .single-event-details p {\r\n  color: white;\r\n  font-size: 1.5rem;\r\n}\r\n#single-event-row-2 .single-event-details span {\r\n  font-size: 15px;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity {\r\n  display: flex;\r\n  width: 13vw;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity .single-event-input {\r\n  height: 5vh;\r\n  padding: 10px 20px 10px 20px;\r\n  text-align: center;\r\n  border: 1px black solid;\r\n  border-radius: 0.5rem;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  background-color: white;\r\n  color: black;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors {\r\n  display: flex;\r\n  margin-left: 10px;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  width: 5vh;\r\n  height: 5vh;\r\n  border: none;\r\n  margin: 5px;\r\n  border-radius: 10px;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n#single-event-row-2 .single-event-details .product-quantity .quantity-selectors-container .quantity-selectors button:active {\r\n  background-color: #e96f19;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-seat-box {\r\n  display: flex;\r\n  gap: 20px;\r\n  align-items: center;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-seat-box p {\r\n  font-size: 1rem;\r\n  color: #151a21;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-seat-box select {\r\n  cursor: pointer;\r\n  border-radius: 10px;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-button {\r\n  border: none;\r\n  border-radius: 10px;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n  width: 15vh;\r\n  height: 5vh;\r\n  cursor: pointer;\r\n}\r\n#single-event-row-2 .single-event-details #single-event-button:active {\r\n  background-color: #e96f19;\r\n}\r\n#upcoming-events {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 5%;\r\n}\r\n#upcoming-events-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 5%;\r\n}\r\n.single-upcoming-event {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n.event-picture {\r\n  height: auto;\r\n  width: auto;\r\n  max-height: 350px;\r\n  max-width: 350px;\r\n}\r\n.main-page-event-button {\r\n  display: flex;\r\n  justify-self: center;\r\n}\r\n.upcoming-events-title {\r\n  display: flex;\r\n  text-align: center;\r\n  font-size: 40px;\r\n}\r\n.featured-event-date {\r\n  text-align: center;\r\n  font-size: 15px;\r\n}\r\n.featured-event-name {\r\n  text-align: center;\r\n  font-size: 30px;\r\n}\r\n.main-page-event-button {\r\n  width: fit-content;\r\n  text-align: center;\r\n  max-height: 30px;\r\n  font-size: 20px;\r\n}\r\n#events-near-me-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 5%;\r\n}\r\n.single-event-near-me {\r\n  display: flex;\r\n  flex-shrink: 10%;\r\n  flex-direction: column;\r\n}\r\n.event-picture {\r\n  height: auto;\r\n  width: auto;\r\n  max-height: 350px;\r\n  max-width: 350px;\r\n}\r\n.main-page-event-button {\r\n  display: flex;\r\n  justify-self: center;\r\n}\r\n.events-near-me-title {\r\n  font-size: 40px;\r\n}\r\n.single-event-date {\r\n  display: flex;\r\n  align-self: center;\r\n  font-size: 15px;\r\n}\r\n.single-event-title {\r\n  display: flex;\r\n  align-self: center;\r\n  font-size: 30px;\r\n}\r\n#main-page-featured-container {\r\n  display: flex;\r\n  justify-content: space-evenly;\r\n  flex-direction: column;\r\n}\r\n#featured-events-container {\r\n  display: flex;\r\n  margin: 5%;\r\n  justify-content: space-around;\r\n}\r\n.event-button {\r\n  display: flex;\r\n  text-decoration-color: red;\r\n}\r\n* {\r\n  margin: 0;\r\n}\r\n.carousel {\r\n  width: 100%;\r\n  overflow: hidden;\r\n  height: 300px;\r\n  background-color: #151a21;\r\n  position: relative;\r\n  transition: 0.25s;\r\n}\r\n.arrows {\r\n  z-index: 99;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n.arrow {\r\n  height: 80px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  min-width: 100px;\r\n  background-color: #ff8e3c;\r\n  color: white;\r\n}\r\n.carouselWrapper {\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-around;\r\n  transition: 0.25s;\r\n}\r\n.carousel-item {\r\n  height: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background-color: #151a21;\r\n  color: white;\r\n}\r\n.checkout-header h1 {\r\n  font-size: 35px;\r\n  font-weight: 500;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-main-container {\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n.checkout-menu-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.checkout-account-information-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  border: 1px solid #dedede;\r\n  width: 230px;\r\n  overflow: hidden;\r\n  border-radius: 5px;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n}\r\n.checkout-account-information-container h3 {\r\n  font-size: 18px;\r\n  font-weight: 400;\r\n}\r\n.checkout-account-information-container a {\r\n  text-decoration: none;\r\n  color: #2b889d;\r\n}\r\n.checkout-account-information-container .checkout-name-container {\r\n  font-size: 24px;\r\n  font-weight: 400;\r\n  text-align: center;\r\n}\r\n.checkout-account-information-container .checkout-picture-container {\r\n  display: inline-block;\r\n  width: 150px;\r\n  height: 150px;\r\n  border-radius: 50%;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  margin: 5px;\r\n}\r\n.checkout-account-information-container .checkout-picture-container img {\r\n  width: 100%;\r\n}\r\n.checkout-account-information-container .checkout-email-container {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n  border-top: 1px solid #dedede;\r\n  border-bottom: 1px solid #dedede;\r\n  margin-top: 5px;\r\n  margin-bottom: 5px;\r\n}\r\n.checkout-account-information-container .checkout-email-container * {\r\n  margin: 3px;\r\n}\r\n.checkout-account-information-container .checkout-address-container {\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n}\r\n.checkout-account-information-container .checkout-address-container * {\r\n  margin: 3px;\r\n}\r\n.checkout-settings-container {\r\n  margin-top: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 230px;\r\n  overflow: hidden;\r\n  border-radius: 5px;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  border: 1px solid #dedede;\r\n  justify-content: space-evenly;\r\n  color: #2b889d;\r\n}\r\n.checkout-settings-container div {\r\n  border-top: 1px solid #dedede;\r\n  border-bottom: 1px solid #dedede;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  padding: 10px;\r\n}\r\n.checkout-settings-container div:hover {\r\n  cursor: pointer;\r\n  background-color: #e9e9e9;\r\n}\r\n.checkout-settings-container #checkout-setting-1 {\r\n  border-top: none;\r\n}\r\n.checkout-settings-container #checkout-setting-2 {\r\n  border: none;\r\n}\r\n.checkout-settings-container #checkout-setting-3 {\r\n  border-bottom: none;\r\n}\r\n.checkout-cart-events-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  border: 10px;\r\n  margin-left: 80px;\r\n  margin-top: 30px;\r\n  height: 100vh;\r\n}\r\n.checkout-cart-events-container div {\r\n  margin-top: 2px;\r\n  margin-bottom: 2px;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item {\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  width: 300px;\r\n  height: 150px;\r\n  border: 1px solid #dedede;\r\n  margin: 10px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  cursor: pointer;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item img {\r\n  width: 100%;\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item .checkout-event-item-title {\r\n  display: flex;\r\n  align-items: center;\r\n  position: absolute;\r\n  background-color: rgba(35, 35, 35, 0.3);\r\n  color: rgba(255, 255, 255, 0.8);\r\n  z-index: 1;\r\n  align-self: flex-end;\r\n  justify-content: flex-start;\r\n  width: 300px;\r\n  min-height: 30px;\r\n  margin: 0px;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item .checkout-event-item-title div {\r\n  margin-left: 3px;\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item:hover img {\r\n  transform: scale(1.05);\r\n}\r\n.checkout-cart-events-container .checkout-recommended-events-container .checkout-recommended-events-block .checkout-event-item:hover .checkout-event-item-title {\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n  background-color: rgba(35, 35, 35, 0.6);\r\n  color: white;\r\n}\r\n.checkout-cart-events-container .checkout-cart-header {\r\n  display: flex;\r\n  text-align: center;\r\n  margin-top: 5px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-cart-events-container .checkout-purchase-header {\r\n  display: flex;\r\n  text-align: center;\r\n  margin-top: 5px;\r\n}\r\n.checkout-cart-events-container .checkout-purchase-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container {\r\n  display: inline-flex;\r\n  flex-wrap: wrap;\r\n  border: 1px solid #dedede;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item {\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  display: flex;\r\n  flex-direction: column;\r\n  height: 350px;\r\n  width: 200px;\r\n  border: 1px solid #dedede;\r\n  margin: 10px;\r\n  padding: 5px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-picture-container {\r\n  align-self: center;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  width: 185px;\r\n  height: 185px;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-picture-container img {\r\n  height: 100%;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-delete {\r\n  color: #2b889d;\r\n  cursor: pointer;\r\n  max-width: content;\r\n  font-size: 14px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item span {\r\n  font-weight: 400;\r\n  font-size: 14px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-title {\r\n  font-weight: 400;\r\n  border-bottom: 0px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-address {\r\n  font-style: italic;\r\n  font-size: 13px;\r\n  border-top: -5px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-price {\r\n  font-weight: 500;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-seat {\r\n  font-size: 14px;\r\n}\r\n.checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item .checkout-cart-item-available {\r\n  font-size: 14px;\r\n}\r\n.checkout-cart-checkout {\r\n  color: #2b889d;\r\n  font-size: 20px;\r\n  font-weight: 400;\r\n  padding-top: 6px;\r\n  margin-left: 15px;\r\n  cursor: pointer;\r\n}\r\n.checkout-upcoming-tickets-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.checkout-upcoming-tickets-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n.checkout-upcoming-tickets-header h2 {\r\n  font-size: 30px;\r\n  font-weight: 300;\r\n  margin-bottom: 10px;\r\n}\r\n.checkout-upcoming-tickets-item-container {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n}\r\n.checkout-upcoming-tickets-item {\r\n  margin: 10px;\r\n  width: 450px;\r\n  height: 300px;\r\n  overflow: hidden;\r\n}\r\n.checkout-upcoming-tickets-item-image-container {\r\n  width: 500px;\r\n  height: 281px;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  overflow: hidden;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: cover;\r\n  border: 1px solid #dedede;\r\n  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);\r\n  cursor: pointer;\r\n}\r\n.checkout-upcoming-tickets-item-image-container img {\r\n  width: 100%;\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n}\r\n.checkout-upcoming-tickets-item-title {\r\n  display: inline-block;\r\n  padding: 5px;\r\n  position: absolute;\r\n  background-color: rgba(35, 35, 35, 0.3);\r\n  color: rgba(255, 255, 255, 0.8);\r\n  max-width: 300px;\r\n  font-size: 20px;\r\n  margin-left: 1px;\r\n  z-index: 1;\r\n}\r\n.checkout-upcoming-tickets-item:hover img {\r\n  transform: scale(1.05);\r\n}\r\n.checkout-upcoming-tickets-item:hover .checkout-upcoming-tickets-item-title {\r\n  transition-duration: 0.5s;\r\n  transition-timing-function: ease-in-out;\r\n  background-color: rgba(35, 35, 35, 0.6);\r\n  color: white;\r\n}\r\n.checkout-purchase-history-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.checkout-button-container {\r\n  display: flex;\r\n}\r\n.checkout-pagination-button {\r\n  padding: 5px;\r\n  margin: 8px;\r\n  color: #2b889d;\r\n  background-color: white;\r\n  border: 1px solid #dedede;\r\n  border-radius: 5px;\r\n  cursor: pointer;\r\n}\r\n@media (max-width: 800px) {\r\n  .checkout-cart-events-container {\r\n    margin-left: 30px;\r\n  }\r\n}\r\n@media (max-width: 750px) {\r\n  * {\r\n    font-size: 14px;\r\n  }\r\n  .checkout-cart-item-container {\r\n    flex-direction: column;\r\n    display: inline-flex;\r\n  }\r\n  .checkout-header {\r\n    font-size: 15px;\r\n    position: absolute;\r\n    right: 150px;\r\n    width: 100%;\r\n    align-self: flex-start;\r\n  }\r\n  .checkout-main-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n  .checkout-account-information-container {\r\n    width: 350px;\r\n  }\r\n  .checkout-settings-container {\r\n    width: 350px;\r\n  }\r\n  .checkout-cart-events-container {\r\n    align-items: center;\r\n    justify-content: center;\r\n    margin: 0;\r\n    padding: 0;\r\n  }\r\n  .checkout-cart-item-container {\r\n    display: flex;\r\n    align-items: center;\r\n    margin: 0;\r\n    width: 375px;\r\n  }\r\n  .checkout-recommended-events-container {\r\n    align-items: center;\r\n  }\r\n  .checkout-recommended-events-container h2 {\r\n    text-align: center;\r\n  }\r\n  .checkout-recommended-events-block {\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n  .checkout-header {\r\n    position: static;\r\n  }\r\n  .checkout-header h1 {\r\n    text-align: center;\r\n    font-size: 30px;\r\n    font-weight: 500;\r\n    margin-bottom: 10px;\r\n  }\r\n  .checkout-cart-header {\r\n    flex-direction: column;\r\n    align-items: center;\r\n    margin-bottom: 5px;\r\n  }\r\n  .checkout-upcoming-tickets-container {\r\n    align-items: center;\r\n  }\r\n  .checkout-upcoming-tickets-item-container {\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n  .checkout-upcoming-tickets-item {\r\n    width: 360px;\r\n    height: 203px;\r\n  }\r\n  .checkout-upcoming-tickets-item-image-container {\r\n    width: 360px;\r\n    height: 203px;\r\n  }\r\n}\r\n.checkout-button {\r\n  width: 10vw;\r\n  height: 10vh;\r\n  background-color: #ff8e3c;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-size: 1.5rem;\r\n  color: white;\r\n  cursor: pointer;\r\n}\r\n.checkout-button:hover {\r\n  background-color: #ee731a;\r\n}\r\n.checkout-cart-container a {\r\n  font-size: 1.5rem;\r\n  color: #ff8e3c;\r\n}\r\n.navbar-dropdown-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  border: 2px solid white;\r\n  position: relative;\r\n  top: 60px;\r\n  right: 20px;\r\n  z-index: 20;\r\n  position: absolute;\r\n  background-color: white;\r\n  border: 2px solid black;\r\n  border-radius: 10px;\r\n  box-shadow: 0 8px 32px 0 #000000;\r\n  opacity: 1;\r\n  animation: fade 0.3s linear;\r\n}\r\n.navbar-dropdown-container a {\r\n  text-decoration: none;\r\n  color: black;\r\n  padding: 5px 10px 5px 10px;\r\n}\r\n.navbar-dropdown-container li {\r\n  text-decoration: none;\r\n  list-style: none;\r\n  margin: 10px 0 0 0;\r\n  padding: 5px 10px 5px 10px;\r\n  width: 100%;\r\n}\r\n.navbar-dropdown-container li button {\r\n  background-color: #ff8e3c;\r\n  color: #0d0d0d;\r\n  margin-bottom: 10px;\r\n  border-radius: 10px;\r\n  width: 100px;\r\n}\r\n.navbar-dropdown-container li:nth-child(1):hover {\r\n  background-color: #d6d6d6;\r\n}\r\n.navbar-dropdown-container li:nth-child(2):hover {\r\n  background-color: #d6d6d6;\r\n}\r\n@keyframes fade {\r\n  0% {\r\n    opacity: 0;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n* {\r\n  margin: 0;\r\n  font-family: \"Readex Pro\", sans-serif;\r\n  box-sizing: border-box;\r\n}\r\nhtml,\r\nbody {\r\n  background-color: white;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6130,6 +7400,21 @@ module.exports = function (item) {
 
   return [content].join("\n");
 };
+
+/***/ }),
+
+/***/ "./src/components/images/cog3.png":
+/*!****************************************!*\
+  !*** ./src/components/images/cog3.png ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "e49bdf82e6c81135a9ed2f9396541188.png");
 
 /***/ }),
 

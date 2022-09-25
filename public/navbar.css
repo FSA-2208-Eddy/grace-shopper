@@ -13,13 +13,27 @@
 #navbar #navbar-logo img {
   width: 100px;
 }
+#navbar #navbar-logo img:hover {
+  transform: rotate(360deg);
+}
 #navbar #navbar-logo a {
   text-decoration: none;
+}
+#navbar #settings-icon {
+  width: 40px;
+  margin-right: 20px;
 }
 #navbar .login-logout-container {
   display: flex;
   justify-content: flex-end;
   flex: 1;
+}
+#navbar .login-logout-container img {
+  transition: transform 0.7s ease-in-out;
+  cursor: pointer;
+}
+#navbar .login-logout-container img:hover {
+  transform: rotate(360deg);
 }
 #navbar #logout {
   display: inline-block;
