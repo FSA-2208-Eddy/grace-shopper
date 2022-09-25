@@ -15,24 +15,18 @@ function MainPage() {
   const carouselItems = ["image1","image2","image3"]
 
   return (
-    <>
-    <div id="main-page-featured-container">
-
-        <div id="carousel-container">
+    <div className="main-page-featured-container">
+        <div className="carousel-container">
             <Carousel data={carouselItems}/>
         </div>
 
-        <div id='featured-events-container'>
-            <div>
-                <EventsNearMe/>
-            </div>
-            <div>
-                <UpcomingEvents/> 
-            </div>
+        <div className='featured-events-container'>
+            <EventsNearMe/>
+            <UpcomingEvents/> 
         </div>
         
+
     </div>
-    </>
   )
 }
 
