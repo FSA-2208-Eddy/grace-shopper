@@ -5,7 +5,16 @@ import { removeItemFromCart } from "../../store/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
 function ProfileCart({ cart }) {
-  const linkStyle = { textDecoration: "none" };
+  const linkStyle = {
+    textDecoration: "none",
+    backgroundColor: "#ff8e3c",
+    color: "black",
+    padding: "10px",
+    margin: "5px",
+    borderRadius: "5px",
+  };
+
+  const checkoutStyle = { textDecoration: "none" };
   const dispatch = useDispatch();
   function handleDelete(event) {
     event.preventDefault();
@@ -17,8 +26,10 @@ function ProfileCart({ cart }) {
     <div className="profile-cart-container">
       <div className="profile-cart-header">
         <h2>Your Cart</h2>
-        <Link style={linkStyle} to="/profile/checkout">
-          <div className="profile-cart-checkout">Checkout (3 Items)</div>
+        <Link style={checkoutStyle} to="/profile/checkout">
+          <div className="profile-cart-checkout">{`Checkout (${
+            cart.lineitems.length
+          } ${cart.lineitems.length === 1 ? "Item" : "Items"})`}</div>
         </Link>
       </div>
       <div className="profile-cart-item-container">
@@ -54,7 +65,30 @@ function ProfileCart({ cart }) {
             );
           })
         ) : (
-          <div className="profile-empty-cart">No Events in cart</div>
+          <div className="profile-empty-cart">
+            <img src="../../../toppng.com-shopping-cart-512x512.png" />
+            <div
+              style={{
+                fontSize: "28px",
+                marginBottom: "10px",
+                color: "rgb(60,60,60)",
+              }}
+            >
+              Your shopping cart is empty
+            </div>
+            <div
+              style={{
+                marginBottom: "10px",
+                color: "rgb(130,130,130)",
+              }}
+            >
+              Once you have items, checkout from here or the shopping cart icon
+              in the top right.
+            </div>
+            <Link style={linkStyle} to="/events">
+              <div className="profile-view-events">View Available Events</div>
+            </Link>
+          </div>
         )}
         {/* <div className="profile-cart-item">
           <div className="profile-cart-item-picture-container">
