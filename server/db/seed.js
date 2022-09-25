@@ -45,6 +45,9 @@ const syncAndSeed = async () => {
 
     for (let i = 0; i < data._embedded.events.length; i++) {
       const current = data._embedded.events[i];
+
+      if (current.name.includes('TBA')) continue;
+
       const newEvent = await Event.create({
         name: current.name,
         type: current.type,
@@ -53,6 +56,7 @@ const syncAndSeed = async () => {
         startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
         endTime: current.dates.start.dateTime,
       })
+
 
       if (!current.classifications) {
         newEvent.addTag(misc)
@@ -63,7 +67,6 @@ const syncAndSeed = async () => {
         ? newEvent.addTag(music) : current.classifications[0].segment.name === 'Arts & Theatre' && current.classifications[0].segment.name
         ? newEvent.addTag(artsAndTheatre) : newEvent.addTag(misc)
       }
-
     }
     console.log('Seeding Successful')
   }
