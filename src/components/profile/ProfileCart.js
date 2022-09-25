@@ -1,7 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function ProfileCart() {
+import { useSelector } from "react-redux";
+import { removeItemFromCart } from "../../store/cart/cartSlice";
+import { useDispatch } from "react-redux";
+
+function ProfileCart({ cart }) {
   const linkStyle = { textDecoration: "none" };
+  const dispatch = useDispatch();
+  function handleDelete(event) {
+    event.preventDefault();
+    let lineItemId = event.target.getAttribute("value");
+    dispatch(removeItemFromCart(lineItemId));
+  }
+  console.log("cart", cart);
   return (
     <div className="profile-cart-container">
       <div className="profile-cart-header">
@@ -11,7 +22,41 @@ function ProfileCart() {
         </Link>
       </div>
       <div className="profile-cart-item-container">
-        <div className="profile-cart-item">
+        {cart?.lineitems?.length > 0 ? (
+          cart?.lineitems?.map((item) => {
+            return (
+              <div className="profile-cart-item" key={item.id}>
+                <div className="profile-cart-item-picture-container">
+                  <img src={item.events[0].img} />
+                </div>
+                <div className="profile-cart-item-title">
+                  {item.events[0].name}
+                </div>
+                <div className="profile-cart-item-address">
+                  {item.events[0].location}
+                </div>
+                <div className="profile-cart-item-price">$50</div>
+                <div className="profile-cart-item-seat">
+                  Seat: <span>{item.seat}</span>
+                </div>
+                <div className="profile-cart-item-available">
+                  {item.events[0].tickets}
+                </div>
+                <div
+                  className="profile-cart-item-delete"
+                  value={item.id}
+                  key={item.id}
+                  onClick={handleDelete}
+                >
+                  Remove
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <div className="profile-empty-cart">No Events in cart</div>
+        )}
+        {/* <div className="profile-cart-item">
           <div className="profile-cart-item-picture-container">
             <img src="https://media.istockphoto.com/photos/cheering-crowd-of-unrecognized-people-at-a-rock-music-concert-concert-picture-id1189205501?k=20&m=1189205501&s=612x612&w=0&h=fexl_Cmu6AdLatIasGg_XYTkLSeWHCtvhMw1nK5_uDc=" />
           </div>
@@ -51,7 +96,7 @@ function ProfileCart() {
           </div>
           <div className="profile-cart-item-available">10 Seats Available</div>
           <div className="profile-cart-item-delete">Remove</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

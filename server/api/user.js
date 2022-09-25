@@ -72,6 +72,7 @@ router.put("/cart", requireToken, async (req, res, next) => {
       orderId: cart.id,
     });
     await newLineItem.save();
+    // cart.addLineItem(newLineItem);
     let order = await Order.findByPk(cart.id, {
       include: LineItem,
     });
