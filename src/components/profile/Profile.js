@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSingleUser } from "../../store/users/userSlice";
 import { getCart } from "../../store/cart/cartSlice";
 import { getOrders } from "../../store/orders/orderSlice";
+import { getEvents } from "../../store/events/eventSlice";
 import axios from "axios";
 
 function Profile() {
@@ -16,19 +17,20 @@ function Profile() {
   const user = useSelector((state) => state.users);
   const cart = useSelector((state) => state.cart.cart);
   const orders = useSelector((state) => state.orders);
+  const events = useSelector((state) => state.events.events);
 
   useEffect(() => {
     dispatch(getCart());
     dispatch(getSingleUser());
     dispatch(getOrders());
+    dispatch(getEvents());
   }, []);
-  console.log("user", user);
   return (
     <>
       <div className="profile-main-container">
         <ProfileMenu user={user} />
         <div className="profile-cart-events-container">
-          <ProfileRecommended user={user} orders={orders} />
+          <ProfileRecommended user={user} orders={orders} events={events} />
           <ProfileCart user={user} cart={cart} />
           <ProfileUpcomingEvents user={user} orders={orders} />
           <ProfilePurchaseHistory user={user} orders={orders} />

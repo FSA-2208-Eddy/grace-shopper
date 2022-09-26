@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 function ProfileMenu({ user }) {
+  const location = [user.city, user.state, user.country]
+    .filter((item) => item)
+    .join(", ");
   return (
     <div className="profile-menu-container">
       <div className="profile-header">
@@ -27,10 +30,8 @@ function ProfileMenu({ user }) {
         </div>
         <div className="profile-address-container">
           <h3>Location</h3>
-          {user.city && user.state && user.country ? (
-            <>
-              <div>{`${user.city}, ${user.state}, ${user.country}`}</div>
-            </>
+          {location.length ? (
+            <div>{location}</div>
           ) : (
             <div>No location selected.</div>
           )}

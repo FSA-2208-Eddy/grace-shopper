@@ -6496,8 +6496,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_users_userSlice__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../store/users/userSlice */ "./src/store/users/userSlice.js");
 /* harmony import */ var _store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../store/cart/cartSlice */ "./src/store/cart/cartSlice.js");
 /* harmony import */ var _store_orders_orderSlice__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../store/orders/orderSlice */ "./src/store/orders/orderSlice.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _store_events_eventSlice__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../store/events/eventSlice */ "./src/store/events/eventSlice.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
+
 
 
 
@@ -6522,12 +6524,15 @@ function Profile() {
   var orders = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function (state) {
     return state.orders;
   });
+  var events = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function (state) {
+    return state.events.events;
+  });
   (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
     dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_8__.getCart)());
     dispatch((0,_store_users_userSlice__WEBPACK_IMPORTED_MODULE_7__.getSingleUser)());
     dispatch((0,_store_orders_orderSlice__WEBPACK_IMPORTED_MODULE_9__.getOrders)());
+    dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_10__.getEvents)());
   }, []);
-  console.log("user", user);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement((react__WEBPACK_IMPORTED_MODULE_5___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement("div", {
     className: "profile-main-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_ProfileMenu__WEBPACK_IMPORTED_MODULE_0__["default"], {
@@ -6536,7 +6541,8 @@ function Profile() {
     className: "profile-cart-events-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_ProfileRecommended__WEBPACK_IMPORTED_MODULE_1__["default"], {
     user: user,
-    orders: orders
+    orders: orders,
+    events: events
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_ProfileCart__WEBPACK_IMPORTED_MODULE_2__["default"], {
     user: user,
     cart: cart
@@ -6947,6 +6953,9 @@ function ProfileMenu(_ref) {
   var _user$email;
 
   var user = _ref.user;
+  var location = [user.city, user.state, user.country].filter(function (item) {
+    return item;
+  }).join(", ");
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-menu-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -6971,7 +6980,7 @@ function ProfileMenu(_ref) {
     to: "/profile/edit"
   }, "Edit Email")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-address-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Location"), user.city && user.state && user.country ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "".concat(user.city, ", ").concat(user.state, ", ").concat(user.country))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "No location selected."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Location"), location.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, location) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "No location selected."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/profile/edit"
   }, "Edit Address"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-settings-container"
@@ -7058,34 +7067,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 
 
-function ProfileRecommended() {
+
+function ProfileRecommended(_ref) {
+  var user = _ref.user,
+      orders = _ref.orders,
+      events = _ref.events;
+  var finalEvents = [];
+
+  if (user.city || user.state || user.country) {
+    var filteredByLocationEvents = events.filter(function (event) {
+      var _event$location, _user$city, _event$location2, _user$state, _event$name, _user$city2, _event$name2, _user$state2;
+
+      return ((_event$location = event.location) === null || _event$location === void 0 ? void 0 : _event$location.toLowerCase().indexOf((_user$city = user.city) === null || _user$city === void 0 ? void 0 : _user$city.toLowerCase())) >= 0 || ((_event$location2 = event.location) === null || _event$location2 === void 0 ? void 0 : _event$location2.toLowerCase().indexOf((_user$state = user.state) === null || _user$state === void 0 ? void 0 : _user$state.toLowerCase())) >= 0 || ((_event$name = event.name) === null || _event$name === void 0 ? void 0 : _event$name.toLowerCase().indexOf((_user$city2 = user.city) === null || _user$city2 === void 0 ? void 0 : _user$city2.toLowerCase())) >= 0 || ((_event$name2 = event.name) === null || _event$name2 === void 0 ? void 0 : _event$name2.toLowerCase().indexOf((_user$state2 = user.state) === null || _user$state2 === void 0 ? void 0 : _user$state2.toLowerCase())) >= 0;
+    });
+    var names = {};
+    var filteredWithoutDuplicateNames = [];
+
+    for (var i = 0; i < filteredByLocationEvents.length; i++) {
+      var event = filteredByLocationEvents[i];
+      if (names[event.name]) continue;
+      names[event.name] = true;
+      filteredWithoutDuplicateNames.push(event);
+    }
+
+    console.log(filteredByLocationEvents);
+    console.log(filteredWithoutDuplicateNames);
+
+    if (filteredWithoutDuplicateNames.length > 3) {
+      while (finalEvents.length < 3) {
+        var random = filteredWithoutDuplicateNames[Math.ceil(filteredWithoutDuplicateNames.length * Math.random())];
+
+        if (!finalEvents.includes(random)) {
+          finalEvents.push(random);
+        }
+      }
+    }
+  }
+
+  if (!finalEvents.length) {
+    for (var _i = 0; _i < 3; _i++) {
+      console.log("inthefor");
+      finalEvents.push(events[Math.ceil(events.length * Math.random())]);
+    }
+  }
+
+  console.log("FINAL", finalEvents);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-recommended-events-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-recommended-events-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our Picks For You:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-recommended-events-block"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-event-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-event-item-title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "The Biggest Fight of the Century")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "http://musicfeeds.com.au/assets/uploads/Ben-and-Liam_fight-night-e1559785017827.jpg"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-event-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://urbanmatter.com/chicago/wp-content/uploads/2018/07/BristolRoversWayneHile.jpg"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-event-item-title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Bristol Renaissance Faire"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-event-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://media.npr.org/assets/img/2014/01/28/120196117-8cad7b866486eb420c58e24af826c2238af8a477-s1100-c50.jpg"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-event-item-title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Pete Seeger Concert")))));
+  }, finalEvents === null || finalEvents === void 0 ? void 0 : finalEvents.map(function (event) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      to: "/events/".concat(event === null || event === void 0 ? void 0 : event.id),
+      key: event === null || event === void 0 ? void 0 : event.id,
+      target: "_blank"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "profile-event-item"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: event === null || event === void 0 ? void 0 : event.img
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "profile-event-item-title"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, event === null || event === void 0 ? void 0 : event.name))));
+  })));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileRecommended);
