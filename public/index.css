@@ -1132,7 +1132,14 @@ select {
   transition: 0.2s;
   border-radius: 30px;
 }
+.single-upcoming-event-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .single-upcoming-event-image {
+  display: flex;
+  width: 500px;
   max-width: 100%;
   height: auto;
   padding-top: 10px;
@@ -1176,7 +1183,14 @@ select {
   font-style: bold;
   text-decoration: underline;
 }
+.single-event-near-me-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .single-event-near-me-image {
+  display: flex;
+  width: 500px;
   max-width: 100%;
   height: auto;
   padding-top: 10px;
