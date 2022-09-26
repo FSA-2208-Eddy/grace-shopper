@@ -35,7 +35,14 @@
   transition: 0.2s;
   border-radius: 30px;
 }
+.single-upcoming-event-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .single-upcoming-event-image {
+  display: flex;
+  width: 500px;
   max-width: 100%;
   height: auto;
   padding-top: 10px;
