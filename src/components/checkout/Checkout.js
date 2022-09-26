@@ -46,6 +46,7 @@ const Checkout = () => {
         cart: cartToCheck,
         email: email
       })
+      window.localStorage.setItem('cart', JSON.stringify({lineitems: []}))
       setCheckedOut(true)
     }
   }

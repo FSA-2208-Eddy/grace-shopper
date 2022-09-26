@@ -51,7 +51,7 @@ const SingleEvent = () => {
         await axios.put("/api/users/cart", {
           eventId: singleEvent.id,
           qty,
-          seat: "good",
+          seat: "Placeholder",
       });
         alert("Item Added!");
       }

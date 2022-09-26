@@ -4491,7 +4491,7 @@ var Checkout = function Checkout() {
 
               dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__.checkoutCart)());
               setCheckedOut(true);
-              _context.next = 9;
+              _context.next = 10;
               break;
 
             case 5:
@@ -4503,9 +4503,12 @@ var Checkout = function Checkout() {
               });
 
             case 8:
+              window.localStorage.setItem('cart', JSON.stringify({
+                lineitems: []
+              }));
               setCheckedOut(true);
 
-            case 9:
+            case 10:
             case "end":
               return _context.stop();
           }
@@ -7493,7 +7496,7 @@ var SingleEvent = function SingleEvent() {
               return axios__WEBPACK_IMPORTED_MODULE_3___default().put("/api/users/cart", {
                 eventId: singleEvent.id,
                 qty: qty,
-                seat: "good"
+                seat: "Placeholder"
               });
 
             case 10:

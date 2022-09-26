@@ -33,14 +33,18 @@ router.post("/signup", async(req,res,next) => {
     })
     if (!newUser) {
       newUser = await User.create(req.body)
+      await Order.create({
+        userId: newUser.id
+      })
+      res.send({ token: await User.authenticate(req.body)})
     } else {
       newUser.set(req.body)
       newUser.save()
+      await Order.create({
+        userId: newUser.id
+      })
+      res.sendStatus(200)
     }
-    await Order.create({
-      userId: newUser.id
-    })
-    res.send({ token: await User.authenticate(req.body)})
   } catch (ex) {
     next(ex)
   }
