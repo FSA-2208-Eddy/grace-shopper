@@ -58,37 +58,45 @@ const syncAndSeed = async () => {
           console.log(timer)
         }
         const { data } = await axios.get(apiCalls[i][key] )
+        let previous;
 
         for (let i = 0; i < data._embedded.events.length; i++) {
           const current = data._embedded.events[i];
 
           if (current.name.includes('TBA')) continue;
 
-          const newEvent = await Event.create({
-            name: current.name,
-            type: current.type,
-            img: current.images[0].url,
-            tickets: 100,
-            location: current._embedded.venues[0].name,
-            startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
-            endTime: current.dates.start.dateTime,
-          });
-
-          if (!current.classifications) {
-            newEvent.addTag(misc)
+          if (namesObj[current.name]){
+            continue;
           }
           else {
-            current.classifications[0].segment.name === "Sports" &&
-            current.classifications[0].segment.name
-          ? newEvent.addTag(sports)
-          : current.classifications[0].segment.name === "Music" &&
-            current.classifications[0].segment.name
-          ? newEvent.addTag(music)
-          : current.classifications[0].segment.name === "Arts & Theatre" &&
-            current.classifications[0].segment.name
-          ? newEvent.addTag(artsAndTheatre)
-          : newEvent.addTag(misc);
+            namesObj[current.name] = current.name;
+            const newEvent = await Event.create({
+              name: current.name,
+              type: current.type,
+              img: current.images[0].url,
+              tickets: 100,
+              location: current._embedded.venues[0].name,
+              startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
+              endTime: current.dates.start.dateTime,
+            });
+
+            if (!current.classifications) {
+              newEvent.addTag(misc)
+            }
+            else {
+              current.classifications[0].segment.name === "Sports" &&
+              current.classifications[0].segment.name
+            ? newEvent.addTag(sports)
+            : current.classifications[0].segment.name === "Music" &&
+              current.classifications[0].segment.name
+            ? newEvent.addTag(music)
+            : current.classifications[0].segment.name === "Arts & Theatre" &&
+              current.classifications[0].segment.name
+            ? newEvent.addTag(artsAndTheatre)
+            : newEvent.addTag(misc);
+            }
           }
+
         }
         console.log('key done')
       }

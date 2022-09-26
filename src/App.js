@@ -18,12 +18,15 @@ import {
 } from "./components";
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = React.useState(false)
+
   return (
     <>
-      <Navbar />
+      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <Routes>
         <Route index element={<MainPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage setLoggedIn={setLoggedIn}/>} />
         <Route path="/events" element={<EventList />} />
         <Route path="/events/type/sports" element={<EventTagListSports />} />
         <Route path="/events/type/music" element={<EventTagListMusic />} />

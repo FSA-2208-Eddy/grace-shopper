@@ -4,13 +4,16 @@ import logo from '../images/tickitLogo.png'
 import cog from '../images/cog3.png'
 import { DropDownItems } from '../'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
-function Navbar() {
+function Navbar({ loggedIn, setLoggedIn }) {
   const navigate = useNavigate();
 
   const [searchBarInput, setSearchBarInput] = React.useState('');
   const [dropDown, setDropDown] = React.useState(false);
   const [loginStatus, setLoginStatus] = React.useState(false);
+
+  const login = useSelector(state => state.value)
 
   React.useEffect(() => {
 
@@ -26,9 +29,6 @@ function Navbar() {
           if (data) {
             setLoginStatus(true);
           }
-        }
-        else {
-          setLoginStatus(false)
         }
       }
     loginCheck();
@@ -49,7 +49,7 @@ function Navbar() {
         <div className='login-logout-container'>
             <img id='settings-icon' src={cog} alt='settings' onClick={() => setDropDown(!dropDown)}/>
         </div>
-          { dropDown ? <ul><DropDownItems loginStatus={loginStatus} setDropDown={setDropDown}/></ul> : <></>}
+          { dropDown ? <ul><DropDownItems loginStatus={loginStatus} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setDropDown={setDropDown}/></ul> : <></>}
     </nav>
     <div className='navbar-searchbar-container'>
       <div className='searchbar-icon'></div>
