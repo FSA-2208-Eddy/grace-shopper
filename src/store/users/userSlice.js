@@ -14,14 +14,14 @@ export const getUsers = createAsyncThunk("/allUsers", async () => {
   }
 });
 
-export const getSingleUser = createAsyncThunk("/singleUser", async (id) => {
-  try {
-    const { data } = await axios.get(`/api/users/single`);
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-});
+// export const getSingleUser = createAsyncThunk("/singleUser", async (id) => {
+//   try {
+//     const { data } = await axios.get(`/api/users/single`);
+//     return data;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 export const createUser = createAsyncThunk("/createUser", async (userObj) => {
   try {
@@ -32,18 +32,18 @@ export const createUser = createAsyncThunk("/createUser", async (userObj) => {
   }
 });
 
-export const updateUser = createAsyncThunk(
-  "/updateUser",
-  async (updatedUserObject) => {
-    try {
-      const { id } = updatedUserObject;
-      const { data } = await axios.put(`/api/users/${id}`, updatedUserObject);
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-);
+// export const updateUser = createAsyncThunk(
+//   "/updateUser",
+//   async (updatedUserObject) => {
+//     try {
+//       const { id } = updatedUserObject;
+//       const { data } = await axios.put(`/api/users/${id}`, updatedUserObject);
+//       return data;
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+// );
 
 export const deleteUser = createAsyncThunk("/deleteUser", async (id) => {
   try {
@@ -62,21 +62,21 @@ export const userSlice = createSlice({
     [getUsers.fulfilled]: (state, action) => {
       state.users = action.payload;
     },
-    [getSingleUser.fulfilled]: (state, action) => {
-      return action.payload;
-    },
-    [createUser.fulfilled]: (state, action) => {
-      state.users = [...state.users, action.payload];
-    },
-    [updateUser.fulfilled]: (state, action) => {
-      // let obj = state.users.find((user) => user.id === action.payload.id);
-      // for (let key in action.payload) {
-      //   if (action.payload[key] && typeof action.payload[key] !== BOOLEAN) {
-      //     obj[key] = action.payload[key];
-      //   }
-      // }
-      state.users = action.payload;
-    },
+    // [getSingleUser.fulfilled]: (state, action) => {
+    //   state = action.payload;
+    // },
+    // [createUser.fulfilled]: (state, action) => {
+    //   state.users = [...state.users, action.payload];
+    // },
+    // [updateUser.fulfilled]: (state, action) => {
+    //   let obj = state.users.find((user) => user.id === action.payload.id);
+    //   for (let key in action.payload) {
+    //     if (action.payload[key] && typeof action.payload[key] !== BOOLEAN) {
+    //       obj[key] = action.payload[key];
+    //     }
+    //   }
+    //   state.users = action.payload;
+    // },
     [deleteUser.fulfilled]: (state, action) => {
       state.users = [...state.users].filter(
         (user) => user.id !== action.payload.id

@@ -1,25 +1,19 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Readex Pro", sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-}
-.profile-header {
-  margin: 20px;
-  margin-bottom: 0px;
-}
 .profile-header h1 {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 .profile-main-container {
   padding: 20px;
   display: flex;
+  justify-content: center;
 }
 .profile-menu-container {
   display: flex;
   flex-direction: column;
+}
+.profileLargeEmail {
+  font-size: 14px;
 }
 .profile-account-information-container {
   display: flex;
@@ -54,6 +48,7 @@
   background-position: center;
   background-size: cover;
   margin: 5px;
+  border: 1px solid #dedede;
 }
 .profile-account-information-container .profile-picture-container img {
   width: 100%;
@@ -124,24 +119,16 @@
   margin-top: 2px;
   margin-bottom: 2px;
 }
-.profile-cart-events-container
-  .profile-recommended-events-container
-  .profile-recommended-events-header
-  h2 {
+.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-header h2 {
   font-size: 30px;
   font-weight: 300;
   margin-bottom: 10px;
 }
-.profile-cart-events-container
-  .profile-recommended-events-container
-  .profile-recommended-events-block {
+.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block {
   display: flex;
   flex-wrap: wrap;
 }
-.profile-cart-events-container
-  .profile-recommended-events-container
-  .profile-recommended-events-block
-  .profile-event-item {
+.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item {
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   width: 300px;
   height: 150px;
@@ -156,20 +143,12 @@
   background-size: cover;
   cursor: pointer;
 }
-.profile-cart-events-container
-  .profile-recommended-events-container
-  .profile-recommended-events-block
-  .profile-event-item
-  img {
+.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item img {
   width: 100%;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
 }
-.profile-cart-events-container
-  .profile-recommended-events-container
-  .profile-recommended-events-block
-  .profile-event-item
-  .profile-event-item-title {
+.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title {
   display: flex;
   align-items: center;
   position: absolute;
@@ -182,26 +161,13 @@
   min-height: 30px;
   margin: 0px;
 }
-.profile-cart-events-container
-  .profile-recommended-events-container
-  .profile-recommended-events-block
-  .profile-event-item
-  .profile-event-item-title
-  div {
+.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item .profile-event-item-title div {
   margin-left: 3px;
 }
-.profile-cart-events-container
-  .profile-recommended-events-container
-  .profile-recommended-events-block
-  .profile-event-item:hover
-  img {
+.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover img {
   transform: scale(1.05);
 }
-.profile-cart-events-container
-  .profile-recommended-events-container
-  .profile-recommended-events-block
-  .profile-event-item:hover
-  .profile-event-item-title {
+.profile-cart-events-container .profile-recommended-events-container .profile-recommended-events-block .profile-event-item:hover .profile-event-item-title {
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
   background-color: rgba(35, 35, 35, 0.6);
@@ -209,94 +175,97 @@
 }
 .profile-cart-events-container .profile-cart-header {
   display: flex;
-  justify-content: space-between;
+  text-align: center;
+  margin-top: 5px;
 }
 .profile-cart-events-container .profile-cart-header h2 {
   font-size: 30px;
   font-weight: 300;
   margin-bottom: 10px;
 }
-.profile-cart-events-container .profile-cart-item-container {
+.profile-cart-events-container .profile-purchase-header {
   display: flex;
+  text-align: center;
+  margin-top: 5px;
+}
+.profile-cart-events-container .profile-purchase-header h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.profile-cart-events-container .profile-empty-cart {
+  padding: 60px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-cart-events-container .profile-empty-cart img {
+  max-width: 250px;
+  opacity: 0.8;
+}
+.profile-cart-events-container .profile-empty-cart div {
+  font-size: 18px;
+}
+.profile-cart-events-container .profile-cart-item-container {
+  display: inline-flex;
   flex-wrap: wrap;
   border: 1px solid #dedede;
 }
 .profile-cart-events-container .profile-cart-item-container .profile-cart-item {
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  display: flex;
+  flex-direction: column;
   height: 350px;
   width: 200px;
   border: 1px solid #dedede;
   margin: 10px;
   padding: 5px;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  .profile-cart-item-picture-container {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container {
+  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 200px;
+  width: 185px;
+  height: 185px;
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  .profile-cart-item-picture-container
-  img {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-picture-container img {
   height: 100%;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  .profile-cart-item-delete {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-delete {
   color: #2b889d;
   cursor: pointer;
   max-width: content;
   font-size: 14px;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  span {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-view-events {
+  background-color: #ff8e3c;
+}
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item span {
   font-weight: 400;
   font-size: 14px;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  .profile-cart-item-title {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-title {
   font-weight: 400;
   border-bottom: 0px;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  .profile-cart-item-address {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-address {
   font-style: italic;
   font-size: 13px;
-  border-top: 0px;
+  border-top: -5px;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  .profile-cart-item-price {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-price {
   font-weight: 500;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  .profile-cart-item-seat {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-seat {
   font-size: 14px;
 }
-.profile-cart-events-container
-  .profile-cart-item-container
-  .profile-cart-item
-  .profile-cart-item-available {
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-cart-item-available {
   font-size: 14px;
 }
 .profile-cart-checkout {
@@ -307,16 +276,163 @@
   margin-left: 15px;
   cursor: pointer;
 }
-@media (max-width: 600px) {
+.profile-upcoming-tickets-container {
+  display: flex;
+  flex-direction: column;
+}
+.profile-upcoming-tickets-header {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-upcoming-tickets-header h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.profile-upcoming-tickets-item-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.profile-upcoming-tickets-item {
+  margin: 10px;
+  width: 450px;
+  height: 300px;
+  overflow: hidden;
+}
+.profile-upcoming-tickets-item-image-container {
+  width: 500px;
+  height: 281px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #dedede;
+  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  cursor: pointer;
+}
+.profile-upcoming-tickets-item-image-container img {
+  width: 100%;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+.profile-upcoming-tickets-item-title {
+  display: inline-block;
+  padding: 5px;
+  position: absolute;
+  background-color: rgba(35, 35, 35, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 300px;
+  font-size: 20px;
+  margin-left: 1px;
+  z-index: 1;
+}
+.profile-upcoming-tickets-item:hover img {
+  transform: scale(1.05);
+}
+.profile-upcoming-tickets-item:hover .profile-upcoming-tickets-item-title {
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  background-color: rgba(35, 35, 35, 0.6);
+  color: white;
+}
+.profile-purchase-history-container {
+  display: flex;
+  flex-direction: column;
+}
+.profile-button-container {
+  display: flex;
+}
+.profile-pagination-button {
+  padding: 5px;
+  margin: 8px;
+  color: #2b889d;
+  background-color: white;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.profile-edit-container-main {
+  display: flex;
+  justify-content: center;
+}
+.profile-edit-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dedede;
+  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.profile-edit-container h1 {
+  font-size: 35px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.profile-edit-container h2 {
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: grey;
+}
+#profile-edit-form {
+  display: flex;
+  flex-direction: column;
+}
+#profile-edit-form button {
+  background-color: #ff8e3c;
+  color: #0d0d0d;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  width: 110px;
+  height: 45px;
+  border: 1px solid #dedede;
+  align-self: center;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-edit-label {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+.profile-edit-input {
+  border-radius: 3px;
+  border: 1px solid #dedede;
+  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  height: 30px;
+  padding-left: 5px;
+}
+::placeholder {
+  opacity: 0.7;
+}
+@media (max-width: 800px) {
+  .profile-cart-events-container {
+    margin-left: 30px;
+  }
+}
+@media (max-width: 750px) {
   * {
     font-size: 14px;
   }
   .profile-cart-item-container {
     flex-direction: column;
+    display: inline-flex;
   }
   .profile-header {
-    text-align: center;
     font-size: 15px;
+    position: absolute;
+    right: 150px;
+    width: 100%;
+    align-self: flex-start;
   }
   .profile-main-container {
     display: flex;
@@ -335,10 +451,6 @@
     margin: 0;
     padding: 0;
   }
-  .profile-cart-header {
-    text-align: center;
-    margin-top: 5px;
-  }
   .profile-cart-item-container {
     display: flex;
     align-items: center;
@@ -354,5 +466,34 @@
   .profile-recommended-events-block {
     flex-direction: column;
     align-items: center;
+  }
+  .profile-header {
+    position: static;
+  }
+  .profile-header h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .profile-cart-header {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .profile-upcoming-tickets-container {
+    align-items: center;
+  }
+  .profile-upcoming-tickets-item-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-upcoming-tickets-item {
+    width: 360px;
+    height: 203px;
+  }
+  .profile-upcoming-tickets-item-image-container {
+    width: 360px;
+    height: 203px;
   }
 }
