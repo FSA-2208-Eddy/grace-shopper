@@ -31,12 +31,30 @@ const SingleEvent = () => {
   };
   const addToCart = async () => {
     if (singleEvent.tickets - qty >= 0) {
-      await axios.put("/api/users/cart", {
-        eventId: singleEvent.id,
-        qty,
-        seat: "good",
+      if (!window.localStorage.getItem('token')){
+        let cart = JSON.parse(window.localStorage.getItem('cart'))
+        cart.lineitems.push({
+          qty: qty,
+          seat: "Placeholder",
+          events: [{
+            id: id,
+            name: singleEvent.name,
+            location: singleEvent.location,
+            img: singleEvent.img,
+            tickets: singleEvent.tickets,
+            price: singleEvent.price,
+          }]
+        })
+        window.localStorage.setItem('cart', JSON.stringify(cart))
+        alert("Item Added!")
+      } else {
+        await axios.put("/api/users/cart", {
+          eventId: singleEvent.id,
+          qty,
+          seat: "good",
       });
-      alert("successful");
+        alert("Item Added!");
+      }
     } else {
       alert("not enough tickets");
     }

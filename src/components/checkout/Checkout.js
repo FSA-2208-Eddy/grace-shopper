@@ -73,7 +73,7 @@ const Checkout = () => {
                     <div className="checkout-cart-item-address">
                       {item.events[0].location}
                     </div>
-                    <div className="checkout-cart-item-price">$29.95</div>
+                    <div className="checkout-cart-item-price">Price: ${item.events[0].price}</div>
                     <div className="checkout-cart-item-seat">
                       Seat: <span>{item.seat}</span>
                     </div>
