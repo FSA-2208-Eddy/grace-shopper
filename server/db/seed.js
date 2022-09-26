@@ -64,6 +64,7 @@ const syncAndSeed = async () => {
           const current = data._embedded.events[i];
 
           if (current.name.includes('TBA')) continue;
+          if (!current.priceRanges) continue;
 
           if (namesObj[current.name]){
             continue;
@@ -78,6 +79,7 @@ const syncAndSeed = async () => {
               location: current._embedded.venues[0].name,
               startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
               endTime: current.dates.start.dateTime,
+              price: current.priceRanges[0].min
             });
 
             if (!current.classifications) {

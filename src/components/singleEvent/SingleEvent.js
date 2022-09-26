@@ -73,6 +73,10 @@ const SingleEvent = () => {
             <span className="single-event-bold">End Time:&nbsp;</span>
             {singleEvent.endTime?.split("T").join(" @ ").slice(0, -1)}
           </p>
+          <p>
+            <span className="single-event-bold">Price:&nbsp;</span>
+            {`   $${singleEvent.price ? singleEvent.price : 0}`}
+          </p>
           <section className="container">
             <div className="product-quantity">
               <h3>Quantity&nbsp;&nbsp;</h3>
