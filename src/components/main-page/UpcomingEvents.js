@@ -8,55 +8,39 @@ import SingleUpcomingEvent from './SingleUpcomingEvent';
 
 
 function UpcomingEvents() {
-    const state = useSelector(state => state)
-    const events = state.events.events[0]
-    // console.log('state: ', state)
-    // console.log('events: ',events)
-    const navigate = useNavigate();
     
+    const eventsStore = useSelector(state => state.events.events)
+
+    const navigate = useNavigate();
 
     const dispatch = useDispatch()
+
+    let upcomingEventsArray = []
 
     React.useEffect(() => {
         dispatch(getEvents())
     },[])
-   
-    const upcomingEventsArray = []
-
-    // const eventsSorted = [...events]
-
-    // console.log ('events sorted: ',eventsSorted)
-  
-    
 
 
-    function chooseUpcomingEvents () {
-        let eventId = 0
-        while (upcomingEventsArray.length < 3) {
-            const curEvent = getSingleEvent(eventId)
-            if (curEvent) {
-                console.log('current event data: ',curEvent)
+    const handleDisplayUpcomingEvents = () => {
+        if (eventsStore.length > 0) {
+            for (let i = 0; i < 3; i++){
+                let curEvent = eventsStore[i];
                 upcomingEventsArray.push(curEvent)
-                eventId++
-            } else { eventId++ }
+            }
         }
-        return upcomingEventsArray
     }
 
-
-    React.useEffect(() => {
-        chooseUpcomingEvents();
-        console.log(upcomingEventsArray)
-    },[upcomingEventsArray])
+    handleDisplayUpcomingEvents()
 
     
   return (
     <>
         <div className='upcoming-events-container'>
             <h1 className='upcoming-events-title'>Upcoming Events</h1>
-                <SingleUpcomingEvent/>
-                <SingleUpcomingEvent/>
-                <SingleUpcomingEvent/>
+            {
+                upcomingEventsArray && upcomingEventsArray.map(event => <SingleUpcomingEvent event={event} key = {Math.floor(Math.random()*100)}/>)
+            }
         </div>  
     </>
   )
