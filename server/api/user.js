@@ -143,6 +143,43 @@ router.get("/single", requireToken, async (req, res, next) => {
   }
 });
 
+router.put('/guest-checkout', async(req,res,next)=> {
+  try {
+    let user = await User.findOne({
+      where: {
+        email: req.body.email
+      }
+    })
+    if (!user) {
+      let randNum = '' + Math.floor(Math.random()*10000000)
+      user = await User.create({
+        firstName: "Placeholder",
+        lastName: "Placeholder",
+        password: "Placeholder",
+        username: randNum,
+        email: req.body.email
+      })
+    }
+    const cart = req.body.cart
+    const order = await Order.create({
+      userId: user.id,
+      isCart: false
+    })
+    cart.lineitems.forEach(async(element) => {
+      const event = await Event.findByPk(element.events[0].id)
+      const lineItem = await LineItem.create({
+        qty: element.qty,
+        seat: element.seat,
+        orderId: order.id
+      })
+      lineItem.addEvent(event)
+    })
+    res.sendStatus(200)
+  } catch (ex) {
+    next(ex)
+  }
+})
+
 // update user's information (takes new details in req.body)
 router.put("/:id", requireToken, async (req, res, next) => {
   try {

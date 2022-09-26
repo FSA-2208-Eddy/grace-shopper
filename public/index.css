@@ -646,6 +646,9 @@ select {
   max-width: content;
   font-size: 14px;
 }
+.profile-cart-events-container .profile-cart-item-container .profile-cart-item .profile-view-events {
+  background-color: #ff8e3c;
+}
 .profile-cart-events-container .profile-cart-item-container .profile-cart-item span {
   font-weight: 400;
   font-size: 14px;
@@ -1731,6 +1734,16 @@ select {
 .checkout-cart-container a {
   font-size: 1.5rem;
   color: #ff8e3c;
+}
+.checkout-card-info {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 1.5rem;
+}
+.checkout-card-info input {
+  width: 30%;
+  height: 4vh;
+  font-size: 1.25rem;
 }
 .navbar-dropdown-container {
   display: flex;

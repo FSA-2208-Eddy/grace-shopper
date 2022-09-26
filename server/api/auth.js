@@ -24,7 +24,19 @@ router.post("/login", async (req, res, next) => {
 // sign up on website, (takes whatever is in req.body), and associates a new order with the user
 router.post("/signup", async(req,res,next) => {
   try {
-    let newUser = await User.create(req.body)
+    let newUser = await User.findOne({
+      where: {
+        firstName: "Placeholder",
+        lastName:"Placeholder",
+        email: req.body.email
+      }
+    })
+    if (!newUser) {
+      newUser = await User.create(req.body)
+    } else {
+      newUser.set(req.body)
+      newUser.save()
+    }
     await Order.create({
       userId: newUser.id
     })

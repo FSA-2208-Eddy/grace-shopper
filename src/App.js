@@ -18,6 +18,16 @@ import {
 } from "./components";
 
 function App() {
+  if (!window.localStorage.getItem('cart')) {
+    const guestCart = {lineitems: [
+      {qty: 1, seat: "3B", events: [{
+        id: 1,
+        name: "Immersive Monet & The Impressionists",
+        location: "Lighthouse ArtSpace Chicago"
+      }]}
+    ]}
+    window.localStorage.setItem('cart', JSON.stringify(guestCart))
+  }
   return (
     <>
       <Navbar />

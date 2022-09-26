@@ -12,11 +12,22 @@ const Checkout = () => {
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const [checkedOut, setCheckedOut] = React.useState(false);
+  const [email, setEmail] = React.useState('')
 
   React.useEffect(() => {
-    dispatch(getCart());
-    setCheckedOut(false);
+    if (window.localStorage.getItem('token')) {
+      dispatch(getCart());
+      setCheckedOut(false);
+    }
   }, []);
+
+  let finalCart = {lineitems:[]}
+
+  if (!window.localStorage.getItem('token')) {
+    finalCart = JSON.parse(window.localStorage.getItem('cart'))
+  } else {
+    finalCart = cart
+  }
 
   function handleDelete(event) {
     event.preventDefault();
@@ -26,8 +37,17 @@ const Checkout = () => {
   }
 
   async function handleCheckout() {
-    dispatch(checkoutCart());
-    setCheckedOut(true);
+    if (window.localStorage.getItem('token')) {
+      dispatch(checkoutCart());
+      setCheckedOut(true);
+    } else {
+      const cartToCheck = JSON.parse(window.localStorage.getItem('cart'))
+      await axios.put('/api/users/guest-checkout', {
+        cart: cartToCheck,
+        email: email
+      })
+      setCheckedOut(true)
+    }
   }
 
   return (
@@ -41,8 +61,8 @@ const Checkout = () => {
               <h2>Review Your Order</h2>
             </div>
             <div className="checkout-cart-item-container">
-              {cart.lineitems.length > 0 ? (
-                cart.lineitems.map((item) => (
+              {finalCart.lineitems.length > 0 ? (
+                finalCart.lineitems.map((item) => (
                   <div key={item.id} className="checkout-cart-item">
                     <div className="checkout-cart-item-picture-container">
                       <img src={item.events[0].img} />
@@ -76,6 +96,12 @@ const Checkout = () => {
             </div>
             <div className="checkout-cart-header">
               <h2>Your Total: $500</h2>
+            </div>
+            {!window.localStorage.getItem('token') ? <div className="checkout-card-info">
+              Email: <input onChange={(event)=>setEmail(event.target.value)} value={email} placeholder="Email"></input>
+            </div> : <div></div>}
+            <div className="checkout-card-info">
+              Credit Card Info: <input placeholder="XXXX-XXXX-XXXX-XXXX"></input>
             </div>
             <div onClick={handleCheckout} className="checkout-button">
               Checkout
