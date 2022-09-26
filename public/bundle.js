@@ -6527,7 +6527,7 @@ function Navbar(_ref) {
                 data = _yield$axios$get.data;
 
                 if (data) {
-                  setLoginStatus(true);
+                  setLoggedIn(true);
                 }
 
               case 7:
@@ -7521,7 +7521,7 @@ var SingleEvent = function SingleEvent() {
     className: "single-event-bold"
   }, "Location:\xA0"), singleEvent === null || singleEvent === void 0 ? void 0 : singleEvent.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "single-event-bold"
-  }, "Tickets Remaining:\xA0"), "400"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+  }, "Tickets Remaining:\xA0"), singleEvent.tickets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "single-event-bold"
   }, "Start Time:\xA0"), (_singleEvent$startTim = singleEvent.startTime) === null || _singleEvent$startTim === void 0 ? void 0 : _singleEvent$startTim.split(" ").join(" @ ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "single-event-bold"
