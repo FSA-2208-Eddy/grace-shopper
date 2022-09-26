@@ -47,6 +47,7 @@ function LoginPage({ setLoggedIn  }) {
       setUserName('');
       setPassword('');
       setLoggedIn(true)
+      navigate('/profile')
     }
     catch(error) {
       console.log(error)
@@ -72,6 +73,8 @@ function LoginPage({ setLoggedIn  }) {
         setEmail('')
         setNewUserName('')
         setNewPassword('')
+
+        window.location.reload(false);
     }
     catch(err) {
         console.log(err)
