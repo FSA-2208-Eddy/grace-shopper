@@ -96,7 +96,7 @@ const EventList = () => {
             </div>
             <div id="events-list">
                 {currentPosts.map((event)=>{
-                    let date = new Date(event.startTime)
+                    let date = new Date(event.startTime.split(' ')[0])
                     return (
                     <div key={event.id} className="events-listing">
                         <img src={event.img} alt="picture should go here"/>

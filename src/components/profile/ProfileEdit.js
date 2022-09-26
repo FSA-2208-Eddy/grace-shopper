@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleUser, updateUser } from "../../store/users/userSlice";
+import { getSingleUser, updateUser } from "../../store/users/singleUserSlice";
 import { useNavigate } from "react-router-dom";
 
 function ProfileEdit() {
