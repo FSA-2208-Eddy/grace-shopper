@@ -1,41 +1,44 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
+import SingleEventNearMe from './SingleEventNearMe';
+import { getEvents } from '../../store/events/eventSlice';
 
 
 function EventsNearMe() {
 
-  const navigate = useNavigate();
+    const eventsStore = useSelector(state => state.events.events);
 
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+    let eventsNearMeArray = []
+
+    React.useEffect(() => {
+        dispatch(getEvents())
+    },[])
+
+    const handleDisplayEventsNearMe = () => {
+        if (eventsStore.length > 0) {
+            for (let i = 0; i < 3; i++){
+                let curEvent = eventsStore[i];
+                eventsNearMeArray.push(curEvent)
+            }
+        }
+    }
+
+    handleDisplayEventsNearMe()
 
   return (
-    <>
-    <div id="events-near-me">
-        <h2>Events Near Me</h2>
-            <div id='events-near-me-container'>
-                <div className="single-event-near-me">
-                    <img className='single-event-img'src="https://m.media-amazon.com/images/I/41rOKnRvgJL._AC_.jpg" alt="event_picture"/>
-                    <div className="event-date">01/01/2023</div>
-                    <h3>Generic Football Game</h3>
-                    <button className="event-button">See Details</button>
-                </div>
-                <br/>
-                <div className="single-event-near-me">
-                    <img className='single-event-img' src="https://baltimore.org/wp-content/uploads/2020/02/insiders-guide-to-camden-yards-game-shot2-500x500-c-default.jpg"alt="event_picture"/>
-                    <div className="event-date">01/01/2023</div>
-                    <h3>Generic Baseball Game</h3>
-                    <button className="event-button">See Details</button>
-                </div>
-                <br/>
-                <div className="single-event-near-me">
-                    <img className='single-event-img'src="https://mesaartscenter.com/sysimg/main-image-shows-performing-live-chicago-symphony-orchestra-with-riccardo-muti-media-box-image-1-image.jpg"alt="event_picture"/>
-                    <div className="event-date">01/01/2023</div>
-                    <h3>Classical Night</h3>
-                    <button className="event-button">See Details</button>
-                </div>
-            </div>
-            
+
+    <div className='events-near-me-container'>
+        <h1 className='events-near-me-title'>Events Near Me</h1>   
+        {
+            eventsNearMeArray && eventsNearMeArray.map(event => <SingleEventNearMe event={event} key = {event.id}/>)
+        }        
     </div>
-    </>
+
   )
 }
 

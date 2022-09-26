@@ -1,11 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import CarouselItem from "./CarouselItem";
 
 
 function Carousel(props) {
 
     const [carousel, setCarousel] = React.useState(0);
-
 
     React.useEffect(()=>{
         if (carousel < 0) {
