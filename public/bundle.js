@@ -6706,7 +6706,7 @@ function ProfileCart(_ref) {
       marginBottom: "10px",
       color: "rgb(130,130,130)"
     }
-  }, "Once you have items, checkout from here or the shopping cart icon in the top right."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Once you have items, checkout from here or use the cart icon in the top right."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     style: linkStyle,
     to: "/events"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -7098,9 +7098,10 @@ function ProfileRecommended(_ref) {
 
     if (filteredWithoutDuplicateNames.length > 3) {
       while (finalEvents.length < 3) {
-        var random = filteredWithoutDuplicateNames[Math.ceil(filteredWithoutDuplicateNames.length * Math.random())];
+        var random = filteredWithoutDuplicateNames[Math.floor(filteredWithoutDuplicateNames.length * Math.random())];
 
         if (!finalEvents.includes(random)) {
+          console.log(random);
           finalEvents.push(random);
         }
       }
@@ -7110,7 +7111,7 @@ function ProfileRecommended(_ref) {
   if (!finalEvents.length) {
     for (var _i = 0; _i < 3; _i++) {
       console.log("inthefor");
-      finalEvents.push(events[Math.ceil(events.length * Math.random())]);
+      finalEvents.push(events[Math.floor(events.length * Math.random())]);
     }
   }
 
@@ -7158,8 +7159,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ProfileUpcomingEvents(_ref) {
+  var _orders$orders;
+
   var orders = _ref.orders;
-  var upcoming = orders.orders.filter(function (item) {
+  var upcoming = (_orders$orders = orders.orders) === null || _orders$orders === void 0 ? void 0 : _orders$orders.filter(function (item) {
     var start = Date.parse(item.events[0].startTime);
     var now = Date.now();
     var daysUntil = Math.ceil((start - now) / 86400000);
@@ -7188,7 +7191,7 @@ function ProfileUpcomingEvents(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: item.events[0].img
     }))));
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "No Upcoming Events")));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Events happening within 30 days will show here.")));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileUpcomingEvents);

@@ -85,8 +85,8 @@ function ProfileCart({ cart, orders }) {
                 color: "rgb(130,130,130)",
               }}
             >
-              Once you have items, checkout from here or the shopping cart icon
-              in the top right.
+              Once you have items, checkout from here or use the cart icon in
+              the top right.
             </div>
             <Link style={linkStyle} to="/events">
               <div className="profile-view-events">View Available Events</div>

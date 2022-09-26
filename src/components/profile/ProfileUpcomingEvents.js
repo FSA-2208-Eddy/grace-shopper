@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function ProfileUpcomingEvents({ orders }) {
-  const upcoming = orders.orders.filter((item) => {
+  const upcoming = orders.orders?.filter((item) => {
     const start = Date.parse(item.events[0].startTime);
     const now = Date.now();
     let daysUntil = Math.ceil((start - now) / 86400000);
@@ -37,7 +37,7 @@ function ProfileUpcomingEvents({ orders }) {
             );
           })
         ) : (
-          <div>No Upcoming Events</div>
+          <div>Events happening within 30 days will show here.</div>
         )}
       </div>
     </div>

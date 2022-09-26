@@ -24,9 +24,10 @@ function ProfileRecommended({ user, orders, events }) {
       while (finalEvents.length < 3) {
         let random =
           filteredWithoutDuplicateNames[
-            Math.ceil(filteredWithoutDuplicateNames.length * Math.random())
+            Math.floor(filteredWithoutDuplicateNames.length * Math.random())
           ];
         if (!finalEvents.includes(random)) {
+          console.log(random);
           finalEvents.push(random);
         }
       }
@@ -35,7 +36,7 @@ function ProfileRecommended({ user, orders, events }) {
   if (!finalEvents.length) {
     for (let i = 0; i < 3; i++) {
       console.log("inthefor");
-      finalEvents.push(events[Math.ceil(events.length * Math.random())]);
+      finalEvents.push(events[Math.floor(events.length * Math.random())]);
     }
   }
   console.log("FINAL", finalEvents);
