@@ -27,7 +27,7 @@ function Navbar({ loggedIn, setLoggedIn }) {
               }
           })
           if (data) {
-            setLoginStatus(true);
+            setLoggedIn(true);
           }
         }
       }

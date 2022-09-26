@@ -63,7 +63,7 @@ const SingleEvent = () => {
           </h1>
           <p>
             <span className="single-event-bold">Tickets Remaining:&nbsp;</span>
-            400
+            {singleEvent.tickets}
           </p>
           <p>
             <span className="single-event-bold">Start Time:&nbsp;</span>
