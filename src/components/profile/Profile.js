@@ -28,9 +28,9 @@ function Profile() {
       <div className="profile-main-container">
         <ProfileMenu user={user} />
         <div className="profile-cart-events-container">
-          <ProfileRecommended user={user} />
+          <ProfileRecommended user={user} orders={orders} />
           <ProfileCart user={user} cart={cart} />
-          <ProfileUpcomingEvents user={user} />
+          <ProfileUpcomingEvents user={user} orders={orders} />
           <ProfilePurchaseHistory user={user} orders={orders} />
         </div>
       </div>

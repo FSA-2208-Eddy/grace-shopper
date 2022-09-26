@@ -6535,12 +6535,14 @@ function Profile() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement("div", {
     className: "profile-cart-events-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_ProfileRecommended__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    user: user
+    user: user,
+    orders: orders
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_ProfileCart__WEBPACK_IMPORTED_MODULE_2__["default"], {
     user: user,
     cart: cart
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_ProfileUpcomingEvents__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    user: user
+    user: user,
+    orders: orders
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_ProfilePurchaseHistory__WEBPACK_IMPORTED_MODULE_4__["default"], {
     user: user,
     orders: orders
@@ -7019,7 +7021,8 @@ function ProfilePurchaseHistory(_ref) {
     className: "profile-cart-item-container"
   }, ((_orders$orders = orders.orders) === null || _orders$orders === void 0 ? void 0 : _orders$orders.length) > 0 ? (_orders$orders2 = orders.orders) === null || _orders$orders2 === void 0 ? void 0 : _orders$orders2.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "profile-cart-item"
+      className: "profile-cart-item",
+      key: item.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "profile-cart-item-picture-container"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -7102,32 +7105,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 
 
-function ProfileUpcomingEvents() {
+
+function ProfileUpcomingEvents(_ref) {
+  var orders = _ref.orders;
+  var upcoming = orders.orders.filter(function (item) {
+    var start = Date.parse(item.events[0].startTime);
+    var now = Date.now();
+    var daysUntil = Math.ceil((start - now) / 86400000);
+    if (daysUntil <= 30) return true;else return false;
+  });
+  console.log("UPCOMING", upcoming);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-upcoming-tickets-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-upcoming-tickets-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Upcoming Events")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "profile-upcoming-tickets-item-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-upcoming-tickets-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-upcoming-tickets-item-title"
-  }, "New Abnormal: The Strokes | September 25, 2022"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-upcoming-tickets-item-image-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://s1.ticketm.net/dam/a/84e/4d1720db-9677-413c-b844-2cd22f1f484e_1313551_TABLET_LANDSCAPE_LARGE_16_9.jpg"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-upcoming-tickets-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-upcoming-tickets-item-title"
-  }, "Arcade Fire -- Amsterdam, Netherlands | August 1, 2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "profile-upcoming-tickets-item-image-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "https://i.guim.co.uk/img/media/da207ed976e1b316bab8a8ae547b6dbdc992911f/504_0_4674_2805/master/4674.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=0f625bcdff3a9aede290d4cfa832dcfa"
-  })))));
+  }, upcoming.length > 0 ? upcoming.map(function (item) {
+    var start = Date.parse(item.events[0].startTime);
+    var now = Date.now();
+    var daysUntil = Math.ceil((start - now) / 86400000);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      to: "/events/".concat(item.events[0].id),
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "profile-upcoming-tickets-item"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "profile-upcoming-tickets-item-title"
+    }, "".concat(daysUntil, " ").concat(daysUntil > 1 ? "Days" : "Day", " Until: ").concat(item.events[0].name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "profile-upcoming-tickets-item-image-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      src: item.events[0].img
+    }))));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "No Upcoming Events")));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileUpcomingEvents);

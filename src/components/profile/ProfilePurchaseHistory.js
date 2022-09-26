@@ -15,7 +15,7 @@ function ProfilePurchaseHistory({ orders }) {
           {orders.orders?.length > 0 ? (
             orders.orders?.map((item) => {
               return (
-                <div className="profile-cart-item">
+                <div className="profile-cart-item" key={item.id}>
                   <div className="profile-cart-item-picture-container">
                     <img src={item.events[0].img} />
                   </div>
