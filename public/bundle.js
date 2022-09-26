@@ -4682,7 +4682,7 @@ var EventList = function EventList() {
   }, "Misc")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "events-list"
   }, currentPosts.map(function (event) {
-    var date = new Date(event.startTime);
+    var date = new Date(event.startTime.split(' ')[0]);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: event.id,
       className: "events-listing"
