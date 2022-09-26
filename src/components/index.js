@@ -2,6 +2,7 @@ export { default as userSlice } from "../store/users/userSlice";
 export { default as eventSlice } from "../store/events/eventSlice";
 export { default as cartSlice } from "../store/cart/cartSlice";
 export { default as singleEventSlice } from "../store/singleEvent/singleEventSlice";
+export { default as ordersSlice } from "../store/orders/orderSlice";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as Profile } from "./profile/Profile";
 export { default as ProfileEdit } from "./profile/ProfileEdit";

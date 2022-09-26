@@ -7,15 +7,20 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSingleUser } from "../../store/users/userSlice";
 import { getCart } from "../../store/cart/cartSlice";
+import { getOrders } from "../../store/orders/orderSlice";
+import axios from "axios";
 
 function Profile() {
   console.log(window.localStorage);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users);
   const cart = useSelector((state) => state.cart.cart);
+  const orders = useSelector((state) => state.orders);
+
   useEffect(() => {
     dispatch(getCart());
     dispatch(getSingleUser());
+    dispatch(getOrders());
   }, []);
   console.log("user", user);
   return (
@@ -26,7 +31,7 @@ function Profile() {
           <ProfileRecommended user={user} />
           <ProfileCart user={user} cart={cart} />
           <ProfileUpcomingEvents user={user} />
-          <ProfilePurchaseHistory user={user} />
+          <ProfilePurchaseHistory user={user} orders={orders} />
         </div>
       </div>
     </>

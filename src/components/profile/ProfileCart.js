@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { removeItemFromCart } from "../../store/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
-function ProfileCart({ cart }) {
+function ProfileCart({ cart, orders }) {
   const linkStyle = {
     textDecoration: "none",
     backgroundColor: "#ff8e3c",
@@ -13,28 +13,31 @@ function ProfileCart({ cart }) {
     margin: "5px",
     borderRadius: "5px",
   };
-
   const checkoutStyle = { textDecoration: "none" };
   const dispatch = useDispatch();
-  function handleDelete(event) {
+  async function handleDelete(event) {
     event.preventDefault();
     let lineItemId = event.target.getAttribute("value");
-    dispatch(removeItemFromCart(lineItemId));
+    console.log(lineItemId);
+    await dispatch(removeItemFromCart(lineItemId));
+    setClicked(!clicked);
+    console.log("AFTER DELETE", cart);
   }
-  console.log("cart", cart);
+  const [clicked, setClicked] = useState(false);
   return (
     <div className="profile-cart-container">
       <div className="profile-cart-header">
         <h2>Your Cart</h2>
         <Link style={checkoutStyle} to="/profile/checkout">
           <div className="profile-cart-checkout">{`Checkout (${
-            cart.lineitems.length
-          } ${cart.lineitems.length === 1 ? "Item" : "Items"})`}</div>
+            cart.lineitems?.length || 0
+          } ${cart.lineitems?.length === 1 ? "Item" : "Items"})`}</div>
         </Link>
       </div>
       <div className="profile-cart-item-container">
         {cart?.lineitems?.length > 0 ? (
           cart?.lineitems?.map((item) => {
+            console.log(item.id);
             return (
               <div className="profile-cart-item" key={item.id}>
                 <div className="profile-cart-item-picture-container">

@@ -14,7 +14,26 @@ const requireToken = async (req, res, next) => {
     next(error);
   }
 };
-
+router.get("/order-history", requireToken, async (req, res, next) => {
+  try {
+    const orders = await Order.findAll({
+      where: {
+        userId: req.user.id,
+        isCart: false,
+      },
+      include: [{ model: LineItem, include: Event }],
+    });
+    let lineItems = [];
+    for (let i = 0; i < orders.length; i++) {
+      let currentOrder = orders[i];
+      let items = currentOrder.lineitems;
+      lineItems = [...lineItems, ...items];
+    }
+    res.send(lineItems);
+  } catch (error) {
+    next(error);
+  }
+});
 router.get("/cart", requireToken, async (req, res, next) => {
   try {
     const cart = await Order.findOne({
@@ -35,7 +54,7 @@ router.get("/cart", requireToken, async (req, res, next) => {
 router.put("/cart-remove", requireToken, async (req, res, next) => {
   try {
     const toDelete = await LineItem.findByPk(req.body.lineItemId);
-    toDelete.destroy();
+    await toDelete.destroy();
     const cart = await Order.findOne({
       where: {
         userId: req.user.id,
