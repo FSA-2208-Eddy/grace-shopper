@@ -444,7 +444,9 @@ select {
   text-align: center;
 }
 .profile-account-information-container .profile-picture-container {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -454,9 +456,6 @@ select {
   background-size: cover;
   margin: 5px;
   border: 1px solid #dedede;
-}
-.profile-account-information-container .profile-picture-container img {
-  width: 100%;
 }
 .profile-account-information-container .profile-email-container {
   padding: 10px;
@@ -1029,7 +1028,6 @@ select {
 }
 #single-event-row-2 .single-event-details h1 .single-event-bold {
   font-size: 1.5rem;
-  margin-right: 10px;
 }
 #single-event-row-2 .single-event-details p {
   color: white;

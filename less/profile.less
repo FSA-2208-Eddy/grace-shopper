@@ -45,7 +45,9 @@
     text-align: center;
   }
   .profile-picture-container {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-content: center;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -55,9 +57,9 @@
     background-size: cover;
     margin: 5px;
     border: @border;
-    img {
-      width: 100%;
-    }
+    // img {
+    //   width: 100%;
+    // }
   }
   .profile-email-container {
     padding: 10px;
