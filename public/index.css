@@ -1252,59 +1252,20 @@ select {
   display: flex;
   justify-content: center;
 }
-* {
-  margin: 0;
-}
-.carousel {
-  width: 100%;
-  overflow: hidden;
-  height: 300px;
-  background-color: #151a21;
-  position: relative;
-  transition: 0.25s;
-}
-.arrows {
-  z-index: 1;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.arrow {
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 100px;
-  background-color: #ff8e3c;
-  color: white;
-}
-.carouselWrapper {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  transition: 0.25s;
-}
-.carousel-item {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #151a21;
-  color: white;
-}
 .gallery {
+  display: flex;
   position: relative;
   width: 300px;
   height: 200px;
   transform-style: preserve-3d;
   animation: rotate 60s linear infinite;
+}
+.gallery:hover {
+  animation-play-state: paused;
+}
+.gallery span:hover {
+  border-style: solid;
+  border-color: white;
 }
 @keyframes rotate {
   from {
@@ -1837,52 +1798,6 @@ select {
   100% {
     opacity: 1;
   }
-}
-.gallery {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.slider {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  transform-style: preserve-3d;
-  animation: rotate 30s linear infinite;
-}
-@keyframes rotate {
-  0% {
-    transform: perspective(1000px) rotateY(0deg);
-  }
-  100% {
-    transform: perspective(1000px) rotateY(360deg);
-  }
-}
-.slider span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-origin: center;
-  transform-style: preserve-3d;
-  transform: rotateY(calc(var(--i)*45deg)) translateZ(350px);
-}
-.slider span img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  object-fit: cover;
-  transition: 2s;
-}
-.slider span:hover img {
-  transform: translateY(-50px) scale(1.2);
-  animation-play-state: paused;
 }
 * {
   margin: 0;

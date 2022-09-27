@@ -13,7 +13,7 @@ function UpcomingEvents() {
 
     // const navigate = useNavigate();
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     let upcomingEventsArray = []
 
@@ -33,14 +33,13 @@ function UpcomingEvents() {
     }
 
     handleDisplayUpcomingEvents()
-
     
   return (
     <>
         <div className='upcoming-events-container'>
             <h1 className='upcoming-events-title'>Upcoming Events</h1>
             {
-                upcomingEventsArray && upcomingEventsArray.map(event => <SingleUpcomingEvent event={event} key = {Math.floor(Math.random()*10000)}/>)
+                upcomingEventsArray && upcomingEventsArray.map((event, idx) => <SingleUpcomingEvent event={event} key = {idx}/>)
             }
         </div>  
     </>

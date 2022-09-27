@@ -1,29 +1,26 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function CarouselItem(props){
-//useState, value of state is of useSelector, store in variable
+    const navigate = useNavigate();
+    const event = props.event;
   
-    const event = props.event
-    // const id = event.id
-    // const name = event.name
-    // const date = event.startTime
+    const id = event.id
+    const name = event.name
+    const date = event.startTime
     const img = event.img
+    const idx =  props.idx + 1
 
-    
-    console.log('carousel props: ',props)
+    function handleOnClick(evt){
+        evt.preventDefault()
+        const id = event.id
+        navigate(`/events/${id}`)
+    }
     return(
-        // <div className={"carousel-item"} style={{width: props.wd+"%"}}>
-        //     {props.data}
-        // </div>
-        
-        <div className="carousel-item">
-            <div className="carousel-item-image-container">
-                <img className="carousel-item-image" src={img} alt="event_picture"/>
-            </div>
-            <div className="carousel-item-event-date">Event Date</div>
-            <div className="carousel-item-event-title">Event Name</div>
-        </div>
+        <span style={{"--i": idx}}>
+            <img onClick={handleOnClick} src={img} alt="" />
+        </span>
     )
 }
 export default CarouselItem;
