@@ -13,7 +13,7 @@ function SingleEventNearMe(props) {
 
     const handleDetailButtonClick = (evt) => {
         evt.preventDefault();
-        navigate('/')
+        navigate(`/events/${id}`)
     }
 
     return (

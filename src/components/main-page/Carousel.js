@@ -1,34 +1,46 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvents } from "../../store/events/eventSlice";
 import CarouselItem from "./CarouselItem";
+import '../../../public/carousel.css'
 
 
-function Carousel(props) {
+function Carousel() {
 
-    const [carousel, setCarousel] = React.useState(0);
+    const eventsStore = useSelector(state => state.events.events)
+   
+    const dispatch = useDispatch();
 
-    React.useEffect(()=>{
-        if (carousel < 0) {
-            setCarousel(props.data.length - 1)
-        }else if (carousel >= props.data.length) {
-            setCarousel(0)
+    let carouselEventsArray = []
+
+    React.useEffect(() => {
+        dispatch(getEvents())
+    },[])
+
+    //Picking random events from DB to feature
+    const handleCarouselEvents = () => {
+        if (eventsStore.length > 0) {
+            for (let i = 0; i < 8; i++){
+                let curEvent = eventsStore[Math.floor(Math.random()*eventsStore.length)];
+                console.log('current Event:', curEvent)
+                carouselEventsArray.push(curEvent)
+            }
         }
-    }, [carousel,props.data.length])
+    }
+    handleCarouselEvents()
+    console.log("carousel Events Array: ", carouselEventsArray)
+
 
     return (
-        <div className={"carousel"}>
-            <div className="carouselWrapper" style={{width: 100 * props.data.length + "%", left: -100*carousel+"%"}}>
-                {props.data.map((itm, idx) =>
-                    <CarouselItem key={idx} data={itm} wd={100 / props.data.length}/>
-                )}
+        <div className="carousel-container">
+            <div className='gallery'>
+                { 
+                    carouselEventsArray && carouselEventsArray.map((event,idx) => <CarouselItem event={event} idx = {idx} key={idx}/>)
+                }
             </div>
-            <div className={"arrows"}>
-                <div className="arrow left" onClick={() => setCarousel(carousel-1)}>Left</div>
-                <div className="arrow right" onClick={() => setCarousel(carousel+1)}>Right</div>
-            </div>
-
         </div>
     )
 }
 
 export default Carousel;
+
