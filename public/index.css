@@ -1297,59 +1297,20 @@ select {
   display: flex;
   justify-content: center;
 }
-* {
-  margin: 0;
-}
-.carousel {
-  width: 100%;
-  overflow: hidden;
-  height: 300px;
-  background-color: #151a21;
-  position: relative;
-  transition: 0.25s;
-}
-.arrows {
-  z-index: 1;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.arrow {
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 100px;
-  background-color: #ff8e3c;
-  color: white;
-}
-.carouselWrapper {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  transition: 0.25s;
-}
-.carousel-item {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #151a21;
-  color: white;
-}
 .gallery {
+  display: flex;
   position: relative;
   width: 300px;
   height: 200px;
   transform-style: preserve-3d;
   animation: rotate 60s linear infinite;
+}
+.gallery:hover {
+  animation-play-state: paused;
+}
+.gallery span:hover {
+  border-style: solid;
+  border-color: white;
 }
 @keyframes rotate {
   from {

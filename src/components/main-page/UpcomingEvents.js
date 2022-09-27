@@ -11,9 +11,9 @@ function UpcomingEvents() {
     
     const eventsStore = useSelector(state => state.events.events)
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     let upcomingEventsArray = []
 
@@ -21,6 +21,7 @@ function UpcomingEvents() {
         dispatch(getEvents())
     },[])
 
+    
 
     const handleDisplayUpcomingEvents = () => {
         if (eventsStore.length > 0) {
@@ -32,14 +33,13 @@ function UpcomingEvents() {
     }
 
     handleDisplayUpcomingEvents()
-
     
   return (
     <>
         <div className='upcoming-events-container'>
             <h1 className='upcoming-events-title'>Upcoming Events</h1>
             {
-                upcomingEventsArray && upcomingEventsArray.map(event => <SingleUpcomingEvent event={event} key = {Math.floor(Math.random()*100)}/>)
+                upcomingEventsArray && upcomingEventsArray.map((event, idx) => <SingleUpcomingEvent event={event} key = {idx}/>)
             }
         </div>  
     </>
