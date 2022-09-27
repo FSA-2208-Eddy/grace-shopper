@@ -10,11 +10,11 @@ function ProfileMenu({ user }) {
         <h1>Profile Overview</h1>
       </div>
       <div className="profile-account-information-container">
-        <div className="profile-name-container">{`${user.firstName} ${user.lastName}`}</div>
+        <div className="profile-name-container">{`${user?.firstName} ${user?.lastName}`}</div>
         <div className="profile-picture-container">
           <img
             className="profile-picture"
-            src={user.img}
+            src={user?.img}
             alt="profile picture"
           />
         </div>
@@ -24,7 +24,7 @@ function ProfileMenu({ user }) {
           <div
             className={user?.email?.length > 21 ? "profileLargeEmail" : null}
           >
-            {user.email}
+            {user?.email}
           </div>
           <Link to="/profile/edit">Edit Email</Link>
         </div>

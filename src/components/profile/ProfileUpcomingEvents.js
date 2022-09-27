@@ -9,15 +9,14 @@ function ProfileUpcomingEvents({ orders }) {
     if (daysUntil <= 30) return true;
     else return false;
   });
-  console.log("UPCOMING", upcoming);
   return (
     <div className="profile-upcoming-tickets-container">
       <div className="profile-upcoming-tickets-header">
         <h2>Your Upcoming Events</h2>
       </div>
       <div className="profile-upcoming-tickets-item-container">
-        {upcoming.length > 0 ? (
-          upcoming.map((item) => {
+        {upcoming?.length > 0 ? (
+          upcoming?.map((item) => {
             const start = Date.parse(item.events[0].startTime);
             const now = Date.now();
             const daysUntil = Math.ceil((start - now) / 86400000);
