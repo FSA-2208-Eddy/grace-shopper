@@ -29,6 +29,11 @@ const Checkout = () => {
     finalCart = cart
   }
 
+  let total = 0
+  cart.lineitems.forEach((element) => {
+    total += (element.events[0].price * element.qty)
+  })
+
   function handleDelete(event) {
     event.preventDefault();
     let lineItemId = event.target.getAttribute("value");
@@ -96,7 +101,7 @@ const Checkout = () => {
               )}
             </div>
             <div className="checkout-cart-header">
-              <h2>Your Total: $500</h2>
+              <h2>Your Total: ${total}</h2>
             </div>
             {!window.localStorage.getItem('token') ? <div className="checkout-card-info">
               Email: <input onChange={(event)=>setEmail(event.target.value)} value={email} placeholder="Email"></input>

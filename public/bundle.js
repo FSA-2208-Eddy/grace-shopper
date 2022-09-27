@@ -4466,6 +4466,11 @@ var Checkout = function Checkout() {
     finalCart = cart;
   }
 
+  var total = 0;
+  cart.lineitems.forEach(function (element) {
+    total += element.events[0].price * element.qty;
+  });
+
   function handleDelete(event) {
     event.preventDefault();
     var lineItemId = event.target.getAttribute("value");
@@ -4552,7 +4557,7 @@ var Checkout = function Checkout() {
     }, "Remove"));
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Your Cart is Empty")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-cart-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Total: $500")), !window.localStorage.getItem('token') ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Total: $", total)), !window.localStorage.getItem('token') ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-card-info"
   }, "Email: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     onChange: function onChange(event) {
