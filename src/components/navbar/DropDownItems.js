@@ -3,7 +3,7 @@ import { Link, useNavigate  } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import {toggle} from '../../store/login/loginSlice'
 
-function DropDownItems({ loginStatus, setDropDown, loggedIn, setLoggedIn  }) {
+function DropDownItems({ setDropDown, loggedIn, setLoggedIn  }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

@@ -11,7 +11,6 @@ function Navbar({ loggedIn, setLoggedIn }) {
 
   const [searchBarInput, setSearchBarInput] = React.useState('');
   const [dropDown, setDropDown] = React.useState(false);
-  const [loginStatus, setLoginStatus] = React.useState(false);
 
   const login = useSelector(state => state.value)
 
@@ -40,16 +39,16 @@ function Navbar({ loggedIn, setLoggedIn }) {
     <nav id="navbar">
         <Link to="/" id="navbar-logo"><img src={logo} alt='logo' /></Link>
         <div className="navbar-links">
-            <Link to="/events">All Events</Link>
-            <Link to="/events/type/music">Music</Link>
-            <Link to="/events/type/sports">Sports</Link>
-            <Link to="/events/type/artsandtheatre">Arts/Theatre</Link>
-            <Link to="/events/type/misc">Misc</Link>
+            <Link to="/events" onClick={() => setDropDown(false)}>All Events</Link>
+            <Link to="/events/type/music" onClick={() => setDropDown(false)}>Music</Link>
+            <Link to="/events/type/sports" onClick={() => setDropDown(false)}>Sports</Link>
+            <Link to="/events/type/artsandtheatre" onClick={() => setDropDown(false)}>Arts/Theatre</Link>
+            <Link to="/events/type/misc" onClick={() => setDropDown(false)}>Misc</Link>
         </div>
         <div className='login-logout-container'>
             <img id='settings-icon' src={cog} alt='settings' onClick={() => setDropDown(!dropDown)}/>
         </div>
-          { dropDown ? <ul><DropDownItems loginStatus={loginStatus} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setDropDown={setDropDown}/></ul> : <></>}
+          { dropDown ? <ul><DropDownItems loggedIn={loggedIn} setLoggedIn={setLoggedIn} setDropDown={setDropDown}/></ul> : <></>}
     </nav>
     <div className='navbar-searchbar-container'>
       <div className='searchbar-icon'></div>

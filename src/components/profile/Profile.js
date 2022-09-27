@@ -19,6 +19,7 @@ function Profile() {
   const orders = useSelector((state) => state.orders);
   const events = useSelector((state) => state.events.events);
 
+
   useEffect(() => {
     dispatch(getCart());
     dispatch(getSingleUser());

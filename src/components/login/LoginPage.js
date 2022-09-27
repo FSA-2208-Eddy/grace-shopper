@@ -20,6 +20,7 @@ function LoginPage({ setLoggedIn  }) {
   const [newPassword, setNewPassword] = React.useState('');
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
+  const [imageUrl, setImageUrl] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(false);
   const [showSignUp, setShowSignUp] = React.useState(false);
   const [errMsg, setErrMsg] = React.useState('');
@@ -47,6 +48,7 @@ function LoginPage({ setLoggedIn  }) {
       setUserName('');
       setPassword('');
       setLoggedIn(true)
+      navigate('/profile')
     }
     catch(error) {
       console.log(error)
@@ -63,6 +65,7 @@ function LoginPage({ setLoggedIn  }) {
         firstName: firstName,
         lastName: lastName,
         email: email,
+        img: imageUrl
     }
     try{
         const newUser = await axios.post('/api/auth/signup', newUserObj)
@@ -72,6 +75,8 @@ function LoginPage({ setLoggedIn  }) {
         setEmail('')
         setNewUserName('')
         setNewPassword('')
+
+        window.location.reload(false);
     }
     catch(err) {
         console.log(err)
@@ -109,6 +114,8 @@ function LoginPage({ setLoggedIn  }) {
                     <span><i className="far fa-eye" id="togglePassword" onClick={() => setShowPassword(!showPassword)}></i></span>
                     <label htmlFor='email'>Email</label>
                     <input type='text' name='email' onChange={(e) => setEmail(e.target.value)} value={email} required></input>
+                    <label htmlFor='profile-img-url'>Profile Image URL <small>(optional)</small></label>
+                    <input type='text' name='profile-image-url' onChange={(e) => setImageUrl(e.target.value)} value={imageUrl}></input>
                     <button>Submit</button>
                 </form>
                 <div className='login-have-an-account-container'>
