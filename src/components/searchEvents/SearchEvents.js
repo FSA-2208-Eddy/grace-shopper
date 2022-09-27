@@ -41,10 +41,15 @@ const SearchEvents = () => {
 
   const cache = {};
   const searchResult = [];
-
+  const ignoreWords = ["the", "and", "of", "in", "a"];
+  const filteredKeywords = [];
+  keywords.forEach((word) => {
+    if (!ignoreWords.includes(word)) filteredKeywords.push(word);
+  });
+  console.log(filteredKeywords);
   allEvents.forEach((event) => {
-    for (let i = 0; i < keywords.length; i++) {
-      let currentWord = keywords[i];
+    for (let i = 0; i < filteredKeywords.length; i++) {
+      let currentWord = filteredKeywords[i];
       if (
         event.location?.toLowerCase().indexOf(currentWord.toLowerCase()) >= 0 ||
         event.name?.toLowerCase().indexOf(currentWord.toLowerCase()) >= 0 ||
@@ -53,7 +58,7 @@ const SearchEvents = () => {
         event.subGenre?.toLowerCase().indexOf(currentWord.toLowerCase()) >= 0
       ) {
         if (cache[event.name]) continue;
-        if (i === keywords.length - 1) {
+        if (i === filteredKeywords.length - 1) {
           cache[event.name] = true;
           searchResult.push(event);
         }
@@ -97,73 +102,96 @@ const SearchEvents = () => {
     window.scrollTo(0, 0);
   };
 
-  return (
-    <div id="events-main-container">
-      <div id="events-sort-filter">
-        <div id="events-sort">
-          {" "}
-          SORT BY:&nbsp;&nbsp;
-          <select onChange={sortHandler}>
-            <option className="events-option" value="none">
-              None
-            </option>
-            <option className="events-option" value="date">
-              Date
-            </option>
-            <option className="events-option" value="abc">
-              Alphabetical
-            </option>
-          </select>
-        </div>
-        <div id="events-filter">
-          {" "}
-          FILTER BY:&nbsp;&nbsp;
-          <select onChange={filterHandler}>
-            <option className="events-option" value="0">
-              All
-            </option>
-            <option className="events-option" value="1">
-              Sports
-            </option>
-            <option className="events-option" value="2">
-              Music
-            </option>
-            <option className="events-option" value="3">
-              Arts and Theatre
-            </option>
-            <option className="events-option" value="4">
-              Misc
-            </option>
-          </select>
-        </div>
-      </div>
-      <div id="events-list">
-        {currentPosts.map((event) => {
-          let date = new Date(event.startTime.split(" ")[0]);
-          return (
-            <div key={event.id} className="events-listing">
-              <img src={event.img} alt="picture should go here" />
-              <div className="event-date">{date.toDateString()}</div>
-              <p>{event.name}</p>
-              <Link to={`/events/${event.id}`}>
-                <button className="event-button">See Details</button>
-              </Link>
+  if (searchResult.length) {
+    return (
+      <>
+        <div id="events-main-container">
+          <div id="events-sort-filter">
+            <div id="events-sort">
+              {" "}
+              SORT BY:&nbsp;&nbsp;
+              <select onChange={sortHandler}>
+                <option className="events-option" value="none">
+                  None
+                </option>
+                <option className="events-option" value="date">
+                  Date
+                </option>
+                <option className="events-option" value="abc">
+                  Alphabetical
+                </option>
+              </select>
             </div>
-          );
-        })}
-        {/* <Pagination postsPerPage={eventsPerPage} totalPosts={eventsSorted.length} paginate={paginate} currentPage={currentPage}/> */}
-        <div id="events-next-prev">
-          <button onClick={prevPage} className="event-next-button">
-            Prev
-          </button>
-          <p>{`${currentPage}/${totalPages}`}</p>
-          <button onClick={nextPage} className="event-next-button">
-            Next
+            <div id="events-filter">
+              {" "}
+              FILTER BY:&nbsp;&nbsp;
+              <select onChange={filterHandler}>
+                <option className="events-option" value="0">
+                  All
+                </option>
+                <option className="events-option" value="1">
+                  Sports
+                </option>
+                <option className="events-option" value="2">
+                  Music
+                </option>
+                <option className="events-option" value="3">
+                  Arts and Theatre
+                </option>
+                <option className="events-option" value="4">
+                  Misc
+                </option>
+              </select>
+            </div>
+          </div>
+          <div className="search-results-number">{`Showing (${
+            searchResult.length
+          }) matches for: "${keywords.join(" ")}"`}</div>
+          <div id="events-list">
+            {currentPosts.map((event) => {
+              let date = new Date(event.startTime.split(" ")[0]);
+              return (
+                <div key={event.id} className="events-listing">
+                  <img src={event.img} alt="picture should go here" />
+                  <div className="event-date">{date.toDateString()}</div>
+                  <p>{event.name}</p>
+                  <Link to={`/events/${event.id}`}>
+                    <button className="event-button">See Details</button>
+                  </Link>
+                </div>
+              );
+            })}
+            {totalPages > 1 ? (
+              <div id="events-next-prev">
+                <button onClick={prevPage} className="event-next-button">
+                  Prev
+                </button>
+                <p>{`${currentPage}/${totalPages}`}</p>
+                <button onClick={nextPage} className="event-next-button">
+                  Next
+                </button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <div className="search-not-found-main">
+        <div className="search-not-found">
+          <div className="search-not-found-message">
+            Oops! Your search - <span>{keywords.join(" ")}</span> - did not
+            match any events. Try using more general keywords, or reducing your
+            search terms.
+          </div>
+          <button onClick={() => navigate("/events")}>
+            Back to All Events
           </button>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default SearchEvents;

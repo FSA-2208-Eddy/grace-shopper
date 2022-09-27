@@ -1,0 +1,50 @@
+@import "variables";
+@boxshadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+@border:1px solid rgb(222, 222, 222);
+@clickable-color: rgb(43, 136, 157);
+
+.search-results-number {
+  font-size: 20px;
+  margin: 25px;
+  color: @highlight-color;
+  font-weight: 500;
+}
+.search-not-found-main {
+  background-color: white;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-not-found {
+  height: 500px;
+  width: 500px;
+  border: @border;
+  border-radius: 5px;
+  box-shadow: @boxshadow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  .search-not-found-message {
+    padding-left: 25px;
+    font-size: 18px;
+    span {
+      font-weight: 700;
+    }
+  }
+  button {
+    margin-top: 25px;
+    background-color: @button-color;
+    padding: 10px;
+    border: @border;
+    border-radius: 10px;
+    box-shadow: @boxshadow;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #ffa769;
+  }
+}
