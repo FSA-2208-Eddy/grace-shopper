@@ -1,0 +1,45 @@
+.search-results-number {
+  font-size: 20px;
+  margin: 25px;
+  color: #ff8e3c;
+  font-weight: 500;
+}
+.search-not-found-main {
+  background-color: white;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-not-found {
+  height: 500px;
+  width: 500px;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+.search-not-found .search-not-found-message {
+  padding-left: 25px;
+  font-size: 18px;
+}
+.search-not-found .search-not-found-message span {
+  font-weight: 700;
+}
+.search-not-found button {
+  margin-top: 25px;
+  background-color: #ff8e3c;
+  padding: 10px;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  font-size: 16px;
+  cursor: pointer;
+}
+.search-not-found button:hover {
+  background-color: #ffa769;
+}
