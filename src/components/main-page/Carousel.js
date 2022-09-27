@@ -22,14 +22,11 @@ function Carousel() {
         if (eventsStore.length > 0) {
             for (let i = 0; i < 8; i++){
                 let curEvent = eventsStore[Math.floor(Math.random()*eventsStore.length)];
-                console.log('current Event:', curEvent)
                 carouselEventsArray.push(curEvent)
             }
         }
     }
     handleCarouselEvents()
-    console.log("carousel Events Array: ", carouselEventsArray)
-
 
     return (
         <div className="carousel-container">
