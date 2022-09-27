@@ -126,9 +126,6 @@ const Checkout = ({loggedIn}) => {
             {!window.localStorage.getItem('token') ? <div className="checkout-card-info">
               Email: <input onChange={(event)=>setEmail(event.target.value)} value={email} placeholder="Email"></input>
             </div> : <div></div>}
-            <div className="checkout-card-info">
-              Credit Card Info: <input placeholder="XXXX-XXXX-XXXX-XXXX"></input>
-            </div>
             <div onClick={handleCheckout} className="checkout-button">
               Checkout
             </div>

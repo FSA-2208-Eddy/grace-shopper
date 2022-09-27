@@ -4638,10 +4638,6 @@ var Checkout = function Checkout(_ref) {
     value: email,
     placeholder: "Email"
   })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "checkout-card-info"
-  }, "Credit Card Info: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    placeholder: "XXXX-XXXX-XXXX-XXXX"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     onClick: handleCheckout,
     className: "checkout-button"
   }, "Checkout"))));
