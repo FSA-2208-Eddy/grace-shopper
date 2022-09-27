@@ -274,6 +274,8 @@ select {
 }
 .events-listing p {
   font-weight: bold;
+  max-width: 500px;
+  max-height: 80px;
 }
 .events-listing img {
   height: 50px;
@@ -1047,19 +1049,25 @@ select {
   border-top: 2px solid #ff8e3c;
   border-bottom: 2px solid #ff8e3c;
 }
+#single-event-row-2 .maps-container {
+  display: flex;
+  flex: 2;
+  padding: 30px;
+}
 #single-event-row-2 .single-event-image {
   display: flex;
   align-items: center;
-  width: 500px;
+  flex: 1;
 }
 #single-event-row-2 .single-event-image img {
   display: block;
   width: 100%;
   height: auto;
   border: 2px solid white;
+  margin-left: 30px;
 }
 #single-event-row-2 .single-event-details {
-  width: 50vw;
+  flex: 1;
   display: flex;
   justify-content: center;
   flex-direction: column;
