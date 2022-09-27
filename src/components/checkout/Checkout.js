@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getCart,
@@ -11,6 +12,7 @@ import CheckoutDone from "./CheckoutDone";
 const Checkout = ({loggedIn}) => {
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [checkedOut, setCheckedOut] = React.useState(false);
   const [email, setEmail] = React.useState('')
   const [refresh, setRefresh] = React.useState(true)
@@ -58,8 +60,8 @@ const Checkout = ({loggedIn}) => {
 
   async function handleCheckout() {
     if (window.localStorage.getItem('token')) {
-      dispatch(checkoutCart());
-      setCheckedOut(true);
+      await dispatch(checkoutCart());
+      testCheckout()
     } else {
       const cartToCheck = JSON.parse(window.localStorage.getItem('cart'))
       await axios.put('/api/users/guest-checkout', {
@@ -67,16 +69,18 @@ const Checkout = ({loggedIn}) => {
         email: email
       })
       window.localStorage.setItem('cart', JSON.stringify({lineitems: []}))
-      setCheckedOut(true)
+      testCheckout()
     }
+  }
+
+  async function testCheckout() {
+    const {data} = await axios.post('api/stripe/create-checkout-session', {cart: finalCart})
+    window.location.replace(`${data.url}`)
   }
 
   return (
     <div className="checkout-cart-events-container">
       <div className="checkout-cart-container">
-        {checkedOut ? (
-          <CheckoutDone loggedIn={loggedIn} email={email} />
-        ) : (
           <>
             <div className="checkout-cart-header">
               <h2>Review Your Order</h2>
@@ -95,7 +99,7 @@ const Checkout = ({loggedIn}) => {
                       {item.events[0].location}
                     </div>
                     <div className="checkout-cart-item-price">Price: ${item.events[0].price}</div>
-                    <div className="checkout-cart-item-price">QTY: ${item.qty}</div>
+                    <div className="checkout-cart-item-price">QTY: {item.qty}</div>
                     <div className="checkout-cart-item-seat">
                       Seat: <span>{item.seat}</span>
                     </div>
@@ -129,7 +133,6 @@ const Checkout = ({loggedIn}) => {
               Checkout
             </div>
           </>
-        )}
       </div>
     </div>
   );
