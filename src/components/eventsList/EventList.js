@@ -97,10 +97,12 @@ const EventList = () => {
             <div id="events-list">
                 {currentPosts.map((event)=>{
                     let date = new Date(event.startTime.split(' ')[0])
+                    if (event.startTime.includes('undefined')) { date = 'TBA' }
+
                     return (
                     <div key={event.id} className="events-listing">
                         <img src={event.img} alt="picture should go here"/>
-                        <div className="event-date">{date.toDateString()}</div>
+                        <div className="event-date">{date === 'TBA' ? date : date.toDateString()}</div>
                         <p>{event.name}</p>
                         <Link to={`/events/${event.id}`}><button className="event-button">See Details</button></Link>
                     </div>
