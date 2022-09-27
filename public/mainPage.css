@@ -5,20 +5,21 @@
 }
 .featured-events-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-around;
   background-color: white;
 }
 .main-page-event-button {
+  width: 100px;
+  height: 35px;
   background-color: #ff8e3c;
   color: white;
-  display: flex;
-  justify-content: flex-end;
-  align-items: stretch;
-  border-radius: 20px;
+  border-radius: 7px;
   font-size: 16px;
   border-color: #ff8e3c;
   text-shadow: 2px 2px 4px black;
+  margin: 10px 0 10px 0px;
+  cursor: pointer;
 }
 .main-page-event-button:hover {
   border-style: solid;
