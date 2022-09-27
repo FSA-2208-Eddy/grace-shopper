@@ -1,4 +1,4 @@
-@import 'variables.less';
+@import 'variables';
 
 .login-main-container {
   background-color: @background-color;
@@ -130,12 +130,15 @@
       margin: 20px 50px 0 50px;
 
       #togglePassword {
+        width: 16px;
+        height: 16px;
         float: right;
         margin-top: -36px;
         margin-right: -120px;
         margin-bottom: 15px;
         cursor: pointer;
-        color: @secondary-color;
+        // color: black;
+        z-index: 99;
       }
 
       input {

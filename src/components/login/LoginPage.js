@@ -1,14 +1,17 @@
 import React from 'react'
 import '../../../public/index.css'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { Navbar } from '../'
 import axios from 'axios'
+import { toggle } from '../../store/login/loginSlice'
 
 
-function LoginPage() {
+function LoginPage({ setLoggedIn  }) {
   const userRef = React.useRef();
   const errRef = React.useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -17,9 +20,11 @@ function LoginPage() {
   const [newPassword, setNewPassword] = React.useState('');
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
+  const [imageUrl, setImageUrl] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(false);
   const [showSignUp, setShowSignUp] = React.useState(false);
   const [errMsg, setErrMsg] = React.useState('');
+
 
   React.useEffect(() => {
     userRef.current.focus();
@@ -42,7 +47,8 @@ function LoginPage() {
       window.localStorage.setItem('token', token);
       setUserName('');
       setPassword('');
-
+      setLoggedIn(true)
+      navigate('/profile')
     }
     catch(error) {
       console.log(error)
@@ -59,6 +65,7 @@ function LoginPage() {
         firstName: firstName,
         lastName: lastName,
         email: email,
+        img: imageUrl
     }
     try{
         const newUser = await axios.post('/api/auth/signup', newUserObj)
@@ -68,6 +75,8 @@ function LoginPage() {
         setEmail('')
         setNewUserName('')
         setNewPassword('')
+
+        window.location.reload(false);
     }
     catch(err) {
         console.log(err)
@@ -105,6 +114,8 @@ function LoginPage() {
                     <span><i className="far fa-eye" id="togglePassword" onClick={() => setShowPassword(!showPassword)}></i></span>
                     <label htmlFor='email'>Email</label>
                     <input type='text' name='email' onChange={(e) => setEmail(e.target.value)} value={email} required></input>
+                    <label htmlFor='profile-img-url'>Profile Image URL <small>(optional)</small></label>
+                    <input type='text' name='profile-image-url' onChange={(e) => setImageUrl(e.target.value)} value={imageUrl}></input>
                     <button>Submit</button>
                 </form>
                 <div className='login-have-an-account-container'>

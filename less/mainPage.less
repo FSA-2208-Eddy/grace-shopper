@@ -51,7 +51,7 @@
 *{
     margin: 0;
   }
-  
+
   .carousel{
     width: 100%;
     overflow: hidden;
@@ -60,9 +60,9 @@
     position: relative;
     transition: 0.25s;
   }
-  
+
   .arrows{
-    z-index: 99;
+    z-index: 1;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -70,7 +70,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .arrow{
     height: 80px;
     display: flex;
@@ -80,7 +80,7 @@
     background-color: @button-color;
     color: white;
   }
-  
+
   .carouselWrapper{
     height: 100%;
     position: absolute;
@@ -91,7 +91,7 @@
     justify-content: space-around;
     transition: 0.25s;
   }
-  
+
   .carousel-item{
     height: 100%;
     display: flex;
@@ -99,5 +99,48 @@
     align-items: center;
     background-color: @secondary-color;
     color: white;
-  
+
+  }
+
+  .gallery {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotate 60s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: perspective(1200px)
+        rotateY(0deg);
+    }
+    to {
+      transform: perspective(1200px)
+        rotateY(360deg)
+    }
+  }
+
+  .gallery span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 45deg))
+      translateZ(380px);
+  }
+
+  .gallery span img {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0 0 0;
   }
