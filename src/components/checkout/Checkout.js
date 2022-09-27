@@ -13,6 +13,7 @@ const Checkout = () => {
   const dispatch = useDispatch();
   const [checkedOut, setCheckedOut] = React.useState(false);
   const [email, setEmail] = React.useState('')
+  const [refresh, setRefresh] = React.useState(true)
 
   React.useEffect(() => {
     if (window.localStorage.getItem('token')) {
@@ -20,6 +21,9 @@ const Checkout = () => {
       setCheckedOut(false);
     }
   }, []);
+
+  React.useEffect(()=>{
+  },[finalCart])
 
   let finalCart = {lineitems:[]}
 
@@ -30,15 +34,26 @@ const Checkout = () => {
   }
 
   let total = 0
-  cart.lineitems.forEach((element) => {
+  finalCart.lineitems.forEach((element) => {
     total += (element.events[0].price * element.qty)
   })
 
   function handleDelete(event) {
-    event.preventDefault();
-    let lineItemId = event.target.getAttribute("value");
-    console.log(lineItemId);
-    dispatch(removeItemFromCart(lineItemId));
+    if (window.localStorage.getItem('token')) {
+      event.preventDefault();
+      let lineItemId = event.target.getAttribute("value");
+      console.log(lineItemId);
+      dispatch(removeItemFromCart(lineItemId));
+    } else {
+      event.preventDefault();
+      let lineItemId = event.target.getAttribute("value");
+      let cart = JSON.parse(window.localStorage.getItem('cart'))
+      let lineitems = cart.lineitems.filter((element) => {
+        return element.id != lineItemId
+      })
+      window.localStorage.setItem('cart', JSON.stringify({lineitems: lineitems}))
+      setRefresh(!refresh)
+    }
   }
 
   async function handleCheckout() {

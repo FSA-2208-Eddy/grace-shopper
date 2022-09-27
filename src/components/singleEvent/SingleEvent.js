@@ -34,6 +34,7 @@ const SingleEvent = () => {
       if (!window.localStorage.getItem('token')){
         let cart = JSON.parse(window.localStorage.getItem('cart'))
         cart.lineitems.push({
+          id: Math.floor(Math.random()*10000),
           qty: qty,
           seat: "Placeholder",
           events: [{
