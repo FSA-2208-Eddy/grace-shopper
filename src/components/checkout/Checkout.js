@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getCart,
@@ -8,9 +9,10 @@ import {
 import axios from "axios";
 import CheckoutDone from "./CheckoutDone";
 
-const Checkout = () => {
+const Checkout = ({loggedIn}) => {
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [checkedOut, setCheckedOut] = React.useState(false);
   const [email, setEmail] = React.useState('')
   const [refresh, setRefresh] = React.useState(true)
@@ -58,8 +60,8 @@ const Checkout = () => {
 
   async function handleCheckout() {
     if (window.localStorage.getItem('token')) {
-      dispatch(checkoutCart());
-      setCheckedOut(true);
+      await dispatch(checkoutCart());
+      testCheckout()
     } else {
       const cartToCheck = JSON.parse(window.localStorage.getItem('cart'))
       await axios.put('/api/users/guest-checkout', {
@@ -67,16 +69,18 @@ const Checkout = () => {
         email: email
       })
       window.localStorage.setItem('cart', JSON.stringify({lineitems: []}))
-      setCheckedOut(true)
+      testCheckout()
     }
+  }
+
+  async function testCheckout() {
+    const {data} = await axios.post('api/stripe/create-checkout-session', {cart: finalCart})
+    window.location.replace(`${data.url}`)
   }
 
   return (
     <div className="checkout-cart-events-container">
       <div className="checkout-cart-container">
-        {checkedOut ? (
-          <CheckoutDone />
-        ) : (
           <>
             <div className="checkout-cart-header">
               <h2>Review Your Order</h2>
@@ -95,6 +99,7 @@ const Checkout = () => {
                       {item.events[0].location}
                     </div>
                     <div className="checkout-cart-item-price">Price: ${item.events[0].price}</div>
+                    <div className="checkout-cart-item-price">QTY: {item.qty}</div>
                     <div className="checkout-cart-item-seat">
                       Seat: <span>{item.seat}</span>
                     </div>
@@ -121,14 +126,10 @@ const Checkout = () => {
             {!window.localStorage.getItem('token') ? <div className="checkout-card-info">
               Email: <input onChange={(event)=>setEmail(event.target.value)} value={email} placeholder="Email"></input>
             </div> : <div></div>}
-            <div className="checkout-card-info">
-              Credit Card Info: <input placeholder="XXXX-XXXX-XXXX-XXXX"></input>
-            </div>
             <div onClick={handleCheckout} className="checkout-button">
               Checkout
             </div>
           </>
-        )}
       </div>
     </div>
   );

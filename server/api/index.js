@@ -8,5 +8,6 @@ router.use('/admin', require('./admin.js'))
 router.use('/users', require('./user.js'))
 router.use("/events", require("./events.js"));
 router.use("/auth", require("./auth.js"));
+router.use("/stripe", require('./stripe.js'))
 
 module.exports = router;
