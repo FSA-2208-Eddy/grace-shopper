@@ -9,6 +9,7 @@ export { default as Navbar } from "./navbar/Navbar";
 export { default as Profile } from "./profile/Profile";
 export { default as ProfileEdit } from "./profile/ProfileEdit";
 export { default as EventList } from "./eventsList/EventList";
+export { default as SearchEvents } from "./searchEvents/SearchEvents";
 export { default as LoginPage } from "./login/LoginPage";
 export { default as Footer } from "./footer/Footer";
 export { default as SingleEvent } from "./singleEvent/SingleEvent";

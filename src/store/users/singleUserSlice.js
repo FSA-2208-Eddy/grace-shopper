@@ -6,39 +6,39 @@ axios.defaults.headers.common["authorization"] =
   window.localStorage.getItem("token");
 
 export const getSingleUser = createAsyncThunk("/singleUser", async (id) => {
+  try {
+    const { data } = await axios.get(`/api/users/single`);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+export const updateUser = createAsyncThunk(
+  "/updateUser",
+  async (updatedUserObject) => {
     try {
-      const { data } = await axios.get(`/api/users/single`);
+      const { id } = updatedUserObject;
+      const { data } = await axios.put(`/api/users/${id}`, updatedUserObject);
       return data;
     } catch (err) {
       console.log(err);
     }
+  }
+);
+
+export const singleUserSlice = createSlice({
+  name: "singleUser",
+  initialState,
+  reducers: {},
+  extraReducers: {
+    [getSingleUser.fulfilled]: (state, action) => {
+      return action.payload;
+    },
+    [updateUser.fulfilled]: (state, action) => {
+      state.users = action.payload;
+    },
+  },
 });
 
-export const updateUser = createAsyncThunk(
-    "/updateUser",
-    async (updatedUserObject) => {
-      try {
-        const { id } = updatedUserObject;
-        const { data } = await axios.put(`/api/users/${id}`, updatedUserObject);
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  );
-
-  export const singleUserSlice = createSlice({
-    name: "singleUser",
-    initialState,
-    reducers: {},
-    extraReducers: {
-      [getSingleUser.fulfilled]: (state, action) => {
-        return action.payload;
-      },
-      [updateUser.fulfilled]: (state, action) => {
-        state.users = action.payload;
-      },
-    },
-  });
-
-  export default singleUserSlice.reducer;
+export default singleUserSlice.reducer;
