@@ -4383,7 +4383,14 @@ function App() {
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_1__.ProfileEdit, null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
     path: "/profile/checkout",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_1__.Checkout, null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_1__.Checkout, {
+      loggedIn: loggedIn
+    })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+    path: "/profile/checkout/done",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_1__.CheckoutDone, {
+      loggedIn: loggedIn
+    })
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_1__.Footer, null));
 }
 
@@ -4404,6 +4411,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/cart/cartSlice */ "./src/store/cart/cartSlice.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -4435,11 +4443,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Checkout = function Checkout() {
+
+var Checkout = function Checkout(_ref) {
+  var loggedIn = _ref.loggedIn;
   var cart = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.cart.cart;
   });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -4514,30 +4525,33 @@ var Checkout = function Checkout() {
           switch (_context.prev = _context.next) {
             case 0:
               if (!window.localStorage.getItem('token')) {
-                _context.next = 5;
+                _context.next = 6;
                 break;
               }
 
-              dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__.checkoutCart)());
-              setCheckedOut(true);
-              _context.next = 10;
+              _context.next = 3;
+              return dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__.checkoutCart)());
+
+            case 3:
+              testCheckout();
+              _context.next = 11;
               break;
 
-            case 5:
+            case 6:
               cartToCheck = JSON.parse(window.localStorage.getItem('cart'));
-              _context.next = 8;
+              _context.next = 9;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().put('/api/users/guest-checkout', {
                 cart: cartToCheck,
                 email: email
               });
 
-            case 8:
+            case 9:
               window.localStorage.setItem('cart', JSON.stringify({
                 lineitems: []
               }));
-              setCheckedOut(true);
+              testCheckout();
 
-            case 10:
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -4547,11 +4561,43 @@ var Checkout = function Checkout() {
     return _handleCheckout.apply(this, arguments);
   }
 
+  function testCheckout() {
+    return _testCheckout.apply(this, arguments);
+  }
+
+  function _testCheckout() {
+    _testCheckout = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var _yield$axios$post, data;
+
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().post('api/stripe/create-checkout-session', {
+                cart: finalCart
+              });
+
+            case 2:
+              _yield$axios$post = _context2.sent;
+              data = _yield$axios$post.data;
+              window.location.replace("".concat(data.url));
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+    return _testCheckout.apply(this, arguments);
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-cart-events-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-cart-container"
-  }, checkedOut ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CheckoutDone__WEBPACK_IMPORTED_MODULE_4__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-cart-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Review Your Order")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-cart-item-container"
@@ -4570,6 +4616,8 @@ var Checkout = function Checkout() {
     }, item.events[0].location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "checkout-cart-item-price"
     }, "Price: $", item.events[0].price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "checkout-cart-item-price"
+    }, "QTY: ", item.qty), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "checkout-cart-item-seat"
     }, "Seat: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, item.seat)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "checkout-cart-item-available"
@@ -4590,10 +4638,6 @@ var Checkout = function Checkout() {
     value: email,
     placeholder: "Email"
   })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "checkout-card-info"
-  }, "Credit Card Info: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    placeholder: "XXXX-XXXX-XXXX-XXXX"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     onClick: handleCheckout,
     className: "checkout-button"
   }, "Checkout"))));
@@ -4620,14 +4664,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CheckoutDone = function CheckoutDone() {
+var CheckoutDone = function CheckoutDone(_ref) {
+  var loggedIn = _ref.loggedIn;
+  console.log(loggedIn);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-events-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-cart-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Thank you for your order! An email confirmation has been sent to your email address.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Thank you for your order! An email confirmation has been sent to your email address.")), loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "checkout-cart-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You can see your recently purchased orders on your profile.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You can see your recently purchased orders on your profile.")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "checkout-cart-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "If you create an account using the same email, you can view your orders.")), loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/profile"
-  }, "Back to Profile"));
+  }, "Back to Profile") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/"
+  }, "Back to Home"))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckoutDone);
@@ -5629,6 +5683,7 @@ var Footer = function Footer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Checkout": () => (/* reexport safe */ _checkout_Checkout__WEBPACK_IMPORTED_MODULE_21__["default"]),
+/* harmony export */   "CheckoutDone": () => (/* reexport safe */ _checkout_CheckoutDone__WEBPACK_IMPORTED_MODULE_22__["default"]),
 /* harmony export */   "DropDownItems": () => (/* reexport safe */ _navbar_DropDownItems__WEBPACK_IMPORTED_MODULE_16__["default"]),
 /* harmony export */   "EventList": () => (/* reexport safe */ _eventsList_EventList__WEBPACK_IMPORTED_MODULE_10__["default"]),
 /* harmony export */   "EventTagListArts": () => (/* reexport safe */ _eventsTagList_EventTagListArts__WEBPACK_IMPORTED_MODULE_18__["default"]),
@@ -5674,6 +5729,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _eventsTagList_EventTagListMusic__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./eventsTagList/EventTagListMusic */ "./src/components/eventsTagList/EventTagListMusic.js");
 /* harmony import */ var _eventsTagList_EventTagListMisc__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./eventsTagList/EventTagListMisc */ "./src/components/eventsTagList/EventTagListMisc.js");
 /* harmony import */ var _checkout_Checkout__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./checkout/Checkout */ "./src/components/checkout/Checkout.js");
+/* harmony import */ var _checkout_CheckoutDone__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./checkout/CheckoutDone */ "./src/components/checkout/CheckoutDone.js");
+
 
 
 
