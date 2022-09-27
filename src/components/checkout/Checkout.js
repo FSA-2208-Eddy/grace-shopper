@@ -8,7 +8,7 @@ import {
 import axios from "axios";
 import CheckoutDone from "./CheckoutDone";
 
-const Checkout = () => {
+const Checkout = ({loggedIn}) => {
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const [checkedOut, setCheckedOut] = React.useState(false);
@@ -75,7 +75,7 @@ const Checkout = () => {
     <div className="checkout-cart-events-container">
       <div className="checkout-cart-container">
         {checkedOut ? (
-          <CheckoutDone />
+          <CheckoutDone loggedIn={loggedIn} email={email} />
         ) : (
           <>
             <div className="checkout-cart-header">

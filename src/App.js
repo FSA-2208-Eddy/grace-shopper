@@ -46,7 +46,7 @@ function App() {
         <Route path="/events/:id" element={<SingleEvent />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<ProfileEdit />} />
-        <Route path="/profile/checkout" element={<Checkout />} />
+        <Route path="/profile/checkout" element={<Checkout loggedIn={loggedIn} />} />
       </Routes>
       <Footer />
     </>
