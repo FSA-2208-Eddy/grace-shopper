@@ -7,7 +7,10 @@ const initialState = {
 
 export const getOrders = createAsyncThunk("/allOrders", async () => {
   try {
-    const { data } = await axios.get("/api/users/order-history");
+    const token = window.localStorage.getItem("token");
+    const { data } = await axios.get("/api/users/order-history", {
+      headers: { authorization: token },
+    });
     return data;
   } catch (err) {
     console.log(err);
