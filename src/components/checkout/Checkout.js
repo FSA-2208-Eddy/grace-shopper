@@ -95,6 +95,7 @@ const Checkout = ({loggedIn}) => {
                       {item.events[0].location}
                     </div>
                     <div className="checkout-cart-item-price">Price: ${item.events[0].price}</div>
+                    <div className="checkout-cart-item-price">QTY: ${item.qty}</div>
                     <div className="checkout-cart-item-seat">
                       Seat: <span>{item.seat}</span>
                     </div>

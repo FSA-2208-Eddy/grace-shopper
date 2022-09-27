@@ -4576,6 +4576,8 @@ var Checkout = function Checkout(_ref) {
     }, item.events[0].location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "checkout-cart-item-price"
     }, "Price: $", item.events[0].price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "checkout-cart-item-price"
+    }, "QTY: $", item.qty), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "checkout-cart-item-seat"
     }, "Seat: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, item.seat)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "checkout-cart-item-available"
