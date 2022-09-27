@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 //reusing style from cart component, don't think we need to change look
 function ProfilePurchaseHistory({ orders }) {
-  console.log("ORDERS", orders);
   return (
     <div className="profile-purchase-history-container">
       <div className="profile-cart-container">

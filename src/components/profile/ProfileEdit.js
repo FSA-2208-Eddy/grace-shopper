@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function ProfileEdit() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.users);
+  const user = useSelector((state) => state.singleUser);
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(getSingleUser());

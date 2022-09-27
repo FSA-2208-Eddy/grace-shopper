@@ -31,6 +31,15 @@ const Event = db.define("event", {
     type: Sequelize.FLOAT,
     defaultValue: 0.0,
   },
+  category: {
+    type: Sequelize.STRING,
+  },
+  genre: {
+    type: Sequelize.STRING,
+  },
+  subGenre: {
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = Event;

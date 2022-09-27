@@ -18,8 +18,6 @@ function ProfileRecommended({ user, orders, events }) {
       names[event.name] = true;
       filteredWithoutDuplicateNames.push(event);
     }
-    console.log(filteredByLocationEvents);
-    console.log(filteredWithoutDuplicateNames);
     if (filteredWithoutDuplicateNames.length > 3) {
       while (finalEvents.length < 3) {
         let random =
@@ -27,7 +25,6 @@ function ProfileRecommended({ user, orders, events }) {
             Math.floor(filteredWithoutDuplicateNames.length * Math.random())
           ];
         if (!finalEvents.includes(random)) {
-          console.log(random);
           finalEvents.push(random);
         }
       }
@@ -35,11 +32,9 @@ function ProfileRecommended({ user, orders, events }) {
   }
   if (!finalEvents.length) {
     for (let i = 0; i < 3; i++) {
-      console.log("inthefor");
       finalEvents.push(events[Math.floor(events.length * Math.random())]);
     }
   }
-  console.log("FINAL", finalEvents);
   return (
     <div className="profile-recommended-events-container">
       <div className="profile-recommended-events-header">
