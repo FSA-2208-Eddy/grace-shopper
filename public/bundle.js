@@ -4799,6 +4799,11 @@ var EventList = function EventList() {
     id: "events-list"
   }, currentPosts.map(function (event) {
     var date = new Date(event.startTime.split(' ')[0]);
+
+    if (event.startTime.includes('undefined')) {
+      date = 'TBA';
+    }
+
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: event.id,
       className: "events-listing"
@@ -4807,7 +4812,7 @@ var EventList = function EventList() {
       alt: "picture should go here"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "event-date"
-    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+    }, date === 'TBA' ? date : date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
       to: "/events/".concat(event.id)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "event-button"
@@ -5011,6 +5016,11 @@ var EventTagListArts = function EventTagListArts() {
     id: "events-list"
   }, currentPosts.map(function (event) {
     var date = new Date(event.startTime);
+
+    if (event.startTime.includes('undefined')) {
+      date = 'TBA';
+    }
+
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: event.id,
       className: "events-listing"
@@ -5019,7 +5029,7 @@ var EventTagListArts = function EventTagListArts() {
       alt: "picture should go here"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "event-date"
-    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    }, date === 'TBA' ? date : date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
       to: "/events/".concat(event.id)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "event-button"
@@ -5177,6 +5187,11 @@ var EventTagListMisc = function EventTagListMisc() {
     id: "events-list"
   }, currentPosts.map(function (event) {
     var date = new Date(event.startTime);
+
+    if (event.startTime.includes('undefined')) {
+      date = 'TBA';
+    }
+
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: event.id,
       className: "events-listing"
@@ -5185,7 +5200,7 @@ var EventTagListMisc = function EventTagListMisc() {
       alt: "picture should go here"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "event-date"
-    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    }, date === 'TBA' ? date : date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
       to: "/events/".concat(event.id)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "event-button"
@@ -5343,6 +5358,11 @@ var EventTagListMusic = function EventTagListMusic() {
     id: "events-list"
   }, currentPosts.map(function (event) {
     var date = new Date(event.startTime);
+
+    if (event.startTime.includes('undefined')) {
+      date = 'TBA';
+    }
+
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: event.id,
       className: "events-listing"
@@ -5351,7 +5371,7 @@ var EventTagListMusic = function EventTagListMusic() {
       alt: "picture should go here"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "event-date"
-    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    }, date === 'TBA' ? date : date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
       to: "/events/".concat(event.id)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "event-button"
@@ -5509,6 +5529,11 @@ var EventTagListSports = function EventTagListSports() {
     id: "events-list"
   }, currentPosts.map(function (event) {
     var date = new Date(event.startTime);
+
+    if (event.startTime.includes('undefined')) {
+      date = 'TBA';
+    }
+
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: event.id,
       className: "events-listing"
@@ -5517,7 +5542,7 @@ var EventTagListSports = function EventTagListSports() {
       alt: "picture should go here"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "event-date"
-    }, date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    }, date === 'TBA' ? date : date.toDateString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, event.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
       to: "/events/".concat(event.id)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "event-button"
