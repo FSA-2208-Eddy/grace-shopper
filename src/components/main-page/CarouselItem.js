@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function CarouselItem(props){
     const navigate = useNavigate();
     const event = props.event;
-  
+
     const id = event.id
     const name = event.name
     const date = event.startTime
@@ -18,8 +18,9 @@ function CarouselItem(props){
         navigate(`/events/${id}`)
     }
     return(
-        <span style={{"--i": idx}}>
-            <img onClick={handleOnClick} src={img} alt="" />
+        <span className="carousel-span" style={{"--i": idx}}>
+            <img onClick={handleOnClick} src={img} alt="" className='carousel-image'/>
+            <div className="carousel-image-title">Title</div>
         </span>
     )
 }
