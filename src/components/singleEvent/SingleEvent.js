@@ -30,30 +30,37 @@ const SingleEvent = () => {
     }
   };
   const addToCart = async () => {
+    const token = window.localStorage.getItem("token");
     if (singleEvent.tickets - qty >= 0) {
-      if (!window.localStorage.getItem('token')){
-        let cart = JSON.parse(window.localStorage.getItem('cart'))
+      if (!window.localStorage.getItem("token")) {
+        let cart = JSON.parse(window.localStorage.getItem("cart"));
         cart.lineitems.push({
-          id: Math.floor(Math.random()*10000),
+          id: Math.floor(Math.random() * 10000),
           qty: qty,
           seat: "Placeholder",
-          events: [{
-            id: id,
-            name: singleEvent.name,
-            location: singleEvent.location,
-            img: singleEvent.img,
-            tickets: singleEvent.tickets,
-            price: singleEvent.price,
-          }]
-        })
-        window.localStorage.setItem('cart', JSON.stringify(cart))
-        alert("Item Added!")
+          events: [
+            {
+              id: id,
+              name: singleEvent.name,
+              location: singleEvent.location,
+              img: singleEvent.img,
+              tickets: singleEvent.tickets,
+              price: singleEvent.price,
+            },
+          ],
+        });
+        window.localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Item Added!");
       } else {
-        await axios.put("/api/users/cart", {
-          eventId: singleEvent.id,
-          qty,
-          seat: "Placeholder",
-      });
+        await axios.put(
+          "/api/users/cart",
+          {
+            eventId: singleEvent.id,
+            qty,
+            seat: "Placeholder",
+          },
+          { headers: { authorization: token } }
+        );
         alert("Item Added!");
       }
     } else {

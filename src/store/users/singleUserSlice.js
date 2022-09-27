@@ -2,12 +2,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {};
-axios.defaults.headers.common["authorization"] =
-  window.localStorage.getItem("token");
+// axios.defaults.headers.common["authorization"] =
+//   window.localStorage.getItem("token");
 
 export const getSingleUser = createAsyncThunk("/singleUser", async (id) => {
   try {
-    const { data } = await axios.get(`/api/users/single`);
+    const token = window.localStorage.getItem("token");
+    const { data } = await axios.get(`/api/users/single`, {
+      headers: { authorization: token },
+    });
     return data;
   } catch (err) {
     console.log(err);
