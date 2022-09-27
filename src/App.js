@@ -17,6 +17,10 @@ import {
 } from "./components";
 
 function App() {
+  if (!window.localStorage.getItem('cart')) {
+    const guestCart = {lineitems: []}
+    window.localStorage.setItem('cart', JSON.stringify(guestCart))
+  }
 
   const [loggedIn, setLoggedIn] = React.useState(false)
 

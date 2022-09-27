@@ -1771,6 +1771,16 @@ select {
   font-size: 1.5rem;
   color: #ff8e3c;
 }
+.checkout-card-info {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 1.5rem;
+}
+.checkout-card-info input {
+  width: 30%;
+  height: 4vh;
+  font-size: 1.25rem;
+}
 .navbar-dropdown-container {
   display: flex;
   flex-direction: column;
