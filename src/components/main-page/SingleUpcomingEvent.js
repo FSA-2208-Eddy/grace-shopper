@@ -18,7 +18,7 @@ function SingleUpcomingEvent(props){
     }
 
     return (
-        <div className="single-upcoming-event">
+        <div className="single-upcoming-event" onClick={handleDetailButtonClick}>
             <div className="single-upcoming-event-image-container">
                 <img className="single-upcoming-event-image" src={img} alt="event_picture"/>
             </div>
