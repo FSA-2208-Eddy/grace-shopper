@@ -20,6 +20,7 @@ function CarouselItem(props){
     return(
         <span className="carousel-span" style={{"--i": idx}}>
             <img onClick={handleOnClick} src={img} alt="" className='carousel-image'/>
+            <div className="carousel-image-title">Title</div>
         </span>
     )
 }
