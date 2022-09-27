@@ -1,11 +1,16 @@
 import React from 'react'
 import { Link, useNavigate  } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import {toggle} from '../../store/login/loginSlice'
 
-function DropDownItems({ loginStatus, setDropDown }) {
+function DropDownItems({ setDropDown, loggedIn, setLoggedIn  }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logout = () => {
     window.localStorage.removeItem('token');
+    setLoggedIn(false);
+    // dispatch(toggle())
     navigate('/')
   }
 
@@ -19,7 +24,7 @@ function DropDownItems({ loginStatus, setDropDown }) {
             <Link to='/profile/checkout'>🛒 Your Cart</Link>
         </li>
         <li className='navbar-dropdown-item' onClick={() => setDropDown(false)}>
-            { loginStatus ? <button onClick={() => logout() }>Logout</button> : <button onClick={() => navigate('/login')}>Login</button> }
+            { loggedIn ? <button onClick={() => logout() }>Logout</button> : <button onClick={() => navigate('/login')}>Login</button> }
         </li>
       </div>
     </>

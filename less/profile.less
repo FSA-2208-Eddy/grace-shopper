@@ -1,6 +1,8 @@
+@import 'variables';
 @boxshadow: 0 1px 6px rgba(0, 0, 5, 0.12);
 @border:1px solid rgb(222, 222, 222);
 @clickable-color: rgb(43, 136, 157);
+@import 'variables';
 
 .profile-header {
   h1 {
@@ -44,7 +46,9 @@
     text-align: center;
   }
   .profile-picture-container {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-content: center;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -54,9 +58,9 @@
     background-size: cover;
     margin: 5px;
     border: @border;
-    img {
-      width: 100%;
-    }
+    // img {
+    //   width: 100%;
+    // }
   }
   .profile-email-container {
     padding: 10px;

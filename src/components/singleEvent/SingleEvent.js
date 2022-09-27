@@ -31,12 +31,31 @@ const SingleEvent = () => {
   };
   const addToCart = async () => {
     if (singleEvent.tickets - qty >= 0) {
-      await axios.put("/api/users/cart", {
-        eventId: singleEvent.id,
-        qty,
-        seat: "good",
+      if (!window.localStorage.getItem('token')){
+        let cart = JSON.parse(window.localStorage.getItem('cart'))
+        cart.lineitems.push({
+          id: Math.floor(Math.random()*10000),
+          qty: qty,
+          seat: "Placeholder",
+          events: [{
+            id: id,
+            name: singleEvent.name,
+            location: singleEvent.location,
+            img: singleEvent.img,
+            tickets: singleEvent.tickets,
+            price: singleEvent.price,
+          }]
+        })
+        window.localStorage.setItem('cart', JSON.stringify(cart))
+        alert("Item Added!")
+      } else {
+        await axios.put("/api/users/cart", {
+          eventId: singleEvent.id,
+          qty,
+          seat: "Placeholder",
       });
-      alert("successful");
+        alert("Item Added!");
+      }
     } else {
       alert("not enough tickets");
     }
@@ -63,7 +82,7 @@ const SingleEvent = () => {
           </h1>
           <p>
             <span className="single-event-bold">Tickets Remaining:&nbsp;</span>
-            400
+            {singleEvent.tickets}
           </p>
           <p>
             <span className="single-event-bold">Start Time:&nbsp;</span>
@@ -72,6 +91,10 @@ const SingleEvent = () => {
           <p>
             <span className="single-event-bold">End Time:&nbsp;</span>
             {singleEvent.endTime?.split("T").join(" @ ").slice(0, -1)}
+          </p>
+          <p>
+            <span className="single-event-bold">Price:&nbsp;</span>
+            {`   $${singleEvent.price ? singleEvent.price : 0}`}
           </p>
           <section className="container">
             <div className="product-quantity">
