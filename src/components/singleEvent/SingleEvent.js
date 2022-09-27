@@ -132,6 +132,18 @@ const SingleEvent = () => {
             Add to Cart
           </button>
         </div>
+        <div className="maps-container">
+          <iframe
+            width="100%"
+            height="100%"
+            style={{border: 0}}
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyA_Ii5AJrqAY-lWvingSP-oiHDnRGVesPA
+            &q=${singleEvent.longitude},${singleEvent.latitude}&zoom=17`}>
+          </iframe>
+        </div>
       </div>
     </div>
   );

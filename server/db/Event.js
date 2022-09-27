@@ -40,6 +40,14 @@ const Event = db.define("event", {
   subGenre: {
     type: Sequelize.STRING,
   },
+  longitude: {
+    type: Sequelize.FLOAT,
+    allowNull: false,
+  },
+  latitude: {
+    type: Sequelize.FLOAT,
+    allowNull: false,
+  }
 });
 
 module.exports = Event;

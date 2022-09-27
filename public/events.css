@@ -45,6 +45,8 @@ select {
 }
 .events-listing p {
   font-weight: bold;
+  max-width: 500px;
+  max-height: 80px;
 }
 .events-listing img {
   height: 50px;
