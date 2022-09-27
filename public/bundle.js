@@ -6196,24 +6196,61 @@ function EventsNearMe() {
   var userStore = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state;
   });
-  console.log('user store: ', userStore);
+  var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.singleUser;
+  });
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var eventsNearMeArray = [];
   react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
     dispatch((0,_store_events_eventSlice__WEBPACK_IMPORTED_MODULE_3__.getEvents)());
-  }, []); //Currently choosing 3 random, will need to choose based on User's location or have default
+  }, []);
 
-  var handleDisplayEventsNearMe = function handleDisplayEventsNearMe() {
-    if (eventsStore.length > 0) {
-      for (var i = 0; i < 3; i++) {
-        var curEvent = eventsStore[Math.floor(Math.random() * eventsStore.length)];
-        eventsNearMeArray.push(curEvent);
+  if (user.city || user.state || user.country) {
+    var filteredByLocationEvents = events.filter(function (event) {
+      var _event$location, _user$city, _event$location2, _user$state, _event$name, _user$city2, _event$name2, _user$state2;
+
+      return ((_event$location = event.location) === null || _event$location === void 0 ? void 0 : _event$location.toLowerCase().indexOf((_user$city = user.city) === null || _user$city === void 0 ? void 0 : _user$city.toLowerCase())) >= 0 || ((_event$location2 = event.location) === null || _event$location2 === void 0 ? void 0 : _event$location2.toLowerCase().indexOf((_user$state = user.state) === null || _user$state === void 0 ? void 0 : _user$state.toLowerCase())) >= 0 || ((_event$name = event.name) === null || _event$name === void 0 ? void 0 : _event$name.toLowerCase().indexOf((_user$city2 = user.city) === null || _user$city2 === void 0 ? void 0 : _user$city2.toLowerCase())) >= 0 || ((_event$name2 = event.name) === null || _event$name2 === void 0 ? void 0 : _event$name2.toLowerCase().indexOf((_user$state2 = user.state) === null || _user$state2 === void 0 ? void 0 : _user$state2.toLowerCase())) >= 0;
+    });
+    var names = {};
+    console.log('names: ', names);
+    var filteredWithoutDuplicateNames = [];
+
+    for (var i = 0; i < filteredByLocationEvents.length; i++) {
+      var event = filteredByLocationEvents[i];
+      if (names[event.name]) continue;
+      names[event.name] = true;
+      filteredWithoutDuplicateNames.push(event);
+    }
+
+    if (filteredWithoutDuplicateNames.length > 3) {
+      while (eventsNearMeArray.length < 3) {
+        var random = filteredWithoutDuplicateNames[Math.floor(filteredWithoutDuplicateNames.length * Math.random())];
+
+        if (!eventsNearMeArray.includes(random)) {
+          eventsNearMeArray.push(random);
+        }
       }
     }
-  };
 
-  handleDisplayEventsNearMe();
+    if (!finalEvents.length) {
+      for (var _i = 0; _i < 3; _i++) {
+        finalEvents.push(events[Math.floor(events.length * Math.random())]);
+      }
+    }
+  } //Currently choosing 3 random, will need to choose based on User's location or have default
+  // const handleDisplayEventsNearMe = () => {
+  //     if (eventsStore.length > 0) {
+  //         for (let i = 0; i < 3; i++){
+  //             let curEvent = eventsStore[Math.floor(Math.random()*eventsStore.length)];
+  //             eventsNearMeArray.push(curEvent)
+  //         }
+  //     }
+  // }
+  // handleDisplayEventsNearMe()
+
+
+  console.log('events near me array: ', eventsNearMeArray);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "events-near-me-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
