@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import SingleEventNearMe from './SingleEventNearMe';
 import { getEvents } from '../../store/events/eventSlice';
+import { getSingleUser } from '../../store/users/singleUserSlice';
 
 
 function EventsNearMe() {
@@ -10,11 +11,18 @@ function EventsNearMe() {
     const eventsStore = useSelector(state => state.events.events);
     const userStore = useSelector(state => state)
     const user = useSelector((state) => state.singleUser)
-
+    console.log("user", user)
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        const load = async () => {
+            dispatch(getSingleUser());
+        };
+        load();
+    }, [dispatch]);
+    
     let eventsNearMeArray = []
 
     React.useEffect(() => {
@@ -22,7 +30,7 @@ function EventsNearMe() {
     },[])
 
     if (user.city || user.state || user.country) {
-        const filteredByLocationEvents = events.filter(
+        const filteredByLocationEvents = eventsStore.filter(
             (event) =>
             event.location?.toLowerCase().indexOf(user.city?.toLowerCase()) >= 0 ||
             event.location?.toLowerCase().indexOf(user.state?.toLowerCase()) >= 0 ||
@@ -40,8 +48,8 @@ function EventsNearMe() {
       names[event.name] = true;
       filteredWithoutDuplicateNames.push(event);
     }
-        if (filteredWithoutDuplicateNames.length > 3) {
-        while (eventsNearMeArray.length < 3) {
+        if (filteredWithoutDuplicateNames.length > 5) {
+        while (eventsNearMeArray.length < 5) {
             let random =
             filteredWithoutDuplicateNames[
                 Math.floor(filteredWithoutDuplicateNames.length * Math.random())
@@ -51,9 +59,9 @@ function EventsNearMe() {
                 }
             }
         }
-        if (!finalEvents.length) {
-            for (let i = 0; i < 3; i++) {
-              finalEvents.push(events[Math.floor(events.length * Math.random())]);
+        if (!eventsNearMeArray.length) {
+            for (let i = 0; i < 5; i++) {
+              eventsNearMeArray.push(eventsStore[Math.floor(eventsStore.length * Math.random())]);
             }
         }
     }
