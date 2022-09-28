@@ -112,6 +112,12 @@ router.put("/checkout", requireToken, async (req, res, next) => {
         userId: userAndOrder.id,
         isCart: true,
       },
+      include: [{ model: LineItem, include: Event }],
+    });
+    const cartEvents = [];
+    cart.lineItems.forEach((item) => {
+      const event = item.events[0];
+      event.decrementTickets(10, ["A1", "A2", "A3"]);
     });
     cart.set({
       isCart: false,
@@ -143,42 +149,42 @@ router.get("/single", requireToken, async (req, res, next) => {
   }
 });
 
-router.put('/guest-checkout', async(req,res,next)=> {
+router.put("/guest-checkout", async (req, res, next) => {
   try {
     let user = await User.findOne({
       where: {
-        email: req.body.email
-      }
-    })
+        email: req.body.email,
+      },
+    });
     if (!user) {
-      let randNum = '' + Math.floor(Math.random()*10000000)
+      let randNum = "" + Math.floor(Math.random() * 10000000);
       user = await User.create({
         firstName: "Placeholder",
         lastName: "Placeholder",
         password: "Placeholder",
         username: randNum,
-        email: req.body.email
-      })
+        email: req.body.email,
+      });
     }
-    const cart = req.body.cart
+    const cart = req.body.cart;
     const order = await Order.create({
       userId: user.id,
-      isCart: false
-    })
-    cart.lineitems.forEach(async(element) => {
-      const event = await Event.findByPk(element.events[0].id)
+      isCart: false,
+    });
+    cart.lineitems.forEach(async (element) => {
+      const event = await Event.findByPk(element.events[0].id);
       const lineItem = await LineItem.create({
         qty: element.qty,
         seat: element.seat,
-        orderId: order.id
-      })
-      lineItem.addEvent(event)
-    })
-    res.sendStatus(200)
+        orderId: order.id,
+      });
+      lineItem.addEvent(event);
+    });
+    res.sendStatus(200);
   } catch (ex) {
-    next(ex)
+    next(ex);
   }
-})
+});
 
 // update user's information (takes new details in req.body)
 router.put("/:id", requireToken, async (req, res, next) => {

@@ -31,7 +31,7 @@ const syncAndSeed = async () => {
       const alphabet = "ABCDEFGHIJ";
       for (let i = 0; i < alphabet.length; i++) {
         let current = alphabet[i];
-        for (let j = 1; j <= 10; j++) {
+        for (let j = 1; j <= 12; j++) {
           seats.push(`${current}${j}`);
         }
       }
@@ -83,6 +83,7 @@ const syncAndSeed = async () => {
                   type: current.type,
                   img: current.images[0].url,
                   tickets: 100,
+                  seats: makeSeatChart(),
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
                   endTime: current.dates.start.dateTime,
@@ -100,6 +101,7 @@ const syncAndSeed = async () => {
                   type: current.type,
                   img: current.images[0].url,
                   tickets: 100,
+                  seats: makeSeatChart(),
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
                   endTime: current.dates.start.dateTime,
@@ -113,6 +115,7 @@ const syncAndSeed = async () => {
                   type: current.type,
                   img: current.images[0].url,
                   tickets: 100,
+                  seats: makeSeatChart(),
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
                   endTime: current.dates.start.dateTime,
