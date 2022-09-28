@@ -7,7 +7,7 @@ import {
   singleEventSlice,
   ordersSlice,
   singleUserSlice,
-  loginSlice
+  loginSlice,
 } from "../components";
 
 const store = configureStore({

@@ -12,6 +12,15 @@ const Event = db.define("event", {
   tickets: {
     type: Sequelize.INTEGER,
   },
+  seats: {
+    type: Sequelize.TEXT,
+    get() {
+      return this.getDataValue("seats").split(";");
+    },
+    set(val) {
+      this.setDataValue("seats", val.join(";"));
+    },
+  },
   startTime: {
     type: Sequelize.STRING,
   },
@@ -47,7 +56,20 @@ const Event = db.define("event", {
   latitude: {
     type: Sequelize.FLOAT,
     allowNull: false,
-  }
+  },
 });
 
+Event.prototype.decrementTickets = function (qty, reservedStr) {
+  this.tickets -= qty;
+  let currentSeats = this.seats.split(";");
+  let reserved = reservedStr.split(";");
+  for (let i = 0; i < reserved.length; i++) {
+    let currentReserved = reserved[i];
+    const index = currentSeats.indexOf(currentReserved);
+    if (index > -1) {
+      currentSeats.splice(index, 1);
+    }
+  }
+  this.seats = currentSeats;
+};
 module.exports = Event;
