@@ -73,14 +73,6 @@ const SingleEvent = () => {
 
   return (
     <div id="single-event-root-container">
-      <button
-        onClick={() => {
-          setVisible(!visible);
-          console.log(visible, "pressed");
-        }}
-      >
-        Select a Seat
-      </button>
       <SeatChart
         visible={visible}
         setVisible={setVisible}
@@ -138,13 +130,21 @@ const SingleEvent = () => {
             </div>
           </section>
           <div id="single-event-seat-box">
-            <p>Seat</p>
+            <p>Seats</p>
+            <button
+              onClick={() => {
+                setVisible(!visible);
+                console.log(visible, "pressed");
+              }}>
+              Select seats
+            </button>
+            {/* <p>Seat</p>
             <select>
               <option value="Row 1">Row 1</option>
               <option value="Row 2">Row 2</option>
               <option value="Row 3">Row 3</option>
               <option value="Row 4">Row 4</option>
-            </select>
+            </select> */}
           </div>
           <button id="single-event-button" onClick={addToCart}>
             Add to Cart
