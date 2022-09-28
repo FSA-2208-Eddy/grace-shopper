@@ -117,11 +117,12 @@
   width: 16px;
   height: 16px;
   float: right;
-  margin-top: -36px;
-  margin-right: -120px;
+  margin-top: -41px;
+  margin-right: -125px;
   margin-bottom: 15px;
   cursor: pointer;
-  z-index: 99;
+  color: black;
+  z-index: 20;
 }
 .login-create-new-user-container .login-create-new-user-form #new-user-form input {
   margin: 0 0 15px 0;
@@ -474,7 +475,9 @@ select {
 }
 .profile-menu-container {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  margin: 30px 0 0 0;
 }
 .profileLargeEmail {
   font-size: 14px;
@@ -488,6 +491,7 @@ select {
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  margin: 5px 0 0 0;
 }
 .profile-account-information-container h3 {
   font-size: 18px;
@@ -1044,6 +1048,7 @@ select {
 #single-event-row-1 .single-event-date h2 {
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
 }
 #single-event-row-1 .single-event-date p {
   font-size: 1.5rem;
@@ -1053,6 +1058,7 @@ select {
   font-size: 2.5rem;
   font-weight: bold;
   color: #151a21;
+  max-width: 1000px;
 }
 #single-event-row-2 {
   display: flex;
@@ -1190,6 +1196,15 @@ select {
   margin-right: 5%;
   color: white;
   box-shadow: 0 8px 32px 0 #000000;
+  animation: slideInLeft 2s;
+}
+@keyframes slideInLeft {
+  0% {
+    translate: -2000px;
+  }
+  100% {
+    translate: 0px;
+  }
 }
 .upcoming-events-title {
   color: white;
@@ -1251,6 +1266,15 @@ select {
   margin-right: 5%;
   color: white;
   box-shadow: 0 8px 32px 0 #000000;
+  animation: slideInRight 2s;
+}
+@keyframes slideInRight {
+  0% {
+    translate: 2000px;
+  }
+  100% {
+    translate: 0px;
+  }
 }
 .events-near-me-title {
   color: white;
@@ -1280,6 +1304,12 @@ select {
   width: 200px;
   max-width: 100%;
   height: auto;
+}
+.single-event-near-me:hover {
+  border-style: solid;
+  border-color: #ffb783;
+  border-width: 2px;
+  border-radius: 10px;
 }
 .single-event-near-me-title {
   display: flex;
@@ -1866,6 +1896,18 @@ select {
   transform-origin: center;
   transform-style: preserve-3d;
   transform: rotateY(calc(var(--i) * 45deg)) translateZ(380px);
+  animation: fadeIn 3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .gallery span img {
   position: absolute;

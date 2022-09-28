@@ -9,11 +9,9 @@ import { getSingleUser } from '../../store/users/singleUserSlice';
 function EventsNearMe() {
 
     const eventsStore = useSelector(state => state.events.events);
-    const userStore = useSelector(state => state)
     const user = useSelector((state) => state.singleUser)
-    console.log("user", user)
     const navigate = useNavigate();
-
+    console.log('user: ',user)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -29,6 +27,9 @@ function EventsNearMe() {
         dispatch(getEvents())
     },[])
 
+   
+    const handleDisplayEventsNearMe = () => {
+
     if (user.city || user.state || user.country) {
         const filteredByLocationEvents = eventsStore.filter(
             (event) =>
@@ -37,8 +38,7 @@ function EventsNearMe() {
             event.name?.toLowerCase().indexOf(user.city?.toLowerCase()) >= 0 ||
             event.name?.toLowerCase().indexOf(user.state?.toLowerCase()) >= 0
         )
-        const names = {};
-        console.log('names: ',names)
+    const names = {};
     let filteredWithoutDuplicateNames = [];
 
     for (let i = 0; i < filteredByLocationEvents.length; i++) {
@@ -65,19 +65,26 @@ function EventsNearMe() {
             }
         }
     }
-  
+    console.log('eventStore: ', eventsStore)
+    let undefinedCheck = false
+    let nullCheck = false
+    if (user.city === undefined && user.state === undefined && user.country === undefined ) {
+        undefinedCheck = true
+    }
+    if (user.city === null && user.state === null && user.country === null ){
+        nullCheck = true
+    }
 
-    //Currently choosing 3 random, will need to choose based on User's location or have default
-    // const handleDisplayEventsNearMe = () => {
-    //     if (eventsStore.length > 0) {
-    //         for (let i = 0; i < 3; i++){
-    //             let curEvent = eventsStore[Math.floor(Math.random()*eventsStore.length)];
-    //             eventsNearMeArray.push(curEvent)
-    //         }
-    //     }
-    // }
+    if (eventsStore.length >= 5 && (undefinedCheck || nullCheck)){
+       for (let i = 0; i < 5; i++){
+        let curEvent = eventsStore[Math.floor(eventsStore.length * Math.random())]
+        console.log('curEvent: ',curEvent)
+        eventsNearMeArray.push(eventsStore[Math.floor(eventsStore.length * Math.random())]);
+       }
+    }
+}
 
-    // handleDisplayEventsNearMe()
+    handleDisplayEventsNearMe()
 
     console.log('events near me array: ',eventsNearMeArray)
 

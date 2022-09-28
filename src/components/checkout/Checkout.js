@@ -129,7 +129,7 @@ const Checkout = ({ loggedIn }) => {
             )}
           </div>
           <div className="checkout-cart-header">
-            <h2>Your Total: ${total}</h2>
+            <h2>Your Total: ${total.toFixed(2)}</h2>
           </div>
           {!window.localStorage.getItem("token") ? (
             <div className="checkout-card-info">
