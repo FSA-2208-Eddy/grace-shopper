@@ -1,8 +1,11 @@
 import React from "react";
 import Seat from "./Seat";
-const SeatChart = ({ visible, setVisible, singleEvent, setSeats, seats }) => {
+
+const SeatChart = ({ visible, setVisible, singleEvent, setSeats, seats, setQty }) => {
   console.log("from SEATCHART", singleEvent);
+
   const [selectedSeats, setSelectedSeats] = React.useState([]);
+
   const makeSeatChart = () => {
     let seats = [];
     const alphabet = "ABCDEFGHIJ";
@@ -25,13 +28,16 @@ const SeatChart = ({ visible, setVisible, singleEvent, setSeats, seats }) => {
               console.log("selectedSeats", selectedSeats);
               setSeats([...selectedSeats]);
               setVisible(!visible);
+              setQty(selectedSeats.length)
             }}
           >
             Save
           </div>
           <button
             className="close-seat-chart"
-            onClick={() => setVisible(!visible)}
+            onClick={() => {
+              setVisible(!visible)
+            }}
           >
             x
           </button>
