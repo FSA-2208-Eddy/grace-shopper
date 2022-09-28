@@ -187,20 +187,64 @@ router.put("/guest-checkout", async (req, res, next) => {
       userId: user.id,
       isCart: false,
     });
-    cart.lineitems.forEach(async (element) => {
-      const event = await Event.findByPk(element.events[0].id);
+    let eventArray = []
+    for (let i = 0; i < cart.lineitems.length; i++) {
+      const event = await Event.findByPk(cart.lineitems[i].events[0].id);
       const lineItem = await LineItem.create({
-        qty: element.qty,
-        seat: element.seat,
+        qty: cart.lineitems[i].qty,
+        seat: cart.lineitems[i].seat,
         orderId: order.id,
       });
-      lineItem.addEvent(event);
+      console.log('in the first call, event id', event.id)
+      eventArray.push(event.id)
+      await lineItem.addEvent(event);
+      // await lineItem.update({...lineItem, events:[event]})
+    }
+    console.log('in the first axios call', eventArray)
+    res.send({
+      order: order,
+      events: eventArray
     });
-    res.sendStatus(200);
   } catch (ex) {
     next(ex);
   }
 });
+
+router.put('/guest-checkout-seat', async(req,res,next) => {
+  try {
+    const newCart = await Order.findOne({
+      where: {
+        id: req.body.order.id
+      },
+      include: [{ model: LineItem, include: Event }]
+    })
+    const eventArray = req.body.events
+    console.log('in the second call, before the loop', eventArray)
+    for (let i = 0; i < newCart.lineitems.length; i++) {
+      let lineitem = newCart.lineitems[i];
+      // let event = newCart.lineitems[i].events[0];
+      let event = await Event.findByPk(eventArray[i])
+      console.log('individual events', event)
+      let currentSeats = event.seats;
+      let reserved = lineitem.seat.split(";");
+      for (let i = 0; i < reserved.length; i++) {
+        let currentReserved = reserved[i];
+        const index = currentSeats.indexOf(currentReserved);
+        if (index > -1) {
+          currentSeats.splice(index, 1);
+        }
+      }
+      await event.update({
+        ...event,
+        seats: currentSeats,
+        tickets: event.tickets - lineitem.qty,
+      });
+    }
+    res.sendStatus(200)
+  } catch (err) {
+    next(err)
+  }
+})
 
 // update user's information (takes new details in req.body)
 router.put("/:id", requireToken, async (req, res, next) => {
