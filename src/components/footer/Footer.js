@@ -6,21 +6,21 @@ const Footer = () => {
             <div className="footer-group-1">
                 <div className="footer-column">
                     <h2>Helpful Links</h2>
-                    <a href="/">Help/FAQ</a>
+                    <a href="https://github.com/FSA-2208-Eddy/grace-shopper">Help/FAQ</a>
                     <a href="/profile">My Account</a>
-                    <a href="/">Contact Us</a>
+                    <a href="https://github.com/FSA-2208-Eddy/grace-shopper">Contact Us</a>
                 </div>
                 <div className="footer-column">
                     <h2>Our Network</h2>
-                    <a href="/">House of Blues</a>
-                    <a href="/">NFL</a>
-                    <a href="/">NBA</a>
+                    <a href="https://www.mlb.com/">MLB</a>
+                    <a href="https://www.nfl.com/">NFL</a>
+                    <a href="https://www.nba.com/">NBA</a>
                 </div>
                 <div className="footer-column">
                     <h2>About Us</h2>
-                    <a href="/">Who We Are</a>
-                    <a href="/">Github Repository</a>
-                    <a href="/">Contact Us</a>
+                    <a href="https://github.com/FSA-2208-Eddy/grace-shopper">Who We Are</a>
+                    <a href="https://github.com/FSA-2208-Eddy/grace-shopper">Github Repository</a>
+                    <a href="https://github.com/FSA-2208-Eddy/grace-shopper">Contact Us</a>
                 </div>
             </div>
             <div className="footer-group-2">

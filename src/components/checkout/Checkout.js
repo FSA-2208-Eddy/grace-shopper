@@ -63,15 +63,16 @@ const Checkout = ({ loggedIn }) => {
   async function handleCheckout() {
     if (window.localStorage.getItem("token")) {
       await dispatch(checkoutCart());
-      // testCheckout()
+      testCheckout()
     } else {
       const cartToCheck = JSON.parse(window.localStorage.getItem("cart"));
-      await axios.put("/api/users/guest-checkout", {
+      const {data} = await axios.put("/api/users/guest-checkout", {
         cart: cartToCheck,
         email: email,
       });
+      await axios.put('api/users/guest-checkout-seat', {order: data.order, events: data.events})
       window.localStorage.setItem("cart", JSON.stringify({ lineitems: [] }));
-      // testCheckout()
+      testCheckout()
     }
   }
 
