@@ -85,14 +85,16 @@ function Navbar({ loggedIn, setLoggedIn }) {
         )}
       </nav>
       <div className="navbar-searchbar-container">
-        <div className="searchbar-icon"></div>
-        <input
-          type="text"
-          placeholder="Search by location, artist, genre..."
-          onChange={(e) => setSearchBarInput(e.target.value)}
-          value={searchBarInput}
-        />
-        <button onClick={handleSearch}>Search</button>
+        <div className="inner-searchbar-container">
+          <div className="searchbar-icon"></div>
+          <input
+            type="text"
+            placeholder="Search by location, artist, genre..."
+            onChange={(e) => setSearchBarInput(e.target.value)}
+            value={searchBarInput}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
       </div>
     </>
   );
