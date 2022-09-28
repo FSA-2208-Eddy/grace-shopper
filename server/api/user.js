@@ -114,11 +114,25 @@ router.put("/checkout", requireToken, async (req, res, next) => {
       },
       include: [{ model: LineItem, include: Event }],
     });
-    const cartEvents = [];
-    cart.lineItems.forEach((item) => {
-      const event = item.events[0];
-      event.decrementTickets(10, ["A1", "A2", "A3"]);
-    });
+
+    for (let i = 0; i < cart.lineitems.length; i++) {
+      let lineitem = cart.lineitems[i];
+      let event = cart.lineitems[i].events[0];
+      let currentSeats = event.seats;
+      let reserved = lineitem.seat.split(";");
+      for (let i = 0; i < reserved.length; i++) {
+        let currentReserved = reserved[i];
+        const index = currentSeats.indexOf(currentReserved);
+        if (index > -1) {
+          currentSeats.splice(index, 1);
+        }
+      }
+      await event.update({
+        ...event,
+        seats: currentSeats,
+        tickets: event.tickets - lineitem.qty,
+      });
+    }
     cart.set({
       isCart: false,
     });
@@ -134,7 +148,9 @@ router.put("/checkout", requireToken, async (req, res, next) => {
       include: [{ model: LineItem, include: Event }],
     });
     res.send(newCart);
-  } catch (ex) {}
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // get the user's information, and their orders

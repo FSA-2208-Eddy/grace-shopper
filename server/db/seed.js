@@ -66,7 +66,10 @@ const syncAndSeed = async () => {
 
           if (current.name.includes("TBA")) continue;
           if (!current.priceRanges) continue;
-          if (!current['_embedded'].venues[0].location || !current['_embedded'].venues[0].location) {
+          if (
+            !current["_embedded"].venues[0].location ||
+            !current["_embedded"].venues[0].location
+          ) {
             continue;
           }
 
@@ -94,8 +97,8 @@ const syncAndSeed = async () => {
                   category: current.classifications[0].segment.name,
                   genre: current.classifications[0].genre.name,
                   subGenre: current.classifications[0].subGenre.name,
-                  latitude: current['_embedded'].venues[0].location.longitude,
-                  longitude: current['_embedded'].venues[0].location.latitude,
+                  latitude: current["_embedded"].venues[0].location.longitude,
+                  longitude: current["_embedded"].venues[0].location.latitude,
                 });
               } else if (
                 current.classifications[0].segment &&
@@ -113,8 +116,8 @@ const syncAndSeed = async () => {
                   price: current.priceRanges[0].min,
                   category: current.classifications[0].segment.name,
                   genre: current.classifications[0].genre.name,
-                  latitude: current['_embedded'].venues[0].location.longitude,
-                  longitude: current['_embedded'].venues[0].location.latitude,
+                  latitude: current["_embedded"].venues[0].location.longitude,
+                  longitude: current["_embedded"].venues[0].location.latitude,
                 });
               } else {
                 newEvent = await Event.create({
@@ -128,8 +131,8 @@ const syncAndSeed = async () => {
                   endTime: current.dates.start.dateTime,
                   price: current.priceRanges[0].min,
                   category: current.classifications[0].segment.name,
-                  latitude: current['_embedded'].venues[0].location.longitude,
-                  longitude: current['_embedded'].venues[0].location.latitude,
+                  latitude: current["_embedded"].venues[0].location.longitude,
+                  longitude: current["_embedded"].venues[0].location.latitude,
                 });
               }
             } else {
@@ -142,8 +145,8 @@ const syncAndSeed = async () => {
                 startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
                 endTime: current.dates.start.dateTime,
                 price: current.priceRanges[0].min,
-                latitude: current['_embedded'].venues[0].location.longitude,
-                longitude: current['_embedded'].venues[0].location.latitude,
+                latitude: current["_embedded"].venues[0].location.longitude,
+                longitude: current["_embedded"].venues[0].location.latitude,
               });
             }
 

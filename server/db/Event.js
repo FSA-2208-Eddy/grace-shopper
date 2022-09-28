@@ -56,7 +56,7 @@ const Event = db.define("event", {
   latitude: {
     type: Sequelize.FLOAT,
     allowNull: false,
-  }
+  },
 });
 
 Event.prototype.decrementTickets = function (qty, reservedStr) {

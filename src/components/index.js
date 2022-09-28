@@ -20,5 +20,5 @@ export { default as EventTagListArts } from "./eventsTagList/EventTagListArts";
 export { default as EventTagListMusic } from "./eventsTagList/EventTagListMusic";
 export { default as EventTagListMisc } from "./eventsTagList/EventTagListMisc";
 export { default as Checkout } from "./checkout/Checkout";
-export { default as CheckoutDone } from "./checkout/CheckoutDone"
+export { default as CheckoutDone } from "./checkout/CheckoutDone";
 export { getSingleEvent } from "../store/singleEvent/singleEventSlice";
