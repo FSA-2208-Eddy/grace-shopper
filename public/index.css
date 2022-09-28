@@ -1190,6 +1190,15 @@ select {
   margin-right: 5%;
   color: white;
   box-shadow: 0 8px 32px 0 #000000;
+  animation: slideInLeft 2s;
+}
+@keyframes slideInLeft {
+  0% {
+    translate: -2000px;
+  }
+  100% {
+    translate: 0px;
+  }
 }
 .upcoming-events-title {
   color: white;
@@ -1251,6 +1260,15 @@ select {
   margin-right: 5%;
   color: white;
   box-shadow: 0 8px 32px 0 #000000;
+  animation: slideInRight 2s;
+}
+@keyframes slideInRight {
+  0% {
+    translate: 2000px;
+  }
+  100% {
+    translate: 0px;
+  }
 }
 .events-near-me-title {
   color: white;
