@@ -79,6 +79,7 @@ const SingleEvent = () => {
         singleEvent={singleEvent}
         setSeats={setSeats}
         seats={seats}
+        setQty={setQty}
       />
       <div id="single-event-row-1">
         <div className="single-event-date">
