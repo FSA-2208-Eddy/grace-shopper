@@ -171,7 +171,7 @@ function LoginPage({ setLoggedIn }) {
               ></input>
               <span>
                 <i
-                  className="far fa-eye"
+                  className="bi bi-eye-slash"
                   id="togglePassword"
                   onClick={() => setShowPassword(!showPassword)}
                 ></i>

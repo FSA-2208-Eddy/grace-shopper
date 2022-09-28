@@ -117,11 +117,12 @@
   width: 16px;
   height: 16px;
   float: right;
-  margin-top: -36px;
-  margin-right: -120px;
+  margin-top: -41px;
+  margin-right: -125px;
   margin-bottom: 15px;
   cursor: pointer;
-  z-index: 99;
+  color: black;
+  z-index: 20;
 }
 .login-create-new-user-container .login-create-new-user-form #new-user-form input {
   margin: 0 0 15px 0;
