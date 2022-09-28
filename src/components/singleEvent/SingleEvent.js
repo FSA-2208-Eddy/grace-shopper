@@ -101,7 +101,7 @@ const SingleEvent = () => {
           </p>
           <p>
             <span className="single-event-bold">Price:&nbsp;</span>
-            {`   $${singleEvent.price ? singleEvent.price : 0}`}
+            {`   $${singleEvent.price ? singleEvent.price.toFixed(2) : 0}`}
           </p>
           <section className="container">
             <div className="product-quantity">
