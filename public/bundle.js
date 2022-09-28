@@ -4519,13 +4519,14 @@ var Checkout = function Checkout(_ref) {
 
   function _handleCheckout() {
     _handleCheckout = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var cartToCheck;
+      var cartToCheck, _yield$axios$put, data;
+
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               if (!window.localStorage.getItem("token")) {
-                _context.next = 5;
+                _context.next = 6;
                 break;
               }
 
@@ -4533,23 +4534,34 @@ var Checkout = function Checkout(_ref) {
               return dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__.checkoutCart)());
 
             case 3:
-              _context.next = 9;
+              testCheckout();
+              _context.next = 15;
               break;
 
-            case 5:
+            case 6:
               cartToCheck = JSON.parse(window.localStorage.getItem("cart"));
-              _context.next = 8;
+              _context.next = 9;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().put("/api/users/guest-checkout", {
                 cart: cartToCheck,
                 email: email
               });
 
-            case 8:
+            case 9:
+              _yield$axios$put = _context.sent;
+              data = _yield$axios$put.data;
+              _context.next = 13;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().put('api/users/guest-checkout-seat', {
+                order: data.order,
+                events: data.events
+              });
+
+            case 13:
               window.localStorage.setItem("cart", JSON.stringify({
                 lineitems: []
-              })); // testCheckout()
+              }));
+              testCheckout();
 
-            case 9:
+            case 15:
             case "end":
               return _context.stop();
           }
@@ -5636,27 +5648,27 @@ var Footer = function Footer() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Helpful Links"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "/"
+    href: "https://github.com/FSA-2208-Eddy/grace-shopper"
   }, "Help/FAQ"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     href: "/profile"
   }, "My Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "/"
+    href: "https://github.com/FSA-2208-Eddy/grace-shopper"
   }, "Contact Us")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our Network"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "/"
-  }, "House of Blues"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "/"
+    href: "https://www.mlb.com/"
+  }, "MLB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "https://www.nfl.com/"
   }, "NFL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "/"
+    href: "https://www.nba.com/"
   }, "NBA")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "/"
+    href: "https://github.com/FSA-2208-Eddy/grace-shopper"
   }, "Who We Are"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "/"
+    href: "https://github.com/FSA-2208-Eddy/grace-shopper"
   }, "Github Repository"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "/"
+    href: "https://github.com/FSA-2208-Eddy/grace-shopper"
   }, "Contact Us"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer-group-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
