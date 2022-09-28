@@ -11,7 +11,6 @@ function EventsNearMe() {
     const eventsStore = useSelector(state => state.events.events);
     const user = useSelector((state) => state.singleUser)
     const navigate = useNavigate();
-    console.log('user: ',user)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -65,7 +64,6 @@ function EventsNearMe() {
             }
         }
     }
-    console.log('eventStore: ', eventsStore)
     let undefinedCheck = false
     let nullCheck = false
     if (user.city === undefined && user.state === undefined && user.country === undefined ) {
@@ -77,16 +75,12 @@ function EventsNearMe() {
 
     if (eventsStore.length >= 5 && (undefinedCheck || nullCheck)){
        for (let i = 0; i < 5; i++){
-        let curEvent = eventsStore[Math.floor(eventsStore.length * Math.random())]
-        console.log('curEvent: ',curEvent)
         eventsNearMeArray.push(eventsStore[Math.floor(eventsStore.length * Math.random())]);
        }
     }
 }
 
     handleDisplayEventsNearMe()
-
-    console.log('events near me array: ',eventsNearMeArray)
 
   return (
 
