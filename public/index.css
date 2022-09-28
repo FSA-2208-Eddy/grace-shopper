@@ -1190,14 +1190,16 @@ select {
   margin-right: 5%;
   color: white;
   box-shadow: 0 8px 32px 0 #000000;
-  animation: slideInLeft 2s;
+  animation: slideInLeft 1s;
 }
 @keyframes slideInLeft {
   0% {
     translate: -2000px;
+    opacity: 0%;
   }
   100% {
     translate: 0px;
+    opacity: 100%;
   }
 }
 .upcoming-events-title {
@@ -1260,14 +1262,16 @@ select {
   margin-right: 5%;
   color: white;
   box-shadow: 0 8px 32px 0 #000000;
-  animation: slideInRight 2s;
+  animation: slideInRight 1s;
 }
 @keyframes slideInRight {
   0% {
     translate: 2000px;
+    opacity: 0%;
   }
   100% {
     translate: 0px;
+    opacity: 100%;
   }
 }
 .events-near-me-title {
@@ -1860,9 +1864,6 @@ select {
   height: 200px;
   transform-style: preserve-3d;
   animation: rotate 60s linear infinite;
-}
-.gallery:hover {
-  animation-play-state: paused;
 }
 .gallery span:hover {
   border-style: solid;

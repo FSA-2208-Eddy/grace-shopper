@@ -69,7 +69,21 @@ const syncAndSeed = async () => {
           if (!current['_embedded'].venues[0].location || !current['_embedded'].venues[0].location) {
             continue;
           }
+          const findLargestImg = () => {
+            let largestImgWidth = 0;
+            let idx = 0
+            for ( let i = 0; i < current.images.length; i++) {
+              let curImage = current.images[i]
+              if (curImage.width > largestImgWidth) {
+                largestImgWidth = curImage.width
+                idx = i
+              }
+            }
+            return current.images[idx].url
+          }
 
+          const largestImage = findLargestImg()
+          
           if (namesObj[current.name]) {
             continue;
           } else {
@@ -84,7 +98,7 @@ const syncAndSeed = async () => {
                 newEvent = await Event.create({
                   name: current.name,
                   type: current.type,
-                  img: current.images[0].url,
+                  img: largestImage,
                   tickets: 100,
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
@@ -103,7 +117,7 @@ const syncAndSeed = async () => {
                 newEvent = await Event.create({
                   name: current.name,
                   type: current.type,
-                  img: current.images[0].url,
+                  img: largestImage,
                   tickets: 100,
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
@@ -118,7 +132,7 @@ const syncAndSeed = async () => {
                 newEvent = await Event.create({
                   name: current.name,
                   type: current.type,
-                  img: current.images[0].url,
+                  img: largestImage,
                   tickets: 100,
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
@@ -133,7 +147,7 @@ const syncAndSeed = async () => {
               newEvent = await Event.create({
                 name: current.name,
                 type: current.type,
-                img: current.images[0].url,
+                img: largestImage,
                 tickets: 100,
                 location: current._embedded.venues[0].name,
                 startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
