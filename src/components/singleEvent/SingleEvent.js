@@ -2,11 +2,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleEvent } from "../";
 import { useParams } from "react-router-dom";
+import SeatChart from "../seat-chart/SeatChart";
 import axios from "axios";
 
 const SingleEvent = () => {
   const [qty, setQty] = React.useState(1);
   const [singleEvent, setSingleEvent] = React.useState({});
+  const [visible, setVisible] = React.useState(false);
+  const [seats, setSeats] = React.useState([]);
 
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -31,13 +34,13 @@ const SingleEvent = () => {
   };
   const addToCart = async () => {
     const token = window.localStorage.getItem("token");
-    if (singleEvent.tickets - qty >= 0) {
+    if (singleEvent.tickets - seats.length >= 0) {
       if (!window.localStorage.getItem("token")) {
         let cart = JSON.parse(window.localStorage.getItem("cart"));
         cart.lineitems.push({
           id: Math.floor(Math.random() * 10000),
-          qty: qty,
-          seat: "Placeholder",
+          qty: seats.length,
+          seat: seats.join(";"),
           events: [
             {
               id: id,
@@ -56,8 +59,8 @@ const SingleEvent = () => {
           "/api/users/cart",
           {
             eventId: singleEvent.id,
-            qty,
-            seat: "Placeholder",
+            qty: seats.length,
+            seat: seats.join(";"),
           },
           { headers: { authorization: token } }
         );
@@ -70,6 +73,21 @@ const SingleEvent = () => {
 
   return (
     <div id="single-event-root-container">
+      <button
+        onClick={() => {
+          setVisible(!visible);
+          console.log(visible, "pressed");
+        }}
+      >
+        Select a Seat
+      </button>
+      <SeatChart
+        visible={visible}
+        setVisible={setVisible}
+        singleEvent={singleEvent}
+        setSeats={setSeats}
+        seats={seats}
+      />
       <div id="single-event-row-1">
         <div className="single-event-date">
           <h2>
@@ -101,21 +119,21 @@ const SingleEvent = () => {
           </p>
           <p>
             <span className="single-event-bold">Price:&nbsp;</span>
-            {`   $${singleEvent.price ? singleEvent.price : 0}`}
+            {`   $${singleEvent.price ? singleEvent.price.toFixed(2) : 0}`}
           </p>
           <section className="container">
             <div className="product-quantity">
               <p>Quantity&nbsp;&nbsp;</p>
               <div className="single-event-input">{qty}</div>
               <div className="quantity-selectors-container">
-                <div className="quantity-selectors">
+                {/* <div className="quantity-selectors">
                   <button type="button" onClick={decrease}>
                     <span>&#8722;</span>
                   </button>
                   <button type="button" onClick={increase}>
                     <span>&#43;</span>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </section>
@@ -136,13 +154,13 @@ const SingleEvent = () => {
           <iframe
             width="100%"
             height="100%"
-            style={{border: 0}}
+            style={{ border: 0 }}
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
             src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyA_Ii5AJrqAY-lWvingSP-oiHDnRGVesPA
-            &q=${singleEvent.longitude},${singleEvent.latitude}&zoom=17`}>
-          </iframe>
+            &q=${singleEvent.longitude},${singleEvent.latitude}&zoom=17`}
+          ></iframe>
         </div>
       </div>
     </div>

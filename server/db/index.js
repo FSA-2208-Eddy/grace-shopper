@@ -7,8 +7,8 @@ const Order = require("./Order");
 const Tag = require("./Tag");
 const LineItem = require("./LineItem");
 const Event = require("./Event");
-const axios = require('axios')
-const API_KEY = 'rybaSZbAsGTyVHpT4MjpWMbbiJIQpYGD'
+const axios = require("axios");
+const API_KEY = "rybaSZbAsGTyVHpT4MjpWMbbiJIQpYGD";
 
 User.hasMany(Order);
 Order.belongsTo(User);
@@ -16,7 +16,7 @@ Order.belongsTo(User);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Order);
 
-LineItem.belongsToMany(Event, { through: "EventLine"});
+LineItem.belongsToMany(Event, { through: "EventLine" });
 Event.belongsToMany(LineItem, { through: "EventLine" });
 
 Tag.belongsToMany(Event, { through: "EventTag" });

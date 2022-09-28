@@ -117,11 +117,12 @@
   width: 16px;
   height: 16px;
   float: right;
-  margin-top: -36px;
-  margin-right: -120px;
+  margin-top: -41px;
+  margin-right: -125px;
   margin-bottom: 15px;
   cursor: pointer;
-  z-index: 99;
+  color: black;
+  z-index: 20;
 }
 .login-create-new-user-container .login-create-new-user-form #new-user-form input {
   margin: 0 0 15px 0;
@@ -433,7 +434,7 @@ select {
 .search-not-found {
   height: 500px;
   width: 500px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   border-radius: 5px;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   display: flex;
@@ -453,7 +454,7 @@ select {
   margin-top: 25px;
   background-color: #ff8e3c;
   padding: 10px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   border-radius: 10px;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   font-size: 16px;
@@ -474,7 +475,9 @@ select {
 }
 .profile-menu-container {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  margin: 30px 0 0 0;
 }
 .profileLargeEmail {
   font-size: 14px;
@@ -483,11 +486,12 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   width: 230px;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  margin: 5px 0 0 0;
 }
 .profile-account-information-container h3 {
   font-size: 18px;
@@ -514,15 +518,15 @@ select {
   background-position: center;
   background-size: cover;
   margin: 5px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
 }
 .profile-account-information-container .profile-email-container {
   padding: 10px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-top: 2px solid #cccccc;
-  border-bottom: 2px solid #cccccc;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -546,13 +550,13 @@ select {
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   justify-content: space-evenly;
   color: #2b889d;
 }
 .profile-settings-container div {
-  border-top: 2px solid #cccccc;
-  border-bottom: 2px solid #cccccc;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
   height: 50px;
   display: flex;
   align-items: center;
@@ -595,7 +599,7 @@ select {
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   width: 300px;
   height: 150px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   margin: 10px;
   display: flex;
   align-items: center;
@@ -673,7 +677,7 @@ select {
 .profile-cart-events-container .profile-cart-item-container {
   display: inline-flex;
   flex-wrap: wrap;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
 }
 .profile-cart-events-container .profile-cart-item-container .profile-cart-item {
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
@@ -681,7 +685,7 @@ select {
   flex-direction: column;
   height: 350px;
   width: 200px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   margin: 10px;
   padding: 5px;
 }
@@ -772,7 +776,7 @@ select {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   cursor: pointer;
 }
@@ -813,7 +817,7 @@ select {
   margin: 8px;
   color: #2b889d;
   background-color: white;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -824,7 +828,7 @@ select {
 .profile-edit-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   margin-top: 100px;
   margin-bottom: 100px;
@@ -855,7 +859,7 @@ select {
   border-radius: 6px;
   width: 110px;
   height: 45px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   align-self: center;
   margin-top: 10px;
   display: flex;
@@ -869,7 +873,7 @@ select {
 }
 .profile-edit-input {
   border-radius: 3px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   height: 30px;
   padding-left: 5px;
@@ -1044,6 +1048,7 @@ select {
 #single-event-row-1 .single-event-date h2 {
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
 }
 #single-event-row-1 .single-event-date p {
   font-size: 1.5rem;
@@ -1053,6 +1058,7 @@ select {
   font-size: 2.5rem;
   font-weight: bold;
   color: #151a21;
+  max-width: 1000px;
 }
 #single-event-row-2 {
   display: flex;
@@ -1303,6 +1309,12 @@ select {
   max-width: 100%;
   height: auto;
 }
+.single-event-near-me:hover {
+  border-style: solid;
+  border-color: #ffb783;
+  border-width: 2px;
+  border-radius: 10px;
+}
 .single-event-near-me-title {
   display: flex;
   justify-content: center;
@@ -1369,7 +1381,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   width: 230px;
   overflow: hidden;
   border-radius: 5px;
@@ -1407,8 +1419,8 @@ select {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-top: 2px solid #cccccc;
-  border-bottom: 2px solid #cccccc;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -1432,13 +1444,13 @@ select {
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   justify-content: space-evenly;
   color: #2b889d;
 }
 .checkout-settings-container div {
-  border-top: 2px solid #cccccc;
-  border-bottom: 2px solid #cccccc;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
   height: 50px;
   display: flex;
   align-items: center;
@@ -1482,7 +1494,7 @@ select {
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   width: 300px;
   height: 150px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   margin: 10px;
   display: flex;
   align-items: center;
@@ -1545,7 +1557,7 @@ select {
 .checkout-cart-events-container .checkout-cart-item-container {
   display: inline-flex;
   flex-wrap: wrap;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
 }
 .checkout-cart-events-container .checkout-cart-item-container .checkout-cart-item {
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
@@ -1553,7 +1565,7 @@ select {
   flex-direction: column;
   height: 350px;
   width: 200px;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   margin: 10px;
   padding: 5px;
 }
@@ -1641,7 +1653,7 @@ select {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
   cursor: pointer;
 }
@@ -1682,7 +1694,7 @@ select {
   margin: 8px;
   color: #2b889d;
   background-color: white;
-  border: 2px solid #cccccc;
+  border: 1px solid #dedede;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -1919,6 +1931,158 @@ select {
   min-height: 50px;
   align-items: center;
   padding: 5px;
+  color: white;
+}
+.seat-chart-container {
+  background-color: white;
+  height: 600px;
+  width: 540px;
+  margin: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+}
+.seat-chart-container div:nth-last-of-type(6) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(18) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(30) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(42) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(54) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(66) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(78) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(90) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(102) {
+  margin-left: 25px;
+}
+.seat-chart-container div:nth-last-of-type(114) {
+  margin-left: 25px;
+}
+.seat-chart-container-main {
+  height: 800px;
+  width: 580px;
+  background-color: white;
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-between;
+  padding: 3px;
+  box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+}
+.seat-chart-container-main .close-seat-chart {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 500;
+  color: white;
+  background-color: #ff8e3c;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  padding-left: 1px;
+  padding-bottom: 8px;
+  justify-self: flex-end;
+}
+.seat-chart-container-main .close-seat-chart:hover {
+  background-color: #ff8e3c;
+}
+.saveSeats {
+  position: relative;
+  align-self: flex-end;
+  width: 80px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  background-color: #ff8e3c;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  padding-bottom: 3px;
+  margin-left: 250px;
+  margin-bottom: 10px;
+}
+.seat-backdrop {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(51, 51, 51, 0.1);
+  backdrop-filter: blur(4px);
+  bottom: 10px;
+}
+.seat-chart-row {
+  display: flex;
+}
+.seat {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 33px;
+  height: 33px;
+  background-color: #3893fb;
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.seat:hover {
+  background-color: #2376d6;
+}
+.selected-seat {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 33px;
+  height: 33px;
+  background-color: #e54435;
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.purchased-seat {
+  pointer-events: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 33px;
+  height: 33px;
+  background-color: #c0c0c0;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
 }
 * {
