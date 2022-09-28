@@ -8,7 +8,7 @@ import axios from "axios";
 const SingleEvent = () => {
   const [qty, setQty] = React.useState(1);
   const [singleEvent, setSingleEvent] = React.useState({});
-  const [visible, setVisible] = React.useState(true);
+  const [visible, setVisible] = React.useState(false);
   const [seats, setSeats] = React.useState([]);
 
   const dispatch = useDispatch();

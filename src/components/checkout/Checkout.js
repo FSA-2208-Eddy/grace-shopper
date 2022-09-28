@@ -109,7 +109,7 @@ const Checkout = ({ loggedIn }) => {
                     QTY: {item.qty}
                   </div>
                   <div className="checkout-cart-item-seat">
-                    Seat: <span>{item.seat}</span>
+                    Seat: <span>{item.seat.split(";").join(", ")}</span>
                   </div>
                   <div className="checkout-cart-item-available">
                     {item.events[0].tickets} Seats Available

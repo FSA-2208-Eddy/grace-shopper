@@ -4617,7 +4617,7 @@ var Checkout = function Checkout(_ref) {
       className: "checkout-cart-item-price"
     }, "QTY: ", item.qty), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "checkout-cart-item-seat"
-    }, "Seat: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, item.seat)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, "Seat: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, item.seat.split(";").join(", "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "checkout-cart-item-available"
     }, item.events[0].tickets, " Seats Available"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       onClick: handleDelete,
@@ -8133,7 +8133,7 @@ var SingleEvent = function SingleEvent() {
       singleEvent = _React$useState4[0],
       setSingleEvent = _React$useState4[1];
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(true),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       visible = _React$useState6[0],
       setVisible = _React$useState6[1];
