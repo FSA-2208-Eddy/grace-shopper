@@ -15,8 +15,17 @@
     margin-right:5%;
     color: @background-color;
     box-shadow: 0 8px 32px 0 #000000;
+    animation: slideInLeft 2s;
 }
+@keyframes slideInLeft {
+    0%{
+        translate: -2000px;
+    }
 
+    100%{
+        translate: 0px;
+    }
+}
 // .upcoming-events-container:hover {
     //     border-color:#ffb783;
     //     border-width: 6px;
