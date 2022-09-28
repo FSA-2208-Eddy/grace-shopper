@@ -6327,8 +6327,18 @@ function EventsNearMe() {
     }
 
     console.log('eventStore: ', eventsStore);
+    var undefinedCheck = false;
+    var nullCheck = false;
 
-    if (eventsStore.length >= 5 && user.city === undefined && user.state === undefined && user.country === undefined) {
+    if (user.city === undefined && user.state === undefined && user.country === undefined) {
+      undefinedCheck = true;
+    }
+
+    if (user.city === null && user.state === null && user.country === null) {
+      nullCheck = true;
+    }
+
+    if (eventsStore.length >= 5 && (undefinedCheck || nullCheck)) {
       for (var _i2 = 0; _i2 < 5; _i2++) {
         var curEvent = eventsStore[Math.floor(eventsStore.length * Math.random())];
         console.log('curEvent: ', curEvent);
