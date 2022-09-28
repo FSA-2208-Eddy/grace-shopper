@@ -8030,7 +8030,8 @@ var SeatChart = function SeatChart(_ref) {
       setVisible = _ref.setVisible,
       singleEvent = _ref.singleEvent,
       setSeats = _ref.setSeats,
-      seats = _ref.seats;
+      seats = _ref.seats,
+      setQty = _ref.setQty;
   console.log("from SEATCHART", singleEvent);
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]),
@@ -8064,11 +8065,12 @@ var SeatChart = function SeatChart(_ref) {
       console.log("selectedSeats", selectedSeats);
       setSeats(_toConsumableArray(selectedSeats));
       setVisible(!visible);
+      setQty(selectedSeats.length);
     }
   }, "Save"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "close-seat-chart",
     onClick: function onClick() {
-      return setVisible(!visible);
+      setVisible(!visible);
     }
   }, "x"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "seat-chart-container"
@@ -8293,7 +8295,8 @@ var SingleEvent = function SingleEvent() {
     setVisible: setVisible,
     singleEvent: singleEvent,
     setSeats: setSeats,
-    seats: seats
+    seats: seats,
+    setQty: setQty
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "single-event-row-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
