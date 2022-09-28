@@ -105,7 +105,7 @@ const SingleEvent = () => {
           </p>
           <section className="container">
             <div className="product-quantity">
-              <h3>Quantity&nbsp;&nbsp;</h3>
+              <p>Quantity&nbsp;&nbsp;</p>
               <div className="single-event-input">{qty}</div>
               <div className="quantity-selectors-container">
                 <div className="quantity-selectors">
@@ -131,6 +131,18 @@ const SingleEvent = () => {
           <button id="single-event-button" onClick={addToCart}>
             Add to Cart
           </button>
+        </div>
+        <div className="maps-container">
+          <iframe
+            width="100%"
+            height="100%"
+            style={{border: 0}}
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyA_Ii5AJrqAY-lWvingSP-oiHDnRGVesPA
+            &q=${singleEvent.longitude},${singleEvent.latitude}&zoom=17`}>
+          </iframe>
         </div>
       </div>
     </div>

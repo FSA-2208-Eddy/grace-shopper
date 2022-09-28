@@ -19,10 +19,14 @@
   align-items: center;
   color: #ff8e3c;
 }
+.events-sort {
+  text-align: center;
+}
 select {
   font-size: 1rem;
   padding: 8px;
   color: #2a2a2a;
+  border-radius: 7px;
 }
 #events-list {
   display: flex;
@@ -45,22 +49,25 @@ select {
 }
 .events-listing p {
   font-weight: bold;
+  max-width: 475px;
+  max-height: 80px;
 }
 .events-listing img {
   height: 50px;
   width: 100px;
 }
 .events-listing a {
+  display: flex;
+  align-items: center;
   margin: 0;
   position: absolute;
   right: 0;
-  background-color: #ff8e3c;
   height: 75%;
   width: 10%;
   border: 1px white solid;
 }
 .event-button {
-  height: 100%;
+  height: 50px;
   width: 100%;
   border: 1px white solid;
   background-color: #ff8e3c;
@@ -71,6 +78,7 @@ select {
   align-items: center;
   position: absolute;
   right: 0;
+  border-radius: 10px;
 }
 .event-button:hover {
   background-color: #f47012;
@@ -136,6 +144,7 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
 }
 .event-next-button:hover {
   background-color: #f47012;

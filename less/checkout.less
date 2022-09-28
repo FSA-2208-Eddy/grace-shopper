@@ -1,5 +1,5 @@
 @boxshadow: 0 1px 6px rgba(0, 0, 5, 0.12);
-@border:1px solid rgb(222, 222, 222);
+@border:2px solid rgb(204, 204, 204);
 @clickable-color: rgb(43, 136, 157);
 @import "variables";
 
@@ -117,7 +117,7 @@
   flex-direction: column;
   border: 10px;
   margin-left: 80px;
-  margin-top: 30px;
+  margin-top: 10px;
   height: 100vh;
   div {
     margin-top: 2px;
@@ -188,11 +188,11 @@
   .checkout-cart-header {
     display: flex;
     text-align: center;
-    margin-top: 5px;
+    margin: 20px 0 20px 0;
     h2 {
       font-size: 30px;
       font-weight: 300;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
     }
   }
   .checkout-purchase-header {
@@ -441,15 +441,19 @@
 }
 
 .checkout-button{
-    width: 10vw;
-    height: 10vh;
+    width: 120px;
+    height: 70px;
     background-color: @button-color;
     display:flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color:white;
     cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-shadow: 2px 2px 4px black;
+    box-shadow: 0 2px 8px 0 #000000;
 }
 
 .checkout-button:hover{
@@ -464,12 +468,11 @@
 }
 
 .checkout-card-info {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
   font-size: 1.5rem;
   input {
+    margin: 0 0 20px 0;
     width: 30%;
-    height: 4vh;
+    height: 35px;
     font-size: 1.25rem;
   }
 }
