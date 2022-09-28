@@ -2,11 +2,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleEvent } from "../";
 import { useParams } from "react-router-dom";
+import SeatChart from "../seat-chart/SeatChart";
 import axios from "axios";
 
 const SingleEvent = () => {
   const [qty, setQty] = React.useState(1);
   const [singleEvent, setSingleEvent] = React.useState({});
+  const [visible, setVisible] = React.useState(false);
+  const [seats, setSeats] = React.useState([]);
 
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -30,30 +33,37 @@ const SingleEvent = () => {
     }
   };
   const addToCart = async () => {
-    if (singleEvent.tickets - qty >= 0) {
-      if (!window.localStorage.getItem('token')){
-        let cart = JSON.parse(window.localStorage.getItem('cart'))
+    const token = window.localStorage.getItem("token");
+    if (singleEvent.tickets - seats.length >= 0) {
+      if (!window.localStorage.getItem("token")) {
+        let cart = JSON.parse(window.localStorage.getItem("cart"));
         cart.lineitems.push({
-          id: Math.floor(Math.random()*10000),
-          qty: qty,
-          seat: "Placeholder",
-          events: [{
-            id: id,
-            name: singleEvent.name,
-            location: singleEvent.location,
-            img: singleEvent.img,
-            tickets: singleEvent.tickets,
-            price: singleEvent.price,
-          }]
-        })
-        window.localStorage.setItem('cart', JSON.stringify(cart))
-        alert("Item Added!")
+          id: Math.floor(Math.random() * 10000),
+          qty: seats.length,
+          seat: seats.join(";"),
+          events: [
+            {
+              id: id,
+              name: singleEvent.name,
+              location: singleEvent.location,
+              img: singleEvent.img,
+              tickets: singleEvent.tickets,
+              price: singleEvent.price,
+            },
+          ],
+        });
+        window.localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Item Added!");
       } else {
-        await axios.put("/api/users/cart", {
-          eventId: singleEvent.id,
-          qty,
-          seat: "Placeholder",
-      });
+        await axios.put(
+          "/api/users/cart",
+          {
+            eventId: singleEvent.id,
+            qty: seats.length,
+            seat: seats.join(";"),
+          },
+          { headers: { authorization: token } }
+        );
         alert("Item Added!");
       }
     } else {
@@ -63,6 +73,14 @@ const SingleEvent = () => {
 
   return (
     <div id="single-event-root-container">
+      <SeatChart
+        visible={visible}
+        setVisible={setVisible}
+        singleEvent={singleEvent}
+        setSeats={setSeats}
+        seats={seats}
+        setQty={setQty}
+      />
       <div id="single-event-row-1">
         <div className="single-event-date">
           <h2>
@@ -94,36 +112,56 @@ const SingleEvent = () => {
           </p>
           <p>
             <span className="single-event-bold">Price:&nbsp;</span>
-            {`   $${singleEvent.price ? singleEvent.price : 0}`}
+            {`   $${singleEvent.price ? singleEvent.price.toFixed(2) : 0}`}
           </p>
           <section className="container">
             <div className="product-quantity">
-              <h3>Quantity&nbsp;&nbsp;</h3>
+              <p>Quantity&nbsp;&nbsp;</p>
               <div className="single-event-input">{qty}</div>
               <div className="quantity-selectors-container">
-                <div className="quantity-selectors">
+                {/* <div className="quantity-selectors">
                   <button type="button" onClick={decrease}>
                     <span>&#8722;</span>
                   </button>
                   <button type="button" onClick={increase}>
                     <span>&#43;</span>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </section>
           <div id="single-event-seat-box">
-            <p>Seat</p>
+            <p>Seats</p>
+            <button
+              onClick={() => {
+                setVisible(!visible);
+                console.log(visible, "pressed");
+              }}>
+              Select seats
+            </button>
+            {/* <p>Seat</p>
             <select>
               <option value="Row 1">Row 1</option>
               <option value="Row 2">Row 2</option>
               <option value="Row 3">Row 3</option>
               <option value="Row 4">Row 4</option>
-            </select>
+            </select> */}
           </div>
           <button id="single-event-button" onClick={addToCart}>
             Add to Cart
           </button>
+        </div>
+        <div className="maps-container">
+          <iframe
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyA_Ii5AJrqAY-lWvingSP-oiHDnRGVesPA
+            &q=${singleEvent.longitude},${singleEvent.latitude}&zoom=17`}
+          ></iframe>
         </div>
       </div>
     </div>

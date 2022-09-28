@@ -34,6 +34,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
     "sequelize": "^6.20.0",
+    "stripe": "^10.12.0-beta.1",
     "style-loader": "^3.3.1",
     "svg-url-loader": "^8.0.0",
     "volleyball": "^1.5.1",

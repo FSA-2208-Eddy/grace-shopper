@@ -2,6 +2,7 @@
 
 .upcoming-events-container{
     display:flex;
+    flex: 2;
     flex-direction:column;
     background-color: @secondary-color;
     padding: 23px;
@@ -13,17 +14,28 @@
     margin-left:5%;
     margin-right:5%;
     color: @background-color;
+    box-shadow: 0 8px 32px 0 #000000;
+    animation: slideInLeft 1s;
 }
+@keyframes slideInLeft {
+    0%{
+        translate: -2000px;
+        opacity: 0%;
+    }
 
-.upcoming-events-container:hover {
-    border-color:#ffb783;
-    border-width: 6px;
-    transition: 0.2s;
-    
+    100%{
+        translate: 0px;
+        opacity: 100%;
+    }
 }
+// .upcoming-events-container:hover {
+    //     border-color:#ffb783;
+    //     border-width: 6px;
+    //     transition: 0.2s;
+    // }
 
-.upcoming-events-title{
-    color: @button-color;
+    .upcoming-events-title{
+        color: @background-color;
     align-self: center;
     font-size:xx-large;
     margin-bottom: 14px;
@@ -33,6 +45,9 @@
 
 .single-upcoming-event{
     background-color:@secondary-color;
+    border-bottom: 2px solid @highlight-color;
+    padding: 10px;
+    cursor: pointer;
 }
 .single-upcoming-event:hover {
     border-style:solid;

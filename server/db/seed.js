@@ -31,7 +31,7 @@ const syncAndSeed = async () => {
       const alphabet = "ABCDEFGHIJ";
       for (let i = 0; i < alphabet.length; i++) {
         let current = alphabet[i];
-        for (let j = 1; j <= 10; j++) {
+        for (let j = 1; j <= 12; j++) {
           seats.push(`${current}${j}`);
         }
       }
@@ -66,7 +66,27 @@ const syncAndSeed = async () => {
 
           if (current.name.includes("TBA")) continue;
           if (!current.priceRanges) continue;
+          if (
+            !current["_embedded"].venues[0].location ||
+            !current["_embedded"].venues[0].location
+          ) {
+            continue;
+          }
+          const findLargestImg = () => {
+            let largestImgWidth = 0;
+            let idx = 0
+            for ( let i = 0; i < current.images.length; i++) {
+              let curImage = current.images[i]
+              if (curImage.width > largestImgWidth) {
+                largestImgWidth = curImage.width
+                idx = i
+              }
+            }
+            return current.images[idx].url
+          }
 
+          const largestImage = findLargestImg()
+          
           if (namesObj[current.name]) {
             continue;
           } else {
@@ -81,8 +101,9 @@ const syncAndSeed = async () => {
                 newEvent = await Event.create({
                   name: current.name,
                   type: current.type,
-                  img: current.images[0].url,
-                  tickets: 100,
+                  img: largestImage,
+                  tickets: 120,
+                  seats: makeSeatChart(),
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
                   endTime: current.dates.start.dateTime,
@@ -90,6 +111,8 @@ const syncAndSeed = async () => {
                   category: current.classifications[0].segment.name,
                   genre: current.classifications[0].genre.name,
                   subGenre: current.classifications[0].subGenre.name,
+                  latitude: current["_embedded"].venues[0].location.longitude,
+                  longitude: current["_embedded"].venues[0].location.latitude,
                 });
               } else if (
                 current.classifications[0].segment &&
@@ -98,38 +121,46 @@ const syncAndSeed = async () => {
                 newEvent = await Event.create({
                   name: current.name,
                   type: current.type,
-                  img: current.images[0].url,
-                  tickets: 100,
+                  img: largestImage,
+                  tickets: 120,
+                  seats: makeSeatChart(),
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
                   endTime: current.dates.start.dateTime,
                   price: current.priceRanges[0].min,
                   category: current.classifications[0].segment.name,
                   genre: current.classifications[0].genre.name,
+                  latitude: current["_embedded"].venues[0].location.longitude,
+                  longitude: current["_embedded"].venues[0].location.latitude,
                 });
               } else {
                 newEvent = await Event.create({
                   name: current.name,
                   type: current.type,
-                  img: current.images[0].url,
-                  tickets: 100,
+                  img: largestImage,
+                  tickets: 120,
+                  seats: makeSeatChart(),
                   location: current._embedded.venues[0].name,
                   startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
                   endTime: current.dates.start.dateTime,
                   price: current.priceRanges[0].min,
                   category: current.classifications[0].segment.name,
+                  latitude: current["_embedded"].venues[0].location.longitude,
+                  longitude: current["_embedded"].venues[0].location.latitude,
                 });
               }
             } else {
               newEvent = await Event.create({
                 name: current.name,
                 type: current.type,
-                img: current.images[0].url,
-                tickets: 100,
+                img: largestImage,
+                tickets: 120,
                 location: current._embedded.venues[0].name,
                 startTime: `${current.dates.start.localDate} ${current.dates.start.localTime}`,
                 endTime: current.dates.start.dateTime,
                 price: current.priceRanges[0].min,
+                latitude: current["_embedded"].venues[0].location.longitude,
+                longitude: current["_embedded"].venues[0].location.latitude,
               });
             }
 

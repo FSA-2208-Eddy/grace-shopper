@@ -2,6 +2,7 @@
 
 .events-near-me-container{
     display:flex;
+    flex: 1;
     flex-direction:column;
     background-color: @secondary-color;
     padding: 23px;
@@ -13,17 +14,31 @@
     margin-left:5%;
     margin-right:5%;
     color: @background-color;
+    box-shadow: 0 8px 32px 0 #000000;
+    animation: slideInRight 1s;
 }
 
-.events-near-me-container:hover {
-    border-color:#ffb783;
-    border-width: 6px;
-    transition: 0.2s;
-    
+@keyframes slideInRight {
+    0%{
+        translate: 2000px;
+        opacity: 0%;
+    }
+
+    100%{
+        translate: 0px;
+        opacity: 100%;
+    }
 }
+
+// .events-near-me-container:hover {
+//     border-color:#ffb783;
+//     border-width: 6px;
+//     transition: 0.2s;
+
+// }
 
 .events-near-me-title{
-    color: @button-color;
+    color: @background-color;
     align-self: center;
     font-size:xx-large;
     margin-bottom: 14px;
@@ -31,38 +46,53 @@
     text-decoration:underline;
 }
 
+.single-event-near-me {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // border: 2px solid @highlight-color;
+    // border-radius: 30px;
+    border-bottom: 2px solid @highlight-color;
+    padding: 10px;
+}
+
 .single-event-near-me-image-container{
     display:flex;
     justify-content: center;
     align-items:center;
+    border: 1px solid white;
 }
 
 .single-event-near-me-image{
     display:flex;
-    width:500px;
+    width:200px;
     max-width: 100%;
     height: auto;
-    padding-top:10px;
-    padding-left:10px;
-    padding-right:10px;
+//     padding-top:10px;
+//     padding-left:10px;
+//     padding-right:10px;
 }
 
 .single-event-near-me:hover {
     border-style:solid;
     border-color:#ffb783;
-    border-width: 4px;
-    transition: 0.2s;
-    border-radius:30px;
+    border-width: 2px;
+    // transition: 0.2s;
+    border-radius:10px;
 }
 
 .single-event-near-me-title{
     display:flex;
     justify-content: center;
-    font-size:25px;
+    text-align: center;
+    font-size:15px;
     padding: 6px;
 }
 
 .single-event-near-me-date{
+    margin-top: 5px;
     display:flex;
     justify-content: center;
 }

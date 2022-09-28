@@ -12,7 +12,7 @@ const EventTagListMusic = () => {
 
     const events = useSelector(state => state.events.events)
     const dispatch = useDispatch()
-    
+
 
     React.useEffect(()=>{
         if (filter === "0") {
@@ -49,7 +49,7 @@ const EventTagListMusic = () => {
     const indexOfFirstPost = indexOfLastPost - eventsPerPage;
     const currentPosts = eventsSorted.slice(indexOfFirstPost, indexOfLastPost)
     const totalPages = Math.ceil(eventsSorted.length/eventsPerPage)
-    
+
     // const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const nextPage = (event) => {
@@ -59,7 +59,7 @@ const EventTagListMusic = () => {
         }
         window.scrollTo(0,0)
     }
-    
+
     const prevPage = (event) => {
         event.preventDefault()
         if (currentPage !== 1) {
@@ -82,10 +82,12 @@ const EventTagListMusic = () => {
             <div id="events-list">
                 {currentPosts.map((event)=>{
                     let date = new Date(event.startTime)
+                    if (event.startTime.includes('undefined')) { date = 'TBA' }
+
                     return (
                     <div key={event.id} className="events-listing">
                         <img src={event.img} alt="picture should go here"/>
-                        <div className="event-date">{date.toDateString()}</div>
+                        <div className="event-date">{date === 'TBA' ? date : date.toDateString()}</div>
                         <p>{event.name}</p>
                         <Link to={`/events/${event.id}`}><button className="event-button">See Details</button></Link>
                     </div>

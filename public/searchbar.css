@@ -1,7 +1,12 @@
 .navbar-searchbar-container {
   display: flex;
+  justify-content: center;
   background-color: #151a21;
-  padding: 10px 25% 15px 25%;
+}
+.navbar-searchbar-container .inner-searchbar-container {
+  display: flex;
+  width: 50%;
+  padding: 10px 0 15px 0;
 }
 .navbar-searchbar-container input {
   width: 100%;

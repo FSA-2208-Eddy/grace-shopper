@@ -1,3 +1,7 @@
+.container {
+  display: flex;
+  align-items: center;
+}
 #single-event-row-1 {
   display: flex;
   justify-content: center;
@@ -19,6 +23,7 @@
 #single-event-row-1 .single-event-date h2 {
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
 }
 #single-event-row-1 .single-event-date p {
   font-size: 1.5rem;
@@ -28,6 +33,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   color: #151a21;
+  max-width: 1000px;
 }
 #single-event-row-2 {
   display: flex;
@@ -40,36 +46,43 @@
   border-top: 2px solid #ff8e3c;
   border-bottom: 2px solid #ff8e3c;
 }
+#single-event-row-2 .maps-container {
+  display: flex;
+  flex: 2;
+  padding: 30px;
+}
 #single-event-row-2 .single-event-image {
   display: flex;
   align-items: center;
-  width: 500px;
+  flex: 1;
 }
 #single-event-row-2 .single-event-image img {
   display: block;
   width: 100%;
   height: auto;
   border: 2px solid white;
+  margin-left: 40px;
 }
 #single-event-row-2 .single-event-details {
-  width: 50vw;
+  flex: 1;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 2vh;
-  padding: 12px 12px 12px 25px;
   color: white;
+  margin-left: 20px;
 }
 #single-event-row-2 .single-event-details h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 1000;
+  margin-bottom: 15px;
 }
 #single-event-row-2 .single-event-details h1 .single-event-bold {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 #single-event-row-2 .single-event-details p {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
 }
 #single-event-row-2 .single-event-details span {
   font-size: 15px;
@@ -80,8 +93,12 @@
   justify-content: space-between;
   align-items: center;
 }
+#single-event-row-2 .single-event-details .product-quantity p {
+  font-size: 17px;
+}
 #single-event-row-2 .single-event-details .product-quantity .single-event-input {
-  height: 5vh;
+  height: 40px;
+  width: 40px;
   padding: 10px 20px 10px 20px;
   text-align: center;
   border: 1px black solid;
@@ -100,8 +117,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5vh;
-  height: 5vh;
+  width: 40px;
+  height: 40px;
   border: none;
   margin: 5px;
   border-radius: 10px;
@@ -114,24 +131,27 @@
 }
 #single-event-row-2 .single-event-details #single-event-seat-box {
   display: flex;
-  gap: 20px;
   align-items: center;
+  margin: 10px 0 10px 0;
 }
 #single-event-row-2 .single-event-details #single-event-seat-box p {
-  font-size: 1rem;
-  color: #151a21;
+  font-size: 1.2rem;
+  color: white;
+  margin: 0 40px 0 0;
 }
-#single-event-row-2 .single-event-details #single-event-seat-box select {
-  cursor: pointer;
-  border-radius: 10px;
+#single-event-row-2 .single-event-details #single-event-seat-box button {
+  width: 120px;
+  height: 30px;
+  background-color: #ff8e3c;
+  border-radius: 8px;
+  color: white;
 }
 #single-event-row-2 .single-event-details #single-event-button {
-  border: none;
   border-radius: 10px;
   background-color: #ff8e3c;
   color: white;
-  width: 15vh;
-  height: 5vh;
+  width: 120px;
+  height: 40px;
   cursor: pointer;
 }
 #single-event-row-2 .single-event-details #single-event-button:active {

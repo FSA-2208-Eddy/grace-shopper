@@ -1,10 +1,11 @@
 import React from "react";
 import "../../../public/index.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navbar } from "../";
 import axios from "axios";
 import { toggle } from "../../store/login/loginSlice";
+import { getSingleUser } from "../../store/users/singleUserSlice";
 
 function LoginPage({ setLoggedIn }) {
   const userRef = React.useRef();
@@ -42,6 +43,9 @@ function LoginPage({ setLoggedIn }) {
       const auth = await axios.post("/api/auth/login", loginObj);
       const { token } = auth.data;
       window.localStorage.setItem("token", token);
+      console.log("TOKEN", token);
+      console.log("WINDOW TOKEN", window.localStorage.getItem("token"));
+      dispatch(getSingleUser());
       setUserName("");
       setPassword("");
       setLoggedIn(true);
@@ -167,7 +171,7 @@ function LoginPage({ setLoggedIn }) {
               ></input>
               <span>
                 <i
-                  className="far fa-eye"
+                  className="bi bi-eye-slash"
                   id="togglePassword"
                   onClick={() => setShowPassword(!showPassword)}
                 ></i>
