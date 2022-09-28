@@ -8,21 +8,25 @@
 
 .featured-events-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-around;
   background-color: @background-color;
 }
 
 .main-page-event-button {
+  width: 100px;
+  height: 35px;
   background-color: @button-color;
   color: @background-color;
-  display: flex;
-  justify-content: flex-end;
-  align-items: stretch;
-  border-radius: 20px;
+  // display:flex;
+  // justify-content:flex-end;
+  // align-items:stretch;
+  border-radius: 7px;
   font-size: 16px;
   border-color: @button-color;
   text-shadow: 2px 2px 4px black;
+  margin: 10px 0 10px 0px;
+  cursor: pointer;
 }
 .main-page-event-button:hover {
   border-style: solid;

@@ -1,5 +1,6 @@
 .upcoming-events-container {
   display: flex;
+  flex: 2;
   flex-direction: column;
   background-color: #151a21;
   padding: 23px;
@@ -11,14 +12,10 @@
   margin-left: 5%;
   margin-right: 5%;
   color: white;
-}
-.upcoming-events-container:hover {
-  border-color: #ffb783;
-  border-width: 6px;
-  transition: 0.2s;
+  box-shadow: 0 8px 32px 0 #000000;
 }
 .upcoming-events-title {
-  color: #ff8e3c;
+  color: white;
   align-self: center;
   font-size: xx-large;
   margin-bottom: 14px;
@@ -27,6 +24,9 @@
 }
 .single-upcoming-event {
   background-color: #151a21;
+  border-bottom: 2px solid #ff8e3c;
+  padding: 10px;
+  cursor: pointer;
 }
 .single-upcoming-event:hover {
   border-style: solid;
