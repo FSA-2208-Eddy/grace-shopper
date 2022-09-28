@@ -6,9 +6,6 @@
   transform-style: preserve-3d;
   animation: rotate 60s linear infinite;
 }
-.gallery:hover {
-  animation-play-state: paused;
-}
 .gallery span:hover {
   border-style: solid;
   border-color: white;
