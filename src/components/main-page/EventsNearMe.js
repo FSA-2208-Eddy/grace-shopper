@@ -66,7 +66,16 @@ function EventsNearMe() {
         }
     }
     console.log('eventStore: ', eventsStore)
-    if (eventsStore.length >= 5 && user.city === undefined && user.state === undefined && user.country === undefined ){
+    let undefinedCheck = false
+    let nullCheck = false
+    if (user.city === undefined && user.state === undefined && user.country === undefined ) {
+        undefinedCheck = true
+    }
+    if (user.city === null && user.state === null && user.country === null ){
+        nullCheck = true
+    }
+
+    if (eventsStore.length >= 5 && (undefinedCheck || nullCheck)){
        for (let i = 0; i < 5; i++){
         let curEvent = eventsStore[Math.floor(eventsStore.length * Math.random())]
         console.log('curEvent: ',curEvent)
