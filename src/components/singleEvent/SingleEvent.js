@@ -33,6 +33,10 @@ const SingleEvent = () => {
     }
   };
   const addToCart = async () => {
+    if (seats.length === 0) {
+      alert("Please select a seat before adding to cart.");
+      return;
+    }
     const token = window.localStorage.getItem("token");
     if (singleEvent.tickets - seats.length >= 0) {
       if (!window.localStorage.getItem("token")) {
@@ -136,7 +140,8 @@ const SingleEvent = () => {
               onClick={() => {
                 setVisible(!visible);
                 console.log(visible, "pressed");
-              }}>
+              }}
+            >
               Select seats
             </button>
             {/* <p>Seat</p>

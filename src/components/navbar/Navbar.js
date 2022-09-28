@@ -33,6 +33,9 @@ function Navbar({ loggedIn, setLoggedIn }) {
   }, []);
 
   const handleSearch = () => {
+    if (searchBarInput === "") {
+      return;
+    }
     let keywords = searchBarInput.split(" ").join("+");
     setSearchBarInput("");
     navigate(`/events/search/${keywords}`);

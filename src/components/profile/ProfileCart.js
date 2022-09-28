@@ -50,7 +50,7 @@ function ProfileCart({ cart, orders }) {
                 </div>
                 <div className="profile-cart-item-price">$50</div>
                 <div className="profile-cart-item-seat">
-                  Seat: <span>{item?.seat}</span>
+                  Seat: <span>{item?.seat.split(";").join(", ")}</span>
                 </div>
                 <div className="profile-cart-item-available">
                   {item?.events[0].tickets}

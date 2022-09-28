@@ -229,7 +229,7 @@
   color: #ff8e3c;
 }
 * {
-  font-family: 'Readex Pro', sans-serif;
+  font-family: "Readex Pro", sans-serif;
 }
 #events-main-container {
   display: flex;
@@ -281,6 +281,10 @@ select {
   font-weight: bold;
   max-width: 475px;
   max-height: 80px;
+  cursor: pointer;
+}
+.events-listing p:hover {
+  color: #2b889d;
 }
 .events-listing img {
   height: 50px;
