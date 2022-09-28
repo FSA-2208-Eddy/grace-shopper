@@ -105,7 +105,7 @@ const SingleEvent = () => {
           </p>
           <section className="container">
             <div className="product-quantity">
-              <h3>Quantity&nbsp;&nbsp;</h3>
+              <p>Quantity&nbsp;&nbsp;</p>
               <div className="single-event-input">{qty}</div>
               <div className="quantity-selectors-container">
                 <div className="quantity-selectors">
