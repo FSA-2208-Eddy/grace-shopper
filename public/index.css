@@ -475,7 +475,9 @@ select {
 }
 .profile-menu-container {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  margin: 30px 0 0 0;
 }
 .profileLargeEmail {
   font-size: 14px;
@@ -489,6 +491,7 @@ select {
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
+  margin: 5px 0 0 0;
 }
 .profile-account-information-container h3 {
   font-size: 18px;
@@ -1045,6 +1048,7 @@ select {
 #single-event-row-1 .single-event-date h2 {
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
 }
 #single-event-row-1 .single-event-date p {
   font-size: 1.5rem;
@@ -1054,6 +1058,7 @@ select {
   font-size: 2.5rem;
   font-weight: bold;
   color: #151a21;
+  max-width: 1000px;
 }
 #single-event-row-2 {
   display: flex;
@@ -1299,6 +1304,12 @@ select {
   width: 200px;
   max-width: 100%;
   height: auto;
+}
+.single-event-near-me:hover {
+  border-style: solid;
+  border-color: #ffb783;
+  border-width: 2px;
+  border-radius: 10px;
 }
 .single-event-near-me-title {
   display: flex;

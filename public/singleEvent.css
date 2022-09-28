@@ -23,6 +23,7 @@
 #single-event-row-1 .single-event-date h2 {
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
 }
 #single-event-row-1 .single-event-date p {
   font-size: 1.5rem;
@@ -32,6 +33,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   color: #151a21;
+  max-width: 1000px;
 }
 #single-event-row-2 {
   display: flex;
