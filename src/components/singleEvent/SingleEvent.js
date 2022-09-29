@@ -14,7 +14,6 @@ const SingleEvent = () => {
 
   const dispatch = useDispatch();
   const { id } = useParams();
-  const cart = useSelector((state) => state.cart.cart);
 
   React.useEffect(() => {
     const singleEvent = async () => {

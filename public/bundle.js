@@ -8313,9 +8313,6 @@ var SingleEvent = function SingleEvent() {
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useParams)(),
       id = _useParams.id;
 
-  var cart = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    return state.cart.cart;
-  });
   react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
     var singleEvent = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -8361,8 +8358,7 @@ var SingleEvent = function SingleEvent() {
 
   var addToCart = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      var token, _cart;
-
+      var token, cart;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -8388,9 +8384,8 @@ var SingleEvent = function SingleEvent() {
                 break;
               }
 
-              _cart = JSON.parse(window.localStorage.getItem("cart"));
-
-              _cart.lineitems.push({
+              cart = JSON.parse(window.localStorage.getItem("cart"));
+              cart.lineitems.push({
                 id: Math.floor(Math.random() * 10000),
                 qty: seats.length,
                 seat: seats.join(";"),
@@ -8403,8 +8398,7 @@ var SingleEvent = function SingleEvent() {
                   price: singleEvent.price
                 }]
               });
-
-              window.localStorage.setItem("cart", JSON.stringify(_cart));
+              window.localStorage.setItem("cart", JSON.stringify(cart));
               dispatch((0,_store_orders_itemNumberSlice__WEBPACK_IMPORTED_MODULE_5__.increment)());
               alert("Item Added!");
               _context2.next = 17;
