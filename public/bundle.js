@@ -4530,7 +4530,7 @@ var Checkout = function Checkout(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               if (!window.localStorage.getItem("token")) {
-                _context.next = 6;
+                _context.next = 7;
                 break;
               }
 
@@ -4538,44 +4538,45 @@ var Checkout = function Checkout(_ref) {
               return dispatch((0,_store_cart_cartSlice__WEBPACK_IMPORTED_MODULE_2__.checkoutCart)());
 
             case 3:
-              dispatch((0,_store_orders_itemNumberSlice__WEBPACK_IMPORTED_MODULE_5__.setValue)(0)); // testCheckout();
-
-              _context.next = 18;
+              dispatch((0,_store_orders_itemNumberSlice__WEBPACK_IMPORTED_MODULE_5__.setValue)(0));
+              testCheckout();
+              _context.next = 20;
               break;
 
-            case 6:
+            case 7:
               if (!(email === "")) {
-                _context.next = 9;
+                _context.next = 10;
                 break;
               }
 
               alert("Please enter an email address to continue.");
               return _context.abrupt("return");
 
-            case 9:
+            case 10:
               cartToCheck = JSON.parse(window.localStorage.getItem("cart"));
-              _context.next = 12;
+              _context.next = 13;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().put("/api/users/guest-checkout", {
                 cart: cartToCheck,
                 email: email
               });
 
-            case 12:
+            case 13:
               _yield$axios$put = _context.sent;
               data = _yield$axios$put.data;
-              _context.next = 16;
+              _context.next = 17;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().put("api/users/guest-checkout-seat", {
                 order: data.order,
                 events: data.events
               });
 
-            case 16:
+            case 17:
               dispatch((0,_store_orders_itemNumberSlice__WEBPACK_IMPORTED_MODULE_5__.setValue)(0));
               window.localStorage.setItem("cart", JSON.stringify({
                 lineitems: []
-              })); // testCheckout();
+              }));
+              testCheckout();
 
-            case 18:
+            case 20:
             case "end":
               return _context.stop();
           }

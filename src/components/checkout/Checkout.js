@@ -73,7 +73,7 @@ const Checkout = ({ loggedIn }) => {
     if (window.localStorage.getItem("token")) {
       await dispatch(checkoutCart());
       dispatch(setValue(0));
-      // testCheckout();
+      testCheckout();
     } else {
       if (email === "") {
         alert("Please enter an email address to continue.");
@@ -90,7 +90,7 @@ const Checkout = ({ loggedIn }) => {
       });
       dispatch(setValue(0));
       window.localStorage.setItem("cart", JSON.stringify({ lineitems: [] }));
-      // testCheckout();
+      testCheckout();
     }
   }
 
