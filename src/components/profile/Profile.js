@@ -23,7 +23,6 @@ function Profile() {
       setLoading(true);
       dispatch(getCart());
       dispatch(getSingleUser());
-      console.log("THIS IS THE USER HERE", user);
       dispatch(getOrders());
       dispatch(getEvents());
       setLoading(false);

@@ -4,6 +4,7 @@ import { getSingleEvent } from "../";
 import { useParams } from "react-router-dom";
 import SeatChart from "../seat-chart/SeatChart";
 import axios from "axios";
+import { increment } from "../../store/orders/itemNumberSlice";
 
 const SingleEvent = () => {
   const [qty, setQty] = React.useState(1);
@@ -13,7 +14,6 @@ const SingleEvent = () => {
 
   const dispatch = useDispatch();
   const { id } = useParams();
-  const cart = useSelector((state) => state.cart.cart);
 
   React.useEffect(() => {
     const singleEvent = async () => {
@@ -33,6 +33,10 @@ const SingleEvent = () => {
     }
   };
   const addToCart = async () => {
+    if (seats.length === 0) {
+      alert("Please select a seat before adding to cart.");
+      return;
+    }
     const token = window.localStorage.getItem("token");
     if (singleEvent.tickets - seats.length >= 0) {
       if (!window.localStorage.getItem("token")) {
@@ -53,6 +57,7 @@ const SingleEvent = () => {
           ],
         });
         window.localStorage.setItem("cart", JSON.stringify(cart));
+        dispatch(increment());
         alert("Item Added!");
       } else {
         await axios.put(
@@ -64,6 +69,7 @@ const SingleEvent = () => {
           },
           { headers: { authorization: token } }
         );
+        dispatch(increment());
         alert("Item Added!");
       }
     } else {
@@ -136,7 +142,8 @@ const SingleEvent = () => {
               onClick={() => {
                 setVisible(!visible);
                 console.log(visible, "pressed");
-              }}>
+              }}
+            >
               Select seats
             </button>
             {/* <p>Seat</p>

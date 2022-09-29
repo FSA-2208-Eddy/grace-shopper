@@ -42,11 +42,11 @@ function ProfileMenu({ user, loading }) {
             <Link to="/profile/edit">Edit Address</Link>
           </div>
         </div>
-        <div className="profile-settings-container">
+        {/* <div className="profile-settings-container">
           <div id="profile-setting-1">My Tickets</div>
           <div id="profile-setting-2">My Purchases</div>
           <div id="profile-setting-3">Manage Payment</div>
-        </div>
+        </div> */}
       </div>
     );
 }

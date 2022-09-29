@@ -1,17 +1,17 @@
-const User = require('../db/User.js')
-const Order = require('../db/Order.js')
-const router = require('express').Router()
+const User = require("../db/User.js");
+const Order = require("../db/Order.js");
+const router = require("express").Router();
 
 const requireToken = async (req, res, next) => {
-    try {
-      const token = req.headers.authorization;
-      const user = await User.findByToken(token);
-      req.user = user;
-      next();
-    } catch(error) {
-      next(error);
-    }
-  };
+  try {
+    const token = req.headers.authorization;
+    const user = await User.findByToken(token);
+    req.user = user;
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
 
 router.post("/login", async (req, res, next) => {
   try {
@@ -22,33 +22,33 @@ router.post("/login", async (req, res, next) => {
 });
 
 // sign up on website, (takes whatever is in req.body), and associates a new order with the user
-router.post("/signup", async(req,res,next) => {
+router.post("/signup", async (req, res, next) => {
   try {
     let newUser = await User.findOne({
       where: {
         firstName: "Placeholder",
-        lastName:"Placeholder",
-        email: req.body.email
-      }
-    })
+        lastName: "Placeholder",
+        email: req.body.email,
+      },
+    });
     if (!newUser) {
-      newUser = await User.create(req.body)
+      newUser = await User.create(req.body);
       await Order.create({
-        userId: newUser.id
-      })
-      res.send({ token: await User.authenticate(req.body)})
+        userId: newUser.id,
+      });
+      res.send({ token: await User.authenticate(req.body) });
     } else {
-      newUser.set(req.body)
-      newUser.save()
+      newUser.set(req.body);
+      newUser.save();
       await Order.create({
-        userId: newUser.id
-      })
-      res.sendStatus(200)
+        userId: newUser.id,
+      });
+      res.sendStatus(200);
     }
   } catch (ex) {
-    next(ex)
+    next(ex);
   }
-})
+});
 
 router.get("/", requireToken, async (req, res, next) => {
   try {
@@ -58,4 +58,4 @@ router.get("/", requireToken, async (req, res, next) => {
   }
 });
 
-module.exports = router
+module.exports = router;

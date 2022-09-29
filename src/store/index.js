@@ -6,6 +6,7 @@ import {
   cartSlice,
   singleEventSlice,
   ordersSlice,
+  itemCountSlice,
   singleUserSlice,
   loginSlice,
 } from "../components";
@@ -19,6 +20,7 @@ const store = configureStore({
     singleEvent: singleEventSlice,
     singleUser: singleUserSlice,
     loginStatus: loginSlice,
+    itemCount: itemCountSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(reduxLogger),
