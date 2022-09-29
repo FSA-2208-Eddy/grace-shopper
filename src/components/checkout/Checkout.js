@@ -8,6 +8,12 @@ import {
 } from "../../store/cart/cartSlice";
 import axios from "axios";
 import CheckoutDone from "./CheckoutDone";
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+  setValue,
+} from "../../store/orders/itemNumberSlice";
 
 const Checkout = ({ loggedIn }) => {
   const cart = useSelector((state) => state.cart.cart);
@@ -45,6 +51,7 @@ const Checkout = ({ loggedIn }) => {
       let lineItemId = event.target.getAttribute("value");
       console.log(lineItemId);
       dispatch(removeItemFromCart(lineItemId));
+      dispatch(decrement());
     } else {
       event.preventDefault();
       let lineItemId = event.target.getAttribute("value");
@@ -56,6 +63,8 @@ const Checkout = ({ loggedIn }) => {
         "cart",
         JSON.stringify({ lineitems: lineitems })
       );
+      dispatch(decrement());
+
       setRefresh(!refresh);
     }
   }
@@ -63,7 +72,8 @@ const Checkout = ({ loggedIn }) => {
   async function handleCheckout() {
     if (window.localStorage.getItem("token")) {
       await dispatch(checkoutCart());
-      testCheckout();
+      dispatch(setValue(0));
+      // testCheckout();
     } else {
       if (email === "") {
         alert("Please enter an email address to continue.");
@@ -78,8 +88,9 @@ const Checkout = ({ loggedIn }) => {
         order: data.order,
         events: data.events,
       });
+      dispatch(setValue(0));
       window.localStorage.setItem("cart", JSON.stringify({ lineitems: [] }));
-      testCheckout();
+      // testCheckout();
     }
   }
 

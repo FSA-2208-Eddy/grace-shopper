@@ -88,6 +88,9 @@ function LoginPage({ setLoggedIn }) {
       window.location.reload(false);
     } catch (err) {
       console.log(err);
+      alert(
+        `A user already exists with the given username/email. Please try a different one.`
+      );
     }
   };
 

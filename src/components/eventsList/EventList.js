@@ -126,7 +126,11 @@ const EventList = () => {
                 {date === "TBA" ? date : date.toDateString()}
               </div>
 
-              <p onClick={() => navigate(`/events/${event.id}`)}>
+              <p
+                onClick={() => {
+                  navigate(`/events/${event.id}`);
+                }}
+              >
                 {event.name}
               </p>
 

@@ -4,6 +4,7 @@ export { default as cartSlice } from "../store/cart/cartSlice";
 export { default as singleEventSlice } from "../store/singleEvent/singleEventSlice";
 export { default as singleUserSlice } from "../store/users/singleUserSlice";
 export { default as ordersSlice } from "../store/orders/orderSlice";
+export { default as itemCountSlice } from "../store/orders/itemNumberSlice";
 export { default as loginSlice } from "../store/login/loginSlice";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as Profile } from "./profile/Profile";

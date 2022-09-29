@@ -147,6 +147,7 @@
   align-items: center;
   background-color: #151a21;
   height: 80px;
+  border-bottom: 2px solid #1d232b;
 }
 #navbar #navbar-logo {
   display: flex;
@@ -161,6 +162,39 @@
 }
 #navbar #navbar-logo a {
   text-decoration: none;
+}
+#navbar .out-of-drop-down-cart {
+  color: white;
+  height: 40px;
+  position: absolute;
+  right: 100px;
+  display: flex;
+}
+#navbar .out-of-drop-down-cart img {
+  width: 100%;
+}
+#navbar .out-of-drop-down-cart:hover .out-of-drop-down-cart-items {
+  scale: 1.1;
+}
+#navbar .out-of-drop-down-cart-items {
+  color: white;
+  background-color: #ff8e3c;
+  height: 19px;
+  width: 19px;
+  position: absolute;
+  right: 33px;
+  top: -3px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  cursor: pointer;
+}
+#navbar #out-of-drop-down-cart {
+  height: 100%;
+  cursor: pointer;
 }
 #navbar #settings-icon {
   width: 40px;
@@ -1980,9 +2014,43 @@ select {
 .seat-chart-container div:nth-last-of-type(114) {
   margin-left: 25px;
 }
+.seat-key {
+  height: 90px;
+  width: 400px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  margin-right: -20px;
+}
+.fakeSeatContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#fakeSeatAvailable {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 33px;
+  height: 33px;
+  background-color: #3893fb;
+}
+#fakeSeatSelected {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 33px;
+  height: 33px;
+  background-color: #e54435;
+}
+#fakeSeatTaken {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 33px;
+  height: 33px;
+  background-color: #c0c0c0;
+}
 .seat-chart-container-main {
-  height: 800px;
-  width: 580px;
+  height: 750px;
+  width: 700px;
   background-color: white;
   display: flex;
   margin-left: 10px;
@@ -1991,7 +2059,7 @@ select {
   box-shadow: 0 1px 6px rgba(0, 0, 5, 0.12);
 }
 .seat-chart-container-main .close-seat-chart {
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   border-radius: 10px;
   font-size: 30px;
@@ -2013,8 +2081,8 @@ select {
 }
 .saveSeats {
   position: relative;
-  align-self: flex-end;
-  width: 80px;
+  align-self: center;
+  min-width: 80px;
   height: 40px;
   border-radius: 10px;
   font-size: 20px;
@@ -2027,10 +2095,18 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-self: center;
   padding-bottom: 3px;
-  margin-left: 250px;
+  margin-right: -47px;
   margin-bottom: 10px;
+  z-index: 10;
+}
+.seatkeySave {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .seat-backdrop {
   position: absolute;
@@ -2045,16 +2121,14 @@ select {
   backdrop-filter: blur(4px);
   bottom: 10px;
 }
-.seat-chart-row {
-  display: flex;
-}
 .seat {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 33px;
   height: 33px;
   background-color: #3893fb;
-  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2070,7 +2144,8 @@ select {
   width: 33px;
   height: 33px;
   background-color: #e54435;
-  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2084,7 +2159,8 @@ select {
   width: 33px;
   height: 33px;
   background-color: #c0c0c0;
-  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   display: flex;
   align-items: center;
   justify-content: center;

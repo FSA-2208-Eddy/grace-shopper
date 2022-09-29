@@ -4,6 +4,7 @@ import { getSingleEvent } from "../";
 import { useParams } from "react-router-dom";
 import SeatChart from "../seat-chart/SeatChart";
 import axios from "axios";
+import { increment } from "../../store/orders/itemNumberSlice";
 
 const SingleEvent = () => {
   const [qty, setQty] = React.useState(1);
@@ -57,6 +58,7 @@ const SingleEvent = () => {
           ],
         });
         window.localStorage.setItem("cart", JSON.stringify(cart));
+        dispatch(increment());
         alert("Item Added!");
       } else {
         await axios.put(
@@ -68,6 +70,7 @@ const SingleEvent = () => {
           },
           { headers: { authorization: token } }
         );
+        dispatch(increment());
         alert("Item Added!");
       }
     } else {
