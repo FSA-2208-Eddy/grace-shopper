@@ -1,6 +1,6 @@
 ## Tickit
 
-<img style='width: 200px' src='https://prnt.sc/kY8DJnA7vRFT'>
+<img style='width: 200px' src='https://imgur.com/oedMwNs'>
 
 
 
@@ -13,7 +13,7 @@ Created with React, Redux, Express, and PostgreSQL, this app was created complet
 
 ## Front Page Preview
 
-<img style="width:700px" src='https://prnt.sc/JDcYU-VdbbAW'>
+<img style="width:700px" src='https://imgur.com/fmwyLmi'>
 
 ## Technologies
 
