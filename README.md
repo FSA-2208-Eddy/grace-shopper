@@ -1,6 +1,6 @@
 ## Tickit
 
-<img style='width: 200px' src='https://i.imgur.com/oedMwNs'>
+<img style='width: 200px' src='https://i.imgur.com/oedMwNs.png'>
 
 
 
