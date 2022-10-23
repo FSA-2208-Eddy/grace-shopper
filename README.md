@@ -13,7 +13,7 @@ Created with React, Redux, Express, and PostgreSQL, this app was created complet
 
 ## Front Page Preview
 
-<img style="width:700px" src='//s.imgur.com/min/embed.js'>
+<img style="width:700px" src='https://i.imgur.com/fmwyLmi.png'>
 
 ## Technologies
 
