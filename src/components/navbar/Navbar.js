@@ -4,15 +4,23 @@ import logo from "../images/tickitLogo.png";
 import cog from "../images/cog3.png";
 import { DropDownItems } from "../";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+  setValue,
+} from "../../store/orders/itemNumberSlice";
 
 function Navbar({ loggedIn, setLoggedIn }) {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [searchBarInput, setSearchBarInput] = React.useState("");
   const [dropDown, setDropDown] = React.useState(false);
 
   const login = useSelector((state) => state.value);
+  const cart = useSelector((state) => state.cart.cart);
+  const itemCount = useSelector((state) => state.itemCount.value);
 
   React.useEffect(() => {
     const loginCheck = async () => {
@@ -31,8 +39,29 @@ function Navbar({ loggedIn, setLoggedIn }) {
     };
     loginCheck();
   }, []);
+  React.useEffect(() => {
+    const loadCounter = async () => {
+      if (window.localStorage.getItem("token")) {
+        const token = window.localStorage.getItem("token");
+        const { data } = await axios.put(
+          "/api/users/cart-items",
+          {},
+          { headers: { authorization: token } }
+        );
+        console.log(data, "CART INSIDE THE USE EFFECT");
+        dispatch(setValue(data.lineitems.length));
+      } else {
+        let localCart = JSON.parse(window.localStorage.getItem("cart"));
+        dispatch(setValue(localCart.lineitems.length));
+      }
+    };
+    loadCounter();
+  }, [loggedIn]);
 
   const handleSearch = () => {
+    if (searchBarInput === "") {
+      return;
+    }
     let keywords = searchBarInput.split(" ").join("+");
     setSearchBarInput("");
     navigate(`/events/search/${keywords}`);
@@ -64,6 +93,21 @@ function Navbar({ loggedIn, setLoggedIn }) {
             Misc
           </Link>
         </div>
+
+        <div
+          className="out-of-drop-down-cart"
+          onClick={() => navigate("/profile/checkout")}
+        >
+          <img
+            id="out-of-drop-down-cart"
+            src="../../../pngfind.com-cart-icon-png-1434613.png"
+            alt="shopping cart icon"
+          />
+
+          <div className={itemCount ? "out-of-drop-down-cart-items" : null}>
+            {itemCount ? itemCount : null}
+          </div>
+        </div>
         <div className="login-logout-container">
           <img
             id="settings-icon"
@@ -90,7 +134,14 @@ function Navbar({ loggedIn, setLoggedIn }) {
           <input
             type="text"
             placeholder="Search by location, artist, genre..."
-            onChange={(e) => setSearchBarInput(e.target.value)}
+            onChange={(e) => {
+              setSearchBarInput(e.target.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.code === "Enter") {
+                handleSearch();
+              }
+            }}
             value={searchBarInput}
           />
           <button onClick={handleSearch}>Search</button>

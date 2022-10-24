@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { removeItemFromCart } from "../../store/cart/cartSlice";
 import { useDispatch } from "react-redux";
+import { decrement } from "../../store/orders/itemNumberSlice";
 
 function ProfileCart({ cart, orders }) {
+  const itemCount = useSelector((state) => state.itemCount.value);
   const linkStyle = {
     textDecoration: "none",
     backgroundColor: "#ff8e3c",
@@ -20,6 +22,7 @@ function ProfileCart({ cart, orders }) {
     let lineItemId = event.target.getAttribute("value");
     console.log(lineItemId);
     await dispatch(removeItemFromCart(lineItemId));
+    dispatch(decrement());
     setClicked(!clicked);
   }
   const [clicked, setClicked] = useState(false);
@@ -27,11 +30,13 @@ function ProfileCart({ cart, orders }) {
     <div className="profile-cart-container">
       <div className="profile-cart-header">
         <h2>Your Cart</h2>
-        <Link style={checkoutStyle} to="/profile/checkout">
-          <div className="profile-cart-checkout">{`Checkout (${
-            cart?.lineitems?.length || 0
-          } ${cart?.lineitems?.length === 1 ? "Item" : "Items"})`}</div>
-        </Link>
+        {itemCount ? (
+          <Link style={checkoutStyle} to="/profile/checkout">
+            <div className="profile-cart-checkout">{`Checkout (${
+              cart?.lineitems?.length || 0
+            } ${cart?.lineitems?.length === 1 ? "Item" : "Items"})`}</div>
+          </Link>
+        ) : null}
       </div>
       <div className="profile-cart-item-container">
         {cart?.lineitems?.length > 0 ? (
@@ -50,7 +55,7 @@ function ProfileCart({ cart, orders }) {
                 </div>
                 <div className="profile-cart-item-price">$50</div>
                 <div className="profile-cart-item-seat">
-                  Seat: <span>{item?.seat}</span>
+                  Seat: <span>{item?.seat.split(";").join(", ")}</span>
                 </div>
                 <div className="profile-cart-item-available">
                   {item?.events[0].tickets}

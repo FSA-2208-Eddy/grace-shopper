@@ -46,7 +46,6 @@ const SearchEvents = () => {
   keywords.forEach((word) => {
     if (!ignoreWords.includes(word)) filteredKeywords.push(word);
   });
-  console.log(filteredKeywords);
   allEvents.forEach((event) => {
     for (let i = 0; i < filteredKeywords.length; i++) {
       let currentWord = filteredKeywords[i];
@@ -154,7 +153,9 @@ const SearchEvents = () => {
                 <div key={event.id} className="events-listing">
                   <img src={event.img} alt="picture should go here" />
                   <div className="event-date">{date.toDateString()}</div>
-                  <p>{event.name}</p>
+                  <p onClick={() => navigate(`/events/${event.id}`)}>
+                    {event.name}
+                  </p>
                   <Link to={`/events/${event.id}`}>
                     <button className="event-button">See Details</button>
                   </Link>

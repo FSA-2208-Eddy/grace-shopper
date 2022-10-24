@@ -102,6 +102,23 @@ router.put("/cart", requireToken, async (req, res, next) => {
 });
 
 // checkout
+router.put("/cart-items", requireToken, async (req, res, next) => {
+  try {
+    const userAndOrder = await User.findByPk(req.user.id, {
+      include: Order,
+    });
+    const cart = await Order.findOne({
+      where: {
+        userId: userAndOrder.id,
+        isCart: true,
+      },
+      include: [{ model: LineItem, include: Event }],
+    });
+    res.send(cart);
+  } catch (err) {
+    next(err);
+  }
+});
 router.put("/checkout", requireToken, async (req, res, next) => {
   try {
     const userAndOrder = await User.findByPk(req.user.id, {
@@ -187,7 +204,7 @@ router.put("/guest-checkout", async (req, res, next) => {
       userId: user.id,
       isCart: false,
     });
-    let eventArray = []
+    let eventArray = [];
     for (let i = 0; i < cart.lineitems.length; i++) {
       const event = await Event.findByPk(cart.lineitems[i].events[0].id);
       const lineItem = await LineItem.create({
@@ -195,36 +212,36 @@ router.put("/guest-checkout", async (req, res, next) => {
         seat: cart.lineitems[i].seat,
         orderId: order.id,
       });
-      console.log('in the first call, event id', event.id)
-      eventArray.push(event.id)
+      console.log("in the first call, event id", event.id);
+      eventArray.push(event.id);
       await lineItem.addEvent(event);
       // await lineItem.update({...lineItem, events:[event]})
     }
-    console.log('in the first axios call', eventArray)
+    console.log("in the first axios call", eventArray);
     res.send({
       order: order,
-      events: eventArray
+      events: eventArray,
     });
   } catch (ex) {
     next(ex);
   }
 });
 
-router.put('/guest-checkout-seat', async(req,res,next) => {
+router.put("/guest-checkout-seat", async (req, res, next) => {
   try {
     const newCart = await Order.findOne({
       where: {
-        id: req.body.order.id
+        id: req.body.order.id,
       },
-      include: [{ model: LineItem, include: Event }]
-    })
-    const eventArray = req.body.events
-    console.log('in the second call, before the loop', eventArray)
+      include: [{ model: LineItem, include: Event }],
+    });
+    const eventArray = req.body.events;
+    console.log("in the second call, before the loop", eventArray);
     for (let i = 0; i < newCart.lineitems.length; i++) {
       let lineitem = newCart.lineitems[i];
       // let event = newCart.lineitems[i].events[0];
-      let event = await Event.findByPk(eventArray[i])
-      console.log('individual events', event)
+      let event = await Event.findByPk(eventArray[i]);
+      console.log("individual events", event);
       let currentSeats = event.seats;
       let reserved = lineitem.seat.split(";");
       for (let i = 0; i < reserved.length; i++) {
@@ -240,11 +257,11 @@ router.put('/guest-checkout-seat', async(req,res,next) => {
         tickets: event.tickets - lineitem.qty,
       });
     }
-    res.sendStatus(200)
+    res.sendStatus(200);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
 // update user's information (takes new details in req.body)
 router.put("/:id", requireToken, async (req, res, next) => {

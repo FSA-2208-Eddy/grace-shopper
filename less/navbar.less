@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 #navbar {
   display: flex;
@@ -6,6 +6,7 @@
   align-items: center;
   background-color: @secondary-color;
   height: 80px;
+  border-bottom: 2px solid #1d232b;
 
   #navbar-logo {
     display: flex;
@@ -24,6 +25,41 @@
       text-decoration: none;
     }
   }
+  .out-of-drop-down-cart {
+    color: white;
+    height: 40px;
+    position: absolute;
+    right: 100px;
+    display: flex;
+    img {
+      width: 100%;
+    }
+  }
+  .out-of-drop-down-cart:hover {
+    .out-of-drop-down-cart-items {
+      scale: 1.1;
+    }
+  }
+  .out-of-drop-down-cart-items {
+    color: white;
+    background-color: #ff8e3c;
+    height: 19px;
+    width: 19px;
+    position: absolute;
+    right: 33px;
+    top: -3px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    cursor: pointer;
+  }
+  #out-of-drop-down-cart {
+    height: 100%;
+    cursor: pointer;
+  }
 
   #settings-icon {
     width: 40px;
@@ -36,14 +72,13 @@
     flex: 1;
 
     img {
-      transition: transform .7s ease-in-out;
+      transition: transform 0.7s ease-in-out;
       cursor: pointer;
     }
 
     img:hover {
       transform: rotate(360deg);
     }
-
   }
 
   #logout {
