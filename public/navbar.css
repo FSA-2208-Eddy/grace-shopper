@@ -10,6 +10,7 @@
   display: flex;
   flex: 1;
   margin: 0 0 0 10px;
+  align-items: flex-start;
 }
 #navbar #navbar-logo img {
   width: 100px;
@@ -26,9 +27,6 @@
   position: absolute;
   right: 100px;
   display: flex;
-}
-#navbar .out-of-drop-down-cart img {
-  width: 100%;
 }
 #navbar .out-of-drop-down-cart:hover .out-of-drop-down-cart-items {
   scale: 1.1;
@@ -63,6 +61,8 @@
   flex: 1;
 }
 #navbar .login-logout-container img {
+  height: 40px;
+  width: 40px;
   transition: transform 0.7s ease-in-out;
   cursor: pointer;
 }
