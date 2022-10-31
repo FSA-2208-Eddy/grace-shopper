@@ -262,6 +262,28 @@
 #navbar .navbar-links a:hover {
   color: #ff8e3c;
 }
+.navbar-links-dropdown {
+  display: none;
+  color: black;
+  flex-direction: column;
+  margin: 10px 0 0 0;
+  gap: 10px;
+}
+.navbar-links-dropdown {
+  padding-left: 5px;
+}
+.navbar-links-dropdown a:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+}
+@media only screen and (max-width: 600px) {
+  .navbar-links-dropdown {
+    display: flex;
+  }
+  .navbar-links {
+    display: none !important;
+  }
+}
 * {
   font-family: "Readex Pro", sans-serif;
 }
@@ -455,6 +477,11 @@ select {
   background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
   width: 30px;
   border-radius: 10px 0 0 10px;
+}
+@media only screen and (max-width: 600px) {
+  .inner-searchbar-container {
+    width: 95% !important;
+  }
 }
 .search-results-number {
   font-size: 20px;
@@ -1366,6 +1393,11 @@ select {
   display: flex;
   justify-content: center;
 }
+@media only screen and (max-width: 600px) {
+  .events-near-me-container {
+    margin-bottom: 10px;
+  }
+}
 .main-page-featured-container {
   display: flex;
   flex-direction: column;
@@ -1376,6 +1408,7 @@ select {
   flex-direction: row-reverse;
   justify-content: space-around;
   background-color: white;
+  flex-wrap: wrap;
 }
 .main-page-event-button {
   width: 100px;
@@ -1401,6 +1434,11 @@ select {
 .main-page-event-button-container {
   display: flex;
   justify-content: center;
+}
+@media only screen and (max-width: 700px) {
+  .featured-events-container {
+    flex-direction: column;
+  }
 }
 .checkout-header h1 {
   font-size: 35px;
@@ -1971,6 +2009,32 @@ select {
   align-items: center;
   padding: 5px;
   color: white;
+}
+@media only screen and (max-width: 900px) {
+  .gallery span {
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(250px);
+  }
+  .gallery {
+    width: 200px;
+    height: 150px;
+    animation: rotate 60s linear infinite;
+  }
+  .carousel-container {
+    padding: 60px 0 0 0;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .gallery span {
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(190px);
+  }
+  .gallery {
+    width: 150px;
+    height: 100px;
+    animation: rotate 60s linear infinite;
+  }
+  .carousel-container {
+    padding: 30px 0 0 0;
+  }
 }
 .seat-chart-container {
   background-color: white;
