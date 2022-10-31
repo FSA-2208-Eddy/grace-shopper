@@ -64,25 +64,33 @@ select {
     color: rgb(43, 136, 157);
   }
   img {
-    height: 50px;
+    // height: 50px;
     width: 100px;
   }
   a {
     display: flex;
     align-items: center;
+    // justify-self: flex-end;
     margin: 0;
-    position: absolute;
+    margin-left: auto;
+    // position: absolute;
     right: 0;
     // background-color: @button-color;
     height: 75%;
-    width: 10%;
+    width: 100px;
     border: 1px white solid;
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width: 900px) {
+    width: 95%;
+
   }
 }
 
 .event-button {
   height: 50px;
-  width: 100%;
+  width: 100px;
   border: 1px white solid;
   background-color: @button-color;
   color: white;
@@ -90,9 +98,10 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  // position: absolute;
   right: 0;
   border-radius: 10px;
+  text-decoration: none;
 }
 
 .event-button:hover {

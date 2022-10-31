@@ -339,7 +339,7 @@
   }
 }
 @media (max-width: 750px) {
-  * {
+  .checkout-main-container {
     font-size: 14px;
   }
   .checkout-cart-item-container {
