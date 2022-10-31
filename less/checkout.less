@@ -118,7 +118,7 @@
   border: 10px;
   margin-left: 80px;
   margin-top: 10px;
-  height: 100vh;
+  height: auto;
   div {
     margin-top: 2px;
     margin-bottom: 2px;
@@ -439,31 +439,34 @@
     height: 203px;
   }
 }
-
-.checkout-button{
-    width: 120px;
-    height: 70px;
-    background-color: @button-color;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    color:white;
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 10px;
-    text-shadow: 2px 2px 4px black;
-    box-shadow: 0 2px 8px 0 #000000;
+.checkout-button-box {
+  display: flex;
+  justify-content: center;
+}
+.checkout-button {
+  width: 120px;
+  height: 70px;
+  background-color: @button-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: white;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-shadow: 2px 2px 4px black;
+  box-shadow: 0 2px 8px 0 #000000;
 }
 
-.checkout-button:hover{
-    background-color: #ee731a;
+.checkout-button:hover {
+  background-color: #ee731a;
 }
 
 .checkout-cart-container {
   a {
     font-size: 1.5rem;
-    color: @button-color
+    color: @button-color;
   }
 }
 

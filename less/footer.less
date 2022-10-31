@@ -1,73 +1,99 @@
-@import 'variables';
+@import "variables";
 
 #footer-root-container {
-    height: auto;
-    width: 100%;
-    margin: 0;
-    background-color: @secondary-color;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+  height: auto;
+  width: 100%;
+  margin: 0;
+  margin-top: 70px;
+  background-color: @secondary-color;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
-
+.footer-fill {
+  background-color: @secondary-color;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  bottom: 0;
+  z-index: -999;
+}
 .footer-group-1 {
-    display: flex;
-    height: auto;
-    width: auto;
-    justify-content: space-between;
-    color: white;
-    padding: 2.5%;
-    padding-bottom: 4%;
-    border-bottom: @button-color solid 1px;
+  display: flex;
+  height: auto;
+  width: auto;
+  justify-content: space-between;
+  color: white;
+  padding: 2.5%;
+  padding-bottom: 4%;
+  border-bottom: @button-color solid 1px;
 }
 
 .footer-column {
-    height: 100%;
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  height: 100%;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
-    h2 {
-        font-size: 1.25rem;
-    }
+  h2 {
+    font-size: 1.25rem;
+  }
 
-    a {
-        text-decoration: none;
-        transition: 0.25s ease;
-        color: white;
-    }
+  a {
+    text-decoration: none;
+    transition: 0.25s ease;
+    color: white;
+  }
 
-    a:hover {
-        color: @button-color;
-    }
+  a:hover {
+    color: @button-color;
+  }
 }
 
 .footer-group-2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: auto;
-    width: 100%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    padding-left: 2.5%;
-    padding-right: 7.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding-left: 2.5%;
+  padding-right: 7.5%;
 
-    img {
-        height: 10%;
-        width: 10%;
-    }
+  img {
+    height: 10%;
+    width: 10%;
+  }
 
-    p {
-        color: white
-    }
+  p {
+    color: white;
+  }
 
-    .footer-copy {
-        width: 10%;
-    }
+  .footer-copy {
+    width: 10%;
+  }
 }
 
-
-
+@media only screen and (max-width: 1100px) {
+  #footer-root-container {
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 14px;
+  }
+  img {
+    margin-right: 20px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  #footer-root-container {
+    font-size: 12px;
+  }
+  .footer-group-2 p {
+    margin-left: 10px;
+    font-size: 10px;
+  }
+}

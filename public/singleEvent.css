@@ -157,3 +157,45 @@
 #single-event-row-2 .single-event-details #single-event-button:active {
   background-color: #e96f19;
 }
+@media only screen and (max-width: 1000px) {
+  #single-event-row-2 {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
+  .single-event-image img {
+    margin-left: 0 !important;
+  }
+  .single-event-date {
+    width: auto !important;
+    height: auto !important;
+    padding: 5px;
+  }
+  .single-event-date h2 {
+    font-size: 16px !important;
+  }
+  .single-event-title {
+    font-size: 20px !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #single-event-row-2 {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
+  .single-event-image img {
+    margin-left: 0 !important;
+  }
+  .single-event-date {
+    width: auto !important;
+    height: auto !important;
+    padding: 5px;
+  }
+  .single-event-date h2 {
+    font-size: 12px !important;
+  }
+  .single-event-title {
+    font-size: 14px !important;
+  }
+}

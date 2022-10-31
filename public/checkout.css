@@ -110,7 +110,7 @@
   border: 10px;
   margin-left: 80px;
   margin-top: 10px;
-  height: 100vh;
+  height: auto;
 }
 .checkout-cart-events-container div {
   margin-top: 2px;
@@ -415,6 +415,10 @@
     width: 360px;
     height: 203px;
   }
+}
+.checkout-button-box {
+  display: flex;
+  justify-content: center;
 }
 .checkout-button {
   width: 120px;

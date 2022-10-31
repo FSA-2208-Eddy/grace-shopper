@@ -161,8 +161,10 @@ const Checkout = ({ loggedIn }) => {
           ) : (
             <div></div>
           )}
-          <div onClick={handleCheckout} className="checkout-button">
-            Checkout
+          <div className="checkout-button-box">
+            <div onClick={handleCheckout} className="checkout-button">
+              Checkout
+            </div>
           </div>
         </>
       </div>

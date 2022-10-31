@@ -1,33 +1,33 @@
-@import 'variables.less';
+@import "variables.less";
 
-.events-near-me-container{
-    display:flex;
-    flex: 1;
-    flex-direction:column;
-    background-color: @secondary-color;
-    padding: 23px;
-    border-style:solid;
-    border-color:@button-color;
-    border-radius:30px;
-    margin-bottom:10%;
-    margin-top:10%;
-    margin-left:5%;
-    margin-right:5%;
-    color: @background-color;
-    box-shadow: 0 8px 32px 0 #000000;
-    animation: slideInRight 1s;
+.events-near-me-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: @secondary-color;
+  padding: 23px;
+  border-style: solid;
+  border-color: @button-color;
+  border-radius: 30px;
+  margin-bottom: 10%;
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  color: @background-color;
+  box-shadow: 0 8px 32px 0 #000000;
+  animation: slideInRight 1s;
 }
 
 @keyframes slideInRight {
-    0%{
-        translate: 2000px;
-        opacity: 0%;
-    }
+  0% {
+    translate: 2000px;
+    opacity: 0%;
+  }
 
-    100%{
-        translate: 0px;
-        opacity: 100%;
-    }
+  100% {
+    translate: 0px;
+    opacity: 100%;
+  }
 }
 
 // .events-near-me-container:hover {
@@ -37,68 +37,68 @@
 
 // }
 
-.events-near-me-title{
-    color: @background-color;
-    align-self: center;
-    font-size:xx-large;
-    margin-bottom: 14px;
-    font-style: bold;
-    text-decoration:underline;
+.events-near-me-title {
+  color: @background-color;
+  align-self: center;
+  font-size: xx-large;
+  margin-bottom: 14px;
+  font-style: bold;
+  text-decoration: underline;
 }
 
 .single-event-near-me {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    // border: 2px solid @highlight-color;
-    // border-radius: 30px;
-    border-bottom: 2px solid @highlight-color;
-    padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // border: 2px solid @highlight-color;
+  // border-radius: 30px;
+  border-bottom: 2px solid @highlight-color;
+  padding: 10px;
 }
 
-.single-event-near-me-image-container{
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    border: 1px solid white;
+.single-event-near-me-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
 }
 
-.single-event-near-me-image{
-    display:flex;
-    width:200px;
-    max-width: 100%;
-    height: auto;
-//     padding-top:10px;
-//     padding-left:10px;
-//     padding-right:10px;
+.single-event-near-me-image {
+  display: flex;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  //     padding-top:10px;
+  //     padding-left:10px;
+  //     padding-right:10px;
 }
 
 .single-event-near-me:hover {
-    border-style:solid;
-    border-color:#ffb783;
-    border-width: 2px;
-    // transition: 0.2s;
-    border-radius:10px;
+  border-style: solid;
+  border-color: #ffb783;
+  border-width: 2px;
+  // transition: 0.2s;
+  border-radius: 10px;
 }
 
-.single-event-near-me-title{
-    display:flex;
-    justify-content: center;
-    text-align: center;
-    font-size:15px;
-    padding: 6px;
+.single-event-near-me-title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 15px;
+  padding: 6px;
 }
 
-.single-event-near-me-date{
-    margin-top: 5px;
-    display:flex;
-    justify-content: center;
+.single-event-near-me-date {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
-    .events-near-me-container {
-        margin-bottom: 10px;
-    }
+  .events-near-me-container {
+    margin-bottom: 10px;
+  }
 }

@@ -15,7 +15,7 @@ import {
   Checkout,
   Profile,
   ProfileEdit,
-  CheckoutDone
+  CheckoutDone,
 } from "./components";
 
 function App() {
@@ -47,10 +47,17 @@ function App() {
         <Route path="/events/:id" element={<SingleEvent />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<ProfileEdit />} />
-        <Route path="/profile/checkout" element={<Checkout loggedIn={loggedIn} />} />
-        <Route path="/profile/checkout/done" element={<CheckoutDone loggedIn={loggedIn}/>}/>
+        <Route
+          path="/profile/checkout"
+          element={<Checkout loggedIn={loggedIn} />}
+        />
+        <Route
+          path="/profile/checkout/done"
+          element={<CheckoutDone loggedIn={loggedIn} />}
+        />
       </Routes>
       <Footer />
+      <div className="footer-fill"></div>
     </>
   );
 }
