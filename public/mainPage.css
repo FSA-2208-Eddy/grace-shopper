@@ -8,6 +8,7 @@
   flex-direction: row-reverse;
   justify-content: space-around;
   background-color: white;
+  flex-wrap: wrap;
 }
 .main-page-event-button {
   width: 100px;
@@ -33,4 +34,9 @@
 .main-page-event-button-container {
   display: flex;
   justify-content: center;
+}
+@media only screen and (max-width: 700px) {
+  .featured-events-container {
+    flex-direction: column;
+  }
 }

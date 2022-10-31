@@ -36,3 +36,8 @@
   width: 30px;
   border-radius: 10px 0 0 10px;
 }
+@media only screen and (max-width: 600px) {
+  .inner-searchbar-container {
+    width: 95% !important;
+  }
+}
