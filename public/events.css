@@ -57,22 +57,27 @@ select {
   color: #2b889d;
 }
 .events-listing img {
-  height: 50px;
   width: 100px;
 }
 .events-listing a {
   display: flex;
   align-items: center;
   margin: 0;
-  position: absolute;
+  margin-left: auto;
   right: 0;
   height: 75%;
-  width: 10%;
+  width: 100px;
   border: 1px white solid;
+  text-decoration: none;
+}
+@media only screen and (max-width: 900px) {
+  .events-listing {
+    width: 95%;
+  }
 }
 .event-button {
   height: 50px;
-  width: 100%;
+  width: 100px;
   border: 1px white solid;
   background-color: #ff8e3c;
   color: white;
@@ -80,9 +85,9 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   right: 0;
   border-radius: 10px;
+  text-decoration: none;
 }
 .event-button:hover {
   background-color: #f47012;
